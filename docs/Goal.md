@@ -28,7 +28,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.goal import Goal
+from pp_sdk.models.goal import Goal
 
 # TODO update the JSON string below
 json = "{}"

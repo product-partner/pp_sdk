@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.api_prds_list200_response import ApiPrdsList200Response
+from pp_sdk.models.api_prds_list200_response import ApiPrdsList200Response
 
 # TODO update the JSON string below
 json = "{}"

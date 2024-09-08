@@ -1,4 +1,4 @@
-# openapi_client.PrdApi
+# pp_sdk.PrdApi
 
 All URIs are relative to *http://0.0.0.0:8000*
 
@@ -18,22 +18,22 @@ Search for PRDs
 
 
 ```python
-import openapi_client
-from openapi_client.models.prd import PRD
-from openapi_client.rest import ApiException
+import pp_sdk
+from pp_sdk.models.prd import PRD
+from pp_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://0.0.0.0:8000
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = pp_sdk.Configuration(
     host = "http://0.0.0.0:8000"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.PrdApi(api_client)
+    api_instance = pp_sdk.PrdApi(api_client)
     q = 'q_example' # str | query string, to search across name or description (optional)
     x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 

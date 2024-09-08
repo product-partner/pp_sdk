@@ -1,4 +1,4 @@
-# openapi_client.ApiApi
+# pp_sdk.ApiApi
 
 All URIs are relative to *http://0.0.0.0:8000*
 
@@ -56,23 +56,23 @@ Create a new goal.
 
 
 ```python
-import openapi_client
-from openapi_client.models.goal import Goal
-from openapi_client.rest import ApiException
+import pp_sdk
+from pp_sdk.models.goal import Goal
+from pp_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://0.0.0.0:8000
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = pp_sdk.Configuration(
     host = "http://0.0.0.0:8000"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.ApiApi(api_client)
-    data = openapi_client.Goal() # Goal | 
+    api_instance = pp_sdk.ApiApi(api_client)
+    data = pp_sdk.Goal() # Goal | 
 
     try:
         api_response = api_instance.api_goals_create(data)
@@ -123,21 +123,21 @@ Delete a specific goal.
 
 
 ```python
-import openapi_client
-from openapi_client.rest import ApiException
+import pp_sdk
+from pp_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://0.0.0.0:8000
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = pp_sdk.Configuration(
     host = "http://0.0.0.0:8000"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.ApiApi(api_client)
+    api_instance = pp_sdk.ApiApi(api_client)
     goal_id = 'goal_id_example' # str | 
 
     try:
@@ -187,22 +187,22 @@ Get a list of all goals for the authenticated user.
 
 
 ```python
-import openapi_client
-from openapi_client.models.goal import Goal
-from openapi_client.rest import ApiException
+import pp_sdk
+from pp_sdk.models.goal import Goal
+from pp_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://0.0.0.0:8000
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = pp_sdk.Configuration(
     host = "http://0.0.0.0:8000"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.ApiApi(api_client)
+    api_instance = pp_sdk.ApiApi(api_client)
     x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
     try:
@@ -254,24 +254,24 @@ Partially update a specific goal.
 
 
 ```python
-import openapi_client
-from openapi_client.models.goal import Goal
-from openapi_client.rest import ApiException
+import pp_sdk
+from pp_sdk.models.goal import Goal
+from pp_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://0.0.0.0:8000
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = pp_sdk.Configuration(
     host = "http://0.0.0.0:8000"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.ApiApi(api_client)
+    api_instance = pp_sdk.ApiApi(api_client)
     goal_id = 'goal_id_example' # str | 
-    data = openapi_client.Goal() # Goal | 
+    data = pp_sdk.Goal() # Goal | 
 
     try:
         api_response = api_instance.api_goals_partial_update(goal_id, data)
@@ -323,22 +323,22 @@ Get details of a specific goal.
 
 
 ```python
-import openapi_client
-from openapi_client.models.goal import Goal
-from openapi_client.rest import ApiException
+import pp_sdk
+from pp_sdk.models.goal import Goal
+from pp_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://0.0.0.0:8000
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = pp_sdk.Configuration(
     host = "http://0.0.0.0:8000"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.ApiApi(api_client)
+    api_instance = pp_sdk.ApiApi(api_client)
     goal_id = 'goal_id_example' # str | 
 
     try:
@@ -390,22 +390,22 @@ Search for PRDs
 
 
 ```python
-import openapi_client
-from openapi_client.models.goal import Goal
-from openapi_client.rest import ApiException
+import pp_sdk
+from pp_sdk.models.goal import Goal
+from pp_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://0.0.0.0:8000
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = pp_sdk.Configuration(
     host = "http://0.0.0.0:8000"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.ApiApi(api_client)
+    api_instance = pp_sdk.ApiApi(api_client)
     stakeholders = 'stakeholders_example' # str | Comma-separated list of stakeholder IDs (optional)
     status = 'status_example' # str | Filter by status (optional)
     search = 'search_example' # str | Search term for goal name, language, or description (optional)
@@ -467,24 +467,24 @@ Update a specific goal.
 
 
 ```python
-import openapi_client
-from openapi_client.models.goal import Goal
-from openapi_client.rest import ApiException
+import pp_sdk
+from pp_sdk.models.goal import Goal
+from pp_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://0.0.0.0:8000
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = pp_sdk.Configuration(
     host = "http://0.0.0.0:8000"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.ApiApi(api_client)
+    api_instance = pp_sdk.ApiApi(api_client)
     goal_id = 'goal_id_example' # str | 
-    data = openapi_client.Goal() # Goal | 
+    data = pp_sdk.Goal() # Goal | 
 
     try:
         api_response = api_instance.api_goals_update(goal_id, data)
@@ -536,22 +536,22 @@ Search for PRDs
 
 
 ```python
-import openapi_client
-from openapi_client.models.prd import PRD
-from openapi_client.rest import ApiException
+import pp_sdk
+from pp_sdk.models.prd import PRD
+from pp_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://0.0.0.0:8000
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = pp_sdk.Configuration(
     host = "http://0.0.0.0:8000"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.ApiApi(api_client)
+    api_instance = pp_sdk.ApiApi(api_client)
     q = 'q_example' # str | query string, to search across name or description (optional)
     x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
@@ -603,23 +603,23 @@ No authorization required
 
 
 ```python
-import openapi_client
-from openapi_client.models.prd import PRD
-from openapi_client.rest import ApiException
+import pp_sdk
+from pp_sdk.models.prd import PRD
+from pp_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://0.0.0.0:8000
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = pp_sdk.Configuration(
     host = "http://0.0.0.0:8000"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.ApiApi(api_client)
-    data = openapi_client.PRD() # PRD | 
+    api_instance = pp_sdk.ApiApi(api_client)
+    data = pp_sdk.PRD() # PRD | 
 
     try:
         api_response = api_instance.api_prds_create(data)
@@ -668,21 +668,21 @@ No authorization required
 
 
 ```python
-import openapi_client
-from openapi_client.rest import ApiException
+import pp_sdk
+from pp_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://0.0.0.0:8000
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = pp_sdk.Configuration(
     host = "http://0.0.0.0:8000"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.ApiApi(api_client)
+    api_instance = pp_sdk.ApiApi(api_client)
     id = 'id_example' # str | A UUID string identifying this prd.
 
     try:
@@ -730,22 +730,22 @@ No authorization required
 
 
 ```python
-import openapi_client
-from openapi_client.models.api_prds_list200_response import ApiPrdsList200Response
-from openapi_client.rest import ApiException
+import pp_sdk
+from pp_sdk.models.api_prds_list200_response import ApiPrdsList200Response
+from pp_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://0.0.0.0:8000
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = pp_sdk.Configuration(
     host = "http://0.0.0.0:8000"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.ApiApi(api_client)
+    api_instance = pp_sdk.ApiApi(api_client)
     page = 56 # int | A page number within the paginated result set. (optional)
 
     try:
@@ -795,24 +795,24 @@ No authorization required
 
 
 ```python
-import openapi_client
-from openapi_client.models.prd_detail import PRDDetail
-from openapi_client.rest import ApiException
+import pp_sdk
+from pp_sdk.models.prd_detail import PRDDetail
+from pp_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://0.0.0.0:8000
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = pp_sdk.Configuration(
     host = "http://0.0.0.0:8000"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.ApiApi(api_client)
+    api_instance = pp_sdk.ApiApi(api_client)
     id = 'id_example' # str | A UUID string identifying this prd.
-    data = openapi_client.PRDDetail() # PRDDetail | 
+    data = pp_sdk.PRDDetail() # PRDDetail | 
 
     try:
         api_response = api_instance.api_prds_partial_update(id, data)
@@ -862,22 +862,22 @@ No authorization required
 
 
 ```python
-import openapi_client
-from openapi_client.models.prd_detail import PRDDetail
-from openapi_client.rest import ApiException
+import pp_sdk
+from pp_sdk.models.prd_detail import PRDDetail
+from pp_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://0.0.0.0:8000
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = pp_sdk.Configuration(
     host = "http://0.0.0.0:8000"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.ApiApi(api_client)
+    api_instance = pp_sdk.ApiApi(api_client)
     id = 'id_example' # str | A UUID string identifying this prd.
 
     try:
@@ -927,24 +927,24 @@ No authorization required
 
 
 ```python
-import openapi_client
-from openapi_client.models.prd_detail import PRDDetail
-from openapi_client.rest import ApiException
+import pp_sdk
+from pp_sdk.models.prd_detail import PRDDetail
+from pp_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://0.0.0.0:8000
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = pp_sdk.Configuration(
     host = "http://0.0.0.0:8000"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.ApiApi(api_client)
+    api_instance = pp_sdk.ApiApi(api_client)
     id = 'id_example' # str | A UUID string identifying this prd.
-    data = openapi_client.PRDDetail() # PRDDetail | 
+    data = pp_sdk.PRDDetail() # PRDDetail | 
 
     try:
         api_response = api_instance.api_prds_update(id, data)
@@ -996,23 +996,23 @@ Create a new program for the authenticated user.
 
 
 ```python
-import openapi_client
-from openapi_client.models.program import Program
-from openapi_client.rest import ApiException
+import pp_sdk
+from pp_sdk.models.program import Program
+from pp_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://0.0.0.0:8000
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = pp_sdk.Configuration(
     host = "http://0.0.0.0:8000"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.ApiApi(api_client)
-    data = openapi_client.Program() # Program | 
+    api_instance = pp_sdk.ApiApi(api_client)
+    data = pp_sdk.Program() # Program | 
     x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
     try:
@@ -1065,21 +1065,21 @@ Delete a specific program.
 
 
 ```python
-import openapi_client
-from openapi_client.rest import ApiException
+import pp_sdk
+from pp_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://0.0.0.0:8000
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = pp_sdk.Configuration(
     host = "http://0.0.0.0:8000"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.ApiApi(api_client)
+    api_instance = pp_sdk.ApiApi(api_client)
     program_id = 'program_id_example' # str | 
     x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
@@ -1131,22 +1131,22 @@ Get a list of all programs for the authenticated user.
 
 
 ```python
-import openapi_client
-from openapi_client.models.program import Program
-from openapi_client.rest import ApiException
+import pp_sdk
+from pp_sdk.models.program import Program
+from pp_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://0.0.0.0:8000
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = pp_sdk.Configuration(
     host = "http://0.0.0.0:8000"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.ApiApi(api_client)
+    api_instance = pp_sdk.ApiApi(api_client)
     x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
     try:
@@ -1198,24 +1198,24 @@ Partially update a specific program.
 
 
 ```python
-import openapi_client
-from openapi_client.models.program import Program
-from openapi_client.rest import ApiException
+import pp_sdk
+from pp_sdk.models.program import Program
+from pp_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://0.0.0.0:8000
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = pp_sdk.Configuration(
     host = "http://0.0.0.0:8000"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.ApiApi(api_client)
+    api_instance = pp_sdk.ApiApi(api_client)
     program_id = 'program_id_example' # str | 
-    data = openapi_client.Program() # Program | 
+    data = pp_sdk.Program() # Program | 
     x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
     try:
@@ -1269,22 +1269,22 @@ Get details of a specific program.
 
 
 ```python
-import openapi_client
-from openapi_client.models.program import Program
-from openapi_client.rest import ApiException
+import pp_sdk
+from pp_sdk.models.program import Program
+from pp_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://0.0.0.0:8000
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = pp_sdk.Configuration(
     host = "http://0.0.0.0:8000"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.ApiApi(api_client)
+    api_instance = pp_sdk.ApiApi(api_client)
     program_id = 'program_id_example' # str | 
     x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
@@ -1338,22 +1338,22 @@ Search for programs
 
 
 ```python
-import openapi_client
-from openapi_client.models.program import Program
-from openapi_client.rest import ApiException
+import pp_sdk
+from pp_sdk.models.program import Program
+from pp_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://0.0.0.0:8000
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = pp_sdk.Configuration(
     host = "http://0.0.0.0:8000"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.ApiApi(api_client)
+    api_instance = pp_sdk.ApiApi(api_client)
     tags = 'tags_example' # str | Comma-separated list of tags (optional)
     search = 'search_example' # str | Search term for name and description (optional)
     sort = 'sort_example' # str | Sort field (optional)
@@ -1413,24 +1413,24 @@ Update a specific program.
 
 
 ```python
-import openapi_client
-from openapi_client.models.program import Program
-from openapi_client.rest import ApiException
+import pp_sdk
+from pp_sdk.models.program import Program
+from pp_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://0.0.0.0:8000
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = pp_sdk.Configuration(
     host = "http://0.0.0.0:8000"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.ApiApi(api_client)
+    api_instance = pp_sdk.ApiApi(api_client)
     program_id = 'program_id_example' # str | 
-    data = openapi_client.Program() # Program | 
+    data = pp_sdk.Program() # Program | 
     x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
     try:
@@ -1484,23 +1484,23 @@ Create a new status for the authenticated user.
 
 
 ```python
-import openapi_client
-from openapi_client.models.status import Status
-from openapi_client.rest import ApiException
+import pp_sdk
+from pp_sdk.models.status import Status
+from pp_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://0.0.0.0:8000
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = pp_sdk.Configuration(
     host = "http://0.0.0.0:8000"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.ApiApi(api_client)
-    data = openapi_client.Status() # Status | 
+    api_instance = pp_sdk.ApiApi(api_client)
+    data = pp_sdk.Status() # Status | 
     x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
     try:
@@ -1553,21 +1553,21 @@ Delete a specific status.
 
 
 ```python
-import openapi_client
-from openapi_client.rest import ApiException
+import pp_sdk
+from pp_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://0.0.0.0:8000
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = pp_sdk.Configuration(
     host = "http://0.0.0.0:8000"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.ApiApi(api_client)
+    api_instance = pp_sdk.ApiApi(api_client)
     status_id = 'status_id_example' # str | 
     x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
@@ -1619,22 +1619,22 @@ Get a list of all statuses for the authenticated user.
 
 
 ```python
-import openapi_client
-from openapi_client.models.status import Status
-from openapi_client.rest import ApiException
+import pp_sdk
+from pp_sdk.models.status import Status
+from pp_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://0.0.0.0:8000
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = pp_sdk.Configuration(
     host = "http://0.0.0.0:8000"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.ApiApi(api_client)
+    api_instance = pp_sdk.ApiApi(api_client)
     x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
     try:
@@ -1686,24 +1686,24 @@ Partially update a specific status.
 
 
 ```python
-import openapi_client
-from openapi_client.models.status import Status
-from openapi_client.rest import ApiException
+import pp_sdk
+from pp_sdk.models.status import Status
+from pp_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://0.0.0.0:8000
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = pp_sdk.Configuration(
     host = "http://0.0.0.0:8000"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.ApiApi(api_client)
+    api_instance = pp_sdk.ApiApi(api_client)
     status_id = 'status_id_example' # str | 
-    data = openapi_client.Status() # Status | 
+    data = pp_sdk.Status() # Status | 
     x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
     try:
@@ -1757,22 +1757,22 @@ Get details of a specific status.
 
 
 ```python
-import openapi_client
-from openapi_client.models.status import Status
-from openapi_client.rest import ApiException
+import pp_sdk
+from pp_sdk.models.status import Status
+from pp_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://0.0.0.0:8000
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = pp_sdk.Configuration(
     host = "http://0.0.0.0:8000"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.ApiApi(api_client)
+    api_instance = pp_sdk.ApiApi(api_client)
     status_id = 'status_id_example' # str | 
     x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
@@ -1826,24 +1826,24 @@ Update a specific status.
 
 
 ```python
-import openapi_client
-from openapi_client.models.status import Status
-from openapi_client.rest import ApiException
+import pp_sdk
+from pp_sdk.models.status import Status
+from pp_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://0.0.0.0:8000
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = pp_sdk.Configuration(
     host = "http://0.0.0.0:8000"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.ApiApi(api_client)
+    api_instance = pp_sdk.ApiApi(api_client)
     status_id = 'status_id_example' # str | 
-    data = openapi_client.Status() # Status | 
+    data = pp_sdk.Status() # Status | 
     x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
     try:
@@ -1895,23 +1895,23 @@ No authorization required
 
 
 ```python
-import openapi_client
-from openapi_client.models.user_create import UserCreate
-from openapi_client.rest import ApiException
+import pp_sdk
+from pp_sdk.models.user_create import UserCreate
+from pp_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://0.0.0.0:8000
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = pp_sdk.Configuration(
     host = "http://0.0.0.0:8000"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.ApiApi(api_client)
-    data = openapi_client.UserCreate() # UserCreate | 
+    api_instance = pp_sdk.ApiApi(api_client)
+    data = pp_sdk.UserCreate() # UserCreate | 
 
     try:
         api_response = api_instance.api_user_create_create(data)
@@ -1962,22 +1962,22 @@ Retrieve details of a specific user
 
 
 ```python
-import openapi_client
-from openapi_client.models.user import User
-from openapi_client.rest import ApiException
+import pp_sdk
+from pp_sdk.models.user import User
+from pp_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://0.0.0.0:8000
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = pp_sdk.Configuration(
     host = "http://0.0.0.0:8000"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.ApiApi(api_client)
+    api_instance = pp_sdk.ApiApi(api_client)
     id = 'id_example' # str | UUID of the user to retrieve
 
     try:
@@ -2030,22 +2030,22 @@ Search for users
 
 
 ```python
-import openapi_client
-from openapi_client.models.api_user_search_list200_response import ApiUserSearchList200Response
-from openapi_client.rest import ApiException
+import pp_sdk
+from pp_sdk.models.api_user_search_list200_response import ApiUserSearchList200Response
+from pp_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://0.0.0.0:8000
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = pp_sdk.Configuration(
     host = "http://0.0.0.0:8000"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.ApiApi(api_client)
+    api_instance = pp_sdk.ApiApi(api_client)
     domain = 'domain_example' # str | Domain to filter users
     page = 56 # int | A page number within the paginated result set. (optional)
     search = 'search_example' # str | Search term for user's email, first name, or last name (optional)
@@ -2099,23 +2099,23 @@ No authorization required
 
 
 ```python
-import openapi_client
-from openapi_client.models.user_update import UserUpdate
-from openapi_client.rest import ApiException
+import pp_sdk
+from pp_sdk.models.user_update import UserUpdate
+from pp_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://0.0.0.0:8000
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = pp_sdk.Configuration(
     host = "http://0.0.0.0:8000"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.ApiApi(api_client)
-    data = openapi_client.UserUpdate() # UserUpdate | 
+    api_instance = pp_sdk.ApiApi(api_client)
+    data = pp_sdk.UserUpdate() # UserUpdate | 
 
     try:
         api_response = api_instance.api_user_update_partial_update(data)
@@ -2166,24 +2166,24 @@ Update a specific user's details
 
 
 ```python
-import openapi_client
-from openapi_client.models.user_update import UserUpdate
-from openapi_client.rest import ApiException
+import pp_sdk
+from pp_sdk.models.user_update import UserUpdate
+from pp_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://0.0.0.0:8000
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = pp_sdk.Configuration(
     host = "http://0.0.0.0:8000"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.ApiApi(api_client)
+    api_instance = pp_sdk.ApiApi(api_client)
     id = 'id_example' # str | UUID of the user to update
-    data = openapi_client.UserUpdate() # UserUpdate | 
+    data = pp_sdk.UserUpdate() # UserUpdate | 
 
     try:
         api_response = api_instance.api_user_update_update(id, data)
@@ -2236,23 +2236,23 @@ Create a new user story for the authenticated user's organization.
 
 
 ```python
-import openapi_client
-from openapi_client.models.user_story import UserStory
-from openapi_client.rest import ApiException
+import pp_sdk
+from pp_sdk.models.user_story import UserStory
+from pp_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://0.0.0.0:8000
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = pp_sdk.Configuration(
     host = "http://0.0.0.0:8000"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.ApiApi(api_client)
-    data = openapi_client.UserStory() # UserStory | 
+    api_instance = pp_sdk.ApiApi(api_client)
+    data = pp_sdk.UserStory() # UserStory | 
     x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
     try:
@@ -2305,21 +2305,21 @@ Delete a specific user story.
 
 
 ```python
-import openapi_client
-from openapi_client.rest import ApiException
+import pp_sdk
+from pp_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://0.0.0.0:8000
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = pp_sdk.Configuration(
     host = "http://0.0.0.0:8000"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.ApiApi(api_client)
+    api_instance = pp_sdk.ApiApi(api_client)
     id = 'id_example' # str | 
     x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
@@ -2371,22 +2371,22 @@ Get a list of all user stories for the authenticated user's organization.
 
 
 ```python
-import openapi_client
-from openapi_client.models.user_story import UserStory
-from openapi_client.rest import ApiException
+import pp_sdk
+from pp_sdk.models.user_story import UserStory
+from pp_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://0.0.0.0:8000
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = pp_sdk.Configuration(
     host = "http://0.0.0.0:8000"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.ApiApi(api_client)
+    api_instance = pp_sdk.ApiApi(api_client)
     x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
     try:
@@ -2438,24 +2438,24 @@ Partially update a specific user story.
 
 
 ```python
-import openapi_client
-from openapi_client.models.user_story import UserStory
-from openapi_client.rest import ApiException
+import pp_sdk
+from pp_sdk.models.user_story import UserStory
+from pp_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://0.0.0.0:8000
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = pp_sdk.Configuration(
     host = "http://0.0.0.0:8000"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.ApiApi(api_client)
+    api_instance = pp_sdk.ApiApi(api_client)
     id = 'id_example' # str | 
-    data = openapi_client.UserStory() # UserStory | 
+    data = pp_sdk.UserStory() # UserStory | 
     x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
     try:
@@ -2509,22 +2509,22 @@ Get details of a specific user story.
 
 
 ```python
-import openapi_client
-from openapi_client.models.user_story import UserStory
-from openapi_client.rest import ApiException
+import pp_sdk
+from pp_sdk.models.user_story import UserStory
+from pp_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://0.0.0.0:8000
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = pp_sdk.Configuration(
     host = "http://0.0.0.0:8000"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.ApiApi(api_client)
+    api_instance = pp_sdk.ApiApi(api_client)
     id = 'id_example' # str | 
     x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
@@ -2578,22 +2578,22 @@ Search and filter UserStory data
 
 
 ```python
-import openapi_client
-from openapi_client.models.user_story import UserStory
-from openapi_client.rest import ApiException
+import pp_sdk
+from pp_sdk.models.user_story import UserStory
+from pp_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://0.0.0.0:8000
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = pp_sdk.Configuration(
     host = "http://0.0.0.0:8000"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.ApiApi(api_client)
+    api_instance = pp_sdk.ApiApi(api_client)
     status = 'status_example' # str | Filter by status (optional)
     search = 'search_example' # str | Search string for as_a, i_want_to, so_that, or freetext_override fields (optional)
     sort = 'sort_example' # str | Sort field (created_at, updated_at, due_date, priority, status). Use '-' prefix for descending order (optional)
@@ -2653,24 +2653,24 @@ Update a specific user story.
 
 
 ```python
-import openapi_client
-from openapi_client.models.user_story import UserStory
-from openapi_client.rest import ApiException
+import pp_sdk
+from pp_sdk.models.user_story import UserStory
+from pp_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://0.0.0.0:8000
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = pp_sdk.Configuration(
     host = "http://0.0.0.0:8000"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.ApiApi(api_client)
+    api_instance = pp_sdk.ApiApi(api_client)
     id = 'id_example' # str | 
-    data = openapi_client.UserStory() # UserStory | 
+    data = pp_sdk.UserStory() # UserStory | 
     x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
     try:

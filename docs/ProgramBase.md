@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.program_base import ProgramBase
+from pp_sdk.models.program_base import ProgramBase
 
 # TODO update the JSON string below
 json = "{}"

@@ -1,4 +1,4 @@
-# openapi_client.ProgramsApi
+# pp_sdk.ProgramsApi
 
 All URIs are relative to *http://0.0.0.0:8000*
 
@@ -20,22 +20,22 @@ Search for programs
 
 
 ```python
-import openapi_client
-from openapi_client.models.program import Program
-from openapi_client.rest import ApiException
+import pp_sdk
+from pp_sdk.models.program import Program
+from pp_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://0.0.0.0:8000
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = pp_sdk.Configuration(
     host = "http://0.0.0.0:8000"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.ProgramsApi(api_client)
+    api_instance = pp_sdk.ProgramsApi(api_client)
     tags = 'tags_example' # str | Comma-separated list of tags (optional)
     search = 'search_example' # str | Search term for name and description (optional)
     sort = 'sort_example' # str | Sort field (optional)
@@ -95,22 +95,22 @@ Search for programs
 
 
 ```python
-import openapi_client
-from openapi_client.models.program import Program
-from openapi_client.rest import ApiException
+import pp_sdk
+from pp_sdk.models.program import Program
+from pp_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://0.0.0.0:8000
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = pp_sdk.Configuration(
     host = "http://0.0.0.0:8000"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.ProgramsApi(api_client)
+    api_instance = pp_sdk.ProgramsApi(api_client)
     tags = 'tags_example' # str | Comma-separated list of tags (optional)
     search = 'search_example' # str | Search term for name and description (optional)
     sort = 'sort_example' # str | Sort field (optional)
@@ -170,22 +170,22 @@ Search for programs
 
 
 ```python
-import openapi_client
-from openapi_client.models.program import Program
-from openapi_client.rest import ApiException
+import pp_sdk
+from pp_sdk.models.program import Program
+from pp_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://0.0.0.0:8000
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = pp_sdk.Configuration(
     host = "http://0.0.0.0:8000"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.ProgramsApi(api_client)
+    api_instance = pp_sdk.ProgramsApi(api_client)
     tags = 'tags_example' # str | Comma-separated list of tags (optional)
     search = 'search_example' # str | Search term for name and description (optional)
     sort = 'sort_example' # str | Sort field (optional)

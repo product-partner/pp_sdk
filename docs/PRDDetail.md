@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.prd_detail import PRDDetail
+from pp_sdk.models.prd_detail import PRDDetail
 
 # TODO update the JSON string below
 json = "{}"

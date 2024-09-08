@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.goal_base import GoalBase
+from pp_sdk.models.goal_base import GoalBase
 
 # TODO update the JSON string below
 json = "{}"

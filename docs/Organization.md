@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.organization import Organization
+from pp_sdk.models.organization import Organization
 
 # TODO update the JSON string below
 json = "{}"

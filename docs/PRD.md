@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.prd import PRD
+from pp_sdk.models.prd import PRD
 
 # TODO update the JSON string below
 json = "{}"

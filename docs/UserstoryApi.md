@@ -1,4 +1,4 @@
-# openapi_client.UserstoryApi
+# pp_sdk.UserstoryApi
 
 All URIs are relative to *http://0.0.0.0:8000*
 
@@ -18,22 +18,22 @@ Search and filter UserStory data
 
 
 ```python
-import openapi_client
-from openapi_client.models.user_story import UserStory
-from openapi_client.rest import ApiException
+import pp_sdk
+from pp_sdk.models.user_story import UserStory
+from pp_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://0.0.0.0:8000
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = pp_sdk.Configuration(
     host = "http://0.0.0.0:8000"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.UserstoryApi(api_client)
+    api_instance = pp_sdk.UserstoryApi(api_client)
     status = 'status_example' # str | Filter by status (optional)
     search = 'search_example' # str | Search string for as_a, i_want_to, so_that, or freetext_override fields (optional)
     sort = 'sort_example' # str | Sort field (created_at, updated_at, due_date, priority, status). Use '-' prefix for descending order (optional)
