@@ -67,7 +67,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_goals_api.py
-test/test_prd_api.py
-test/test_userstory_api.py
 tox.ini
