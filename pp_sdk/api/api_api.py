@@ -1377,7 +1377,7 @@ class ApiApi:
     @validate_call
     def api_goals_search_list(
         self,
-        stakeholders: Annotated[Optional[StrictStr], Field(description="Comma-separated list of stakeholder IDs")] = None,
+        stakeholders_users: Annotated[Optional[StrictStr], Field(description="Comma-separated list of stakeholder IDs")] = None,
         status: Annotated[Optional[StrictStr], Field(description="Filter by status")] = None,
         search: Annotated[Optional[StrictStr], Field(description="Search term for goal name, language, or description")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Sort field (prefix with '-' for descending order)")] = None,
@@ -1400,8 +1400,8 @@ class ApiApi:
 
         Search for PRDs
 
-        :param stakeholders: Comma-separated list of stakeholder IDs
-        :type stakeholders: str
+        :param stakeholders_users: Comma-separated list of stakeholder IDs
+        :type stakeholders_users: str
         :param status: Filter by status
         :type status: str
         :param search: Search term for goal name, language, or description
@@ -1435,7 +1435,7 @@ class ApiApi:
         """ # noqa: E501
 
         _param = self._api_goals_search_list_serialize(
-            stakeholders=stakeholders,
+            stakeholders_users=stakeholders_users,
             status=status,
             search=search,
             sort=sort,
@@ -1464,7 +1464,7 @@ class ApiApi:
     @validate_call
     def api_goals_search_list_with_http_info(
         self,
-        stakeholders: Annotated[Optional[StrictStr], Field(description="Comma-separated list of stakeholder IDs")] = None,
+        stakeholders_users: Annotated[Optional[StrictStr], Field(description="Comma-separated list of stakeholder IDs")] = None,
         status: Annotated[Optional[StrictStr], Field(description="Filter by status")] = None,
         search: Annotated[Optional[StrictStr], Field(description="Search term for goal name, language, or description")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Sort field (prefix with '-' for descending order)")] = None,
@@ -1487,8 +1487,8 @@ class ApiApi:
 
         Search for PRDs
 
-        :param stakeholders: Comma-separated list of stakeholder IDs
-        :type stakeholders: str
+        :param stakeholders_users: Comma-separated list of stakeholder IDs
+        :type stakeholders_users: str
         :param status: Filter by status
         :type status: str
         :param search: Search term for goal name, language, or description
@@ -1522,7 +1522,7 @@ class ApiApi:
         """ # noqa: E501
 
         _param = self._api_goals_search_list_serialize(
-            stakeholders=stakeholders,
+            stakeholders_users=stakeholders_users,
             status=status,
             search=search,
             sort=sort,
@@ -1551,7 +1551,7 @@ class ApiApi:
     @validate_call
     def api_goals_search_list_without_preload_content(
         self,
-        stakeholders: Annotated[Optional[StrictStr], Field(description="Comma-separated list of stakeholder IDs")] = None,
+        stakeholders_users: Annotated[Optional[StrictStr], Field(description="Comma-separated list of stakeholder IDs")] = None,
         status: Annotated[Optional[StrictStr], Field(description="Filter by status")] = None,
         search: Annotated[Optional[StrictStr], Field(description="Search term for goal name, language, or description")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Sort field (prefix with '-' for descending order)")] = None,
@@ -1574,8 +1574,8 @@ class ApiApi:
 
         Search for PRDs
 
-        :param stakeholders: Comma-separated list of stakeholder IDs
-        :type stakeholders: str
+        :param stakeholders_users: Comma-separated list of stakeholder IDs
+        :type stakeholders_users: str
         :param status: Filter by status
         :type status: str
         :param search: Search term for goal name, language, or description
@@ -1609,7 +1609,7 @@ class ApiApi:
         """ # noqa: E501
 
         _param = self._api_goals_search_list_serialize(
-            stakeholders=stakeholders,
+            stakeholders_users=stakeholders_users,
             status=status,
             search=search,
             sort=sort,
@@ -1633,7 +1633,7 @@ class ApiApi:
 
     def _api_goals_search_list_serialize(
         self,
-        stakeholders,
+        stakeholders_users,
         status,
         search,
         sort,
@@ -1659,9 +1659,9 @@ class ApiApi:
 
         # process the path parameters
         # process the query parameters
-        if stakeholders is not None:
+        if stakeholders_users is not None:
             
-            _query_params.append(('stakeholders', stakeholders))
+            _query_params.append(('stakeholders_users', stakeholders_users))
             
         if status is not None:
             
