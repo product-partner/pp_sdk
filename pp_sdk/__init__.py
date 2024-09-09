@@ -15,16 +15,16 @@
 """  # noqa: E501
 
 
-__version__ = "0.1.1"
+__version__ = "0.1.2"
 
 # import apis into sdk package
-from ppapi.api_api import ApiApi
-from ppapi.chat_api import ChatApi
-from ppapi.goals_api import GoalsApi
-from ppapi.leaders_api import LeadersApi
-from ppapi.prd_api import PrdApi
-from ppapi.programs_api import ProgramsApi
-from ppapi.userstory_api import UserstoryApi
+from pp_sdk.api.api_api import ApiApi
+from pp_sdk.api.chat_api import ChatApi
+from pp_sdk.api.goals_api import GoalsApi
+from pp_sdk.api.leaders_api import LeadersApi
+from pp_sdk.api.prd_api import PrdApi
+from pp_sdk.api.programs_api import ProgramsApi
+from pp_sdk.api.userstory_api import UserstoryApi
 
 # import ApiClient
 from pp_sdk.api_response import ApiResponse
