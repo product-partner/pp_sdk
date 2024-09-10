@@ -21,6 +21,7 @@ from pydantic import Field, StrictInt, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
 from pp_sdk.models.api_prds_list200_response import ApiPrdsList200Response
+from pp_sdk.models.api_programs_list200_response import ApiProgramsList200Response
 from pp_sdk.models.api_user_search_list200_response import ApiUserSearchList200Response
 from pp_sdk.models.goal import Goal
 from pp_sdk.models.prd import PRD
@@ -1377,9 +1378,9 @@ class ApiApi:
     @validate_call
     def api_goals_search_list(
         self,
+        search: Annotated[Optional[StrictStr], Field(description="Search term for goal name, language, or description")] = None,
         stakeholders_users: Annotated[Optional[StrictStr], Field(description="Comma-separated list of stakeholder IDs")] = None,
         status: Annotated[Optional[StrictStr], Field(description="Filter by status")] = None,
-        search: Annotated[Optional[StrictStr], Field(description="Search term for goal name, language, or description")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Sort field (prefix with '-' for descending order)")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="Limit the number of results")] = None,
         x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
@@ -1400,12 +1401,12 @@ class ApiApi:
 
         Search for PRDs
 
+        :param search: Search term for goal name, language, or description
+        :type search: str
         :param stakeholders_users: Comma-separated list of stakeholder IDs
         :type stakeholders_users: str
         :param status: Filter by status
         :type status: str
-        :param search: Search term for goal name, language, or description
-        :type search: str
         :param sort: Sort field (prefix with '-' for descending order)
         :type sort: str
         :param limit: Limit the number of results
@@ -1435,9 +1436,9 @@ class ApiApi:
         """ # noqa: E501
 
         _param = self._api_goals_search_list_serialize(
+            search=search,
             stakeholders_users=stakeholders_users,
             status=status,
-            search=search,
             sort=sort,
             limit=limit,
             x_user_id=x_user_id,
@@ -1464,9 +1465,9 @@ class ApiApi:
     @validate_call
     def api_goals_search_list_with_http_info(
         self,
+        search: Annotated[Optional[StrictStr], Field(description="Search term for goal name, language, or description")] = None,
         stakeholders_users: Annotated[Optional[StrictStr], Field(description="Comma-separated list of stakeholder IDs")] = None,
         status: Annotated[Optional[StrictStr], Field(description="Filter by status")] = None,
-        search: Annotated[Optional[StrictStr], Field(description="Search term for goal name, language, or description")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Sort field (prefix with '-' for descending order)")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="Limit the number of results")] = None,
         x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
@@ -1487,12 +1488,12 @@ class ApiApi:
 
         Search for PRDs
 
+        :param search: Search term for goal name, language, or description
+        :type search: str
         :param stakeholders_users: Comma-separated list of stakeholder IDs
         :type stakeholders_users: str
         :param status: Filter by status
         :type status: str
-        :param search: Search term for goal name, language, or description
-        :type search: str
         :param sort: Sort field (prefix with '-' for descending order)
         :type sort: str
         :param limit: Limit the number of results
@@ -1522,9 +1523,9 @@ class ApiApi:
         """ # noqa: E501
 
         _param = self._api_goals_search_list_serialize(
+            search=search,
             stakeholders_users=stakeholders_users,
             status=status,
-            search=search,
             sort=sort,
             limit=limit,
             x_user_id=x_user_id,
@@ -1551,9 +1552,9 @@ class ApiApi:
     @validate_call
     def api_goals_search_list_without_preload_content(
         self,
+        search: Annotated[Optional[StrictStr], Field(description="Search term for goal name, language, or description")] = None,
         stakeholders_users: Annotated[Optional[StrictStr], Field(description="Comma-separated list of stakeholder IDs")] = None,
         status: Annotated[Optional[StrictStr], Field(description="Filter by status")] = None,
-        search: Annotated[Optional[StrictStr], Field(description="Search term for goal name, language, or description")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Sort field (prefix with '-' for descending order)")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="Limit the number of results")] = None,
         x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
@@ -1574,12 +1575,12 @@ class ApiApi:
 
         Search for PRDs
 
+        :param search: Search term for goal name, language, or description
+        :type search: str
         :param stakeholders_users: Comma-separated list of stakeholder IDs
         :type stakeholders_users: str
         :param status: Filter by status
         :type status: str
-        :param search: Search term for goal name, language, or description
-        :type search: str
         :param sort: Sort field (prefix with '-' for descending order)
         :type sort: str
         :param limit: Limit the number of results
@@ -1609,9 +1610,9 @@ class ApiApi:
         """ # noqa: E501
 
         _param = self._api_goals_search_list_serialize(
+            search=search,
             stakeholders_users=stakeholders_users,
             status=status,
-            search=search,
             sort=sort,
             limit=limit,
             x_user_id=x_user_id,
@@ -1633,9 +1634,9 @@ class ApiApi:
 
     def _api_goals_search_list_serialize(
         self,
+        search,
         stakeholders_users,
         status,
-        search,
         sort,
         limit,
         x_user_id,
@@ -1659,6 +1660,10 @@ class ApiApi:
 
         # process the path parameters
         # process the query parameters
+        if search is not None:
+            
+            _query_params.append(('search', search))
+            
         if stakeholders_users is not None:
             
             _query_params.append(('stakeholders_users', stakeholders_users))
@@ -1666,10 +1671,6 @@ class ApiApi:
         if status is not None:
             
             _query_params.append(('status', status))
-            
-        if search is not None:
-            
-            _query_params.append(('search', search))
             
         if sort is not None:
             
@@ -3876,7 +3877,6 @@ class ApiApi:
     def api_programs_create(
         self,
         data: Program,
-        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3892,12 +3892,9 @@ class ApiApi:
     ) -> Program:
         """api_programs_create
 
-        Create a new program for the authenticated user.
 
         :param data: (required)
         :type data: Program
-        :param x_user_id: User ID (required when using API key)
-        :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3922,7 +3919,6 @@ class ApiApi:
 
         _param = self._api_programs_create_serialize(
             data=data,
-            x_user_id=x_user_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3947,7 +3943,6 @@ class ApiApi:
     def api_programs_create_with_http_info(
         self,
         data: Program,
-        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3963,12 +3958,9 @@ class ApiApi:
     ) -> ApiResponse[Program]:
         """api_programs_create
 
-        Create a new program for the authenticated user.
 
         :param data: (required)
         :type data: Program
-        :param x_user_id: User ID (required when using API key)
-        :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3993,7 +3985,6 @@ class ApiApi:
 
         _param = self._api_programs_create_serialize(
             data=data,
-            x_user_id=x_user_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4018,7 +4009,6 @@ class ApiApi:
     def api_programs_create_without_preload_content(
         self,
         data: Program,
-        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4034,12 +4024,9 @@ class ApiApi:
     ) -> RESTResponseType:
         """api_programs_create
 
-        Create a new program for the authenticated user.
 
         :param data: (required)
         :type data: Program
-        :param x_user_id: User ID (required when using API key)
-        :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4064,7 +4051,6 @@ class ApiApi:
 
         _param = self._api_programs_create_serialize(
             data=data,
-            x_user_id=x_user_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4084,7 +4070,6 @@ class ApiApi:
     def _api_programs_create_serialize(
         self,
         data,
-        x_user_id,
         _request_auth,
         _content_type,
         _headers,
@@ -4106,8 +4091,6 @@ class ApiApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
-        if x_user_id is not None:
-            _header_params['X-User-ID'] = x_user_id
         # process the form parameters
         # process the body parameter
         if data is not None:
@@ -4427,7 +4410,7 @@ class ApiApi:
     @validate_call
     def api_programs_list(
         self,
-        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4440,13 +4423,12 @@ class ApiApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Program]:
+    ) -> ApiProgramsList200Response:
         """api_programs_list
 
-        Get a list of all programs for the authenticated user.
 
-        :param x_user_id: User ID (required when using API key)
-        :type x_user_id: str
+        :param page: A page number within the paginated result set.
+        :type page: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4470,7 +4452,7 @@ class ApiApi:
         """ # noqa: E501
 
         _param = self._api_programs_list_serialize(
-            x_user_id=x_user_id,
+            page=page,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4478,7 +4460,7 @@ class ApiApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Program]",
+            '200': "ApiProgramsList200Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4494,7 +4476,7 @@ class ApiApi:
     @validate_call
     def api_programs_list_with_http_info(
         self,
-        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4507,13 +4489,12 @@ class ApiApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Program]]:
+    ) -> ApiResponse[ApiProgramsList200Response]:
         """api_programs_list
 
-        Get a list of all programs for the authenticated user.
 
-        :param x_user_id: User ID (required when using API key)
-        :type x_user_id: str
+        :param page: A page number within the paginated result set.
+        :type page: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4537,7 +4518,7 @@ class ApiApi:
         """ # noqa: E501
 
         _param = self._api_programs_list_serialize(
-            x_user_id=x_user_id,
+            page=page,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4545,7 +4526,7 @@ class ApiApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Program]",
+            '200': "ApiProgramsList200Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4561,7 +4542,7 @@ class ApiApi:
     @validate_call
     def api_programs_list_without_preload_content(
         self,
-        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4577,10 +4558,9 @@ class ApiApi:
     ) -> RESTResponseType:
         """api_programs_list
 
-        Get a list of all programs for the authenticated user.
 
-        :param x_user_id: User ID (required when using API key)
-        :type x_user_id: str
+        :param page: A page number within the paginated result set.
+        :type page: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4604,7 +4584,7 @@ class ApiApi:
         """ # noqa: E501
 
         _param = self._api_programs_list_serialize(
-            x_user_id=x_user_id,
+            page=page,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4612,7 +4592,7 @@ class ApiApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Program]",
+            '200': "ApiProgramsList200Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4623,7 +4603,7 @@ class ApiApi:
 
     def _api_programs_list_serialize(
         self,
-        x_user_id,
+        page,
         _request_auth,
         _content_type,
         _headers,
@@ -4644,9 +4624,11 @@ class ApiApi:
 
         # process the path parameters
         # process the query parameters
+        if page is not None:
+            
+            _query_params.append(('page', page))
+            
         # process the header parameters
-        if x_user_id is not None:
-            _header_params['X-User-ID'] = x_user_id
         # process the form parameters
         # process the body parameter
 
@@ -6438,6 +6420,7 @@ class ApiApi:
     @validate_call
     def api_status_list(
         self,
+        page: Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None,
         x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
@@ -6456,6 +6439,8 @@ class ApiApi:
 
         Get a list of all statuses for the authenticated user.
 
+        :param page: A page number within the paginated result set.
+        :type page: int
         :param x_user_id: User ID (required when using API key)
         :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -6481,6 +6466,7 @@ class ApiApi:
         """ # noqa: E501
 
         _param = self._api_status_list_serialize(
+            page=page,
             x_user_id=x_user_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -6505,6 +6491,7 @@ class ApiApi:
     @validate_call
     def api_status_list_with_http_info(
         self,
+        page: Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None,
         x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
@@ -6523,6 +6510,8 @@ class ApiApi:
 
         Get a list of all statuses for the authenticated user.
 
+        :param page: A page number within the paginated result set.
+        :type page: int
         :param x_user_id: User ID (required when using API key)
         :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -6548,6 +6537,7 @@ class ApiApi:
         """ # noqa: E501
 
         _param = self._api_status_list_serialize(
+            page=page,
             x_user_id=x_user_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -6572,6 +6562,7 @@ class ApiApi:
     @validate_call
     def api_status_list_without_preload_content(
         self,
+        page: Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None,
         x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
@@ -6590,6 +6581,8 @@ class ApiApi:
 
         Get a list of all statuses for the authenticated user.
 
+        :param page: A page number within the paginated result set.
+        :type page: int
         :param x_user_id: User ID (required when using API key)
         :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -6615,6 +6608,7 @@ class ApiApi:
         """ # noqa: E501
 
         _param = self._api_status_list_serialize(
+            page=page,
             x_user_id=x_user_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -6634,6 +6628,7 @@ class ApiApi:
 
     def _api_status_list_serialize(
         self,
+        page,
         x_user_id,
         _request_auth,
         _content_type,
@@ -6655,6 +6650,10 @@ class ApiApi:
 
         # process the path parameters
         # process the query parameters
+        if page is not None:
+            
+            _query_params.append(('page', page))
+            
         # process the header parameters
         if x_user_id is not None:
             _header_params['X-User-ID'] = x_user_id

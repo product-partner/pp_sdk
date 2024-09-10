@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **id** | **str** |  | [optional] [readonly] 
 **name** | **str** |  | 
 **description** | **str** |  | [optional] 
+**charter** | **str** |  | [optional] 
 **principal_users** | [**List[User]**](User.md) |  | [optional] [readonly] 
 **stakeholder_users** | [**List[User]**](User.md) |  | [optional] [readonly] 
 **parent** | **str** |  | [optional] 

@@ -35,6 +35,7 @@ class Program(BaseModel):
     id: Optional[StrictStr] = None
     name: Annotated[str, Field(min_length=1, strict=True, max_length=255)]
     description: Optional[StrictStr] = None
+    charter: Optional[StrictStr] = None
     principal_users: Optional[List[User]] = None
     stakeholder_users: Optional[List[User]] = None
     parent: Optional[StrictStr] = None
@@ -43,7 +44,7 @@ class Program(BaseModel):
     created_date: Optional[datetime] = None
     modified_date: Optional[datetime] = None
     organization: Optional[Organization] = None
-    __properties: ClassVar[List[str]] = ["id", "name", "description", "principal_users", "stakeholder_users", "parent", "tags", "created_by", "created_date", "modified_date", "organization"]
+    __properties: ClassVar[List[str]] = ["id", "name", "description", "charter", "principal_users", "stakeholder_users", "parent", "tags", "created_by", "created_date", "modified_date", "organization"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -128,6 +129,11 @@ class Program(BaseModel):
         if self.description is None and "description" in self.model_fields_set:
             _dict['description'] = None
 
+        # set to None if charter (nullable) is None
+        # and model_fields_set contains the field
+        if self.charter is None and "charter" in self.model_fields_set:
+            _dict['charter'] = None
+
         # set to None if parent (nullable) is None
         # and model_fields_set contains the field
         if self.parent is None and "parent" in self.model_fields_set:
@@ -158,6 +164,7 @@ class Program(BaseModel):
             "id": obj.get("id"),
             "name": obj.get("name"),
             "description": obj.get("description"),
+            "charter": obj.get("charter"),
             "principal_users": [User.from_dict(_item) for _item in obj["principal_users"]] if obj.get("principal_users") is not None else None,
             "stakeholder_users": [User.from_dict(_item) for _item in obj["stakeholder_users"]] if obj.get("stakeholder_users") is not None else None,
             "parent": obj.get("parent"),

@@ -6,6 +6,7 @@ README.md
 docs/Address.md
 docs/ApiApi.md
 docs/ApiPrdsList200Response.md
+docs/ApiProgramsList200Response.md
 docs/ApiUserSearchList200Response.md
 docs/ChatApi.md
 docs/Goal.md
@@ -44,6 +45,7 @@ pp_sdk/exceptions.py
 pp_sdk/models/__init__.py
 pp_sdk/models/address.py
 pp_sdk/models/api_prds_list200_response.py
+pp_sdk/models/api_programs_list200_response.py
 pp_sdk/models/api_user_search_list200_response.py
 pp_sdk/models/goal.py
 pp_sdk/models/goal_base.py
@@ -67,4 +69,5 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_api_programs_list200_response.py
 tox.ini

@@ -43,9 +43,9 @@ class GoalsApi:
     @validate_call
     def goals_list_list(
         self,
+        search: Annotated[Optional[StrictStr], Field(description="Search term for goal name, language, or description")] = None,
         stakeholders_users: Annotated[Optional[StrictStr], Field(description="Comma-separated list of stakeholder IDs")] = None,
         status: Annotated[Optional[StrictStr], Field(description="Filter by status")] = None,
-        search: Annotated[Optional[StrictStr], Field(description="Search term for goal name, language, or description")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Sort field (prefix with '-' for descending order)")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="Limit the number of results")] = None,
         x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
@@ -66,12 +66,12 @@ class GoalsApi:
 
         Search for PRDs
 
+        :param search: Search term for goal name, language, or description
+        :type search: str
         :param stakeholders_users: Comma-separated list of stakeholder IDs
         :type stakeholders_users: str
         :param status: Filter by status
         :type status: str
-        :param search: Search term for goal name, language, or description
-        :type search: str
         :param sort: Sort field (prefix with '-' for descending order)
         :type sort: str
         :param limit: Limit the number of results
@@ -101,9 +101,9 @@ class GoalsApi:
         """ # noqa: E501
 
         _param = self._goals_list_list_serialize(
+            search=search,
             stakeholders_users=stakeholders_users,
             status=status,
-            search=search,
             sort=sort,
             limit=limit,
             x_user_id=x_user_id,
@@ -130,9 +130,9 @@ class GoalsApi:
     @validate_call
     def goals_list_list_with_http_info(
         self,
+        search: Annotated[Optional[StrictStr], Field(description="Search term for goal name, language, or description")] = None,
         stakeholders_users: Annotated[Optional[StrictStr], Field(description="Comma-separated list of stakeholder IDs")] = None,
         status: Annotated[Optional[StrictStr], Field(description="Filter by status")] = None,
-        search: Annotated[Optional[StrictStr], Field(description="Search term for goal name, language, or description")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Sort field (prefix with '-' for descending order)")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="Limit the number of results")] = None,
         x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
@@ -153,12 +153,12 @@ class GoalsApi:
 
         Search for PRDs
 
+        :param search: Search term for goal name, language, or description
+        :type search: str
         :param stakeholders_users: Comma-separated list of stakeholder IDs
         :type stakeholders_users: str
         :param status: Filter by status
         :type status: str
-        :param search: Search term for goal name, language, or description
-        :type search: str
         :param sort: Sort field (prefix with '-' for descending order)
         :type sort: str
         :param limit: Limit the number of results
@@ -188,9 +188,9 @@ class GoalsApi:
         """ # noqa: E501
 
         _param = self._goals_list_list_serialize(
+            search=search,
             stakeholders_users=stakeholders_users,
             status=status,
-            search=search,
             sort=sort,
             limit=limit,
             x_user_id=x_user_id,
@@ -217,9 +217,9 @@ class GoalsApi:
     @validate_call
     def goals_list_list_without_preload_content(
         self,
+        search: Annotated[Optional[StrictStr], Field(description="Search term for goal name, language, or description")] = None,
         stakeholders_users: Annotated[Optional[StrictStr], Field(description="Comma-separated list of stakeholder IDs")] = None,
         status: Annotated[Optional[StrictStr], Field(description="Filter by status")] = None,
-        search: Annotated[Optional[StrictStr], Field(description="Search term for goal name, language, or description")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Sort field (prefix with '-' for descending order)")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="Limit the number of results")] = None,
         x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
@@ -240,12 +240,12 @@ class GoalsApi:
 
         Search for PRDs
 
+        :param search: Search term for goal name, language, or description
+        :type search: str
         :param stakeholders_users: Comma-separated list of stakeholder IDs
         :type stakeholders_users: str
         :param status: Filter by status
         :type status: str
-        :param search: Search term for goal name, language, or description
-        :type search: str
         :param sort: Sort field (prefix with '-' for descending order)
         :type sort: str
         :param limit: Limit the number of results
@@ -275,9 +275,9 @@ class GoalsApi:
         """ # noqa: E501
 
         _param = self._goals_list_list_serialize(
+            search=search,
             stakeholders_users=stakeholders_users,
             status=status,
-            search=search,
             sort=sort,
             limit=limit,
             x_user_id=x_user_id,
@@ -299,9 +299,9 @@ class GoalsApi:
 
     def _goals_list_list_serialize(
         self,
+        search,
         stakeholders_users,
         status,
-        search,
         sort,
         limit,
         x_user_id,
@@ -325,6 +325,10 @@ class GoalsApi:
 
         # process the path parameters
         # process the query parameters
+        if search is not None:
+            
+            _query_params.append(('search', search))
+            
         if stakeholders_users is not None:
             
             _query_params.append(('stakeholders_users', stakeholders_users))
@@ -332,10 +336,6 @@ class GoalsApi:
         if status is not None:
             
             _query_params.append(('status', status))
-            
-        if search is not None:
-            
-            _query_params.append(('search', search))
             
         if sort is not None:
             
