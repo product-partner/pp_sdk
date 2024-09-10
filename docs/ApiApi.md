@@ -23,7 +23,6 @@ Method | HTTP request | Description
 [**api_programs_list**](ApiApi.md#api_programs_list) | **GET** /api/programs/ | 
 [**api_programs_partial_update**](ApiApi.md#api_programs_partial_update) | **PATCH** /api/programs/{program_id}/ | 
 [**api_programs_read**](ApiApi.md#api_programs_read) | **GET** /api/programs/{program_id}/ | 
-[**api_programs_search_list**](ApiApi.md#api_programs_search_list) | **GET** /api/programs/search | 
 [**api_programs_update**](ApiApi.md#api_programs_update) | **PUT** /api/programs/{program_id}/ | 
 [**api_status_create**](ApiApi.md#api_status_create) | **POST** /api/status/ | 
 [**api_status_delete**](ApiApi.md#api_status_delete) | **DELETE** /api/status/{status_id}/ | 
@@ -1141,7 +1140,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **api_programs_list**
-> ApiProgramsList200Response api_programs_list(page=page)
+> ApiProgramsList200Response api_programs_list(search=search, ordering=ordering, page=page)
 
 
 
@@ -1165,10 +1164,12 @@ configuration = pp_sdk.Configuration(
 with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pp_sdk.ApiApi(api_client)
+    search = 'search_example' # str | A search term. (optional)
+    ordering = 'ordering_example' # str | Which field to use when ordering the results. (optional)
     page = 56 # int | A page number within the paginated result set. (optional)
 
     try:
-        api_response = api_instance.api_programs_list(page=page)
+        api_response = api_instance.api_programs_list(search=search, ordering=ordering, page=page)
         print("The response of ApiApi->api_programs_list:\n")
         pprint(api_response)
     except Exception as e:
@@ -1182,6 +1183,8 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **search** | **str**| A search term. | [optional] 
+ **ordering** | **str**| Which field to use when ordering the results. | [optional] 
  **page** | **int**| A page number within the paginated result set. | [optional] 
 
 ### Return type
@@ -1327,81 +1330,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Program**](Program.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **api_programs_search_list**
-> List[Program] api_programs_search_list(tags=tags, search=search, sort=sort, limit=limit, x_user_id=x_user_id)
-
-
-
-Search for programs
-
-### Example
-
-
-```python
-import pp_sdk
-from pp_sdk.models.program import Program
-from pp_sdk.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to http://0.0.0.0:8000
-# See configuration.py for a list of all supported configuration parameters.
-configuration = pp_sdk.Configuration(
-    host = "http://0.0.0.0:8000"
-)
-
-
-# Enter a context with an instance of the API client
-with pp_sdk.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = pp_sdk.ApiApi(api_client)
-    tags = 'tags_example' # str | Comma-separated list of tags (optional)
-    search = 'search_example' # str | Search term for name and description (optional)
-    sort = 'sort_example' # str | Sort field (optional)
-    limit = 56 # int | Limit the number of results (optional)
-    x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
-
-    try:
-        api_response = api_instance.api_programs_search_list(tags=tags, search=search, sort=sort, limit=limit, x_user_id=x_user_id)
-        print("The response of ApiApi->api_programs_search_list:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling ApiApi->api_programs_search_list: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **tags** | **str**| Comma-separated list of tags | [optional] 
- **search** | **str**| Search term for name and description | [optional] 
- **sort** | **str**| Sort field | [optional] 
- **limit** | **int**| Limit the number of results | [optional] 
- **x_user_id** | **str**| User ID (required when using API key) | [optional] 
-
-### Return type
-
-[**List[Program]**](Program.md)
 
 ### Authorization
 

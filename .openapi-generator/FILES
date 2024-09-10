@@ -18,7 +18,6 @@ docs/PRDDetail.md
 docs/PrdApi.md
 docs/Program.md
 docs/ProgramBase.md
-docs/ProgramsApi.md
 docs/Status.md
 docs/Tag.md
 docs/User.md
@@ -35,7 +34,6 @@ pp_sdk/api/chat_api.py
 pp_sdk/api/goals_api.py
 pp_sdk/api/leaders_api.py
 pp_sdk/api/prd_api.py
-pp_sdk/api/programs_api.py
 pp_sdk/api/userstory_api.py
 pp_sdk/api_client.py
 pp_sdk/api_response.py
