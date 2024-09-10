@@ -1009,9 +1009,11 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **api_programs_create**
-> Program api_programs_create(data)
+> Program api_programs_create(data, x_user_id=x_user_id)
 
 
+
+Create a new program for the authenticated user.
 
 ### Example
 
@@ -1034,9 +1036,10 @@ with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pp_sdk.ApiApi(api_client)
     data = pp_sdk.Program() # Program | 
+    x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
     try:
-        api_response = api_instance.api_programs_create(data)
+        api_response = api_instance.api_programs_create(data, x_user_id=x_user_id)
         print("The response of ApiApi->api_programs_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -1051,6 +1054,7 @@ with pp_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **data** | [**Program**](Program.md)|  | 
+ **x_user_id** | **str**| User ID (required when using API key) | [optional] 
 
 ### Return type
 
@@ -1140,16 +1144,18 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **api_programs_list**
-> ApiProgramsList200Response api_programs_list(search=search, ordering=ordering, page=page)
+> List[Program] api_programs_list(search=search, ordering=ordering, page=page, x_user_id=x_user_id, tags=tags, limit=limit)
 
 
+
+Get a list of all programs for the authenticated user.
 
 ### Example
 
 
 ```python
 import pp_sdk
-from pp_sdk.models.api_programs_list200_response import ApiProgramsList200Response
+from pp_sdk.models.program import Program
 from pp_sdk.rest import ApiException
 from pprint import pprint
 
@@ -1164,12 +1170,15 @@ configuration = pp_sdk.Configuration(
 with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pp_sdk.ApiApi(api_client)
-    search = 'search_example' # str | A search term. (optional)
-    ordering = 'ordering_example' # str | Which field to use when ordering the results. (optional)
+    search = 'search_example' # str | Search in name and description (optional)
+    ordering = 'ordering_example' # str | Sort by field (prefix with '-' for descending) (optional)
     page = 56 # int | A page number within the paginated result set. (optional)
+    x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
+    tags = 'tags_example' # str | Filter by tags (comma-separated) (optional)
+    limit = 56 # int | Limit the number of results (optional)
 
     try:
-        api_response = api_instance.api_programs_list(search=search, ordering=ordering, page=page)
+        api_response = api_instance.api_programs_list(search=search, ordering=ordering, page=page, x_user_id=x_user_id, tags=tags, limit=limit)
         print("The response of ApiApi->api_programs_list:\n")
         pprint(api_response)
     except Exception as e:
@@ -1183,13 +1192,16 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **search** | **str**| A search term. | [optional] 
- **ordering** | **str**| Which field to use when ordering the results. | [optional] 
+ **search** | **str**| Search in name and description | [optional] 
+ **ordering** | **str**| Sort by field (prefix with &#39;-&#39; for descending) | [optional] 
  **page** | **int**| A page number within the paginated result set. | [optional] 
+ **x_user_id** | **str**| User ID (required when using API key) | [optional] 
+ **tags** | **str**| Filter by tags (comma-separated) | [optional] 
+ **limit** | **int**| Limit the number of results | [optional] 
 
 ### Return type
 
-[**ApiProgramsList200Response**](ApiProgramsList200Response.md)
+[**List[Program]**](Program.md)
 
 ### Authorization
 

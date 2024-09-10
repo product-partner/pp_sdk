@@ -20,7 +20,6 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictInt, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
-from pp_sdk.models.api_programs_list200_response import ApiProgramsList200Response
 from pp_sdk.models.api_user_search_list200_response import ApiUserSearchList200Response
 from pp_sdk.models.goal import Goal
 from pp_sdk.models.prd import PRD
@@ -3984,6 +3983,7 @@ class ApiApi:
     def api_programs_create(
         self,
         data: Program,
+        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3999,9 +3999,12 @@ class ApiApi:
     ) -> Program:
         """api_programs_create
 
+        Create a new program for the authenticated user.
 
         :param data: (required)
         :type data: Program
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4026,6 +4029,7 @@ class ApiApi:
 
         _param = self._api_programs_create_serialize(
             data=data,
+            x_user_id=x_user_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4050,6 +4054,7 @@ class ApiApi:
     def api_programs_create_with_http_info(
         self,
         data: Program,
+        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4065,9 +4070,12 @@ class ApiApi:
     ) -> ApiResponse[Program]:
         """api_programs_create
 
+        Create a new program for the authenticated user.
 
         :param data: (required)
         :type data: Program
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4092,6 +4100,7 @@ class ApiApi:
 
         _param = self._api_programs_create_serialize(
             data=data,
+            x_user_id=x_user_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4116,6 +4125,7 @@ class ApiApi:
     def api_programs_create_without_preload_content(
         self,
         data: Program,
+        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4131,9 +4141,12 @@ class ApiApi:
     ) -> RESTResponseType:
         """api_programs_create
 
+        Create a new program for the authenticated user.
 
         :param data: (required)
         :type data: Program
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4158,6 +4171,7 @@ class ApiApi:
 
         _param = self._api_programs_create_serialize(
             data=data,
+            x_user_id=x_user_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4177,6 +4191,7 @@ class ApiApi:
     def _api_programs_create_serialize(
         self,
         data,
+        x_user_id,
         _request_auth,
         _content_type,
         _headers,
@@ -4198,6 +4213,8 @@ class ApiApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
+        if x_user_id is not None:
+            _header_params['X-User-ID'] = x_user_id
         # process the form parameters
         # process the body parameter
         if data is not None:
@@ -4517,9 +4534,12 @@ class ApiApi:
     @validate_call
     def api_programs_list(
         self,
-        search: Annotated[Optional[StrictStr], Field(description="A search term.")] = None,
-        ordering: Annotated[Optional[StrictStr], Field(description="Which field to use when ordering the results.")] = None,
+        search: Annotated[Optional[StrictStr], Field(description="Search in name and description")] = None,
+        ordering: Annotated[Optional[StrictStr], Field(description="Sort by field (prefix with '-' for descending)")] = None,
         page: Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None,
+        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
+        tags: Annotated[Optional[StrictStr], Field(description="Filter by tags (comma-separated)")] = None,
+        limit: Annotated[Optional[StrictInt], Field(description="Limit the number of results")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4532,16 +4552,23 @@ class ApiApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiProgramsList200Response:
+    ) -> List[Program]:
         """api_programs_list
 
+        Get a list of all programs for the authenticated user.
 
-        :param search: A search term.
+        :param search: Search in name and description
         :type search: str
-        :param ordering: Which field to use when ordering the results.
+        :param ordering: Sort by field (prefix with '-' for descending)
         :type ordering: str
         :param page: A page number within the paginated result set.
         :type page: int
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
+        :param tags: Filter by tags (comma-separated)
+        :type tags: str
+        :param limit: Limit the number of results
+        :type limit: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4568,6 +4595,9 @@ class ApiApi:
             search=search,
             ordering=ordering,
             page=page,
+            x_user_id=x_user_id,
+            tags=tags,
+            limit=limit,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4575,7 +4605,7 @@ class ApiApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ApiProgramsList200Response",
+            '200': "List[Program]",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4591,9 +4621,12 @@ class ApiApi:
     @validate_call
     def api_programs_list_with_http_info(
         self,
-        search: Annotated[Optional[StrictStr], Field(description="A search term.")] = None,
-        ordering: Annotated[Optional[StrictStr], Field(description="Which field to use when ordering the results.")] = None,
+        search: Annotated[Optional[StrictStr], Field(description="Search in name and description")] = None,
+        ordering: Annotated[Optional[StrictStr], Field(description="Sort by field (prefix with '-' for descending)")] = None,
         page: Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None,
+        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
+        tags: Annotated[Optional[StrictStr], Field(description="Filter by tags (comma-separated)")] = None,
+        limit: Annotated[Optional[StrictInt], Field(description="Limit the number of results")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4606,16 +4639,23 @@ class ApiApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ApiProgramsList200Response]:
+    ) -> ApiResponse[List[Program]]:
         """api_programs_list
 
+        Get a list of all programs for the authenticated user.
 
-        :param search: A search term.
+        :param search: Search in name and description
         :type search: str
-        :param ordering: Which field to use when ordering the results.
+        :param ordering: Sort by field (prefix with '-' for descending)
         :type ordering: str
         :param page: A page number within the paginated result set.
         :type page: int
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
+        :param tags: Filter by tags (comma-separated)
+        :type tags: str
+        :param limit: Limit the number of results
+        :type limit: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4642,6 +4682,9 @@ class ApiApi:
             search=search,
             ordering=ordering,
             page=page,
+            x_user_id=x_user_id,
+            tags=tags,
+            limit=limit,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4649,7 +4692,7 @@ class ApiApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ApiProgramsList200Response",
+            '200': "List[Program]",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4665,9 +4708,12 @@ class ApiApi:
     @validate_call
     def api_programs_list_without_preload_content(
         self,
-        search: Annotated[Optional[StrictStr], Field(description="A search term.")] = None,
-        ordering: Annotated[Optional[StrictStr], Field(description="Which field to use when ordering the results.")] = None,
+        search: Annotated[Optional[StrictStr], Field(description="Search in name and description")] = None,
+        ordering: Annotated[Optional[StrictStr], Field(description="Sort by field (prefix with '-' for descending)")] = None,
         page: Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None,
+        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
+        tags: Annotated[Optional[StrictStr], Field(description="Filter by tags (comma-separated)")] = None,
+        limit: Annotated[Optional[StrictInt], Field(description="Limit the number of results")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4683,13 +4729,20 @@ class ApiApi:
     ) -> RESTResponseType:
         """api_programs_list
 
+        Get a list of all programs for the authenticated user.
 
-        :param search: A search term.
+        :param search: Search in name and description
         :type search: str
-        :param ordering: Which field to use when ordering the results.
+        :param ordering: Sort by field (prefix with '-' for descending)
         :type ordering: str
         :param page: A page number within the paginated result set.
         :type page: int
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
+        :param tags: Filter by tags (comma-separated)
+        :type tags: str
+        :param limit: Limit the number of results
+        :type limit: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4716,6 +4769,9 @@ class ApiApi:
             search=search,
             ordering=ordering,
             page=page,
+            x_user_id=x_user_id,
+            tags=tags,
+            limit=limit,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4723,7 +4779,7 @@ class ApiApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ApiProgramsList200Response",
+            '200': "List[Program]",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4737,6 +4793,9 @@ class ApiApi:
         search,
         ordering,
         page,
+        x_user_id,
+        tags,
+        limit,
         _request_auth,
         _content_type,
         _headers,
@@ -4769,7 +4828,17 @@ class ApiApi:
             
             _query_params.append(('page', page))
             
+        if tags is not None:
+            
+            _query_params.append(('tags', tags))
+            
+        if limit is not None:
+            
+            _query_params.append(('limit', limit))
+            
         # process the header parameters
+        if x_user_id is not None:
+            _header_params['X-User-ID'] = x_user_id
         # process the form parameters
         # process the body parameter
 
