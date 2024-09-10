@@ -20,7 +20,6 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictInt, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
-from pp_sdk.models.api_prds_list200_response import ApiPrdsList200Response
 from pp_sdk.models.api_programs_list200_response import ApiProgramsList200Response
 from pp_sdk.models.api_user_search_list200_response import ApiUserSearchList200Response
 from pp_sdk.models.goal import Goal
@@ -2005,284 +2004,10 @@ class ApiApi:
 
 
     @validate_call
-    def api_prd_search_list(
-        self,
-        q: Annotated[Optional[StrictStr], Field(description="query string, to search across name or description")] = None,
-        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[PRD]:
-        """api_prd_search_list
-
-        Search for PRDs
-
-        :param q: query string, to search across name or description
-        :type q: str
-        :param x_user_id: User ID (required when using API key)
-        :type x_user_id: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._api_prd_search_list_serialize(
-            q=q,
-            x_user_id=x_user_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[PRD]",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def api_prd_search_list_with_http_info(
-        self,
-        q: Annotated[Optional[StrictStr], Field(description="query string, to search across name or description")] = None,
-        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[PRD]]:
-        """api_prd_search_list
-
-        Search for PRDs
-
-        :param q: query string, to search across name or description
-        :type q: str
-        :param x_user_id: User ID (required when using API key)
-        :type x_user_id: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._api_prd_search_list_serialize(
-            q=q,
-            x_user_id=x_user_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[PRD]",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def api_prd_search_list_without_preload_content(
-        self,
-        q: Annotated[Optional[StrictStr], Field(description="query string, to search across name or description")] = None,
-        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """api_prd_search_list
-
-        Search for PRDs
-
-        :param q: query string, to search across name or description
-        :type q: str
-        :param x_user_id: User ID (required when using API key)
-        :type x_user_id: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._api_prd_search_list_serialize(
-            q=q,
-            x_user_id=x_user_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[PRD]",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _api_prd_search_list_serialize(
-        self,
-        q,
-        x_user_id,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        # process the query parameters
-        if q is not None:
-            
-            _query_params.append(('q', q))
-            
-        # process the header parameters
-        if x_user_id is not None:
-            _header_params['X-User-ID'] = x_user_id
-        # process the form parameters
-        # process the body parameter
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-        ]
-
-        return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/api/prd/search/',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
     def api_prds_create(
         self,
         data: PRD,
+        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2298,9 +2023,12 @@ class ApiApi:
     ) -> PRD:
         """api_prds_create
 
+        Create a new PRD for the authenticated user's organization.
 
         :param data: (required)
         :type data: PRD
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2325,6 +2053,7 @@ class ApiApi:
 
         _param = self._api_prds_create_serialize(
             data=data,
+            x_user_id=x_user_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2349,6 +2078,7 @@ class ApiApi:
     def api_prds_create_with_http_info(
         self,
         data: PRD,
+        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2364,9 +2094,12 @@ class ApiApi:
     ) -> ApiResponse[PRD]:
         """api_prds_create
 
+        Create a new PRD for the authenticated user's organization.
 
         :param data: (required)
         :type data: PRD
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2391,6 +2124,7 @@ class ApiApi:
 
         _param = self._api_prds_create_serialize(
             data=data,
+            x_user_id=x_user_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2415,6 +2149,7 @@ class ApiApi:
     def api_prds_create_without_preload_content(
         self,
         data: PRD,
+        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2430,9 +2165,12 @@ class ApiApi:
     ) -> RESTResponseType:
         """api_prds_create
 
+        Create a new PRD for the authenticated user's organization.
 
         :param data: (required)
         :type data: PRD
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2457,6 +2195,7 @@ class ApiApi:
 
         _param = self._api_prds_create_serialize(
             data=data,
+            x_user_id=x_user_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2476,6 +2215,7 @@ class ApiApi:
     def _api_prds_create_serialize(
         self,
         data,
+        x_user_id,
         _request_auth,
         _content_type,
         _headers,
@@ -2497,6 +2237,8 @@ class ApiApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
+        if x_user_id is not None:
+            _header_params['X-User-ID'] = x_user_id
         # process the form parameters
         # process the body parameter
         if data is not None:
@@ -2550,7 +2292,8 @@ class ApiApi:
     @validate_call
     def api_prds_delete(
         self,
-        id: Annotated[StrictStr, Field(description="A UUID string identifying this prd.")],
+        id: StrictStr,
+        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2566,9 +2309,12 @@ class ApiApi:
     ) -> None:
         """api_prds_delete
 
+        Delete a specific PRD.
 
-        :param id: A UUID string identifying this prd. (required)
+        :param id: (required)
         :type id: str
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2593,6 +2339,7 @@ class ApiApi:
 
         _param = self._api_prds_delete_serialize(
             id=id,
+            x_user_id=x_user_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2616,7 +2363,8 @@ class ApiApi:
     @validate_call
     def api_prds_delete_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="A UUID string identifying this prd.")],
+        id: StrictStr,
+        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2632,9 +2380,12 @@ class ApiApi:
     ) -> ApiResponse[None]:
         """api_prds_delete
 
+        Delete a specific PRD.
 
-        :param id: A UUID string identifying this prd. (required)
+        :param id: (required)
         :type id: str
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2659,6 +2410,7 @@ class ApiApi:
 
         _param = self._api_prds_delete_serialize(
             id=id,
+            x_user_id=x_user_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2682,7 +2434,8 @@ class ApiApi:
     @validate_call
     def api_prds_delete_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="A UUID string identifying this prd.")],
+        id: StrictStr,
+        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2698,9 +2451,12 @@ class ApiApi:
     ) -> RESTResponseType:
         """api_prds_delete
 
+        Delete a specific PRD.
 
-        :param id: A UUID string identifying this prd. (required)
+        :param id: (required)
         :type id: str
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2725,6 +2481,7 @@ class ApiApi:
 
         _param = self._api_prds_delete_serialize(
             id=id,
+            x_user_id=x_user_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2744,6 +2501,7 @@ class ApiApi:
     def _api_prds_delete_serialize(
         self,
         id,
+        x_user_id,
         _request_auth,
         _content_type,
         _headers,
@@ -2767,6 +2525,8 @@ class ApiApi:
             _path_params['id'] = id
         # process the query parameters
         # process the header parameters
+        if x_user_id is not None:
+            _header_params['X-User-ID'] = x_user_id
         # process the form parameters
         # process the body parameter
 
@@ -2799,6 +2559,7 @@ class ApiApi:
     def api_prds_list(
         self,
         page: Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None,
+        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2811,12 +2572,15 @@ class ApiApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiPrdsList200Response:
+    ) -> List[PRD]:
         """api_prds_list
 
+        Get a list of all PRDs for the authenticated user's organization.
 
         :param page: A page number within the paginated result set.
         :type page: int
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2841,6 +2605,7 @@ class ApiApi:
 
         _param = self._api_prds_list_serialize(
             page=page,
+            x_user_id=x_user_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2848,7 +2613,7 @@ class ApiApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ApiPrdsList200Response",
+            '200': "List[PRD]",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2865,6 +2630,7 @@ class ApiApi:
     def api_prds_list_with_http_info(
         self,
         page: Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None,
+        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2877,12 +2643,15 @@ class ApiApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ApiPrdsList200Response]:
+    ) -> ApiResponse[List[PRD]]:
         """api_prds_list
 
+        Get a list of all PRDs for the authenticated user's organization.
 
         :param page: A page number within the paginated result set.
         :type page: int
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2907,6 +2676,7 @@ class ApiApi:
 
         _param = self._api_prds_list_serialize(
             page=page,
+            x_user_id=x_user_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2914,7 +2684,7 @@ class ApiApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ApiPrdsList200Response",
+            '200': "List[PRD]",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2931,6 +2701,7 @@ class ApiApi:
     def api_prds_list_without_preload_content(
         self,
         page: Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None,
+        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2946,9 +2717,12 @@ class ApiApi:
     ) -> RESTResponseType:
         """api_prds_list
 
+        Get a list of all PRDs for the authenticated user's organization.
 
         :param page: A page number within the paginated result set.
         :type page: int
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2973,6 +2747,7 @@ class ApiApi:
 
         _param = self._api_prds_list_serialize(
             page=page,
+            x_user_id=x_user_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2980,7 +2755,7 @@ class ApiApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ApiPrdsList200Response",
+            '200': "List[PRD]",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2992,6 +2767,7 @@ class ApiApi:
     def _api_prds_list_serialize(
         self,
         page,
+        x_user_id,
         _request_auth,
         _content_type,
         _headers,
@@ -3017,6 +2793,8 @@ class ApiApi:
             _query_params.append(('page', page))
             
         # process the header parameters
+        if x_user_id is not None:
+            _header_params['X-User-ID'] = x_user_id
         # process the form parameters
         # process the body parameter
 
@@ -3055,8 +2833,9 @@ class ApiApi:
     @validate_call
     def api_prds_partial_update(
         self,
-        id: Annotated[StrictStr, Field(description="A UUID string identifying this prd.")],
+        id: StrictStr,
         data: PRDDetail,
+        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3072,11 +2851,14 @@ class ApiApi:
     ) -> PRDDetail:
         """api_prds_partial_update
 
+        Partially update a specific PRD.
 
-        :param id: A UUID string identifying this prd. (required)
+        :param id: (required)
         :type id: str
         :param data: (required)
         :type data: PRDDetail
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3102,6 +2884,7 @@ class ApiApi:
         _param = self._api_prds_partial_update_serialize(
             id=id,
             data=data,
+            x_user_id=x_user_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3125,8 +2908,9 @@ class ApiApi:
     @validate_call
     def api_prds_partial_update_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="A UUID string identifying this prd.")],
+        id: StrictStr,
         data: PRDDetail,
+        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3142,11 +2926,14 @@ class ApiApi:
     ) -> ApiResponse[PRDDetail]:
         """api_prds_partial_update
 
+        Partially update a specific PRD.
 
-        :param id: A UUID string identifying this prd. (required)
+        :param id: (required)
         :type id: str
         :param data: (required)
         :type data: PRDDetail
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3172,6 +2959,7 @@ class ApiApi:
         _param = self._api_prds_partial_update_serialize(
             id=id,
             data=data,
+            x_user_id=x_user_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3195,8 +2983,9 @@ class ApiApi:
     @validate_call
     def api_prds_partial_update_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="A UUID string identifying this prd.")],
+        id: StrictStr,
         data: PRDDetail,
+        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3212,11 +3001,14 @@ class ApiApi:
     ) -> RESTResponseType:
         """api_prds_partial_update
 
+        Partially update a specific PRD.
 
-        :param id: A UUID string identifying this prd. (required)
+        :param id: (required)
         :type id: str
         :param data: (required)
         :type data: PRDDetail
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3242,6 +3034,7 @@ class ApiApi:
         _param = self._api_prds_partial_update_serialize(
             id=id,
             data=data,
+            x_user_id=x_user_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3262,6 +3055,7 @@ class ApiApi:
         self,
         id,
         data,
+        x_user_id,
         _request_auth,
         _content_type,
         _headers,
@@ -3285,6 +3079,8 @@ class ApiApi:
             _path_params['id'] = id
         # process the query parameters
         # process the header parameters
+        if x_user_id is not None:
+            _header_params['X-User-ID'] = x_user_id
         # process the form parameters
         # process the body parameter
         if data is not None:
@@ -3338,7 +3134,8 @@ class ApiApi:
     @validate_call
     def api_prds_read(
         self,
-        id: Annotated[StrictStr, Field(description="A UUID string identifying this prd.")],
+        id: StrictStr,
+        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3354,9 +3151,12 @@ class ApiApi:
     ) -> PRDDetail:
         """api_prds_read
 
+        Get details of a specific PRD.
 
-        :param id: A UUID string identifying this prd. (required)
+        :param id: (required)
         :type id: str
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3381,6 +3181,7 @@ class ApiApi:
 
         _param = self._api_prds_read_serialize(
             id=id,
+            x_user_id=x_user_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3404,7 +3205,8 @@ class ApiApi:
     @validate_call
     def api_prds_read_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="A UUID string identifying this prd.")],
+        id: StrictStr,
+        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3420,9 +3222,12 @@ class ApiApi:
     ) -> ApiResponse[PRDDetail]:
         """api_prds_read
 
+        Get details of a specific PRD.
 
-        :param id: A UUID string identifying this prd. (required)
+        :param id: (required)
         :type id: str
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3447,6 +3252,7 @@ class ApiApi:
 
         _param = self._api_prds_read_serialize(
             id=id,
+            x_user_id=x_user_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3470,7 +3276,8 @@ class ApiApi:
     @validate_call
     def api_prds_read_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="A UUID string identifying this prd.")],
+        id: StrictStr,
+        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3486,9 +3293,12 @@ class ApiApi:
     ) -> RESTResponseType:
         """api_prds_read
 
+        Get details of a specific PRD.
 
-        :param id: A UUID string identifying this prd. (required)
+        :param id: (required)
         :type id: str
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3513,6 +3323,7 @@ class ApiApi:
 
         _param = self._api_prds_read_serialize(
             id=id,
+            x_user_id=x_user_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3532,6 +3343,7 @@ class ApiApi:
     def _api_prds_read_serialize(
         self,
         id,
+        x_user_id,
         _request_auth,
         _content_type,
         _headers,
@@ -3555,6 +3367,8 @@ class ApiApi:
             _path_params['id'] = id
         # process the query parameters
         # process the header parameters
+        if x_user_id is not None:
+            _header_params['X-User-ID'] = x_user_id
         # process the form parameters
         # process the body parameter
 
@@ -3591,10 +3405,286 @@ class ApiApi:
 
 
     @validate_call
+    def api_prds_search_list(
+        self,
+        q: Annotated[Optional[StrictStr], Field(description="query string, to search across name or description")] = None,
+        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> List[PRD]:
+        """api_prds_search_list
+
+        Search for PRDs
+
+        :param q: query string, to search across name or description
+        :type q: str
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._api_prds_search_list_serialize(
+            q=q,
+            x_user_id=x_user_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[PRD]",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def api_prds_search_list_with_http_info(
+        self,
+        q: Annotated[Optional[StrictStr], Field(description="query string, to search across name or description")] = None,
+        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[List[PRD]]:
+        """api_prds_search_list
+
+        Search for PRDs
+
+        :param q: query string, to search across name or description
+        :type q: str
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._api_prds_search_list_serialize(
+            q=q,
+            x_user_id=x_user_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[PRD]",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def api_prds_search_list_without_preload_content(
+        self,
+        q: Annotated[Optional[StrictStr], Field(description="query string, to search across name or description")] = None,
+        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """api_prds_search_list
+
+        Search for PRDs
+
+        :param q: query string, to search across name or description
+        :type q: str
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._api_prds_search_list_serialize(
+            q=q,
+            x_user_id=x_user_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[PRD]",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _api_prds_search_list_serialize(
+        self,
+        q,
+        x_user_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[str, Union[str, bytes]] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        if q is not None:
+            
+            _query_params.append(('q', q))
+            
+        # process the header parameters
+        if x_user_id is not None:
+            _header_params['X-User-ID'] = x_user_id
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/api/prds/search/',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     def api_prds_update(
         self,
-        id: Annotated[StrictStr, Field(description="A UUID string identifying this prd.")],
+        id: StrictStr,
         data: PRDDetail,
+        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3610,11 +3700,14 @@ class ApiApi:
     ) -> PRDDetail:
         """api_prds_update
 
+        Update a specific PRD.
 
-        :param id: A UUID string identifying this prd. (required)
+        :param id: (required)
         :type id: str
         :param data: (required)
         :type data: PRDDetail
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3640,6 +3733,7 @@ class ApiApi:
         _param = self._api_prds_update_serialize(
             id=id,
             data=data,
+            x_user_id=x_user_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3663,8 +3757,9 @@ class ApiApi:
     @validate_call
     def api_prds_update_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="A UUID string identifying this prd.")],
+        id: StrictStr,
         data: PRDDetail,
+        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3680,11 +3775,14 @@ class ApiApi:
     ) -> ApiResponse[PRDDetail]:
         """api_prds_update
 
+        Update a specific PRD.
 
-        :param id: A UUID string identifying this prd. (required)
+        :param id: (required)
         :type id: str
         :param data: (required)
         :type data: PRDDetail
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3710,6 +3808,7 @@ class ApiApi:
         _param = self._api_prds_update_serialize(
             id=id,
             data=data,
+            x_user_id=x_user_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3733,8 +3832,9 @@ class ApiApi:
     @validate_call
     def api_prds_update_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="A UUID string identifying this prd.")],
+        id: StrictStr,
         data: PRDDetail,
+        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3750,11 +3850,14 @@ class ApiApi:
     ) -> RESTResponseType:
         """api_prds_update
 
+        Update a specific PRD.
 
-        :param id: A UUID string identifying this prd. (required)
+        :param id: (required)
         :type id: str
         :param data: (required)
         :type data: PRDDetail
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3780,6 +3883,7 @@ class ApiApi:
         _param = self._api_prds_update_serialize(
             id=id,
             data=data,
+            x_user_id=x_user_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3800,6 +3904,7 @@ class ApiApi:
         self,
         id,
         data,
+        x_user_id,
         _request_auth,
         _content_type,
         _headers,
@@ -3823,6 +3928,8 @@ class ApiApi:
             _path_params['id'] = id
         # process the query parameters
         # process the header parameters
+        if x_user_id is not None:
+            _header_params['X-User-ID'] = x_user_id
         # process the form parameters
         # process the body parameter
         if data is not None:

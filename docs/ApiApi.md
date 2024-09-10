@@ -11,12 +11,12 @@ Method | HTTP request | Description
 [**api_goals_read**](ApiApi.md#api_goals_read) | **GET** /api/goals/{goal_id}/ | 
 [**api_goals_search_list**](ApiApi.md#api_goals_search_list) | **GET** /api/goals/search/ | 
 [**api_goals_update**](ApiApi.md#api_goals_update) | **PUT** /api/goals/{goal_id}/ | 
-[**api_prd_search_list**](ApiApi.md#api_prd_search_list) | **GET** /api/prd/search/ | 
 [**api_prds_create**](ApiApi.md#api_prds_create) | **POST** /api/prds/ | 
 [**api_prds_delete**](ApiApi.md#api_prds_delete) | **DELETE** /api/prds/{id}/ | 
 [**api_prds_list**](ApiApi.md#api_prds_list) | **GET** /api/prds/ | 
 [**api_prds_partial_update**](ApiApi.md#api_prds_partial_update) | **PATCH** /api/prds/{id}/ | 
 [**api_prds_read**](ApiApi.md#api_prds_read) | **GET** /api/prds/{id}/ | 
+[**api_prds_search_list**](ApiApi.md#api_prds_search_list) | **GET** /api/prds/search/ | 
 [**api_prds_update**](ApiApi.md#api_prds_update) | **PUT** /api/prds/{id}/ | 
 [**api_programs_create**](ApiApi.md#api_programs_create) | **POST** /api/programs/ | 
 [**api_programs_delete**](ApiApi.md#api_programs_delete) | **DELETE** /api/programs/{program_id}/ | 
@@ -525,8 +525,352 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **api_prd_search_list**
-> List[PRD] api_prd_search_list(q=q, x_user_id=x_user_id)
+# **api_prds_create**
+> PRD api_prds_create(data, x_user_id=x_user_id)
+
+
+
+Create a new PRD for the authenticated user's organization.
+
+### Example
+
+
+```python
+import pp_sdk
+from pp_sdk.models.prd import PRD
+from pp_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://0.0.0.0:8000
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pp_sdk.Configuration(
+    host = "http://0.0.0.0:8000"
+)
+
+
+# Enter a context with an instance of the API client
+with pp_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pp_sdk.ApiApi(api_client)
+    data = pp_sdk.PRD() # PRD | 
+    x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
+
+    try:
+        api_response = api_instance.api_prds_create(data, x_user_id=x_user_id)
+        print("The response of ApiApi->api_prds_create:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ApiApi->api_prds_create: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **data** | [**PRD**](PRD.md)|  | 
+ **x_user_id** | **str**| User ID (required when using API key) | [optional] 
+
+### Return type
+
+[**PRD**](PRD.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **api_prds_delete**
+> api_prds_delete(id, x_user_id=x_user_id)
+
+
+
+Delete a specific PRD.
+
+### Example
+
+
+```python
+import pp_sdk
+from pp_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://0.0.0.0:8000
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pp_sdk.Configuration(
+    host = "http://0.0.0.0:8000"
+)
+
+
+# Enter a context with an instance of the API client
+with pp_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pp_sdk.ApiApi(api_client)
+    id = 'id_example' # str | 
+    x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
+
+    try:
+        api_instance.api_prds_delete(id, x_user_id=x_user_id)
+    except Exception as e:
+        print("Exception when calling ApiApi->api_prds_delete: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**|  | 
+ **x_user_id** | **str**| User ID (required when using API key) | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No content |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **api_prds_list**
+> List[PRD] api_prds_list(page=page, x_user_id=x_user_id)
+
+
+
+Get a list of all PRDs for the authenticated user's organization.
+
+### Example
+
+
+```python
+import pp_sdk
+from pp_sdk.models.prd import PRD
+from pp_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://0.0.0.0:8000
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pp_sdk.Configuration(
+    host = "http://0.0.0.0:8000"
+)
+
+
+# Enter a context with an instance of the API client
+with pp_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pp_sdk.ApiApi(api_client)
+    page = 56 # int | A page number within the paginated result set. (optional)
+    x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
+
+    try:
+        api_response = api_instance.api_prds_list(page=page, x_user_id=x_user_id)
+        print("The response of ApiApi->api_prds_list:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ApiApi->api_prds_list: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **page** | **int**| A page number within the paginated result set. | [optional] 
+ **x_user_id** | **str**| User ID (required when using API key) | [optional] 
+
+### Return type
+
+[**List[PRD]**](PRD.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **api_prds_partial_update**
+> PRDDetail api_prds_partial_update(id, data, x_user_id=x_user_id)
+
+
+
+Partially update a specific PRD.
+
+### Example
+
+
+```python
+import pp_sdk
+from pp_sdk.models.prd_detail import PRDDetail
+from pp_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://0.0.0.0:8000
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pp_sdk.Configuration(
+    host = "http://0.0.0.0:8000"
+)
+
+
+# Enter a context with an instance of the API client
+with pp_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pp_sdk.ApiApi(api_client)
+    id = 'id_example' # str | 
+    data = pp_sdk.PRDDetail() # PRDDetail | 
+    x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
+
+    try:
+        api_response = api_instance.api_prds_partial_update(id, data, x_user_id=x_user_id)
+        print("The response of ApiApi->api_prds_partial_update:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ApiApi->api_prds_partial_update: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**|  | 
+ **data** | [**PRDDetail**](PRDDetail.md)|  | 
+ **x_user_id** | **str**| User ID (required when using API key) | [optional] 
+
+### Return type
+
+[**PRDDetail**](PRDDetail.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **api_prds_read**
+> PRDDetail api_prds_read(id, x_user_id=x_user_id)
+
+
+
+Get details of a specific PRD.
+
+### Example
+
+
+```python
+import pp_sdk
+from pp_sdk.models.prd_detail import PRDDetail
+from pp_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://0.0.0.0:8000
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pp_sdk.Configuration(
+    host = "http://0.0.0.0:8000"
+)
+
+
+# Enter a context with an instance of the API client
+with pp_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pp_sdk.ApiApi(api_client)
+    id = 'id_example' # str | 
+    x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
+
+    try:
+        api_response = api_instance.api_prds_read(id, x_user_id=x_user_id)
+        print("The response of ApiApi->api_prds_read:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ApiApi->api_prds_read: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**|  | 
+ **x_user_id** | **str**| User ID (required when using API key) | [optional] 
+
+### Return type
+
+[**PRDDetail**](PRDDetail.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **api_prds_search_list**
+> List[PRD] api_prds_search_list(q=q, x_user_id=x_user_id)
 
 
 
@@ -556,11 +900,11 @@ with pp_sdk.ApiClient(configuration) as api_client:
     x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
     try:
-        api_response = api_instance.api_prd_search_list(q=q, x_user_id=x_user_id)
-        print("The response of ApiApi->api_prd_search_list:\n")
+        api_response = api_instance.api_prds_search_list(q=q, x_user_id=x_user_id)
+        print("The response of ApiApi->api_prds_search_list:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling ApiApi->api_prd_search_list: %s\n" % e)
+        print("Exception when calling ApiApi->api_prds_search_list: %s\n" % e)
 ```
 
 
@@ -594,334 +938,12 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **api_prds_create**
-> PRD api_prds_create(data)
-
-
-
-### Example
-
-
-```python
-import pp_sdk
-from pp_sdk.models.prd import PRD
-from pp_sdk.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to http://0.0.0.0:8000
-# See configuration.py for a list of all supported configuration parameters.
-configuration = pp_sdk.Configuration(
-    host = "http://0.0.0.0:8000"
-)
-
-
-# Enter a context with an instance of the API client
-with pp_sdk.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = pp_sdk.ApiApi(api_client)
-    data = pp_sdk.PRD() # PRD | 
-
-    try:
-        api_response = api_instance.api_prds_create(data)
-        print("The response of ApiApi->api_prds_create:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling ApiApi->api_prds_create: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **data** | [**PRD**](PRD.md)|  | 
-
-### Return type
-
-[**PRD**](PRD.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**201** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **api_prds_delete**
-> api_prds_delete(id)
-
-
-
-### Example
-
-
-```python
-import pp_sdk
-from pp_sdk.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to http://0.0.0.0:8000
-# See configuration.py for a list of all supported configuration parameters.
-configuration = pp_sdk.Configuration(
-    host = "http://0.0.0.0:8000"
-)
-
-
-# Enter a context with an instance of the API client
-with pp_sdk.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = pp_sdk.ApiApi(api_client)
-    id = 'id_example' # str | A UUID string identifying this prd.
-
-    try:
-        api_instance.api_prds_delete(id)
-    except Exception as e:
-        print("Exception when calling ApiApi->api_prds_delete: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **str**| A UUID string identifying this prd. | 
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: Not defined
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**204** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **api_prds_list**
-> ApiPrdsList200Response api_prds_list(page=page)
-
-
-
-### Example
-
-
-```python
-import pp_sdk
-from pp_sdk.models.api_prds_list200_response import ApiPrdsList200Response
-from pp_sdk.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to http://0.0.0.0:8000
-# See configuration.py for a list of all supported configuration parameters.
-configuration = pp_sdk.Configuration(
-    host = "http://0.0.0.0:8000"
-)
-
-
-# Enter a context with an instance of the API client
-with pp_sdk.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = pp_sdk.ApiApi(api_client)
-    page = 56 # int | A page number within the paginated result set. (optional)
-
-    try:
-        api_response = api_instance.api_prds_list(page=page)
-        print("The response of ApiApi->api_prds_list:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling ApiApi->api_prds_list: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **page** | **int**| A page number within the paginated result set. | [optional] 
-
-### Return type
-
-[**ApiPrdsList200Response**](ApiPrdsList200Response.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **api_prds_partial_update**
-> PRDDetail api_prds_partial_update(id, data)
-
-
-
-### Example
-
-
-```python
-import pp_sdk
-from pp_sdk.models.prd_detail import PRDDetail
-from pp_sdk.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to http://0.0.0.0:8000
-# See configuration.py for a list of all supported configuration parameters.
-configuration = pp_sdk.Configuration(
-    host = "http://0.0.0.0:8000"
-)
-
-
-# Enter a context with an instance of the API client
-with pp_sdk.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = pp_sdk.ApiApi(api_client)
-    id = 'id_example' # str | A UUID string identifying this prd.
-    data = pp_sdk.PRDDetail() # PRDDetail | 
-
-    try:
-        api_response = api_instance.api_prds_partial_update(id, data)
-        print("The response of ApiApi->api_prds_partial_update:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling ApiApi->api_prds_partial_update: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **str**| A UUID string identifying this prd. | 
- **data** | [**PRDDetail**](PRDDetail.md)|  | 
-
-### Return type
-
-[**PRDDetail**](PRDDetail.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **api_prds_read**
-> PRDDetail api_prds_read(id)
-
-
-
-### Example
-
-
-```python
-import pp_sdk
-from pp_sdk.models.prd_detail import PRDDetail
-from pp_sdk.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to http://0.0.0.0:8000
-# See configuration.py for a list of all supported configuration parameters.
-configuration = pp_sdk.Configuration(
-    host = "http://0.0.0.0:8000"
-)
-
-
-# Enter a context with an instance of the API client
-with pp_sdk.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = pp_sdk.ApiApi(api_client)
-    id = 'id_example' # str | A UUID string identifying this prd.
-
-    try:
-        api_response = api_instance.api_prds_read(id)
-        print("The response of ApiApi->api_prds_read:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling ApiApi->api_prds_read: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **str**| A UUID string identifying this prd. | 
-
-### Return type
-
-[**PRDDetail**](PRDDetail.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **api_prds_update**
-> PRDDetail api_prds_update(id, data)
+> PRDDetail api_prds_update(id, data, x_user_id=x_user_id)
 
 
+
+Update a specific PRD.
 
 ### Example
 
@@ -943,11 +965,12 @@ configuration = pp_sdk.Configuration(
 with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pp_sdk.ApiApi(api_client)
-    id = 'id_example' # str | A UUID string identifying this prd.
+    id = 'id_example' # str | 
     data = pp_sdk.PRDDetail() # PRDDetail | 
+    x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
     try:
-        api_response = api_instance.api_prds_update(id, data)
+        api_response = api_instance.api_prds_update(id, data, x_user_id=x_user_id)
         print("The response of ApiApi->api_prds_update:\n")
         pprint(api_response)
     except Exception as e:
@@ -961,8 +984,9 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| A UUID string identifying this prd. | 
+ **id** | **str**|  | 
  **data** | [**PRDDetail**](PRDDetail.md)|  | 
+ **x_user_id** | **str**| User ID (required when using API key) | [optional] 
 
 ### Return type
 

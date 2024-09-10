@@ -16,7 +16,6 @@
 
 # import models into model package
 from pp_sdk.models.address import Address
-from pp_sdk.models.api_prds_list200_response import ApiPrdsList200Response
 from pp_sdk.models.api_programs_list200_response import ApiProgramsList200Response
 from pp_sdk.models.api_user_search_list200_response import ApiUserSearchList200Response
 from pp_sdk.models.goal import Goal
