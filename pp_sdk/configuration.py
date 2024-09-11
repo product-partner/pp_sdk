@@ -185,7 +185,7 @@ class Configuration:
         """Adding retries to override urllib3 default value 3
         """
         # Enable client side validation
-        self.client_side_validation = True
+        self.client_side_validation = False
 
         self.socket_options = None
         """Options to pass down to the underlying urllib3 socket
