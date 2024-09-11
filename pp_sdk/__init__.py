@@ -15,7 +15,7 @@
 """  # noqa: E501
 
 
-__version__ = "0.1.12"
+__version__ = "0.1.14"
 
 # import apis into sdk package
 from pp_sdk.api.api_api import ApiApi

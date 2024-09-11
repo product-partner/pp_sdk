@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] [readonly] 
@@ -20,7 +19,7 @@ json = "{}"
 # create an instance of UserBase from a JSON string
 user_base_instance = UserBase.from_json(json)
 # print the JSON string representation of the object
-print(UserBase.to_json())
+print UserBase.to_json()
 
 # convert the object into a dict
 user_base_dict = user_base_instance.to_dict()

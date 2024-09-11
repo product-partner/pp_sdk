@@ -16,8 +16,9 @@ Search for PRDs
 
 ### Example
 
-
 ```python
+import time
+import os
 import pp_sdk
 from pp_sdk.models.prd import PRD
 from pp_sdk.rest import ApiException
@@ -49,7 +50,6 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **q** | **str**| query string, to search across name or description | [optional] 
@@ -69,7 +69,6 @@ No authorization required
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** |  |  -  |

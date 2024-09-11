@@ -16,8 +16,9 @@ Search and filter UserStory data
 
 ### Example
 
-
 ```python
+import time
+import os
 import pp_sdk
 from pp_sdk.models.user_story import UserStory
 from pp_sdk.rest import ApiException
@@ -52,7 +53,6 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **status** | **str**| Filter by status | [optional] 
@@ -75,7 +75,6 @@ No authorization required
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** |  |  -  |

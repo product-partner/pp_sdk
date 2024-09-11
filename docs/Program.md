@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] [readonly] 
@@ -28,7 +27,7 @@ json = "{}"
 # create an instance of Program from a JSON string
 program_instance = Program.from_json(json)
 # print the JSON string representation of the object
-print(Program.to_json())
+print Program.to_json()
 
 # convert the object into a dict
 program_dict = program_instance.to_dict()

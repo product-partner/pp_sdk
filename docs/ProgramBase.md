@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] [readonly] 
@@ -18,7 +17,7 @@ json = "{}"
 # create an instance of ProgramBase from a JSON string
 program_base_instance = ProgramBase.from_json(json)
 # print the JSON string representation of the object
-print(ProgramBase.to_json())
+print ProgramBase.to_json()
 
 # convert the object into a dict
 program_base_dict = program_base_instance.to_dict()

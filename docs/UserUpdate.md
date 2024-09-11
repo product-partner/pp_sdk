@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **first_name** | **str** |  | [optional] 
@@ -20,7 +19,7 @@ json = "{}"
 # create an instance of UserUpdate from a JSON string
 user_update_instance = UserUpdate.from_json(json)
 # print the JSON string representation of the object
-print(UserUpdate.to_json())
+print UserUpdate.to_json()
 
 # convert the object into a dict
 user_update_dict = user_update_instance.to_dict()

@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] [readonly] 
@@ -30,7 +29,7 @@ json = "{}"
 # create an instance of UserStory from a JSON string
 user_story_instance = UserStory.from_json(json)
 # print the JSON string representation of the object
-print(UserStory.to_json())
+print UserStory.to_json()
 
 # convert the object into a dict
 user_story_dict = user_story_instance.to_dict()

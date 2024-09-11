@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] [readonly] 
@@ -20,7 +19,7 @@ json = "{}"
 # create an instance of GoalBase from a JSON string
 goal_base_instance = GoalBase.from_json(json)
 # print the JSON string representation of the object
-print(GoalBase.to_json())
+print GoalBase.to_json()
 
 # convert the object into a dict
 goal_base_dict = goal_base_instance.to_dict()

@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **count** | **int** |  | 
@@ -20,7 +19,7 @@ json = "{}"
 # create an instance of ApiUserSearchList200Response from a JSON string
 api_user_search_list200_response_instance = ApiUserSearchList200Response.from_json(json)
 # print the JSON string representation of the object
-print(ApiUserSearchList200Response.to_json())
+print ApiUserSearchList200Response.to_json()
 
 # convert the object into a dict
 api_user_search_list200_response_dict = api_user_search_list200_response_instance.to_dict()
