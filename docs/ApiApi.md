@@ -660,7 +660,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **api_prds_list**
-> List[PRD] api_prds_list(page=page, x_user_id=x_user_id)
+> List[PRD] api_prds_list(x_user_id=x_user_id)
 
 
 
@@ -686,11 +686,10 @@ configuration = pp_sdk.Configuration(
 with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pp_sdk.ApiApi(api_client)
-    page = 56 # int | A page number within the paginated result set. (optional)
     x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
     try:
-        api_response = api_instance.api_prds_list(page=page, x_user_id=x_user_id)
+        api_response = api_instance.api_prds_list(x_user_id=x_user_id)
         print("The response of ApiApi->api_prds_list:\n")
         pprint(api_response)
     except Exception as e:
@@ -704,7 +703,6 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **int**| A page number within the paginated result set. | [optional] 
  **x_user_id** | **str**| User ID (required when using API key) | [optional] 
 
 ### Return type
@@ -1144,7 +1142,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **api_programs_list**
-> List[Program] api_programs_list(search=search, ordering=ordering, page=page, x_user_id=x_user_id, tags=tags, limit=limit)
+> List[Program] api_programs_list(search=search, ordering=ordering, x_user_id=x_user_id, tags=tags, limit=limit)
 
 
 
@@ -1172,13 +1170,12 @@ with pp_sdk.ApiClient(configuration) as api_client:
     api_instance = pp_sdk.ApiApi(api_client)
     search = 'search_example' # str | Search in name and description (optional)
     ordering = 'ordering_example' # str | Sort by field (prefix with '-' for descending) (optional)
-    page = 56 # int | A page number within the paginated result set. (optional)
     x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
     tags = 'tags_example' # str | Filter by tags (comma-separated) (optional)
     limit = 56 # int | Limit the number of results (optional)
 
     try:
-        api_response = api_instance.api_programs_list(search=search, ordering=ordering, page=page, x_user_id=x_user_id, tags=tags, limit=limit)
+        api_response = api_instance.api_programs_list(search=search, ordering=ordering, x_user_id=x_user_id, tags=tags, limit=limit)
         print("The response of ApiApi->api_programs_list:\n")
         pprint(api_response)
     except Exception as e:
@@ -1194,7 +1191,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **search** | **str**| Search in name and description | [optional] 
  **ordering** | **str**| Sort by field (prefix with &#39;-&#39; for descending) | [optional] 
- **page** | **int**| A page number within the paginated result set. | [optional] 
  **x_user_id** | **str**| User ID (required when using API key) | [optional] 
  **tags** | **str**| Filter by tags (comma-separated) | [optional] 
  **limit** | **int**| Limit the number of results | [optional] 

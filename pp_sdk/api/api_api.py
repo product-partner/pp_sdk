@@ -2557,7 +2557,6 @@ class ApiApi:
     @validate_call
     def api_prds_list(
         self,
-        page: Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None,
         x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
@@ -2576,8 +2575,6 @@ class ApiApi:
 
         Get a list of all PRDs for the authenticated user's organization.
 
-        :param page: A page number within the paginated result set.
-        :type page: int
         :param x_user_id: User ID (required when using API key)
         :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -2603,7 +2600,6 @@ class ApiApi:
         """ # noqa: E501
 
         _param = self._api_prds_list_serialize(
-            page=page,
             x_user_id=x_user_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2628,7 +2624,6 @@ class ApiApi:
     @validate_call
     def api_prds_list_with_http_info(
         self,
-        page: Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None,
         x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
@@ -2647,8 +2642,6 @@ class ApiApi:
 
         Get a list of all PRDs for the authenticated user's organization.
 
-        :param page: A page number within the paginated result set.
-        :type page: int
         :param x_user_id: User ID (required when using API key)
         :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -2674,7 +2667,6 @@ class ApiApi:
         """ # noqa: E501
 
         _param = self._api_prds_list_serialize(
-            page=page,
             x_user_id=x_user_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2699,7 +2691,6 @@ class ApiApi:
     @validate_call
     def api_prds_list_without_preload_content(
         self,
-        page: Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None,
         x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
@@ -2718,8 +2709,6 @@ class ApiApi:
 
         Get a list of all PRDs for the authenticated user's organization.
 
-        :param page: A page number within the paginated result set.
-        :type page: int
         :param x_user_id: User ID (required when using API key)
         :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -2745,7 +2734,6 @@ class ApiApi:
         """ # noqa: E501
 
         _param = self._api_prds_list_serialize(
-            page=page,
             x_user_id=x_user_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2765,7 +2753,6 @@ class ApiApi:
 
     def _api_prds_list_serialize(
         self,
-        page,
         x_user_id,
         _request_auth,
         _content_type,
@@ -2787,10 +2774,6 @@ class ApiApi:
 
         # process the path parameters
         # process the query parameters
-        if page is not None:
-            
-            _query_params.append(('page', page))
-            
         # process the header parameters
         if x_user_id is not None:
             _header_params['X-User-ID'] = x_user_id
@@ -4536,7 +4519,6 @@ class ApiApi:
         self,
         search: Annotated[Optional[StrictStr], Field(description="Search in name and description")] = None,
         ordering: Annotated[Optional[StrictStr], Field(description="Sort by field (prefix with '-' for descending)")] = None,
-        page: Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None,
         x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         tags: Annotated[Optional[StrictStr], Field(description="Filter by tags (comma-separated)")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="Limit the number of results")] = None,
@@ -4561,8 +4543,6 @@ class ApiApi:
         :type search: str
         :param ordering: Sort by field (prefix with '-' for descending)
         :type ordering: str
-        :param page: A page number within the paginated result set.
-        :type page: int
         :param x_user_id: User ID (required when using API key)
         :type x_user_id: str
         :param tags: Filter by tags (comma-separated)
@@ -4594,7 +4574,6 @@ class ApiApi:
         _param = self._api_programs_list_serialize(
             search=search,
             ordering=ordering,
-            page=page,
             x_user_id=x_user_id,
             tags=tags,
             limit=limit,
@@ -4623,7 +4602,6 @@ class ApiApi:
         self,
         search: Annotated[Optional[StrictStr], Field(description="Search in name and description")] = None,
         ordering: Annotated[Optional[StrictStr], Field(description="Sort by field (prefix with '-' for descending)")] = None,
-        page: Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None,
         x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         tags: Annotated[Optional[StrictStr], Field(description="Filter by tags (comma-separated)")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="Limit the number of results")] = None,
@@ -4648,8 +4626,6 @@ class ApiApi:
         :type search: str
         :param ordering: Sort by field (prefix with '-' for descending)
         :type ordering: str
-        :param page: A page number within the paginated result set.
-        :type page: int
         :param x_user_id: User ID (required when using API key)
         :type x_user_id: str
         :param tags: Filter by tags (comma-separated)
@@ -4681,7 +4657,6 @@ class ApiApi:
         _param = self._api_programs_list_serialize(
             search=search,
             ordering=ordering,
-            page=page,
             x_user_id=x_user_id,
             tags=tags,
             limit=limit,
@@ -4710,7 +4685,6 @@ class ApiApi:
         self,
         search: Annotated[Optional[StrictStr], Field(description="Search in name and description")] = None,
         ordering: Annotated[Optional[StrictStr], Field(description="Sort by field (prefix with '-' for descending)")] = None,
-        page: Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None,
         x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         tags: Annotated[Optional[StrictStr], Field(description="Filter by tags (comma-separated)")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="Limit the number of results")] = None,
@@ -4735,8 +4709,6 @@ class ApiApi:
         :type search: str
         :param ordering: Sort by field (prefix with '-' for descending)
         :type ordering: str
-        :param page: A page number within the paginated result set.
-        :type page: int
         :param x_user_id: User ID (required when using API key)
         :type x_user_id: str
         :param tags: Filter by tags (comma-separated)
@@ -4768,7 +4740,6 @@ class ApiApi:
         _param = self._api_programs_list_serialize(
             search=search,
             ordering=ordering,
-            page=page,
             x_user_id=x_user_id,
             tags=tags,
             limit=limit,
@@ -4792,7 +4763,6 @@ class ApiApi:
         self,
         search,
         ordering,
-        page,
         x_user_id,
         tags,
         limit,
@@ -4823,10 +4793,6 @@ class ApiApi:
         if ordering is not None:
             
             _query_params.append(('ordering', ordering))
-            
-        if page is not None:
-            
-            _query_params.append(('page', page))
             
         if tags is not None:
             

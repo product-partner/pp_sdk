@@ -185,7 +185,7 @@ class Configuration:
         """Adding retries to override urllib3 default value 3
         """
         # Enable client side validation
-        self.client_side_validation = False
+        self.client_side_validation = True
 
         self.socket_options = None
         """Options to pass down to the underlying urllib3 socket
@@ -385,7 +385,7 @@ class Configuration:
                "OS: {env}\n"\
                "Python Version: {pyversion}\n"\
                "Version of the API: v1\n"\
-               "SDK Package Version: 0.1.11".\
+               "SDK Package Version: 0.1.12".\
                format(env=sys.platform, pyversion=sys.version)
 
     def get_host_settings(self):
