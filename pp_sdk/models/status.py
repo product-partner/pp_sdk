@@ -29,7 +29,7 @@ class Status(BaseModel):
     Status
     """
     id: Optional[StrictStr] = None
-    goal: Optional[GoalBase] = None
+    goal: GoalBase = Field(...)
     status: Optional[StrictStr] = None
     var_date: Optional[datetime] = Field(default=None, alias="date")
     status_note: Optional[StrictStr] = None

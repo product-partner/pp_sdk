@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] [readonly] 
-**goal** | [**GoalBase**](GoalBase.md) |  | [optional] 
+**goal** | [**GoalBase**](GoalBase.md) |  | 
 **status** | **str** |  | [optional] 
 **var_date** | **datetime** |  | [optional] 
 **status_note** | **str** |  | [optional] 

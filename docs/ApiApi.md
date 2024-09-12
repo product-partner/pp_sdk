@@ -12,12 +12,12 @@ Method | HTTP request | Description
 [**api_goals_search_list**](ApiApi.md#api_goals_search_list) | **GET** /api/goals/search/ | 
 [**api_goals_update**](ApiApi.md#api_goals_update) | **PUT** /api/goals/{goal_id}/ | 
 [**api_prds_create**](ApiApi.md#api_prds_create) | **POST** /api/prds/ | 
-[**api_prds_delete**](ApiApi.md#api_prds_delete) | **DELETE** /api/prds/{id}/ | 
+[**api_prds_delete**](ApiApi.md#api_prds_delete) | **DELETE** /api/prds/{prd_id}/ | 
 [**api_prds_list**](ApiApi.md#api_prds_list) | **GET** /api/prds/ | 
-[**api_prds_partial_update**](ApiApi.md#api_prds_partial_update) | **PATCH** /api/prds/{id}/ | 
-[**api_prds_read**](ApiApi.md#api_prds_read) | **GET** /api/prds/{id}/ | 
+[**api_prds_partial_update**](ApiApi.md#api_prds_partial_update) | **PATCH** /api/prds/{prd_id}/ | 
+[**api_prds_read**](ApiApi.md#api_prds_read) | **GET** /api/prds/{prd_id}/ | 
 [**api_prds_search_list**](ApiApi.md#api_prds_search_list) | **GET** /api/prds/search/ | 
-[**api_prds_update**](ApiApi.md#api_prds_update) | **PUT** /api/prds/{id}/ | 
+[**api_prds_update**](ApiApi.md#api_prds_update) | **PUT** /api/prds/{prd_id}/ | 
 [**api_programs_create**](ApiApi.md#api_programs_create) | **POST** /api/programs/ | 
 [**api_programs_delete**](ApiApi.md#api_programs_delete) | **DELETE** /api/programs/{program_id}/ | 
 [**api_programs_list**](ApiApi.md#api_programs_list) | **GET** /api/programs/ | 
@@ -36,12 +36,12 @@ Method | HTTP request | Description
 [**api_user_update_partial_update**](ApiApi.md#api_user_update_partial_update) | **PATCH** /api/user/update/ | 
 [**api_user_update_update**](ApiApi.md#api_user_update_update) | **PUT** /api/user/update/ | 
 [**api_userstories_create**](ApiApi.md#api_userstories_create) | **POST** /api/userstories/ | 
-[**api_userstories_delete**](ApiApi.md#api_userstories_delete) | **DELETE** /api/userstories/{id}/ | 
+[**api_userstories_delete**](ApiApi.md#api_userstories_delete) | **DELETE** /api/userstories/{userstory_id}/ | 
 [**api_userstories_list**](ApiApi.md#api_userstories_list) | **GET** /api/userstories/ | 
-[**api_userstories_partial_update**](ApiApi.md#api_userstories_partial_update) | **PATCH** /api/userstories/{id}/ | 
-[**api_userstories_read**](ApiApi.md#api_userstories_read) | **GET** /api/userstories/{id}/ | 
+[**api_userstories_partial_update**](ApiApi.md#api_userstories_partial_update) | **PATCH** /api/userstories/{userstory_id}/ | 
+[**api_userstories_read**](ApiApi.md#api_userstories_read) | **GET** /api/userstories/{userstory_id}/ | 
 [**api_userstories_search_list**](ApiApi.md#api_userstories_search_list) | **GET** /api/userstories/search | 
-[**api_userstories_update**](ApiApi.md#api_userstories_update) | **PUT** /api/userstories/{id}/ | 
+[**api_userstories_update**](ApiApi.md#api_userstories_update) | **PUT** /api/userstories/{userstory_id}/ | 
 
 
 # **api_goals_create**
@@ -586,7 +586,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **api_prds_delete**
-> api_prds_delete(id, x_user_id=x_user_id)
+> api_prds_delete(prd_id, x_user_id=x_user_id)
 
 
 
@@ -612,11 +612,11 @@ configuration = pp_sdk.Configuration(
 with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pp_sdk.ApiApi(api_client)
-    id = 'id_example' # str | 
+    prd_id = 'prd_id_example' # str | 
     x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
     try:
-        api_instance.api_prds_delete(id, x_user_id=x_user_id)
+        api_instance.api_prds_delete(prd_id, x_user_id=x_user_id)
     except Exception as e:
         print("Exception when calling ApiApi->api_prds_delete: %s\n" % e)
 ```
@@ -627,7 +627,7 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**|  | 
+ **prd_id** | **str**|  | 
  **x_user_id** | **str**| User ID (required when using API key) | [optional] 
 
 ### Return type
@@ -717,7 +717,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **api_prds_partial_update**
-> PRDDetail api_prds_partial_update(id, data, x_user_id=x_user_id)
+> PRDDetail api_prds_partial_update(prd_id, data, x_user_id=x_user_id)
 
 
 
@@ -744,12 +744,12 @@ configuration = pp_sdk.Configuration(
 with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pp_sdk.ApiApi(api_client)
-    id = 'id_example' # str | 
+    prd_id = 'prd_id_example' # str | 
     data = pp_sdk.PRDDetail() # PRDDetail | 
     x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
     try:
-        api_response = api_instance.api_prds_partial_update(id, data, x_user_id=x_user_id)
+        api_response = api_instance.api_prds_partial_update(prd_id, data, x_user_id=x_user_id)
         print("The response of ApiApi->api_prds_partial_update:\n")
         pprint(api_response)
     except Exception as e:
@@ -762,7 +762,7 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**|  | 
+ **prd_id** | **str**|  | 
  **data** | [**PRDDetail**](PRDDetail.md)|  | 
  **x_user_id** | **str**| User ID (required when using API key) | [optional] 
 
@@ -787,7 +787,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **api_prds_read**
-> PRDDetail api_prds_read(id, x_user_id=x_user_id)
+> PRDDetail api_prds_read(prd_id, x_user_id=x_user_id)
 
 
 
@@ -814,11 +814,11 @@ configuration = pp_sdk.Configuration(
 with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pp_sdk.ApiApi(api_client)
-    id = 'id_example' # str | 
+    prd_id = 'prd_id_example' # str | 
     x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
     try:
-        api_response = api_instance.api_prds_read(id, x_user_id=x_user_id)
+        api_response = api_instance.api_prds_read(prd_id, x_user_id=x_user_id)
         print("The response of ApiApi->api_prds_read:\n")
         pprint(api_response)
     except Exception as e:
@@ -831,7 +831,7 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**|  | 
+ **prd_id** | **str**|  | 
  **x_user_id** | **str**| User ID (required when using API key) | [optional] 
 
 ### Return type
@@ -923,7 +923,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **api_prds_update**
-> PRDDetail api_prds_update(id, data, x_user_id=x_user_id)
+> PRDDetail api_prds_update(prd_id, data, x_user_id=x_user_id)
 
 
 
@@ -950,12 +950,12 @@ configuration = pp_sdk.Configuration(
 with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pp_sdk.ApiApi(api_client)
-    id = 'id_example' # str | 
+    prd_id = 'prd_id_example' # str | 
     data = pp_sdk.PRDDetail() # PRDDetail | 
     x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
     try:
-        api_response = api_instance.api_prds_update(id, data, x_user_id=x_user_id)
+        api_response = api_instance.api_prds_update(prd_id, data, x_user_id=x_user_id)
         print("The response of ApiApi->api_prds_update:\n")
         pprint(api_response)
     except Exception as e:
@@ -968,7 +968,7 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**|  | 
+ **prd_id** | **str**|  | 
  **data** | [**PRDDetail**](PRDDetail.md)|  | 
  **x_user_id** | **str**| User ID (required when using API key) | [optional] 
 
@@ -2219,7 +2219,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **api_userstories_delete**
-> api_userstories_delete(id, x_user_id=x_user_id)
+> api_userstories_delete(userstory_id, x_user_id=x_user_id)
 
 
 
@@ -2245,11 +2245,11 @@ configuration = pp_sdk.Configuration(
 with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pp_sdk.ApiApi(api_client)
-    id = 'id_example' # str | 
+    userstory_id = 'userstory_id_example' # str | 
     x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
     try:
-        api_instance.api_userstories_delete(id, x_user_id=x_user_id)
+        api_instance.api_userstories_delete(userstory_id, x_user_id=x_user_id)
     except Exception as e:
         print("Exception when calling ApiApi->api_userstories_delete: %s\n" % e)
 ```
@@ -2260,7 +2260,7 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**|  | 
+ **userstory_id** | **str**|  | 
  **x_user_id** | **str**| User ID (required when using API key) | [optional] 
 
 ### Return type
@@ -2350,7 +2350,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **api_userstories_partial_update**
-> UserStory api_userstories_partial_update(id, data, x_user_id=x_user_id)
+> UserStory api_userstories_partial_update(userstory_id, data, x_user_id=x_user_id)
 
 
 
@@ -2377,12 +2377,12 @@ configuration = pp_sdk.Configuration(
 with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pp_sdk.ApiApi(api_client)
-    id = 'id_example' # str | 
+    userstory_id = 'userstory_id_example' # str | 
     data = pp_sdk.UserStory() # UserStory | 
     x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
     try:
-        api_response = api_instance.api_userstories_partial_update(id, data, x_user_id=x_user_id)
+        api_response = api_instance.api_userstories_partial_update(userstory_id, data, x_user_id=x_user_id)
         print("The response of ApiApi->api_userstories_partial_update:\n")
         pprint(api_response)
     except Exception as e:
@@ -2395,7 +2395,7 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**|  | 
+ **userstory_id** | **str**|  | 
  **data** | [**UserStory**](UserStory.md)|  | 
  **x_user_id** | **str**| User ID (required when using API key) | [optional] 
 
@@ -2420,7 +2420,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **api_userstories_read**
-> UserStory api_userstories_read(id, x_user_id=x_user_id)
+> UserStory api_userstories_read(userstory_id, x_user_id=x_user_id)
 
 
 
@@ -2447,11 +2447,11 @@ configuration = pp_sdk.Configuration(
 with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pp_sdk.ApiApi(api_client)
-    id = 'id_example' # str | 
+    userstory_id = 'userstory_id_example' # str | 
     x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
     try:
-        api_response = api_instance.api_userstories_read(id, x_user_id=x_user_id)
+        api_response = api_instance.api_userstories_read(userstory_id, x_user_id=x_user_id)
         print("The response of ApiApi->api_userstories_read:\n")
         pprint(api_response)
     except Exception as e:
@@ -2464,7 +2464,7 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**|  | 
+ **userstory_id** | **str**|  | 
  **x_user_id** | **str**| User ID (required when using API key) | [optional] 
 
 ### Return type
@@ -2562,7 +2562,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **api_userstories_update**
-> UserStory api_userstories_update(id, data, x_user_id=x_user_id)
+> UserStory api_userstories_update(userstory_id, data, x_user_id=x_user_id)
 
 
 
@@ -2589,12 +2589,12 @@ configuration = pp_sdk.Configuration(
 with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pp_sdk.ApiApi(api_client)
-    id = 'id_example' # str | 
+    userstory_id = 'userstory_id_example' # str | 
     data = pp_sdk.UserStory() # UserStory | 
     x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
     try:
-        api_response = api_instance.api_userstories_update(id, data, x_user_id=x_user_id)
+        api_response = api_instance.api_userstories_update(userstory_id, data, x_user_id=x_user_id)
         print("The response of ApiApi->api_userstories_update:\n")
         pprint(api_response)
     except Exception as e:
@@ -2607,7 +2607,7 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**|  | 
+ **userstory_id** | **str**|  | 
  **data** | [**UserStory**](UserStory.md)|  | 
  **x_user_id** | **str**| User ID (required when using API key) | [optional] 
 

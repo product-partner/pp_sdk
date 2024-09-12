@@ -1262,18 +1262,18 @@ class ApiApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def api_prds_delete(self, id : StrictStr, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> None:  # noqa: E501
+    def api_prds_delete(self, prd_id : StrictStr, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> None:  # noqa: E501
         """api_prds_delete  # noqa: E501
 
         Delete a specific PRD.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_prds_delete(id, x_user_id, async_req=True)
+        >>> thread = api.api_prds_delete(prd_id, x_user_id, async_req=True)
         >>> result = thread.get()
 
-        :param id: (required)
-        :type id: str
+        :param prd_id: (required)
+        :type prd_id: str
         :param x_user_id: User ID (required when using API key)
         :type x_user_id: str
         :param async_req: Whether to execute the request asynchronously.
@@ -1291,21 +1291,21 @@ class ApiApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the api_prds_delete_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.api_prds_delete_with_http_info(id, x_user_id, **kwargs)  # noqa: E501
+        return self.api_prds_delete_with_http_info(prd_id, x_user_id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def api_prds_delete_with_http_info(self, id : StrictStr, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def api_prds_delete_with_http_info(self, prd_id : StrictStr, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """api_prds_delete  # noqa: E501
 
         Delete a specific PRD.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_prds_delete_with_http_info(id, x_user_id, async_req=True)
+        >>> thread = api.api_prds_delete_with_http_info(prd_id, x_user_id, async_req=True)
         >>> result = thread.get()
 
-        :param id: (required)
-        :type id: str
+        :param prd_id: (required)
+        :type prd_id: str
         :param x_user_id: User ID (required when using API key)
         :type x_user_id: str
         :param async_req: Whether to execute the request asynchronously.
@@ -1336,7 +1336,7 @@ class ApiApi:
         _params = locals()
 
         _all_params = [
-            'id',
+            'prd_id',
             'x_user_id'
         ]
         _all_params.extend(
@@ -1365,8 +1365,8 @@ class ApiApi:
 
         # process the path parameters
         _path_params = {}
-        if _params['id'] is not None:
-            _path_params['id'] = _params['id']
+        if _params['prd_id'] is not None:
+            _path_params['prd_id'] = _params['prd_id']
 
 
         # process the query parameters
@@ -1387,7 +1387,7 @@ class ApiApi:
         _response_types_map = {}
 
         return self.api_client.call_api(
-            '/api/prds/{id}/', 'DELETE',
+            '/api/prds/{prd_id}/', 'DELETE',
             _path_params,
             _query_params,
             _header_params,
@@ -1544,18 +1544,18 @@ class ApiApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def api_prds_partial_update(self, id : StrictStr, data : PRDDetail, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> PRDDetail:  # noqa: E501
+    def api_prds_partial_update(self, prd_id : StrictStr, data : PRDDetail, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> PRDDetail:  # noqa: E501
         """api_prds_partial_update  # noqa: E501
 
         Partially update a specific PRD.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_prds_partial_update(id, data, x_user_id, async_req=True)
+        >>> thread = api.api_prds_partial_update(prd_id, data, x_user_id, async_req=True)
         >>> result = thread.get()
 
-        :param id: (required)
-        :type id: str
+        :param prd_id: (required)
+        :type prd_id: str
         :param data: (required)
         :type data: PRDDetail
         :param x_user_id: User ID (required when using API key)
@@ -1575,21 +1575,21 @@ class ApiApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the api_prds_partial_update_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.api_prds_partial_update_with_http_info(id, data, x_user_id, **kwargs)  # noqa: E501
+        return self.api_prds_partial_update_with_http_info(prd_id, data, x_user_id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def api_prds_partial_update_with_http_info(self, id : StrictStr, data : PRDDetail, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def api_prds_partial_update_with_http_info(self, prd_id : StrictStr, data : PRDDetail, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """api_prds_partial_update  # noqa: E501
 
         Partially update a specific PRD.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_prds_partial_update_with_http_info(id, data, x_user_id, async_req=True)
+        >>> thread = api.api_prds_partial_update_with_http_info(prd_id, data, x_user_id, async_req=True)
         >>> result = thread.get()
 
-        :param id: (required)
-        :type id: str
+        :param prd_id: (required)
+        :type prd_id: str
         :param data: (required)
         :type data: PRDDetail
         :param x_user_id: User ID (required when using API key)
@@ -1622,7 +1622,7 @@ class ApiApi:
         _params = locals()
 
         _all_params = [
-            'id',
+            'prd_id',
             'data',
             'x_user_id'
         ]
@@ -1652,8 +1652,8 @@ class ApiApi:
 
         # process the path parameters
         _path_params = {}
-        if _params['id'] is not None:
-            _path_params['id'] = _params['id']
+        if _params['prd_id'] is not None:
+            _path_params['prd_id'] = _params['prd_id']
 
 
         # process the query parameters
@@ -1690,7 +1690,7 @@ class ApiApi:
         }
 
         return self.api_client.call_api(
-            '/api/prds/{id}/', 'PATCH',
+            '/api/prds/{prd_id}/', 'PATCH',
             _path_params,
             _query_params,
             _header_params,
@@ -1707,18 +1707,18 @@ class ApiApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def api_prds_read(self, id : StrictStr, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> PRDDetail:  # noqa: E501
+    def api_prds_read(self, prd_id : StrictStr, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> PRDDetail:  # noqa: E501
         """api_prds_read  # noqa: E501
 
         Get details of a specific PRD.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_prds_read(id, x_user_id, async_req=True)
+        >>> thread = api.api_prds_read(prd_id, x_user_id, async_req=True)
         >>> result = thread.get()
 
-        :param id: (required)
-        :type id: str
+        :param prd_id: (required)
+        :type prd_id: str
         :param x_user_id: User ID (required when using API key)
         :type x_user_id: str
         :param async_req: Whether to execute the request asynchronously.
@@ -1736,21 +1736,21 @@ class ApiApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the api_prds_read_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.api_prds_read_with_http_info(id, x_user_id, **kwargs)  # noqa: E501
+        return self.api_prds_read_with_http_info(prd_id, x_user_id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def api_prds_read_with_http_info(self, id : StrictStr, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def api_prds_read_with_http_info(self, prd_id : StrictStr, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """api_prds_read  # noqa: E501
 
         Get details of a specific PRD.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_prds_read_with_http_info(id, x_user_id, async_req=True)
+        >>> thread = api.api_prds_read_with_http_info(prd_id, x_user_id, async_req=True)
         >>> result = thread.get()
 
-        :param id: (required)
-        :type id: str
+        :param prd_id: (required)
+        :type prd_id: str
         :param x_user_id: User ID (required when using API key)
         :type x_user_id: str
         :param async_req: Whether to execute the request asynchronously.
@@ -1781,7 +1781,7 @@ class ApiApi:
         _params = locals()
 
         _all_params = [
-            'id',
+            'prd_id',
             'x_user_id'
         ]
         _all_params.extend(
@@ -1810,8 +1810,8 @@ class ApiApi:
 
         # process the path parameters
         _path_params = {}
-        if _params['id'] is not None:
-            _path_params['id'] = _params['id']
+        if _params['prd_id'] is not None:
+            _path_params['prd_id'] = _params['prd_id']
 
 
         # process the query parameters
@@ -1838,7 +1838,7 @@ class ApiApi:
         }
 
         return self.api_client.call_api(
-            '/api/prds/{id}/', 'GET',
+            '/api/prds/{prd_id}/', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -2003,18 +2003,18 @@ class ApiApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def api_prds_update(self, id : StrictStr, data : PRDDetail, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> PRDDetail:  # noqa: E501
+    def api_prds_update(self, prd_id : StrictStr, data : PRDDetail, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> PRDDetail:  # noqa: E501
         """api_prds_update  # noqa: E501
 
         Update a specific PRD.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_prds_update(id, data, x_user_id, async_req=True)
+        >>> thread = api.api_prds_update(prd_id, data, x_user_id, async_req=True)
         >>> result = thread.get()
 
-        :param id: (required)
-        :type id: str
+        :param prd_id: (required)
+        :type prd_id: str
         :param data: (required)
         :type data: PRDDetail
         :param x_user_id: User ID (required when using API key)
@@ -2034,21 +2034,21 @@ class ApiApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the api_prds_update_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.api_prds_update_with_http_info(id, data, x_user_id, **kwargs)  # noqa: E501
+        return self.api_prds_update_with_http_info(prd_id, data, x_user_id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def api_prds_update_with_http_info(self, id : StrictStr, data : PRDDetail, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def api_prds_update_with_http_info(self, prd_id : StrictStr, data : PRDDetail, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """api_prds_update  # noqa: E501
 
         Update a specific PRD.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_prds_update_with_http_info(id, data, x_user_id, async_req=True)
+        >>> thread = api.api_prds_update_with_http_info(prd_id, data, x_user_id, async_req=True)
         >>> result = thread.get()
 
-        :param id: (required)
-        :type id: str
+        :param prd_id: (required)
+        :type prd_id: str
         :param data: (required)
         :type data: PRDDetail
         :param x_user_id: User ID (required when using API key)
@@ -2081,7 +2081,7 @@ class ApiApi:
         _params = locals()
 
         _all_params = [
-            'id',
+            'prd_id',
             'data',
             'x_user_id'
         ]
@@ -2111,8 +2111,8 @@ class ApiApi:
 
         # process the path parameters
         _path_params = {}
-        if _params['id'] is not None:
-            _path_params['id'] = _params['id']
+        if _params['prd_id'] is not None:
+            _path_params['prd_id'] = _params['prd_id']
 
 
         # process the query parameters
@@ -2149,7 +2149,7 @@ class ApiApi:
         }
 
         return self.api_client.call_api(
-            '/api/prds/{id}/', 'PUT',
+            '/api/prds/{prd_id}/', 'PUT',
             _path_params,
             _query_params,
             _header_params,
@@ -4926,18 +4926,18 @@ class ApiApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def api_userstories_delete(self, id : StrictStr, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> None:  # noqa: E501
+    def api_userstories_delete(self, userstory_id : StrictStr, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> None:  # noqa: E501
         """api_userstories_delete  # noqa: E501
 
         Delete a specific user story.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_userstories_delete(id, x_user_id, async_req=True)
+        >>> thread = api.api_userstories_delete(userstory_id, x_user_id, async_req=True)
         >>> result = thread.get()
 
-        :param id: (required)
-        :type id: str
+        :param userstory_id: (required)
+        :type userstory_id: str
         :param x_user_id: User ID (required when using API key)
         :type x_user_id: str
         :param async_req: Whether to execute the request asynchronously.
@@ -4955,21 +4955,21 @@ class ApiApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the api_userstories_delete_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.api_userstories_delete_with_http_info(id, x_user_id, **kwargs)  # noqa: E501
+        return self.api_userstories_delete_with_http_info(userstory_id, x_user_id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def api_userstories_delete_with_http_info(self, id : StrictStr, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def api_userstories_delete_with_http_info(self, userstory_id : StrictStr, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """api_userstories_delete  # noqa: E501
 
         Delete a specific user story.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_userstories_delete_with_http_info(id, x_user_id, async_req=True)
+        >>> thread = api.api_userstories_delete_with_http_info(userstory_id, x_user_id, async_req=True)
         >>> result = thread.get()
 
-        :param id: (required)
-        :type id: str
+        :param userstory_id: (required)
+        :type userstory_id: str
         :param x_user_id: User ID (required when using API key)
         :type x_user_id: str
         :param async_req: Whether to execute the request asynchronously.
@@ -5000,7 +5000,7 @@ class ApiApi:
         _params = locals()
 
         _all_params = [
-            'id',
+            'userstory_id',
             'x_user_id'
         ]
         _all_params.extend(
@@ -5029,8 +5029,8 @@ class ApiApi:
 
         # process the path parameters
         _path_params = {}
-        if _params['id'] is not None:
-            _path_params['id'] = _params['id']
+        if _params['userstory_id'] is not None:
+            _path_params['userstory_id'] = _params['userstory_id']
 
 
         # process the query parameters
@@ -5051,7 +5051,7 @@ class ApiApi:
         _response_types_map = {}
 
         return self.api_client.call_api(
-            '/api/userstories/{id}/', 'DELETE',
+            '/api/userstories/{userstory_id}/', 'DELETE',
             _path_params,
             _query_params,
             _header_params,
@@ -5208,18 +5208,18 @@ class ApiApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def api_userstories_partial_update(self, id : StrictStr, data : UserStory, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> UserStory:  # noqa: E501
+    def api_userstories_partial_update(self, userstory_id : StrictStr, data : UserStory, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> UserStory:  # noqa: E501
         """api_userstories_partial_update  # noqa: E501
 
         Partially update a specific user story.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_userstories_partial_update(id, data, x_user_id, async_req=True)
+        >>> thread = api.api_userstories_partial_update(userstory_id, data, x_user_id, async_req=True)
         >>> result = thread.get()
 
-        :param id: (required)
-        :type id: str
+        :param userstory_id: (required)
+        :type userstory_id: str
         :param data: (required)
         :type data: UserStory
         :param x_user_id: User ID (required when using API key)
@@ -5239,21 +5239,21 @@ class ApiApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the api_userstories_partial_update_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.api_userstories_partial_update_with_http_info(id, data, x_user_id, **kwargs)  # noqa: E501
+        return self.api_userstories_partial_update_with_http_info(userstory_id, data, x_user_id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def api_userstories_partial_update_with_http_info(self, id : StrictStr, data : UserStory, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def api_userstories_partial_update_with_http_info(self, userstory_id : StrictStr, data : UserStory, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """api_userstories_partial_update  # noqa: E501
 
         Partially update a specific user story.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_userstories_partial_update_with_http_info(id, data, x_user_id, async_req=True)
+        >>> thread = api.api_userstories_partial_update_with_http_info(userstory_id, data, x_user_id, async_req=True)
         >>> result = thread.get()
 
-        :param id: (required)
-        :type id: str
+        :param userstory_id: (required)
+        :type userstory_id: str
         :param data: (required)
         :type data: UserStory
         :param x_user_id: User ID (required when using API key)
@@ -5286,7 +5286,7 @@ class ApiApi:
         _params = locals()
 
         _all_params = [
-            'id',
+            'userstory_id',
             'data',
             'x_user_id'
         ]
@@ -5316,8 +5316,8 @@ class ApiApi:
 
         # process the path parameters
         _path_params = {}
-        if _params['id'] is not None:
-            _path_params['id'] = _params['id']
+        if _params['userstory_id'] is not None:
+            _path_params['userstory_id'] = _params['userstory_id']
 
 
         # process the query parameters
@@ -5354,7 +5354,7 @@ class ApiApi:
         }
 
         return self.api_client.call_api(
-            '/api/userstories/{id}/', 'PATCH',
+            '/api/userstories/{userstory_id}/', 'PATCH',
             _path_params,
             _query_params,
             _header_params,
@@ -5371,18 +5371,18 @@ class ApiApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def api_userstories_read(self, id : StrictStr, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> UserStory:  # noqa: E501
+    def api_userstories_read(self, userstory_id : StrictStr, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> UserStory:  # noqa: E501
         """api_userstories_read  # noqa: E501
 
         Get details of a specific user story.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_userstories_read(id, x_user_id, async_req=True)
+        >>> thread = api.api_userstories_read(userstory_id, x_user_id, async_req=True)
         >>> result = thread.get()
 
-        :param id: (required)
-        :type id: str
+        :param userstory_id: (required)
+        :type userstory_id: str
         :param x_user_id: User ID (required when using API key)
         :type x_user_id: str
         :param async_req: Whether to execute the request asynchronously.
@@ -5400,21 +5400,21 @@ class ApiApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the api_userstories_read_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.api_userstories_read_with_http_info(id, x_user_id, **kwargs)  # noqa: E501
+        return self.api_userstories_read_with_http_info(userstory_id, x_user_id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def api_userstories_read_with_http_info(self, id : StrictStr, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def api_userstories_read_with_http_info(self, userstory_id : StrictStr, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """api_userstories_read  # noqa: E501
 
         Get details of a specific user story.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_userstories_read_with_http_info(id, x_user_id, async_req=True)
+        >>> thread = api.api_userstories_read_with_http_info(userstory_id, x_user_id, async_req=True)
         >>> result = thread.get()
 
-        :param id: (required)
-        :type id: str
+        :param userstory_id: (required)
+        :type userstory_id: str
         :param x_user_id: User ID (required when using API key)
         :type x_user_id: str
         :param async_req: Whether to execute the request asynchronously.
@@ -5445,7 +5445,7 @@ class ApiApi:
         _params = locals()
 
         _all_params = [
-            'id',
+            'userstory_id',
             'x_user_id'
         ]
         _all_params.extend(
@@ -5474,8 +5474,8 @@ class ApiApi:
 
         # process the path parameters
         _path_params = {}
-        if _params['id'] is not None:
-            _path_params['id'] = _params['id']
+        if _params['userstory_id'] is not None:
+            _path_params['userstory_id'] = _params['userstory_id']
 
 
         # process the query parameters
@@ -5502,7 +5502,7 @@ class ApiApi:
         }
 
         return self.api_client.call_api(
-            '/api/userstories/{id}/', 'GET',
+            '/api/userstories/{userstory_id}/', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -5691,18 +5691,18 @@ class ApiApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def api_userstories_update(self, id : StrictStr, data : UserStory, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> UserStory:  # noqa: E501
+    def api_userstories_update(self, userstory_id : StrictStr, data : UserStory, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> UserStory:  # noqa: E501
         """api_userstories_update  # noqa: E501
 
         Update a specific user story.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_userstories_update(id, data, x_user_id, async_req=True)
+        >>> thread = api.api_userstories_update(userstory_id, data, x_user_id, async_req=True)
         >>> result = thread.get()
 
-        :param id: (required)
-        :type id: str
+        :param userstory_id: (required)
+        :type userstory_id: str
         :param data: (required)
         :type data: UserStory
         :param x_user_id: User ID (required when using API key)
@@ -5722,21 +5722,21 @@ class ApiApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the api_userstories_update_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.api_userstories_update_with_http_info(id, data, x_user_id, **kwargs)  # noqa: E501
+        return self.api_userstories_update_with_http_info(userstory_id, data, x_user_id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def api_userstories_update_with_http_info(self, id : StrictStr, data : UserStory, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def api_userstories_update_with_http_info(self, userstory_id : StrictStr, data : UserStory, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """api_userstories_update  # noqa: E501
 
         Update a specific user story.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_userstories_update_with_http_info(id, data, x_user_id, async_req=True)
+        >>> thread = api.api_userstories_update_with_http_info(userstory_id, data, x_user_id, async_req=True)
         >>> result = thread.get()
 
-        :param id: (required)
-        :type id: str
+        :param userstory_id: (required)
+        :type userstory_id: str
         :param data: (required)
         :type data: UserStory
         :param x_user_id: User ID (required when using API key)
@@ -5769,7 +5769,7 @@ class ApiApi:
         _params = locals()
 
         _all_params = [
-            'id',
+            'userstory_id',
             'data',
             'x_user_id'
         ]
@@ -5799,8 +5799,8 @@ class ApiApi:
 
         # process the path parameters
         _path_params = {}
-        if _params['id'] is not None:
-            _path_params['id'] = _params['id']
+        if _params['userstory_id'] is not None:
+            _path_params['userstory_id'] = _params['userstory_id']
 
 
         # process the query parameters
@@ -5837,7 +5837,7 @@ class ApiApi:
         }
 
         return self.api_client.call_api(
-            '/api/userstories/{id}/', 'PUT',
+            '/api/userstories/{userstory_id}/', 'PUT',
             _path_params,
             _query_params,
             _header_params,
