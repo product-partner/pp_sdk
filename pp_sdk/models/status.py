@@ -29,7 +29,8 @@ class Status(BaseModel):
     Status
     """
     id: Optional[StrictStr] = None
-    goal: GoalBase = Field(...)
+    goal: StrictStr = Field(...)
+    goal_details: Optional[GoalBase] = None
     status: Optional[StrictStr] = None
     var_date: Optional[datetime] = Field(default=None, alias="date")
     status_note: Optional[StrictStr] = None
@@ -37,7 +38,7 @@ class Status(BaseModel):
     publishing_state: Optional[StrictStr] = None
     created_by: Optional[User] = None
     created_date: Optional[datetime] = None
-    __properties = ["id", "goal", "status", "date", "status_note", "path_to_green", "publishing_state", "created_by", "created_date"]
+    __properties = ["id", "goal", "goal_details", "status", "date", "status_note", "path_to_green", "publishing_state", "created_by", "created_date"]
 
     @validator('status')
     def status_validate_enum(cls, value):
@@ -85,9 +86,9 @@ class Status(BaseModel):
                             "created_date",
                           },
                           exclude_none=True)
-        # override the default output from pydantic by calling `to_dict()` of goal
-        if self.goal:
-            _dict['goal'] = self.goal.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of goal_details
+        if self.goal_details:
+            _dict['goal_details'] = self.goal_details.to_dict()
         # override the default output from pydantic by calling `to_dict()` of created_by
         if self.created_by:
             _dict['created_by'] = self.created_by.to_dict()
@@ -119,7 +120,8 @@ class Status(BaseModel):
 
         _obj = Status.parse_obj({
             "id": obj.get("id"),
-            "goal": GoalBase.from_dict(obj.get("goal")) if obj.get("goal") is not None else None,
+            "goal": obj.get("goal"),
+            "goal_details": GoalBase.from_dict(obj.get("goal_details")) if obj.get("goal_details") is not None else None,
             "status": obj.get("status"),
             "var_date": obj.get("date"),
             "status_note": obj.get("status_note"),
