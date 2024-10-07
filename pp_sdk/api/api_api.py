@@ -24,8 +24,8 @@ from pydantic import Field, StrictInt, StrictStr
 
 from typing import List, Optional
 
-from pp_sdk.models.api_goals_picker_list200_response import ApiGoalsPickerList200Response
 from pp_sdk.models.goal import Goal
+from pp_sdk.models.goal_picker import GoalPicker
 from pp_sdk.models.prd import PRD
 from pp_sdk.models.program import Program
 from pp_sdk.models.program_picker import ProgramPicker
@@ -688,17 +688,24 @@ class ApiApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def api_goals_picker_list(self, page : Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None, **kwargs) -> ApiGoalsPickerList200Response:  # noqa: E501
+    def api_goals_picker_list(self, page : Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None, status : Annotated[Optional[StrictStr], Field(description="Optional filter to include all goals, pass 'all' or another status.")] = None, search : Annotated[Optional[StrictStr], Field(description="Search term for goal name, language, or description")] = None, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> List[GoalPicker]:  # noqa: E501
         """api_goals_picker_list  # noqa: E501
 
+        List or Search for Goals in picker, a reduced set of functions and returned values but lighter weight and faster.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_goals_picker_list(page, async_req=True)
+        >>> thread = api.api_goals_picker_list(page, status, search, x_user_id, async_req=True)
         >>> result = thread.get()
 
         :param page: A page number within the paginated result set.
         :type page: int
+        :param status: Optional filter to include all goals, pass 'all' or another status.
+        :type status: str
+        :param search: Search term for goal name, language, or description
+        :type search: str
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request.
@@ -708,26 +715,33 @@ class ApiApi:
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: ApiGoalsPickerList200Response
+        :rtype: List[GoalPicker]
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
             message = "Error! Please call the api_goals_picker_list_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.api_goals_picker_list_with_http_info(page, **kwargs)  # noqa: E501
+        return self.api_goals_picker_list_with_http_info(page, status, search, x_user_id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def api_goals_picker_list_with_http_info(self, page : Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def api_goals_picker_list_with_http_info(self, page : Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None, status : Annotated[Optional[StrictStr], Field(description="Optional filter to include all goals, pass 'all' or another status.")] = None, search : Annotated[Optional[StrictStr], Field(description="Search term for goal name, language, or description")] = None, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """api_goals_picker_list  # noqa: E501
 
+        List or Search for Goals in picker, a reduced set of functions and returned values but lighter weight and faster.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_goals_picker_list_with_http_info(page, async_req=True)
+        >>> thread = api.api_goals_picker_list_with_http_info(page, status, search, x_user_id, async_req=True)
         >>> result = thread.get()
 
         :param page: A page number within the paginated result set.
         :type page: int
+        :param status: Optional filter to include all goals, pass 'all' or another status.
+        :type status: str
+        :param search: Search term for goal name, language, or description
+        :type search: str
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -750,13 +764,16 @@ class ApiApi:
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(ApiGoalsPickerList200Response, status_code(int), headers(HTTPHeaderDict))
+        :rtype: tuple(List[GoalPicker], status_code(int), headers(HTTPHeaderDict))
         """
 
         _params = locals()
 
         _all_params = [
-            'page'
+            'page',
+            'status',
+            'search',
+            'x_user_id'
         ]
         _all_params.extend(
             [
@@ -790,8 +807,17 @@ class ApiApi:
         if _params.get('page') is not None:  # noqa: E501
             _query_params.append(('page', _params['page']))
 
+        if _params.get('status') is not None:  # noqa: E501
+            _query_params.append(('status', _params['status']))
+
+        if _params.get('search') is not None:  # noqa: E501
+            _query_params.append(('search', _params['search']))
+
         # process the header parameters
         _header_params = dict(_params.get('_headers', {}))
+        if _params['x_user_id'] is not None:
+            _header_params['X-User-ID'] = _params['x_user_id']
+
         # process the form parameters
         _form_params = []
         _files = {}
@@ -805,7 +831,7 @@ class ApiApi:
         _auth_settings = []  # noqa: E501
 
         _response_types_map = {
-            '200': "ApiGoalsPickerList200Response",
+            '200': "List[GoalPicker]",
         }
 
         return self.api_client.call_api(

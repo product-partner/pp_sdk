@@ -330,9 +330,11 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **api_goals_picker_list**
-> ApiGoalsPickerList200Response api_goals_picker_list(page=page)
+> List[GoalPicker] api_goals_picker_list(page=page, status=status, search=search, x_user_id=x_user_id)
 
 
+
+List or Search for Goals in picker, a reduced set of functions and returned values but lighter weight and faster.
 
 ### Example
 
@@ -340,7 +342,7 @@ No authorization required
 import time
 import os
 import pp_sdk
-from pp_sdk.models.api_goals_picker_list200_response import ApiGoalsPickerList200Response
+from pp_sdk.models.goal_picker import GoalPicker
 from pp_sdk.rest import ApiException
 from pprint import pprint
 
@@ -356,9 +358,12 @@ with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pp_sdk.ApiApi(api_client)
     page = 56 # int | A page number within the paginated result set. (optional)
+    status = 'status_example' # str | Optional filter to include all goals, pass 'all' or another status. (optional)
+    search = 'search_example' # str | Search term for goal name, language, or description (optional)
+    x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
     try:
-        api_response = api_instance.api_goals_picker_list(page=page)
+        api_response = api_instance.api_goals_picker_list(page=page, status=status, search=search, x_user_id=x_user_id)
         print("The response of ApiApi->api_goals_picker_list:\n")
         pprint(api_response)
     except Exception as e:
@@ -372,10 +377,13 @@ with pp_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| A page number within the paginated result set. | [optional] 
+ **status** | **str**| Optional filter to include all goals, pass &#39;all&#39; or another status. | [optional] 
+ **search** | **str**| Search term for goal name, language, or description | [optional] 
+ **x_user_id** | **str**| User ID (required when using API key) | [optional] 
 
 ### Return type
 
-[**ApiGoalsPickerList200Response**](ApiGoalsPickerList200Response.md)
+[**List[GoalPicker]**](GoalPicker.md)
 
 ### Authorization
 
