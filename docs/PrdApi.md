@@ -286,9 +286,11 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **prd_template_read**
-> PRDTemplate prd_template_read(id)
+> PRDTemplate prd_template_read(id, x_user_id=x_user_id)
 
 
+
+Get a PRD template.
 
 ### Example
 
@@ -312,9 +314,10 @@ with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pp_sdk.PrdApi(api_client)
     id = 'id_example' # str | 
+    x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
     try:
-        api_response = api_instance.prd_template_read(id)
+        api_response = api_instance.prd_template_read(id, x_user_id=x_user_id)
         print("The response of PrdApi->prd_template_read:\n")
         pprint(api_response)
     except Exception as e:
@@ -328,6 +331,7 @@ with pp_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**|  | 
+ **x_user_id** | **str**| User ID (required when using API key) | [optional] 
 
 ### Return type
 

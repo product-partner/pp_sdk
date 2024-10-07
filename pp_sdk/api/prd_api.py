@@ -663,17 +663,20 @@ class PrdApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def prd_template_read(self, id : StrictStr, **kwargs) -> PRDTemplate:  # noqa: E501
+    def prd_template_read(self, id : StrictStr, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> PRDTemplate:  # noqa: E501
         """prd_template_read  # noqa: E501
 
+        Get a PRD template.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.prd_template_read(id, async_req=True)
+        >>> thread = api.prd_template_read(id, x_user_id, async_req=True)
         >>> result = thread.get()
 
         :param id: (required)
         :type id: str
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request.
@@ -689,20 +692,23 @@ class PrdApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the prd_template_read_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.prd_template_read_with_http_info(id, **kwargs)  # noqa: E501
+        return self.prd_template_read_with_http_info(id, x_user_id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def prd_template_read_with_http_info(self, id : StrictStr, **kwargs) -> ApiResponse:  # noqa: E501
+    def prd_template_read_with_http_info(self, id : StrictStr, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """prd_template_read  # noqa: E501
 
+        Get a PRD template.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.prd_template_read_with_http_info(id, async_req=True)
+        >>> thread = api.prd_template_read_with_http_info(id, x_user_id, async_req=True)
         >>> result = thread.get()
 
         :param id: (required)
         :type id: str
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -731,7 +737,8 @@ class PrdApi:
         _params = locals()
 
         _all_params = [
-            'id'
+            'id',
+            'x_user_id'
         ]
         _all_params.extend(
             [
@@ -767,6 +774,9 @@ class PrdApi:
         _query_params = []
         # process the header parameters
         _header_params = dict(_params.get('_headers', {}))
+        if _params['x_user_id'] is not None:
+            _header_params['X-User-ID'] = _params['x_user_id']
+
         # process the form parameters
         _form_params = []
         _files = {}

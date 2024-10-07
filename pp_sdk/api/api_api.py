@@ -24,8 +24,8 @@ from pydantic import Field, StrictInt, StrictStr
 
 from typing import List, Optional
 
+from pp_sdk.models.api_goals_picker_list200_response_inner import ApiGoalsPickerList200ResponseInner
 from pp_sdk.models.goal import Goal
-from pp_sdk.models.goal_picker import GoalPicker
 from pp_sdk.models.prd import PRD
 from pp_sdk.models.program import Program
 from pp_sdk.models.program_picker import ProgramPicker
@@ -688,7 +688,7 @@ class ApiApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def api_goals_picker_list(self, page : Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None, status : Annotated[Optional[StrictStr], Field(description="Optional filter to include all goals, pass 'all' or another status.")] = None, search : Annotated[Optional[StrictStr], Field(description="Search term for goal name, language, or description")] = None, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> List[GoalPicker]:  # noqa: E501
+    def api_goals_picker_list(self, page : Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None, status : Annotated[Optional[StrictStr], Field(description="Optional filter to include all goals, pass 'all' or another status.")] = None, search : Annotated[Optional[StrictStr], Field(description="Search term for goal name, language, or description")] = None, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> List[ApiGoalsPickerList200ResponseInner]:  # noqa: E501
         """api_goals_picker_list  # noqa: E501
 
         List or Search for Goals in picker, a reduced set of functions and returned values but lighter weight and faster.  # noqa: E501
@@ -715,7 +715,7 @@ class ApiApi:
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: List[GoalPicker]
+        :rtype: List[ApiGoalsPickerList200ResponseInner]
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
@@ -764,7 +764,7 @@ class ApiApi:
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(List[GoalPicker], status_code(int), headers(HTTPHeaderDict))
+        :rtype: tuple(List[ApiGoalsPickerList200ResponseInner], status_code(int), headers(HTTPHeaderDict))
         """
 
         _params = locals()
@@ -831,7 +831,7 @@ class ApiApi:
         _auth_settings = []  # noqa: E501
 
         _response_types_map = {
-            '200': "List[GoalPicker]",
+            '200': "List[ApiGoalsPickerList200ResponseInner]",
         }
 
         return self.api_client.call_api(

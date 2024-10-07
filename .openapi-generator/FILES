@@ -5,10 +5,10 @@
 README.md
 docs/Address.md
 docs/ApiApi.md
+docs/ApiGoalsPickerList200ResponseInner.md
 docs/ChatApi.md
 docs/Goal.md
 docs/GoalBase.md
-docs/GoalPicker.md
 docs/LeadersApi.md
 docs/Organization.md
 docs/PRD.md
@@ -33,9 +33,9 @@ pp_sdk/configuration.py
 pp_sdk/exceptions.py
 pp_sdk/models/__init__.py
 pp_sdk/models/address.py
+pp_sdk/models/api_goals_picker_list200_response_inner.py
 pp_sdk/models/goal.py
 pp_sdk/models/goal_base.py
-pp_sdk/models/goal_picker.py
 pp_sdk/models/organization.py
 pp_sdk/models/prd.py
 pp_sdk/models/prd_template.py
@@ -53,4 +53,5 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_api_goals_picker_list200_response_inner.py
 tox.ini
