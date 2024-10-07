@@ -21,9 +21,8 @@ List or create PRD templates for the authenticated user's organization.
 
 ### Example
 
+
 ```python
-import time
-import os
 import pp_sdk
 from pp_sdk.models.prd_template import PRDTemplate
 from pp_sdk.rest import ApiException
@@ -55,6 +54,7 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **data** | [**PRDTemplate**](PRDTemplate.md)|  | 
@@ -74,6 +74,7 @@ No authorization required
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** |  |  -  |
@@ -89,9 +90,8 @@ Retrieve, update or delete a PRD template.
 
 ### Example
 
+
 ```python
-import time
-import os
 import pp_sdk
 from pp_sdk.rest import ApiException
 from pprint import pprint
@@ -120,6 +120,7 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**|  | 
@@ -139,6 +140,7 @@ No authorization required
  - **Accept**: Not defined
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | No Content |  -  |
@@ -154,9 +156,8 @@ List PRD templates for the authenticated user's organization.
 
 ### Example
 
+
 ```python
-import time
-import os
 import pp_sdk
 from pp_sdk.models.prd_template import PRDTemplate
 from pp_sdk.rest import ApiException
@@ -189,6 +190,7 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| A page number within the paginated result set. | [optional] 
@@ -209,6 +211,7 @@ No authorization required
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** |  |  -  |
@@ -224,9 +227,8 @@ Retrieve, update or delete a PRD template.
 
 ### Example
 
+
 ```python
-import time
-import os
 import pp_sdk
 from pp_sdk.models.prd_template import PRDTemplate
 from pp_sdk.rest import ApiException
@@ -259,6 +261,7 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**|  | 
@@ -279,6 +282,7 @@ No authorization required
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** |  |  -  |
@@ -294,9 +298,8 @@ Get a PRD template.
 
 ### Example
 
+
 ```python
-import time
-import os
 import pp_sdk
 from pp_sdk.models.prd_template import PRDTemplate
 from pp_sdk.rest import ApiException
@@ -328,6 +331,7 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**|  | 
@@ -347,6 +351,7 @@ No authorization required
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** |  |  -  |
@@ -362,9 +367,8 @@ Retrieve, update or delete a PRD template.
 
 ### Example
 
+
 ```python
-import time
-import os
 import pp_sdk
 from pp_sdk.models.prd_template import PRDTemplate
 from pp_sdk.rest import ApiException
@@ -397,6 +401,7 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**|  | 
@@ -417,6 +422,7 @@ No authorization required
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** |  |  -  |

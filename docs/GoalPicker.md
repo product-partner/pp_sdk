@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | 
@@ -18,7 +19,7 @@ json = "{}"
 # create an instance of GoalPicker from a JSON string
 goal_picker_instance = GoalPicker.from_json(json)
 # print the JSON string representation of the object
-print GoalPicker.to_json()
+print(GoalPicker.to_json())
 
 # convert the object into a dict
 goal_picker_dict = goal_picker_instance.to_dict()

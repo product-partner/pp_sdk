@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] [readonly] 
@@ -22,7 +23,7 @@ json = "{}"
 # create an instance of PRDTemplate from a JSON string
 prd_template_instance = PRDTemplate.from_json(json)
 # print the JSON string representation of the object
-print PRDTemplate.to_json()
+print(PRDTemplate.to_json())
 
 # convert the object into a dict
 prd_template_dict = prd_template_instance.to_dict()

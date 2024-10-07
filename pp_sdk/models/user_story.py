@@ -19,116 +19,140 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import Any, Dict, Optional
-from pydantic import BaseModel, StrictStr, constr, validator
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
+from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
+from typing import Optional, Set
+from typing_extensions import Self
 
 class UserStory(BaseModel):
     """
     UserStory
-    """
+    """ # noqa: E501
     id: Optional[StrictStr] = None
-    prd: Optional[constr(strict=True, min_length=1)] = None
-    as_a: Optional[constr(strict=True, max_length=255)] = None
-    i_want_to: Optional[constr(strict=True, max_length=255)] = None
-    so_that: Optional[constr(strict=True, max_length=255)] = None
+    prd: Optional[Annotated[str, Field(min_length=1, strict=True)]] = None
+    as_a: Optional[Annotated[str, Field(strict=True, max_length=255)]] = None
+    i_want_to: Optional[Annotated[str, Field(strict=True, max_length=255)]] = None
+    so_that: Optional[Annotated[str, Field(strict=True, max_length=255)]] = None
     freetext_override: Optional[StrictStr] = None
     created_date: Optional[datetime] = None
     modified_date: Optional[datetime] = None
     due_date: Optional[datetime] = None
     status: Optional[StrictStr] = None
-    priority: Optional[constr(strict=True, max_length=50)] = None
+    priority: Optional[Annotated[str, Field(strict=True, max_length=50)]] = None
     tags: Optional[StrictStr] = None
     created_by: Optional[StrictStr] = None
     additional_properties: Dict[str, Any] = {}
-    __properties = ["id", "prd", "as_a", "i_want_to", "so_that", "freetext_override", "created_date", "modified_date", "due_date", "status", "priority", "tags", "created_by"]
+    __properties: ClassVar[List[str]] = ["id", "prd", "as_a", "i_want_to", "so_that", "freetext_override", "created_date", "modified_date", "due_date", "status", "priority", "tags", "created_by"]
 
-    @validator('status')
+    @field_validator('status')
     def status_validate_enum(cls, value):
         """Validates the enum"""
         if value is None:
             return value
 
-        if value not in ('RED', 'YELLOW', 'GREEN', 'NOT_STARTED', 'COMPLETED', 'COMPLETED_LATE', 'CANCELLED', 'DEFERRED'):
+        if value not in set(['RED', 'YELLOW', 'GREEN', 'NOT_STARTED', 'COMPLETED', 'COMPLETED_LATE', 'CANCELLED', 'DEFERRED']):
             raise ValueError("must be one of enum values ('RED', 'YELLOW', 'GREEN', 'NOT_STARTED', 'COMPLETED', 'COMPLETED_LATE', 'CANCELLED', 'DEFERRED')")
         return value
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> UserStory:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of UserStory from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                            "id",
-                            "created_date",
-                            "modified_date",
-                            "tags",
-                            "created_by",
-                            "additional_properties"
-                          },
-                          exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * Fields in `self.additional_properties` are added to the output dict.
+        """
+        excluded_fields: Set[str] = set([
+            "id",
+            "created_date",
+            "modified_date",
+            "tags",
+            "created_by",
+            "additional_properties",
+        ])
+
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
                 _dict[_key] = _value
 
         # set to None if as_a (nullable) is None
-        # and __fields_set__ contains the field
-        if self.as_a is None and "as_a" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.as_a is None and "as_a" in self.model_fields_set:
             _dict['as_a'] = None
 
         # set to None if i_want_to (nullable) is None
-        # and __fields_set__ contains the field
-        if self.i_want_to is None and "i_want_to" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.i_want_to is None and "i_want_to" in self.model_fields_set:
             _dict['i_want_to'] = None
 
         # set to None if so_that (nullable) is None
-        # and __fields_set__ contains the field
-        if self.so_that is None and "so_that" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.so_that is None and "so_that" in self.model_fields_set:
             _dict['so_that'] = None
 
         # set to None if freetext_override (nullable) is None
-        # and __fields_set__ contains the field
-        if self.freetext_override is None and "freetext_override" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.freetext_override is None and "freetext_override" in self.model_fields_set:
             _dict['freetext_override'] = None
 
         # set to None if due_date (nullable) is None
-        # and __fields_set__ contains the field
-        if self.due_date is None and "due_date" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.due_date is None and "due_date" in self.model_fields_set:
             _dict['due_date'] = None
 
         # set to None if priority (nullable) is None
-        # and __fields_set__ contains the field
-        if self.priority is None and "priority" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.priority is None and "priority" in self.model_fields_set:
             _dict['priority'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> UserStory:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of UserStory from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return UserStory.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = UserStory.parse_obj({
+        _obj = cls.model_validate({
             "id": obj.get("id"),
             "prd": obj.get("prd"),
             "as_a": obj.get("as_a"),

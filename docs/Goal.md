@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] [readonly] 
@@ -32,7 +33,7 @@ json = "{}"
 # create an instance of Goal from a JSON string
 goal_instance = Goal.from_json(json)
 # print the JSON string representation of the object
-print Goal.to_json()
+print(Goal.to_json())
 
 # convert the object into a dict
 goal_dict = goal_instance.to_dict()

@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] [readonly] 
@@ -26,7 +27,7 @@ json = "{}"
 # create an instance of Status from a JSON string
 status_instance = Status.from_json(json)
 # print the JSON string representation of the object
-print Status.to_json()
+print(Status.to_json())
 
 # convert the object into a dict
 status_dict = status_instance.to_dict()
