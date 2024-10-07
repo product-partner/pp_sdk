@@ -330,7 +330,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **api_goals_picker_list**
-> List[ApiGoalsPickerList200ResponseInner] api_goals_picker_list(page=page, status=status, search=search, x_user_id=x_user_id)
+> List[GoalPicker] api_goals_picker_list(page=page, status=status, search=search, x_user_id=x_user_id)
 
 
 
@@ -342,7 +342,7 @@ List or Search for Goals in picker, a reduced set of functions and returned valu
 import time
 import os
 import pp_sdk
-from pp_sdk.models.api_goals_picker_list200_response_inner import ApiGoalsPickerList200ResponseInner
+from pp_sdk.models.goal_picker import GoalPicker
 from pp_sdk.rest import ApiException
 from pprint import pprint
 
@@ -383,7 +383,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List[ApiGoalsPickerList200ResponseInner]**](ApiGoalsPickerList200ResponseInner.md)
+[**List[GoalPicker]**](GoalPicker.md)
 
 ### Authorization
 
@@ -397,7 +397,7 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Successful response |  -  |
+**200** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
