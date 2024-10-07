@@ -330,7 +330,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **api_goals_picker_list**
-> List[GoalPicker] api_goals_picker_list()
+> ApiGoalsPickerList200Response api_goals_picker_list(page=page)
 
 
 
@@ -340,7 +340,7 @@ No authorization required
 import time
 import os
 import pp_sdk
-from pp_sdk.models.goal_picker import GoalPicker
+from pp_sdk.models.api_goals_picker_list200_response import ApiGoalsPickerList200Response
 from pp_sdk.rest import ApiException
 from pprint import pprint
 
@@ -355,9 +355,10 @@ configuration = pp_sdk.Configuration(
 with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pp_sdk.ApiApi(api_client)
+    page = 56 # int | A page number within the paginated result set. (optional)
 
     try:
-        api_response = api_instance.api_goals_picker_list()
+        api_response = api_instance.api_goals_picker_list(page=page)
         print("The response of ApiApi->api_goals_picker_list:\n")
         pprint(api_response)
     except Exception as e:
@@ -367,11 +368,14 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **page** | **int**| A page number within the paginated result set. | [optional] 
 
 ### Return type
 
-[**List[GoalPicker]**](GoalPicker.md)
+[**ApiGoalsPickerList200Response**](ApiGoalsPickerList200Response.md)
 
 ### Authorization
 

@@ -15,7 +15,7 @@
 """  # noqa: E501
 
 
-__version__ = "0.1.20"
+__version__ = "0.1.21"
 
 # import apis into sdk package
 from pp_sdk.api.api_api import ApiApi
@@ -36,6 +36,7 @@ from pp_sdk.exceptions import ApiException
 
 # import models into sdk package
 from pp_sdk.models.address import Address
+from pp_sdk.models.api_goals_picker_list200_response import ApiGoalsPickerList200Response
 from pp_sdk.models.goal import Goal
 from pp_sdk.models.goal_base import GoalBase
 from pp_sdk.models.goal_picker import GoalPicker

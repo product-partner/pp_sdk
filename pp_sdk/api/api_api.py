@@ -24,8 +24,8 @@ from pydantic import Field, StrictInt, StrictStr
 
 from typing import List, Optional
 
+from pp_sdk.models.api_goals_picker_list200_response import ApiGoalsPickerList200Response
 from pp_sdk.models.goal import Goal
-from pp_sdk.models.goal_picker import GoalPicker
 from pp_sdk.models.prd import PRD
 from pp_sdk.models.program import Program
 from pp_sdk.models.program_picker import ProgramPicker
@@ -688,15 +688,17 @@ class ApiApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def api_goals_picker_list(self, **kwargs) -> List[GoalPicker]:  # noqa: E501
+    def api_goals_picker_list(self, page : Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None, **kwargs) -> ApiGoalsPickerList200Response:  # noqa: E501
         """api_goals_picker_list  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_goals_picker_list(async_req=True)
+        >>> thread = api.api_goals_picker_list(page, async_req=True)
         >>> result = thread.get()
 
+        :param page: A page number within the paginated result set.
+        :type page: int
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request.
@@ -706,24 +708,26 @@ class ApiApi:
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: List[GoalPicker]
+        :rtype: ApiGoalsPickerList200Response
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
             message = "Error! Please call the api_goals_picker_list_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.api_goals_picker_list_with_http_info(**kwargs)  # noqa: E501
+        return self.api_goals_picker_list_with_http_info(page, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def api_goals_picker_list_with_http_info(self, **kwargs) -> ApiResponse:  # noqa: E501
+    def api_goals_picker_list_with_http_info(self, page : Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """api_goals_picker_list  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_goals_picker_list_with_http_info(async_req=True)
+        >>> thread = api.api_goals_picker_list_with_http_info(page, async_req=True)
         >>> result = thread.get()
 
+        :param page: A page number within the paginated result set.
+        :type page: int
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -746,12 +750,13 @@ class ApiApi:
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(List[GoalPicker], status_code(int), headers(HTTPHeaderDict))
+        :rtype: tuple(ApiGoalsPickerList200Response, status_code(int), headers(HTTPHeaderDict))
         """
 
         _params = locals()
 
         _all_params = [
+            'page'
         ]
         _all_params.extend(
             [
@@ -782,6 +787,9 @@ class ApiApi:
 
         # process the query parameters
         _query_params = []
+        if _params.get('page') is not None:  # noqa: E501
+            _query_params.append(('page', _params['page']))
+
         # process the header parameters
         _header_params = dict(_params.get('_headers', {}))
         # process the form parameters
@@ -797,7 +805,7 @@ class ApiApi:
         _auth_settings = []  # noqa: E501
 
         _response_types_map = {
-            '200': "List[GoalPicker]",
+            '200': "ApiGoalsPickerList200Response",
         }
 
         return self.api_client.call_api(

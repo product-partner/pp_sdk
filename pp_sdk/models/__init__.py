@@ -16,6 +16,7 @@
 
 # import models into model package
 from pp_sdk.models.address import Address
+from pp_sdk.models.api_goals_picker_list200_response import ApiGoalsPickerList200Response
 from pp_sdk.models.goal import Goal
 from pp_sdk.models.goal_base import GoalBase
 from pp_sdk.models.goal_picker import GoalPicker
