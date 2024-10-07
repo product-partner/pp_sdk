@@ -53,5 +53,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_api_goals_picker_list200_response_inner.py
 tox.ini
