@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pp_sdk"
-version = "0.1.25"
+version = "0.1.26"
 description = "Product Partner API"
 authors = ["OpenAPI Generator Community <chris@productpartner.ai>"]
 license = "MIT License"
