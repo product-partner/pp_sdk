@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import Optional
+from typing import Any, Dict, Optional
 from pydantic import BaseModel, Field, StrictStr, conint, constr
 
 class Goal(BaseModel):
@@ -43,6 +43,7 @@ class Goal(BaseModel):
     version_summary: Optional[StrictStr] = None
     created_by: Optional[StrictStr] = None
     status: Optional[StrictStr] = None
+    additional_properties: Dict[str, Any] = {}
     __properties = ["id", "name", "goal_language", "description", "why_it_matters", "created_date", "modified_date", "original_due_date", "current_due_date", "owner_users", "programs", "stakeholder_users", "tags", "version", "version_summary", "created_by", "status"]
 
     class Config:
@@ -76,8 +77,14 @@ class Goal(BaseModel):
                             "tags",
                             "created_by",
                             "status",
+                            "additional_properties"
                           },
                           exclude_none=True)
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         # set to None if description (nullable) is None
         # and __fields_set__ contains the field
         if self.description is None and "description" in self.__fields_set__:
@@ -123,6 +130,11 @@ class Goal(BaseModel):
             "created_by": obj.get("created_by"),
             "status": obj.get("status")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

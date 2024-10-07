@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import Optional
+from typing import Any, Dict, Optional
 from pydantic import BaseModel, StrictStr, constr, validator
 
 class UserStory(BaseModel):
@@ -39,6 +39,7 @@ class UserStory(BaseModel):
     priority: Optional[constr(strict=True, max_length=50)] = None
     tags: Optional[StrictStr] = None
     created_by: Optional[StrictStr] = None
+    additional_properties: Dict[str, Any] = {}
     __properties = ["id", "prd", "as_a", "i_want_to", "so_that", "freetext_override", "created_date", "modified_date", "due_date", "status", "priority", "tags", "created_by"]
 
     @validator('status')
@@ -78,8 +79,14 @@ class UserStory(BaseModel):
                             "modified_date",
                             "tags",
                             "created_by",
+                            "additional_properties"
                           },
                           exclude_none=True)
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         # set to None if as_a (nullable) is None
         # and __fields_set__ contains the field
         if self.as_a is None and "as_a" in self.__fields_set__:
@@ -136,6 +143,11 @@ class UserStory(BaseModel):
             "tags": obj.get("tags"),
             "created_by": obj.get("created_by")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

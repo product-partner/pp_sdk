@@ -40,6 +40,7 @@ class User(BaseModel):
     address: Optional[Address] = None
     user_facts: Optional[Dict[str, Any]] = None
     walkthrough_status: Optional[Dict[str, Any]] = None
+    additional_properties: Dict[str, Any] = {}
     __properties = ["id", "email", "first_name", "last_name", "is_active", "is_staff", "date_joined", "last_login", "organization", "address", "user_facts", "walkthrough_status"]
 
     class Config:
@@ -67,6 +68,7 @@ class User(BaseModel):
                             "id",
                             "date_joined",
                             "last_login",
+                            "additional_properties"
                           },
                           exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of organization
@@ -75,6 +77,11 @@ class User(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of address
         if self.address:
             _dict['address'] = self.address.to_dict()
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         return _dict
 
     @classmethod
@@ -100,6 +107,11 @@ class User(BaseModel):
             "user_facts": obj.get("user_facts"),
             "walkthrough_status": obj.get("walkthrough_status")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

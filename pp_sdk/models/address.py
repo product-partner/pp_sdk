@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 
-
+from typing import Any, Dict
 from pydantic import BaseModel, Field, constr
 
 class Address(BaseModel):
@@ -31,6 +31,7 @@ class Address(BaseModel):
     state: constr(strict=True, max_length=100, min_length=1) = Field(...)
     postal_code: constr(strict=True, max_length=20, min_length=1) = Field(...)
     country: constr(strict=True, max_length=100, min_length=1) = Field(...)
+    additional_properties: Dict[str, Any] = {}
     __properties = ["street_address", "city", "state", "postal_code", "country"]
 
     class Config:
@@ -55,8 +56,14 @@ class Address(BaseModel):
         """Returns the dictionary representation of the model using alias"""
         _dict = self.dict(by_alias=True,
                           exclude={
+                            "additional_properties"
                           },
                           exclude_none=True)
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         return _dict
 
     @classmethod
@@ -75,6 +82,11 @@ class Address(BaseModel):
             "postal_code": obj.get("postal_code"),
             "country": obj.get("country")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

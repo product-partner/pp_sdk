@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import Optional
+from typing import Any, Dict, Optional
 from pydantic import BaseModel, Field, StrictStr, constr, validator
 from pp_sdk.models.goal_base import GoalBase
 
@@ -38,6 +38,7 @@ class Status(BaseModel):
     publishing_state: Optional[StrictStr] = None
     created_by: Optional[StrictStr] = None
     created_date: Optional[datetime] = None
+    additional_properties: Dict[str, Any] = {}
     __properties = ["id", "goal", "goal_details", "status", "status_display", "date", "status_note", "path_to_green", "publishing_state", "created_by", "created_date"]
 
     @validator('status')
@@ -86,11 +87,17 @@ class Status(BaseModel):
                             "status_display",
                             "created_by",
                             "created_date",
+                            "additional_properties"
                           },
                           exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of goal_details
         if self.goal_details:
             _dict['goal_details'] = self.goal_details.to_dict()
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         # set to None if var_date (nullable) is None
         # and __fields_set__ contains the field
         if self.var_date is None and "var_date" in self.__fields_set__:
@@ -130,6 +137,11 @@ class Status(BaseModel):
             "created_by": obj.get("created_by"),
             "created_date": obj.get("created_date")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 
-from typing import Optional
+from typing import Any, Dict, Optional
 from pydantic import BaseModel, StrictStr, constr
 
 class ProgramPicker(BaseModel):
@@ -29,6 +29,7 @@ class ProgramPicker(BaseModel):
     id: Optional[StrictStr] = None
     name: Optional[constr(strict=True, min_length=1)] = None
     description: Optional[constr(strict=True, min_length=1)] = None
+    additional_properties: Dict[str, Any] = {}
     __properties = ["id", "name", "description"]
 
     class Config:
@@ -56,8 +57,14 @@ class ProgramPicker(BaseModel):
                             "id",
                             "name",
                             "description",
+                            "additional_properties"
                           },
                           exclude_none=True)
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         # set to None if description (nullable) is None
         # and __fields_set__ contains the field
         if self.description is None and "description" in self.__fields_set__:
@@ -79,6 +86,11 @@ class ProgramPicker(BaseModel):
             "name": obj.get("name"),
             "description": obj.get("description")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

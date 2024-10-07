@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import Optional
+from typing import Any, Dict, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr, constr
 
 class Tag(BaseModel):
@@ -30,6 +30,7 @@ class Tag(BaseModel):
     tag: constr(strict=True, max_length=255, min_length=1) = Field(...)
     archived: Optional[StrictBool] = None
     created_date: Optional[datetime] = None
+    additional_properties: Dict[str, Any] = {}
     __properties = ["id", "tag", "archived", "created_date"]
 
     class Config:
@@ -56,8 +57,14 @@ class Tag(BaseModel):
                           exclude={
                             "id",
                             "created_date",
+                            "additional_properties"
                           },
                           exclude_none=True)
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         # set to None if created_date (nullable) is None
         # and __fields_set__ contains the field
         if self.created_date is None and "created_date" in self.__fields_set__:
@@ -80,6 +87,11 @@ class Tag(BaseModel):
             "archived": obj.get("archived"),
             "created_date": obj.get("created_date")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

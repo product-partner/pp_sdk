@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import Optional
+from typing import Any, Dict, Optional
 from pydantic import BaseModel, Field, StrictStr, constr
 
 class PRDTemplate(BaseModel):
@@ -33,6 +33,7 @@ class PRDTemplate(BaseModel):
     created_by: Optional[StrictStr] = None
     created_date: Optional[datetime] = None
     modified_date: Optional[datetime] = None
+    additional_properties: Dict[str, Any] = {}
     __properties = ["id", "organization", "title", "template", "created_by", "created_date", "modified_date"]
 
     class Config:
@@ -61,8 +62,14 @@ class PRDTemplate(BaseModel):
                             "organization",
                             "created_date",
                             "modified_date",
+                            "additional_properties"
                           },
                           exclude_none=True)
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         return _dict
 
     @classmethod
@@ -83,6 +90,11 @@ class PRDTemplate(BaseModel):
             "created_date": obj.get("created_date"),
             "modified_date": obj.get("modified_date")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

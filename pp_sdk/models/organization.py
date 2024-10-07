@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 
-from typing import Optional
+from typing import Any, Dict, Optional
 from pydantic import BaseModel, Field, StrictStr, constr
 
 class Organization(BaseModel):
@@ -28,6 +28,7 @@ class Organization(BaseModel):
     """
     id: Optional[StrictStr] = None
     name: constr(strict=True, max_length=255, min_length=1) = Field(...)
+    additional_properties: Dict[str, Any] = {}
     __properties = ["id", "name"]
 
     class Config:
@@ -53,8 +54,14 @@ class Organization(BaseModel):
         _dict = self.dict(by_alias=True,
                           exclude={
                             "id",
+                            "additional_properties"
                           },
                           exclude_none=True)
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         return _dict
 
     @classmethod
@@ -70,6 +77,11 @@ class Organization(BaseModel):
             "id": obj.get("id"),
             "name": obj.get("name")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 
