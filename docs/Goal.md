@@ -13,16 +13,14 @@ Name | Type | Description | Notes
 **modified_date** | **datetime** |  | [optional] [readonly] 
 **original_due_date** | **datetime** |  | [optional] 
 **current_due_date** | **datetime** |  | [optional] 
-**prd** | [**List[PRD]**](PRD.md) |  | [optional] [readonly] 
-**owner_users** | **str** |  | [optional] 
-**program** | **str** |  | [optional] 
-**program_dependent_goals** | [**List[Program]**](Program.md) |  | [optional] [readonly] 
-**stakeholders_users** | [**List[User]**](User.md) |  | [optional] [readonly] 
-**tags** | [**List[Tag]**](Tag.md) |  | [optional] [readonly] 
+**owner_users** | **str** |  | [optional] [readonly] 
+**programs** | **str** |  | [optional] [readonly] 
+**stakeholder_users** | **str** |  | [optional] [readonly] 
+**tags** | **str** |  | [optional] [readonly] 
 **version** | **int** |  | [optional] 
 **version_summary** | **str** |  | [optional] 
-**created_by** | [**User**](User.md) |  | [optional] 
-**organization** | **str** |  | [optional] [readonly] 
+**created_by** | **str** |  | [optional] [readonly] 
+**status** | **str** |  | [optional] [readonly] 
 
 ## Example
 

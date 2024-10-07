@@ -19,18 +19,15 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import List, Optional
-from pydantic import BaseModel, Field, StrictStr, conlist, constr, validator
-from pp_sdk.models.organization import Organization
-from pp_sdk.models.tag import Tag
-from pp_sdk.models.user_base import UserBase
+from typing import Optional
+from pydantic import BaseModel, StrictStr, constr, validator
 
 class UserStory(BaseModel):
     """
     UserStory
     """
     id: Optional[StrictStr] = None
-    prd: Optional[StrictStr] = Field(...)
+    prd: Optional[constr(strict=True, min_length=1)] = None
     as_a: Optional[constr(strict=True, max_length=255)] = None
     i_want_to: Optional[constr(strict=True, max_length=255)] = None
     so_that: Optional[constr(strict=True, max_length=255)] = None
@@ -40,10 +37,9 @@ class UserStory(BaseModel):
     due_date: Optional[datetime] = None
     status: Optional[StrictStr] = None
     priority: Optional[constr(strict=True, max_length=50)] = None
-    tags: Optional[conlist(Tag)] = None
-    created_by: Optional[UserBase] = None
-    organization: Optional[Organization] = None
-    __properties = ["id", "prd", "as_a", "i_want_to", "so_that", "freetext_override", "created_date", "modified_date", "due_date", "status", "priority", "tags", "created_by", "organization"]
+    tags: Optional[StrictStr] = None
+    created_by: Optional[StrictStr] = None
+    __properties = ["id", "prd", "as_a", "i_want_to", "so_that", "freetext_override", "created_date", "modified_date", "due_date", "status", "priority", "tags", "created_by"]
 
     @validator('status')
     def status_validate_enum(cls, value):
@@ -81,26 +77,9 @@ class UserStory(BaseModel):
                             "created_date",
                             "modified_date",
                             "tags",
+                            "created_by",
                           },
                           exclude_none=True)
-        # override the default output from pydantic by calling `to_dict()` of each item in tags (list)
-        _items = []
-        if self.tags:
-            for _item in self.tags:
-                if _item:
-                    _items.append(_item.to_dict())
-            _dict['tags'] = _items
-        # override the default output from pydantic by calling `to_dict()` of created_by
-        if self.created_by:
-            _dict['created_by'] = self.created_by.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of organization
-        if self.organization:
-            _dict['organization'] = self.organization.to_dict()
-        # set to None if prd (nullable) is None
-        # and __fields_set__ contains the field
-        if self.prd is None and "prd" in self.__fields_set__:
-            _dict['prd'] = None
-
         # set to None if as_a (nullable) is None
         # and __fields_set__ contains the field
         if self.as_a is None and "as_a" in self.__fields_set__:
@@ -154,9 +133,8 @@ class UserStory(BaseModel):
             "due_date": obj.get("due_date"),
             "status": obj.get("status"),
             "priority": obj.get("priority"),
-            "tags": [Tag.from_dict(_item) for _item in obj.get("tags")] if obj.get("tags") is not None else None,
-            "created_by": UserBase.from_dict(obj.get("created_by")) if obj.get("created_by") is not None else None,
-            "organization": Organization.from_dict(obj.get("organization")) if obj.get("organization") is not None else None
+            "tags": obj.get("tags"),
+            "created_by": obj.get("created_by")
         })
         return _obj
 

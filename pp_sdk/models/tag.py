@@ -18,9 +18,9 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from datetime import datetime
 from typing import Optional
-from pydantic import BaseModel, Field, StrictStr, constr
+from pydantic import BaseModel, Field, StrictBool, StrictStr, constr
 
 class Tag(BaseModel):
     """
@@ -28,7 +28,9 @@ class Tag(BaseModel):
     """
     id: Optional[StrictStr] = None
     tag: constr(strict=True, max_length=255, min_length=1) = Field(...)
-    __properties = ["id", "tag"]
+    archived: Optional[StrictBool] = None
+    created_date: Optional[datetime] = None
+    __properties = ["id", "tag", "archived", "created_date"]
 
     class Config:
         """Pydantic configuration"""
@@ -53,8 +55,14 @@ class Tag(BaseModel):
         _dict = self.dict(by_alias=True,
                           exclude={
                             "id",
+                            "created_date",
                           },
                           exclude_none=True)
+        # set to None if created_date (nullable) is None
+        # and __fields_set__ contains the field
+        if self.created_date is None and "created_date" in self.__fields_set__:
+            _dict['created_date'] = None
+
         return _dict
 
     @classmethod
@@ -68,7 +76,9 @@ class Tag(BaseModel):
 
         _obj = Tag.parse_obj({
             "id": obj.get("id"),
-            "tag": obj.get("tag")
+            "tag": obj.get("tag"),
+            "archived": obj.get("archived"),
+            "created_date": obj.get("created_date")
         })
         return _obj
 

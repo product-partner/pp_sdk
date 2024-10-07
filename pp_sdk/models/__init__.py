@@ -16,18 +16,15 @@
 
 # import models into model package
 from pp_sdk.models.address import Address
-from pp_sdk.models.api_user_search_list200_response import ApiUserSearchList200Response
 from pp_sdk.models.goal import Goal
 from pp_sdk.models.goal_base import GoalBase
+from pp_sdk.models.goal_picker import GoalPicker
 from pp_sdk.models.organization import Organization
 from pp_sdk.models.prd import PRD
-from pp_sdk.models.prd_detail import PRDDetail
+from pp_sdk.models.prd_template import PRDTemplate
 from pp_sdk.models.program import Program
-from pp_sdk.models.program_base import ProgramBase
+from pp_sdk.models.program_picker import ProgramPicker
 from pp_sdk.models.status import Status
 from pp_sdk.models.tag import Tag
 from pp_sdk.models.user import User
-from pp_sdk.models.user_base import UserBase
-from pp_sdk.models.user_create import UserCreate
 from pp_sdk.models.user_story import UserStory
-from pp_sdk.models.user_update import UserUpdate

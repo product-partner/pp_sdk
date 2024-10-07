@@ -24,16 +24,15 @@ from pydantic import Field, StrictInt, StrictStr
 
 from typing import List, Optional
 
-from pp_sdk.models.api_user_search_list200_response import ApiUserSearchList200Response
 from pp_sdk.models.goal import Goal
+from pp_sdk.models.goal_picker import GoalPicker
 from pp_sdk.models.prd import PRD
-from pp_sdk.models.prd_detail import PRDDetail
 from pp_sdk.models.program import Program
+from pp_sdk.models.program_picker import ProgramPicker
 from pp_sdk.models.status import Status
+from pp_sdk.models.tag import Tag
 from pp_sdk.models.user import User
-from pp_sdk.models.user_create import UserCreate
 from pp_sdk.models.user_story import UserStory
-from pp_sdk.models.user_update import UserUpdate
 
 from pp_sdk.api_client import ApiClient
 from pp_sdk.api_response import ApiResponse
@@ -337,16 +336,30 @@ class ApiApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def api_goals_list(self, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> List[Goal]:  # noqa: E501
+    def api_goals_list(self, page : Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None, search : Annotated[Optional[StrictStr], Field(description="Search term for goal name, language, or description")] = None, stakeholder_users : Annotated[Optional[StrictStr], Field(description="Comma-separated list of stakeholder IDs")] = None, status : Annotated[Optional[StrictStr], Field(description="Filter by status")] = None, sort : Annotated[Optional[StrictStr], Field(description="Sort field (prefix with '-' for descending order)")] = None, limit : Annotated[Optional[StrictInt], Field(description="Limit the number of results")] = None, tags : Annotated[Optional[StrictStr], Field(description="Filter by tags, one or more")] = None, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> List[Goal]:  # noqa: E501
         """api_goals_list  # noqa: E501
 
-        Get a list of all goals for the authenticated user.  # noqa: E501
+        List or Search for Goals  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_goals_list(x_user_id, async_req=True)
+        >>> thread = api.api_goals_list(page, search, stakeholder_users, status, sort, limit, tags, x_user_id, async_req=True)
         >>> result = thread.get()
 
+        :param page: A page number within the paginated result set.
+        :type page: int
+        :param search: Search term for goal name, language, or description
+        :type search: str
+        :param stakeholder_users: Comma-separated list of stakeholder IDs
+        :type stakeholder_users: str
+        :param status: Filter by status
+        :type status: str
+        :param sort: Sort field (prefix with '-' for descending order)
+        :type sort: str
+        :param limit: Limit the number of results
+        :type limit: int
+        :param tags: Filter by tags, one or more
+        :type tags: str
         :param x_user_id: User ID (required when using API key)
         :type x_user_id: str
         :param async_req: Whether to execute the request asynchronously.
@@ -364,19 +377,33 @@ class ApiApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the api_goals_list_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.api_goals_list_with_http_info(x_user_id, **kwargs)  # noqa: E501
+        return self.api_goals_list_with_http_info(page, search, stakeholder_users, status, sort, limit, tags, x_user_id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def api_goals_list_with_http_info(self, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def api_goals_list_with_http_info(self, page : Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None, search : Annotated[Optional[StrictStr], Field(description="Search term for goal name, language, or description")] = None, stakeholder_users : Annotated[Optional[StrictStr], Field(description="Comma-separated list of stakeholder IDs")] = None, status : Annotated[Optional[StrictStr], Field(description="Filter by status")] = None, sort : Annotated[Optional[StrictStr], Field(description="Sort field (prefix with '-' for descending order)")] = None, limit : Annotated[Optional[StrictInt], Field(description="Limit the number of results")] = None, tags : Annotated[Optional[StrictStr], Field(description="Filter by tags, one or more")] = None, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """api_goals_list  # noqa: E501
 
-        Get a list of all goals for the authenticated user.  # noqa: E501
+        List or Search for Goals  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_goals_list_with_http_info(x_user_id, async_req=True)
+        >>> thread = api.api_goals_list_with_http_info(page, search, stakeholder_users, status, sort, limit, tags, x_user_id, async_req=True)
         >>> result = thread.get()
 
+        :param page: A page number within the paginated result set.
+        :type page: int
+        :param search: Search term for goal name, language, or description
+        :type search: str
+        :param stakeholder_users: Comma-separated list of stakeholder IDs
+        :type stakeholder_users: str
+        :param status: Filter by status
+        :type status: str
+        :param sort: Sort field (prefix with '-' for descending order)
+        :type sort: str
+        :param limit: Limit the number of results
+        :type limit: int
+        :param tags: Filter by tags, one or more
+        :type tags: str
         :param x_user_id: User ID (required when using API key)
         :type x_user_id: str
         :param async_req: Whether to execute the request asynchronously.
@@ -407,6 +434,13 @@ class ApiApi:
         _params = locals()
 
         _all_params = [
+            'page',
+            'search',
+            'stakeholder_users',
+            'status',
+            'sort',
+            'limit',
+            'tags',
             'x_user_id'
         ]
         _all_params.extend(
@@ -438,6 +472,27 @@ class ApiApi:
 
         # process the query parameters
         _query_params = []
+        if _params.get('page') is not None:  # noqa: E501
+            _query_params.append(('page', _params['page']))
+
+        if _params.get('search') is not None:  # noqa: E501
+            _query_params.append(('search', _params['search']))
+
+        if _params.get('stakeholder_users') is not None:  # noqa: E501
+            _query_params.append(('stakeholder_users', _params['stakeholder_users']))
+
+        if _params.get('status') is not None:  # noqa: E501
+            _query_params.append(('status', _params['status']))
+
+        if _params.get('sort') is not None:  # noqa: E501
+            _query_params.append(('sort', _params['sort']))
+
+        if _params.get('limit') is not None:  # noqa: E501
+            _query_params.append(('limit', _params['limit']))
+
+        if _params.get('tags') is not None:  # noqa: E501
+            _query_params.append(('tags', _params['tags']))
+
         # process the header parameters
         _header_params = dict(_params.get('_headers', {}))
         if _params['x_user_id'] is not None:
@@ -612,10 +667,141 @@ class ApiApi:
 
         _response_types_map = {
             '200': "Goal",
+            '404': None,
         }
 
         return self.api_client.call_api(
             '/api/goals/{goal_id}/', 'PATCH',
+            _path_params,
+            _query_params,
+            _header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            response_types_map=_response_types_map,
+            auth_settings=_auth_settings,
+            async_req=_params.get('async_req'),
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=_params.get('_preload_content', True),
+            _request_timeout=_params.get('_request_timeout'),
+            collection_formats=_collection_formats,
+            _request_auth=_params.get('_request_auth'))
+
+    @validate_arguments
+    def api_goals_picker_list(self, **kwargs) -> List[GoalPicker]:  # noqa: E501
+        """api_goals_picker_list  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.api_goals_picker_list(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _request_timeout: timeout setting for this request.
+               If one number provided, it will be total request
+               timeout. It can also be a pair (tuple) of
+               (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: List[GoalPicker]
+        """
+        kwargs['_return_http_data_only'] = True
+        if '_preload_content' in kwargs:
+            message = "Error! Please call the api_goals_picker_list_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
+            raise ValueError(message)
+        return self.api_goals_picker_list_with_http_info(**kwargs)  # noqa: E501
+
+    @validate_arguments
+    def api_goals_picker_list_with_http_info(self, **kwargs) -> ApiResponse:  # noqa: E501
+        """api_goals_picker_list  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.api_goals_picker_list_with_http_info(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the ApiResponse.data will
+                                 be set to none and raw_data will store the
+                                 HTTP response body without reading/decoding.
+                                 Default is True.
+        :type _preload_content: bool, optional
+        :param _return_http_data_only: response data instead of ApiResponse
+                                       object with status code, headers, etc
+        :type _return_http_data_only: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(List[GoalPicker], status_code(int), headers(HTTPHeaderDict))
+        """
+
+        _params = locals()
+
+        _all_params = [
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
+
+        # validate the arguments
+        for _key, _val in _params['kwargs'].items():
+            if _key not in _all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method api_goals_picker_list" % _key
+                )
+            _params[_key] = _val
+        del _params['kwargs']
+
+        _collection_formats = {}
+
+        # process the path parameters
+        _path_params = {}
+
+        # process the query parameters
+        _query_params = []
+        # process the header parameters
+        _header_params = dict(_params.get('_headers', {}))
+        # process the form parameters
+        _form_params = []
+        _files = {}
+        # process the body parameter
+        _body_params = None
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # authentication setting
+        _auth_settings = []  # noqa: E501
+
+        _response_types_map = {
+            '200': "List[GoalPicker]",
+        }
+
+        return self.api_client.call_api(
+            '/api/goals/picker/', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -772,186 +958,6 @@ class ApiApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def api_goals_search_list(self, search : Annotated[Optional[StrictStr], Field(description="Search term for goal name, language, or description")] = None, stakeholders_users : Annotated[Optional[StrictStr], Field(description="Comma-separated list of stakeholder IDs")] = None, status : Annotated[Optional[StrictStr], Field(description="Filter by status")] = None, sort : Annotated[Optional[StrictStr], Field(description="Sort field (prefix with '-' for descending order)")] = None, limit : Annotated[Optional[StrictInt], Field(description="Limit the number of results")] = None, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> List[Goal]:  # noqa: E501
-        """api_goals_search_list  # noqa: E501
-
-        Search for PRDs  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.api_goals_search_list(search, stakeholders_users, status, sort, limit, x_user_id, async_req=True)
-        >>> result = thread.get()
-
-        :param search: Search term for goal name, language, or description
-        :type search: str
-        :param stakeholders_users: Comma-separated list of stakeholder IDs
-        :type stakeholders_users: str
-        :param status: Filter by status
-        :type status: str
-        :param sort: Sort field (prefix with '-' for descending order)
-        :type sort: str
-        :param limit: Limit the number of results
-        :type limit: int
-        :param x_user_id: User ID (required when using API key)
-        :type x_user_id: str
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _request_timeout: timeout setting for this request.
-               If one number provided, it will be total request
-               timeout. It can also be a pair (tuple) of
-               (connection, read) timeouts.
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: List[Goal]
-        """
-        kwargs['_return_http_data_only'] = True
-        if '_preload_content' in kwargs:
-            message = "Error! Please call the api_goals_search_list_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
-            raise ValueError(message)
-        return self.api_goals_search_list_with_http_info(search, stakeholders_users, status, sort, limit, x_user_id, **kwargs)  # noqa: E501
-
-    @validate_arguments
-    def api_goals_search_list_with_http_info(self, search : Annotated[Optional[StrictStr], Field(description="Search term for goal name, language, or description")] = None, stakeholders_users : Annotated[Optional[StrictStr], Field(description="Comma-separated list of stakeholder IDs")] = None, status : Annotated[Optional[StrictStr], Field(description="Filter by status")] = None, sort : Annotated[Optional[StrictStr], Field(description="Sort field (prefix with '-' for descending order)")] = None, limit : Annotated[Optional[StrictInt], Field(description="Limit the number of results")] = None, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> ApiResponse:  # noqa: E501
-        """api_goals_search_list  # noqa: E501
-
-        Search for PRDs  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.api_goals_search_list_with_http_info(search, stakeholders_users, status, sort, limit, x_user_id, async_req=True)
-        >>> result = thread.get()
-
-        :param search: Search term for goal name, language, or description
-        :type search: str
-        :param stakeholders_users: Comma-separated list of stakeholder IDs
-        :type stakeholders_users: str
-        :param status: Filter by status
-        :type status: str
-        :param sort: Sort field (prefix with '-' for descending order)
-        :type sort: str
-        :param limit: Limit the number of results
-        :type limit: int
-        :param x_user_id: User ID (required when using API key)
-        :type x_user_id: str
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _preload_content: if False, the ApiResponse.data will
-                                 be set to none and raw_data will store the
-                                 HTTP response body without reading/decoding.
-                                 Default is True.
-        :type _preload_content: bool, optional
-        :param _return_http_data_only: response data instead of ApiResponse
-                                       object with status code, headers, etc
-        :type _return_http_data_only: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :type _content_type: string, optional: force content-type for the request
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: tuple(List[Goal], status_code(int), headers(HTTPHeaderDict))
-        """
-
-        _params = locals()
-
-        _all_params = [
-            'search',
-            'stakeholders_users',
-            'status',
-            'sort',
-            'limit',
-            'x_user_id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
-
-        # validate the arguments
-        for _key, _val in _params['kwargs'].items():
-            if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method api_goals_search_list" % _key
-                )
-            _params[_key] = _val
-        del _params['kwargs']
-
-        _collection_formats = {}
-
-        # process the path parameters
-        _path_params = {}
-
-        # process the query parameters
-        _query_params = []
-        if _params.get('search') is not None:  # noqa: E501
-            _query_params.append(('search', _params['search']))
-
-        if _params.get('stakeholders_users') is not None:  # noqa: E501
-            _query_params.append(('stakeholders_users', _params['stakeholders_users']))
-
-        if _params.get('status') is not None:  # noqa: E501
-            _query_params.append(('status', _params['status']))
-
-        if _params.get('sort') is not None:  # noqa: E501
-            _query_params.append(('sort', _params['sort']))
-
-        if _params.get('limit') is not None:  # noqa: E501
-            _query_params.append(('limit', _params['limit']))
-
-        # process the header parameters
-        _header_params = dict(_params.get('_headers', {}))
-        if _params['x_user_id'] is not None:
-            _header_params['X-User-ID'] = _params['x_user_id']
-
-        # process the form parameters
-        _form_params = []
-        _files = {}
-        # process the body parameter
-        _body_params = None
-        # set the HTTP header `Accept`
-        _header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # authentication setting
-        _auth_settings = []  # noqa: E501
-
-        _response_types_map = {
-            '200': "List[Goal]",
-        }
-
-        return self.api_client.call_api(
-            '/api/goals/search/', 'GET',
-            _path_params,
-            _query_params,
-            _header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            response_types_map=_response_types_map,
-            auth_settings=_auth_settings,
-            async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=_params.get('_preload_content', True),
-            _request_timeout=_params.get('_request_timeout'),
-            collection_formats=_collection_formats,
-            _request_auth=_params.get('_request_auth'))
-
-    @validate_arguments
     def api_goals_update(self, goal_id : StrictStr, data : Goal, **kwargs) -> Goal:  # noqa: E501
         """api_goals_update  # noqa: E501
 
@@ -1087,6 +1093,7 @@ class ApiApi:
 
         _response_types_map = {
             '200': "Goal",
+            '404': None,
         }
 
         return self.api_client.call_api(
@@ -1404,18 +1411,30 @@ class ApiApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def api_prds_list(self, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> List[PRD]:  # noqa: E501
+    def api_prds_list(self, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, stakeholders : Annotated[Optional[StrictStr], Field(description="Comma-separated list of stakeholder user IDs to filter by")] = None, status : Annotated[Optional[StrictStr], Field(description="Status to filter by")] = None, search : Annotated[Optional[StrictStr], Field(description="Search term to filter PRDs by title, description, or body")] = None, sort : Annotated[Optional[StrictStr], Field(description="Field to sort by (e.g., 'title', '-created_date')")] = None, limit : Annotated[Optional[StrictInt], Field(description="Limit the number of PRDs returned")] = None, tags : Annotated[Optional[StrictStr], Field(description="Comma-separated list of tag names to filter PRDs by")] = None, **kwargs) -> List[PRD]:  # noqa: E501
         """api_prds_list  # noqa: E501
 
         Get a list of all PRDs for the authenticated user's organization.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_prds_list(x_user_id, async_req=True)
+        >>> thread = api.api_prds_list(x_user_id, stakeholders, status, search, sort, limit, tags, async_req=True)
         >>> result = thread.get()
 
         :param x_user_id: User ID (required when using API key)
         :type x_user_id: str
+        :param stakeholders: Comma-separated list of stakeholder user IDs to filter by
+        :type stakeholders: str
+        :param status: Status to filter by
+        :type status: str
+        :param search: Search term to filter PRDs by title, description, or body
+        :type search: str
+        :param sort: Field to sort by (e.g., 'title', '-created_date')
+        :type sort: str
+        :param limit: Limit the number of PRDs returned
+        :type limit: int
+        :param tags: Comma-separated list of tag names to filter PRDs by
+        :type tags: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request.
@@ -1431,21 +1450,33 @@ class ApiApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the api_prds_list_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.api_prds_list_with_http_info(x_user_id, **kwargs)  # noqa: E501
+        return self.api_prds_list_with_http_info(x_user_id, stakeholders, status, search, sort, limit, tags, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def api_prds_list_with_http_info(self, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def api_prds_list_with_http_info(self, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, stakeholders : Annotated[Optional[StrictStr], Field(description="Comma-separated list of stakeholder user IDs to filter by")] = None, status : Annotated[Optional[StrictStr], Field(description="Status to filter by")] = None, search : Annotated[Optional[StrictStr], Field(description="Search term to filter PRDs by title, description, or body")] = None, sort : Annotated[Optional[StrictStr], Field(description="Field to sort by (e.g., 'title', '-created_date')")] = None, limit : Annotated[Optional[StrictInt], Field(description="Limit the number of PRDs returned")] = None, tags : Annotated[Optional[StrictStr], Field(description="Comma-separated list of tag names to filter PRDs by")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """api_prds_list  # noqa: E501
 
         Get a list of all PRDs for the authenticated user's organization.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_prds_list_with_http_info(x_user_id, async_req=True)
+        >>> thread = api.api_prds_list_with_http_info(x_user_id, stakeholders, status, search, sort, limit, tags, async_req=True)
         >>> result = thread.get()
 
         :param x_user_id: User ID (required when using API key)
         :type x_user_id: str
+        :param stakeholders: Comma-separated list of stakeholder user IDs to filter by
+        :type stakeholders: str
+        :param status: Status to filter by
+        :type status: str
+        :param search: Search term to filter PRDs by title, description, or body
+        :type search: str
+        :param sort: Field to sort by (e.g., 'title', '-created_date')
+        :type sort: str
+        :param limit: Limit the number of PRDs returned
+        :type limit: int
+        :param tags: Comma-separated list of tag names to filter PRDs by
+        :type tags: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -1474,7 +1505,13 @@ class ApiApi:
         _params = locals()
 
         _all_params = [
-            'x_user_id'
+            'x_user_id',
+            'stakeholders',
+            'status',
+            'search',
+            'sort',
+            'limit',
+            'tags'
         ]
         _all_params.extend(
             [
@@ -1505,6 +1542,24 @@ class ApiApi:
 
         # process the query parameters
         _query_params = []
+        if _params.get('stakeholders') is not None:  # noqa: E501
+            _query_params.append(('stakeholders', _params['stakeholders']))
+
+        if _params.get('status') is not None:  # noqa: E501
+            _query_params.append(('status', _params['status']))
+
+        if _params.get('search') is not None:  # noqa: E501
+            _query_params.append(('search', _params['search']))
+
+        if _params.get('sort') is not None:  # noqa: E501
+            _query_params.append(('sort', _params['sort']))
+
+        if _params.get('limit') is not None:  # noqa: E501
+            _query_params.append(('limit', _params['limit']))
+
+        if _params.get('tags') is not None:  # noqa: E501
+            _query_params.append(('tags', _params['tags']))
+
         # process the header parameters
         _header_params = dict(_params.get('_headers', {}))
         if _params['x_user_id'] is not None:
@@ -1544,7 +1599,7 @@ class ApiApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def api_prds_partial_update(self, prd_id : StrictStr, data : PRDDetail, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> PRDDetail:  # noqa: E501
+    def api_prds_partial_update(self, prd_id : StrictStr, data : PRD, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> PRD:  # noqa: E501
         """api_prds_partial_update  # noqa: E501
 
         Partially update a specific PRD.  # noqa: E501
@@ -1557,7 +1612,7 @@ class ApiApi:
         :param prd_id: (required)
         :type prd_id: str
         :param data: (required)
-        :type data: PRDDetail
+        :type data: PRD
         :param x_user_id: User ID (required when using API key)
         :type x_user_id: str
         :param async_req: Whether to execute the request asynchronously.
@@ -1569,7 +1624,7 @@ class ApiApi:
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: PRDDetail
+        :rtype: PRD
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
@@ -1578,7 +1633,7 @@ class ApiApi:
         return self.api_prds_partial_update_with_http_info(prd_id, data, x_user_id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def api_prds_partial_update_with_http_info(self, prd_id : StrictStr, data : PRDDetail, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def api_prds_partial_update_with_http_info(self, prd_id : StrictStr, data : PRD, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """api_prds_partial_update  # noqa: E501
 
         Partially update a specific PRD.  # noqa: E501
@@ -1591,7 +1646,7 @@ class ApiApi:
         :param prd_id: (required)
         :type prd_id: str
         :param data: (required)
-        :type data: PRDDetail
+        :type data: PRD
         :param x_user_id: User ID (required when using API key)
         :type x_user_id: str
         :param async_req: Whether to execute the request asynchronously.
@@ -1616,7 +1671,7 @@ class ApiApi:
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(PRDDetail, status_code(int), headers(HTTPHeaderDict))
+        :rtype: tuple(PRD, status_code(int), headers(HTTPHeaderDict))
         """
 
         _params = locals()
@@ -1686,7 +1741,7 @@ class ApiApi:
         _auth_settings = []  # noqa: E501
 
         _response_types_map = {
-            '200': "PRDDetail",
+            '200': "PRD",
         }
 
         return self.api_client.call_api(
@@ -1707,7 +1762,7 @@ class ApiApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def api_prds_read(self, prd_id : StrictStr, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> PRDDetail:  # noqa: E501
+    def api_prds_read(self, prd_id : StrictStr, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> PRD:  # noqa: E501
         """api_prds_read  # noqa: E501
 
         Get details of a specific PRD.  # noqa: E501
@@ -1730,7 +1785,7 @@ class ApiApi:
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: PRDDetail
+        :rtype: PRD
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
@@ -1775,7 +1830,7 @@ class ApiApi:
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(PRDDetail, status_code(int), headers(HTTPHeaderDict))
+        :rtype: tuple(PRD, status_code(int), headers(HTTPHeaderDict))
         """
 
         _params = locals()
@@ -1834,7 +1889,7 @@ class ApiApi:
         _auth_settings = []  # noqa: E501
 
         _response_types_map = {
-            '200': "PRDDetail",
+            '200': "PRD",
         }
 
         return self.api_client.call_api(
@@ -1855,155 +1910,7 @@ class ApiApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def api_prds_search_list(self, q : Annotated[Optional[StrictStr], Field(description="query string, to search across name or description")] = None, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> List[PRD]:  # noqa: E501
-        """api_prds_search_list  # noqa: E501
-
-        Search for PRDs  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.api_prds_search_list(q, x_user_id, async_req=True)
-        >>> result = thread.get()
-
-        :param q: query string, to search across name or description
-        :type q: str
-        :param x_user_id: User ID (required when using API key)
-        :type x_user_id: str
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _request_timeout: timeout setting for this request.
-               If one number provided, it will be total request
-               timeout. It can also be a pair (tuple) of
-               (connection, read) timeouts.
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: List[PRD]
-        """
-        kwargs['_return_http_data_only'] = True
-        if '_preload_content' in kwargs:
-            message = "Error! Please call the api_prds_search_list_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
-            raise ValueError(message)
-        return self.api_prds_search_list_with_http_info(q, x_user_id, **kwargs)  # noqa: E501
-
-    @validate_arguments
-    def api_prds_search_list_with_http_info(self, q : Annotated[Optional[StrictStr], Field(description="query string, to search across name or description")] = None, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> ApiResponse:  # noqa: E501
-        """api_prds_search_list  # noqa: E501
-
-        Search for PRDs  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.api_prds_search_list_with_http_info(q, x_user_id, async_req=True)
-        >>> result = thread.get()
-
-        :param q: query string, to search across name or description
-        :type q: str
-        :param x_user_id: User ID (required when using API key)
-        :type x_user_id: str
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _preload_content: if False, the ApiResponse.data will
-                                 be set to none and raw_data will store the
-                                 HTTP response body without reading/decoding.
-                                 Default is True.
-        :type _preload_content: bool, optional
-        :param _return_http_data_only: response data instead of ApiResponse
-                                       object with status code, headers, etc
-        :type _return_http_data_only: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :type _content_type: string, optional: force content-type for the request
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: tuple(List[PRD], status_code(int), headers(HTTPHeaderDict))
-        """
-
-        _params = locals()
-
-        _all_params = [
-            'q',
-            'x_user_id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
-
-        # validate the arguments
-        for _key, _val in _params['kwargs'].items():
-            if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method api_prds_search_list" % _key
-                )
-            _params[_key] = _val
-        del _params['kwargs']
-
-        _collection_formats = {}
-
-        # process the path parameters
-        _path_params = {}
-
-        # process the query parameters
-        _query_params = []
-        if _params.get('q') is not None:  # noqa: E501
-            _query_params.append(('q', _params['q']))
-
-        # process the header parameters
-        _header_params = dict(_params.get('_headers', {}))
-        if _params['x_user_id'] is not None:
-            _header_params['X-User-ID'] = _params['x_user_id']
-
-        # process the form parameters
-        _form_params = []
-        _files = {}
-        # process the body parameter
-        _body_params = None
-        # set the HTTP header `Accept`
-        _header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # authentication setting
-        _auth_settings = []  # noqa: E501
-
-        _response_types_map = {
-            '200': "List[PRD]",
-        }
-
-        return self.api_client.call_api(
-            '/api/prds/search/', 'GET',
-            _path_params,
-            _query_params,
-            _header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            response_types_map=_response_types_map,
-            auth_settings=_auth_settings,
-            async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=_params.get('_preload_content', True),
-            _request_timeout=_params.get('_request_timeout'),
-            collection_formats=_collection_formats,
-            _request_auth=_params.get('_request_auth'))
-
-    @validate_arguments
-    def api_prds_update(self, prd_id : StrictStr, data : PRDDetail, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> PRDDetail:  # noqa: E501
+    def api_prds_update(self, prd_id : StrictStr, data : PRD, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> PRD:  # noqa: E501
         """api_prds_update  # noqa: E501
 
         Update a specific PRD.  # noqa: E501
@@ -2016,7 +1923,7 @@ class ApiApi:
         :param prd_id: (required)
         :type prd_id: str
         :param data: (required)
-        :type data: PRDDetail
+        :type data: PRD
         :param x_user_id: User ID (required when using API key)
         :type x_user_id: str
         :param async_req: Whether to execute the request asynchronously.
@@ -2028,7 +1935,7 @@ class ApiApi:
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: PRDDetail
+        :rtype: PRD
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
@@ -2037,7 +1944,7 @@ class ApiApi:
         return self.api_prds_update_with_http_info(prd_id, data, x_user_id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def api_prds_update_with_http_info(self, prd_id : StrictStr, data : PRDDetail, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def api_prds_update_with_http_info(self, prd_id : StrictStr, data : PRD, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """api_prds_update  # noqa: E501
 
         Update a specific PRD.  # noqa: E501
@@ -2050,7 +1957,7 @@ class ApiApi:
         :param prd_id: (required)
         :type prd_id: str
         :param data: (required)
-        :type data: PRDDetail
+        :type data: PRD
         :param x_user_id: User ID (required when using API key)
         :type x_user_id: str
         :param async_req: Whether to execute the request asynchronously.
@@ -2075,7 +1982,7 @@ class ApiApi:
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(PRDDetail, status_code(int), headers(HTTPHeaderDict))
+        :rtype: tuple(PRD, status_code(int), headers(HTTPHeaderDict))
         """
 
         _params = locals()
@@ -2145,7 +2052,7 @@ class ApiApi:
         _auth_settings = []  # noqa: E501
 
         _response_types_map = {
-            '200': "PRDDetail",
+            '200': "PRD",
         }
 
         return self.api_client.call_api(
@@ -2463,26 +2370,26 @@ class ApiApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def api_programs_list(self, search : Annotated[Optional[StrictStr], Field(description="Search in name and description")] = None, ordering : Annotated[Optional[StrictStr], Field(description="Sort by field (prefix with '-' for descending)")] = None, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, tags : Annotated[Optional[StrictStr], Field(description="Filter by tags (comma-separated)")] = None, limit : Annotated[Optional[StrictInt], Field(description="Limit the number of results")] = None, **kwargs) -> List[Program]:  # noqa: E501
+    def api_programs_list(self, page : Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, search : Annotated[Optional[StrictStr], Field(description="Search in name and description")] = None, tags : Annotated[Optional[StrictStr], Field(description="Filter by tags (comma-separated)")] = None, ordering : Annotated[Optional[StrictStr], Field(description="Sort by field (prefix with '-' for descending)")] = None, **kwargs) -> List[Program]:  # noqa: E501
         """api_programs_list  # noqa: E501
 
         Get a list of all programs for the authenticated user.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_programs_list(search, ordering, x_user_id, tags, limit, async_req=True)
+        >>> thread = api.api_programs_list(page, x_user_id, search, tags, ordering, async_req=True)
         >>> result = thread.get()
 
-        :param search: Search in name and description
-        :type search: str
-        :param ordering: Sort by field (prefix with '-' for descending)
-        :type ordering: str
+        :param page: A page number within the paginated result set.
+        :type page: int
         :param x_user_id: User ID (required when using API key)
         :type x_user_id: str
+        :param search: Search in name and description
+        :type search: str
         :param tags: Filter by tags (comma-separated)
         :type tags: str
-        :param limit: Limit the number of results
-        :type limit: int
+        :param ordering: Sort by field (prefix with '-' for descending)
+        :type ordering: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request.
@@ -2498,29 +2405,29 @@ class ApiApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the api_programs_list_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.api_programs_list_with_http_info(search, ordering, x_user_id, tags, limit, **kwargs)  # noqa: E501
+        return self.api_programs_list_with_http_info(page, x_user_id, search, tags, ordering, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def api_programs_list_with_http_info(self, search : Annotated[Optional[StrictStr], Field(description="Search in name and description")] = None, ordering : Annotated[Optional[StrictStr], Field(description="Sort by field (prefix with '-' for descending)")] = None, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, tags : Annotated[Optional[StrictStr], Field(description="Filter by tags (comma-separated)")] = None, limit : Annotated[Optional[StrictInt], Field(description="Limit the number of results")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def api_programs_list_with_http_info(self, page : Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, search : Annotated[Optional[StrictStr], Field(description="Search in name and description")] = None, tags : Annotated[Optional[StrictStr], Field(description="Filter by tags (comma-separated)")] = None, ordering : Annotated[Optional[StrictStr], Field(description="Sort by field (prefix with '-' for descending)")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """api_programs_list  # noqa: E501
 
         Get a list of all programs for the authenticated user.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_programs_list_with_http_info(search, ordering, x_user_id, tags, limit, async_req=True)
+        >>> thread = api.api_programs_list_with_http_info(page, x_user_id, search, tags, ordering, async_req=True)
         >>> result = thread.get()
 
-        :param search: Search in name and description
-        :type search: str
-        :param ordering: Sort by field (prefix with '-' for descending)
-        :type ordering: str
+        :param page: A page number within the paginated result set.
+        :type page: int
         :param x_user_id: User ID (required when using API key)
         :type x_user_id: str
+        :param search: Search in name and description
+        :type search: str
         :param tags: Filter by tags (comma-separated)
         :type tags: str
-        :param limit: Limit the number of results
-        :type limit: int
+        :param ordering: Sort by field (prefix with '-' for descending)
+        :type ordering: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -2549,11 +2456,11 @@ class ApiApi:
         _params = locals()
 
         _all_params = [
-            'search',
-            'ordering',
+            'page',
             'x_user_id',
+            'search',
             'tags',
-            'limit'
+            'ordering'
         ]
         _all_params.extend(
             [
@@ -2584,17 +2491,17 @@ class ApiApi:
 
         # process the query parameters
         _query_params = []
+        if _params.get('page') is not None:  # noqa: E501
+            _query_params.append(('page', _params['page']))
+
         if _params.get('search') is not None:  # noqa: E501
             _query_params.append(('search', _params['search']))
-
-        if _params.get('ordering') is not None:  # noqa: E501
-            _query_params.append(('ordering', _params['ordering']))
 
         if _params.get('tags') is not None:  # noqa: E501
             _query_params.append(('tags', _params['tags']))
 
-        if _params.get('limit') is not None:  # noqa: E501
-            _query_params.append(('limit', _params['limit']))
+        if _params.get('ordering') is not None:  # noqa: E501
+            _query_params.append(('ordering', _params['ordering']))
 
         # process the header parameters
         _header_params = dict(_params.get('_headers', {}))
@@ -2782,6 +2689,136 @@ class ApiApi:
 
         return self.api_client.call_api(
             '/api/programs/{program_id}/', 'PATCH',
+            _path_params,
+            _query_params,
+            _header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            response_types_map=_response_types_map,
+            auth_settings=_auth_settings,
+            async_req=_params.get('async_req'),
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=_params.get('_preload_content', True),
+            _request_timeout=_params.get('_request_timeout'),
+            collection_formats=_collection_formats,
+            _request_auth=_params.get('_request_auth'))
+
+    @validate_arguments
+    def api_programs_picker_list(self, **kwargs) -> List[ProgramPicker]:  # noqa: E501
+        """api_programs_picker_list  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.api_programs_picker_list(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _request_timeout: timeout setting for this request.
+               If one number provided, it will be total request
+               timeout. It can also be a pair (tuple) of
+               (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: List[ProgramPicker]
+        """
+        kwargs['_return_http_data_only'] = True
+        if '_preload_content' in kwargs:
+            message = "Error! Please call the api_programs_picker_list_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
+            raise ValueError(message)
+        return self.api_programs_picker_list_with_http_info(**kwargs)  # noqa: E501
+
+    @validate_arguments
+    def api_programs_picker_list_with_http_info(self, **kwargs) -> ApiResponse:  # noqa: E501
+        """api_programs_picker_list  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.api_programs_picker_list_with_http_info(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the ApiResponse.data will
+                                 be set to none and raw_data will store the
+                                 HTTP response body without reading/decoding.
+                                 Default is True.
+        :type _preload_content: bool, optional
+        :param _return_http_data_only: response data instead of ApiResponse
+                                       object with status code, headers, etc
+        :type _return_http_data_only: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(List[ProgramPicker], status_code(int), headers(HTTPHeaderDict))
+        """
+
+        _params = locals()
+
+        _all_params = [
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
+
+        # validate the arguments
+        for _key, _val in _params['kwargs'].items():
+            if _key not in _all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method api_programs_picker_list" % _key
+                )
+            _params[_key] = _val
+        del _params['kwargs']
+
+        _collection_formats = {}
+
+        # process the path parameters
+        _path_params = {}
+
+        # process the query parameters
+        _query_params = []
+        # process the header parameters
+        _header_params = dict(_params.get('_headers', {}))
+        # process the form parameters
+        _form_params = []
+        _files = {}
+        # process the body parameter
+        _body_params = None
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # authentication setting
+        _auth_settings = []  # noqa: E501
+
+        _response_types_map = {
+            '200': "List[ProgramPicker]",
+        }
+
+        return self.api_client.call_api(
+            '/api/programs/picker/', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -3406,20 +3443,30 @@ class ApiApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def api_status_list(self, page : Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> List[Status]:  # noqa: E501
+    def api_status_list(self, page : Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, status : Annotated[Optional[StrictStr], Field(description="Filter by a status value")] = None, search : Annotated[Optional[StrictStr], Field(description="Search by keyword against status note or path to green")] = None, sort : Annotated[Optional[StrictStr], Field(description="Sort by field (prefix with '-' for descending)")] = None, liimit : Annotated[Optional[StrictStr], Field(description="Sort by field (prefix with '-' for descending)")] = None, goal_ids : Annotated[Optional[StrictStr], Field(description="Filter on goals, using the UUID of the goal.")] = None, **kwargs) -> List[Status]:  # noqa: E501
         """api_status_list  # noqa: E501
 
         Get a list of all statuses for the authenticated user.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_status_list(page, x_user_id, async_req=True)
+        >>> thread = api.api_status_list(page, x_user_id, status, search, sort, liimit, goal_ids, async_req=True)
         >>> result = thread.get()
 
         :param page: A page number within the paginated result set.
         :type page: int
         :param x_user_id: User ID (required when using API key)
         :type x_user_id: str
+        :param status: Filter by a status value
+        :type status: str
+        :param search: Search by keyword against status note or path to green
+        :type search: str
+        :param sort: Sort by field (prefix with '-' for descending)
+        :type sort: str
+        :param liimit: Sort by field (prefix with '-' for descending)
+        :type liimit: str
+        :param goal_ids: Filter on goals, using the UUID of the goal.
+        :type goal_ids: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request.
@@ -3435,23 +3482,33 @@ class ApiApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the api_status_list_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.api_status_list_with_http_info(page, x_user_id, **kwargs)  # noqa: E501
+        return self.api_status_list_with_http_info(page, x_user_id, status, search, sort, liimit, goal_ids, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def api_status_list_with_http_info(self, page : Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def api_status_list_with_http_info(self, page : Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, status : Annotated[Optional[StrictStr], Field(description="Filter by a status value")] = None, search : Annotated[Optional[StrictStr], Field(description="Search by keyword against status note or path to green")] = None, sort : Annotated[Optional[StrictStr], Field(description="Sort by field (prefix with '-' for descending)")] = None, liimit : Annotated[Optional[StrictStr], Field(description="Sort by field (prefix with '-' for descending)")] = None, goal_ids : Annotated[Optional[StrictStr], Field(description="Filter on goals, using the UUID of the goal.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """api_status_list  # noqa: E501
 
         Get a list of all statuses for the authenticated user.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_status_list_with_http_info(page, x_user_id, async_req=True)
+        >>> thread = api.api_status_list_with_http_info(page, x_user_id, status, search, sort, liimit, goal_ids, async_req=True)
         >>> result = thread.get()
 
         :param page: A page number within the paginated result set.
         :type page: int
         :param x_user_id: User ID (required when using API key)
         :type x_user_id: str
+        :param status: Filter by a status value
+        :type status: str
+        :param search: Search by keyword against status note or path to green
+        :type search: str
+        :param sort: Sort by field (prefix with '-' for descending)
+        :type sort: str
+        :param liimit: Sort by field (prefix with '-' for descending)
+        :type liimit: str
+        :param goal_ids: Filter on goals, using the UUID of the goal.
+        :type goal_ids: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -3481,7 +3538,12 @@ class ApiApi:
 
         _all_params = [
             'page',
-            'x_user_id'
+            'x_user_id',
+            'status',
+            'search',
+            'sort',
+            'liimit',
+            'goal_ids'
         ]
         _all_params.extend(
             [
@@ -3514,6 +3576,21 @@ class ApiApi:
         _query_params = []
         if _params.get('page') is not None:  # noqa: E501
             _query_params.append(('page', _params['page']))
+
+        if _params.get('status') is not None:  # noqa: E501
+            _query_params.append(('status', _params['status']))
+
+        if _params.get('search') is not None:  # noqa: E501
+            _query_params.append(('search', _params['search']))
+
+        if _params.get('sort') is not None:  # noqa: E501
+            _query_params.append(('sort', _params['sort']))
+
+        if _params.get('liimit') is not None:  # noqa: E501
+            _query_params.append(('liimit', _params['liimit']))
+
+        if _params.get('goal_ids') is not None:  # noqa: E501
+            _query_params.append(('goal_ids', _params['goal_ids']))
 
         # process the header parameters
         _header_params = dict(_params.get('_headers', {}))
@@ -4028,17 +4105,20 @@ class ApiApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def api_user_create_create(self, data : UserCreate, **kwargs) -> UserCreate:  # noqa: E501
-        """api_user_create_create  # noqa: E501
+    def api_tags_create(self, data : Tag, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> Tag:  # noqa: E501
+        """api_tags_create  # noqa: E501
 
+        Create a new tag for the authenticated user.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_user_create_create(data, async_req=True)
+        >>> thread = api.api_tags_create(data, x_user_id, async_req=True)
         >>> result = thread.get()
 
         :param data: (required)
-        :type data: UserCreate
+        :type data: Tag
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request.
@@ -4048,26 +4128,29 @@ class ApiApi:
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: UserCreate
+        :rtype: Tag
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
-            message = "Error! Please call the api_user_create_create_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
+            message = "Error! Please call the api_tags_create_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.api_user_create_create_with_http_info(data, **kwargs)  # noqa: E501
+        return self.api_tags_create_with_http_info(data, x_user_id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def api_user_create_create_with_http_info(self, data : UserCreate, **kwargs) -> ApiResponse:  # noqa: E501
-        """api_user_create_create  # noqa: E501
+    def api_tags_create_with_http_info(self, data : Tag, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+        """api_tags_create  # noqa: E501
 
+        Create a new tag for the authenticated user.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_user_create_create_with_http_info(data, async_req=True)
+        >>> thread = api.api_tags_create_with_http_info(data, x_user_id, async_req=True)
         >>> result = thread.get()
 
         :param data: (required)
-        :type data: UserCreate
+        :type data: Tag
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -4090,13 +4173,14 @@ class ApiApi:
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(UserCreate, status_code(int), headers(HTTPHeaderDict))
+        :rtype: tuple(Tag, status_code(int), headers(HTTPHeaderDict))
         """
 
         _params = locals()
 
         _all_params = [
-            'data'
+            'data',
+            'x_user_id'
         ]
         _all_params.extend(
             [
@@ -4115,7 +4199,7 @@ class ApiApi:
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method api_user_create_create" % _key
+                    " to method api_tags_create" % _key
                 )
             _params[_key] = _val
         del _params['kwargs']
@@ -4129,6 +4213,9 @@ class ApiApi:
         _query_params = []
         # process the header parameters
         _header_params = dict(_params.get('_headers', {}))
+        if _params['x_user_id'] is not None:
+            _header_params['X-User-ID'] = _params['x_user_id']
+
         # process the form parameters
         _form_params = []
         _files = {}
@@ -4152,11 +4239,11 @@ class ApiApi:
         _auth_settings = []  # noqa: E501
 
         _response_types_map = {
-            '201': "UserCreate",
+            '201': "Tag",
         }
 
         return self.api_client.call_api(
-            '/api/user/create/', 'POST',
+            '/api/tags/', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -4173,18 +4260,792 @@ class ApiApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def api_user_read(self, id : Annotated[StrictStr, Field(..., description="UUID of the user to retrieve")], **kwargs) -> User:  # noqa: E501
-        """api_user_read  # noqa: E501
+    def api_tags_delete(self, tag_id : StrictStr, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> None:  # noqa: E501
+        """api_tags_delete  # noqa: E501
 
-        Retrieve details of a specific user  # noqa: E501
+        Delete a specific tag.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_user_read(id, async_req=True)
+        >>> thread = api.api_tags_delete(tag_id, x_user_id, async_req=True)
         >>> result = thread.get()
 
-        :param id: UUID of the user to retrieve (required)
-        :type id: str
+        :param tag_id: (required)
+        :type tag_id: str
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _request_timeout: timeout setting for this request.
+               If one number provided, it will be total request
+               timeout. It can also be a pair (tuple) of
+               (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: None
+        """
+        kwargs['_return_http_data_only'] = True
+        if '_preload_content' in kwargs:
+            message = "Error! Please call the api_tags_delete_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
+            raise ValueError(message)
+        return self.api_tags_delete_with_http_info(tag_id, x_user_id, **kwargs)  # noqa: E501
+
+    @validate_arguments
+    def api_tags_delete_with_http_info(self, tag_id : StrictStr, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+        """api_tags_delete  # noqa: E501
+
+        Delete a specific tag.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.api_tags_delete_with_http_info(tag_id, x_user_id, async_req=True)
+        >>> result = thread.get()
+
+        :param tag_id: (required)
+        :type tag_id: str
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the ApiResponse.data will
+                                 be set to none and raw_data will store the
+                                 HTTP response body without reading/decoding.
+                                 Default is True.
+        :type _preload_content: bool, optional
+        :param _return_http_data_only: response data instead of ApiResponse
+                                       object with status code, headers, etc
+        :type _return_http_data_only: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: None
+        """
+
+        _params = locals()
+
+        _all_params = [
+            'tag_id',
+            'x_user_id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
+
+        # validate the arguments
+        for _key, _val in _params['kwargs'].items():
+            if _key not in _all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method api_tags_delete" % _key
+                )
+            _params[_key] = _val
+        del _params['kwargs']
+
+        _collection_formats = {}
+
+        # process the path parameters
+        _path_params = {}
+        if _params['tag_id'] is not None:
+            _path_params['tag_id'] = _params['tag_id']
+
+
+        # process the query parameters
+        _query_params = []
+        # process the header parameters
+        _header_params = dict(_params.get('_headers', {}))
+        if _params['x_user_id'] is not None:
+            _header_params['X-User-ID'] = _params['x_user_id']
+
+        # process the form parameters
+        _form_params = []
+        _files = {}
+        # process the body parameter
+        _body_params = None
+        # authentication setting
+        _auth_settings = []  # noqa: E501
+
+        _response_types_map = {}
+
+        return self.api_client.call_api(
+            '/api/tags/{tag_id}/', 'DELETE',
+            _path_params,
+            _query_params,
+            _header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            response_types_map=_response_types_map,
+            auth_settings=_auth_settings,
+            async_req=_params.get('async_req'),
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=_params.get('_preload_content', True),
+            _request_timeout=_params.get('_request_timeout'),
+            collection_formats=_collection_formats,
+            _request_auth=_params.get('_request_auth'))
+
+    @validate_arguments
+    def api_tags_list(self, page : Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, search : Annotated[Optional[StrictStr], Field(description="Search tags by name")] = None, **kwargs) -> List[Tag]:  # noqa: E501
+        """api_tags_list  # noqa: E501
+
+        Get a list of all tags for the authenticated user.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.api_tags_list(page, x_user_id, search, async_req=True)
+        >>> result = thread.get()
+
+        :param page: A page number within the paginated result set.
+        :type page: int
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
+        :param search: Search tags by name
+        :type search: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _request_timeout: timeout setting for this request.
+               If one number provided, it will be total request
+               timeout. It can also be a pair (tuple) of
+               (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: List[Tag]
+        """
+        kwargs['_return_http_data_only'] = True
+        if '_preload_content' in kwargs:
+            message = "Error! Please call the api_tags_list_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
+            raise ValueError(message)
+        return self.api_tags_list_with_http_info(page, x_user_id, search, **kwargs)  # noqa: E501
+
+    @validate_arguments
+    def api_tags_list_with_http_info(self, page : Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, search : Annotated[Optional[StrictStr], Field(description="Search tags by name")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+        """api_tags_list  # noqa: E501
+
+        Get a list of all tags for the authenticated user.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.api_tags_list_with_http_info(page, x_user_id, search, async_req=True)
+        >>> result = thread.get()
+
+        :param page: A page number within the paginated result set.
+        :type page: int
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
+        :param search: Search tags by name
+        :type search: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the ApiResponse.data will
+                                 be set to none and raw_data will store the
+                                 HTTP response body without reading/decoding.
+                                 Default is True.
+        :type _preload_content: bool, optional
+        :param _return_http_data_only: response data instead of ApiResponse
+                                       object with status code, headers, etc
+        :type _return_http_data_only: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(List[Tag], status_code(int), headers(HTTPHeaderDict))
+        """
+
+        _params = locals()
+
+        _all_params = [
+            'page',
+            'x_user_id',
+            'search'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
+
+        # validate the arguments
+        for _key, _val in _params['kwargs'].items():
+            if _key not in _all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method api_tags_list" % _key
+                )
+            _params[_key] = _val
+        del _params['kwargs']
+
+        _collection_formats = {}
+
+        # process the path parameters
+        _path_params = {}
+
+        # process the query parameters
+        _query_params = []
+        if _params.get('page') is not None:  # noqa: E501
+            _query_params.append(('page', _params['page']))
+
+        if _params.get('search') is not None:  # noqa: E501
+            _query_params.append(('search', _params['search']))
+
+        # process the header parameters
+        _header_params = dict(_params.get('_headers', {}))
+        if _params['x_user_id'] is not None:
+            _header_params['X-User-ID'] = _params['x_user_id']
+
+        # process the form parameters
+        _form_params = []
+        _files = {}
+        # process the body parameter
+        _body_params = None
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # authentication setting
+        _auth_settings = []  # noqa: E501
+
+        _response_types_map = {
+            '200': "List[Tag]",
+        }
+
+        return self.api_client.call_api(
+            '/api/tags/', 'GET',
+            _path_params,
+            _query_params,
+            _header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            response_types_map=_response_types_map,
+            auth_settings=_auth_settings,
+            async_req=_params.get('async_req'),
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=_params.get('_preload_content', True),
+            _request_timeout=_params.get('_request_timeout'),
+            collection_formats=_collection_formats,
+            _request_auth=_params.get('_request_auth'))
+
+    @validate_arguments
+    def api_tags_partial_update(self, tag_id : StrictStr, data : Tag, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> Tag:  # noqa: E501
+        """api_tags_partial_update  # noqa: E501
+
+        Partially update a specific tag.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.api_tags_partial_update(tag_id, data, x_user_id, async_req=True)
+        >>> result = thread.get()
+
+        :param tag_id: (required)
+        :type tag_id: str
+        :param data: (required)
+        :type data: Tag
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _request_timeout: timeout setting for this request.
+               If one number provided, it will be total request
+               timeout. It can also be a pair (tuple) of
+               (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: Tag
+        """
+        kwargs['_return_http_data_only'] = True
+        if '_preload_content' in kwargs:
+            message = "Error! Please call the api_tags_partial_update_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
+            raise ValueError(message)
+        return self.api_tags_partial_update_with_http_info(tag_id, data, x_user_id, **kwargs)  # noqa: E501
+
+    @validate_arguments
+    def api_tags_partial_update_with_http_info(self, tag_id : StrictStr, data : Tag, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+        """api_tags_partial_update  # noqa: E501
+
+        Partially update a specific tag.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.api_tags_partial_update_with_http_info(tag_id, data, x_user_id, async_req=True)
+        >>> result = thread.get()
+
+        :param tag_id: (required)
+        :type tag_id: str
+        :param data: (required)
+        :type data: Tag
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the ApiResponse.data will
+                                 be set to none and raw_data will store the
+                                 HTTP response body without reading/decoding.
+                                 Default is True.
+        :type _preload_content: bool, optional
+        :param _return_http_data_only: response data instead of ApiResponse
+                                       object with status code, headers, etc
+        :type _return_http_data_only: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(Tag, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        _params = locals()
+
+        _all_params = [
+            'tag_id',
+            'data',
+            'x_user_id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
+
+        # validate the arguments
+        for _key, _val in _params['kwargs'].items():
+            if _key not in _all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method api_tags_partial_update" % _key
+                )
+            _params[_key] = _val
+        del _params['kwargs']
+
+        _collection_formats = {}
+
+        # process the path parameters
+        _path_params = {}
+        if _params['tag_id'] is not None:
+            _path_params['tag_id'] = _params['tag_id']
+
+
+        # process the query parameters
+        _query_params = []
+        # process the header parameters
+        _header_params = dict(_params.get('_headers', {}))
+        if _params['x_user_id'] is not None:
+            _header_params['X-User-ID'] = _params['x_user_id']
+
+        # process the form parameters
+        _form_params = []
+        _files = {}
+        # process the body parameter
+        _body_params = None
+        if _params['data'] is not None:
+            _body_params = _params['data']
+
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # set the HTTP header `Content-Type`
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
+        if _content_types_list:
+                _header_params['Content-Type'] = _content_types_list
+
+        # authentication setting
+        _auth_settings = []  # noqa: E501
+
+        _response_types_map = {
+            '200': "Tag",
+        }
+
+        return self.api_client.call_api(
+            '/api/tags/{tag_id}/', 'PATCH',
+            _path_params,
+            _query_params,
+            _header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            response_types_map=_response_types_map,
+            auth_settings=_auth_settings,
+            async_req=_params.get('async_req'),
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=_params.get('_preload_content', True),
+            _request_timeout=_params.get('_request_timeout'),
+            collection_formats=_collection_formats,
+            _request_auth=_params.get('_request_auth'))
+
+    @validate_arguments
+    def api_tags_read(self, tag_id : StrictStr, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> Tag:  # noqa: E501
+        """api_tags_read  # noqa: E501
+
+        Get details of a specific tag.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.api_tags_read(tag_id, x_user_id, async_req=True)
+        >>> result = thread.get()
+
+        :param tag_id: (required)
+        :type tag_id: str
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _request_timeout: timeout setting for this request.
+               If one number provided, it will be total request
+               timeout. It can also be a pair (tuple) of
+               (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: Tag
+        """
+        kwargs['_return_http_data_only'] = True
+        if '_preload_content' in kwargs:
+            message = "Error! Please call the api_tags_read_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
+            raise ValueError(message)
+        return self.api_tags_read_with_http_info(tag_id, x_user_id, **kwargs)  # noqa: E501
+
+    @validate_arguments
+    def api_tags_read_with_http_info(self, tag_id : StrictStr, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+        """api_tags_read  # noqa: E501
+
+        Get details of a specific tag.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.api_tags_read_with_http_info(tag_id, x_user_id, async_req=True)
+        >>> result = thread.get()
+
+        :param tag_id: (required)
+        :type tag_id: str
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the ApiResponse.data will
+                                 be set to none and raw_data will store the
+                                 HTTP response body without reading/decoding.
+                                 Default is True.
+        :type _preload_content: bool, optional
+        :param _return_http_data_only: response data instead of ApiResponse
+                                       object with status code, headers, etc
+        :type _return_http_data_only: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(Tag, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        _params = locals()
+
+        _all_params = [
+            'tag_id',
+            'x_user_id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
+
+        # validate the arguments
+        for _key, _val in _params['kwargs'].items():
+            if _key not in _all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method api_tags_read" % _key
+                )
+            _params[_key] = _val
+        del _params['kwargs']
+
+        _collection_formats = {}
+
+        # process the path parameters
+        _path_params = {}
+        if _params['tag_id'] is not None:
+            _path_params['tag_id'] = _params['tag_id']
+
+
+        # process the query parameters
+        _query_params = []
+        # process the header parameters
+        _header_params = dict(_params.get('_headers', {}))
+        if _params['x_user_id'] is not None:
+            _header_params['X-User-ID'] = _params['x_user_id']
+
+        # process the form parameters
+        _form_params = []
+        _files = {}
+        # process the body parameter
+        _body_params = None
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # authentication setting
+        _auth_settings = []  # noqa: E501
+
+        _response_types_map = {
+            '200': "Tag",
+        }
+
+        return self.api_client.call_api(
+            '/api/tags/{tag_id}/', 'GET',
+            _path_params,
+            _query_params,
+            _header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            response_types_map=_response_types_map,
+            auth_settings=_auth_settings,
+            async_req=_params.get('async_req'),
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=_params.get('_preload_content', True),
+            _request_timeout=_params.get('_request_timeout'),
+            collection_formats=_collection_formats,
+            _request_auth=_params.get('_request_auth'))
+
+    @validate_arguments
+    def api_tags_update(self, tag_id : StrictStr, data : Tag, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> Tag:  # noqa: E501
+        """api_tags_update  # noqa: E501
+
+        Update a specific tag.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.api_tags_update(tag_id, data, x_user_id, async_req=True)
+        >>> result = thread.get()
+
+        :param tag_id: (required)
+        :type tag_id: str
+        :param data: (required)
+        :type data: Tag
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _request_timeout: timeout setting for this request.
+               If one number provided, it will be total request
+               timeout. It can also be a pair (tuple) of
+               (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: Tag
+        """
+        kwargs['_return_http_data_only'] = True
+        if '_preload_content' in kwargs:
+            message = "Error! Please call the api_tags_update_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
+            raise ValueError(message)
+        return self.api_tags_update_with_http_info(tag_id, data, x_user_id, **kwargs)  # noqa: E501
+
+    @validate_arguments
+    def api_tags_update_with_http_info(self, tag_id : StrictStr, data : Tag, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+        """api_tags_update  # noqa: E501
+
+        Update a specific tag.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.api_tags_update_with_http_info(tag_id, data, x_user_id, async_req=True)
+        >>> result = thread.get()
+
+        :param tag_id: (required)
+        :type tag_id: str
+        :param data: (required)
+        :type data: Tag
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the ApiResponse.data will
+                                 be set to none and raw_data will store the
+                                 HTTP response body without reading/decoding.
+                                 Default is True.
+        :type _preload_content: bool, optional
+        :param _return_http_data_only: response data instead of ApiResponse
+                                       object with status code, headers, etc
+        :type _return_http_data_only: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(Tag, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        _params = locals()
+
+        _all_params = [
+            'tag_id',
+            'data',
+            'x_user_id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
+
+        # validate the arguments
+        for _key, _val in _params['kwargs'].items():
+            if _key not in _all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method api_tags_update" % _key
+                )
+            _params[_key] = _val
+        del _params['kwargs']
+
+        _collection_formats = {}
+
+        # process the path parameters
+        _path_params = {}
+        if _params['tag_id'] is not None:
+            _path_params['tag_id'] = _params['tag_id']
+
+
+        # process the query parameters
+        _query_params = []
+        # process the header parameters
+        _header_params = dict(_params.get('_headers', {}))
+        if _params['x_user_id'] is not None:
+            _header_params['X-User-ID'] = _params['x_user_id']
+
+        # process the form parameters
+        _form_params = []
+        _files = {}
+        # process the body parameter
+        _body_params = None
+        if _params['data'] is not None:
+            _body_params = _params['data']
+
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # set the HTTP header `Content-Type`
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
+        if _content_types_list:
+                _header_params['Content-Type'] = _content_types_list
+
+        # authentication setting
+        _auth_settings = []  # noqa: E501
+
+        _response_types_map = {
+            '200': "Tag",
+        }
+
+        return self.api_client.call_api(
+            '/api/tags/{tag_id}/', 'PUT',
+            _path_params,
+            _query_params,
+            _header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            response_types_map=_response_types_map,
+            auth_settings=_auth_settings,
+            async_req=_params.get('async_req'),
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=_params.get('_preload_content', True),
+            _request_timeout=_params.get('_request_timeout'),
+            collection_formats=_collection_formats,
+            _request_auth=_params.get('_request_auth'))
+
+    @validate_arguments
+    def api_user_create(self, data : User, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> User:  # noqa: E501
+        """api_user_create  # noqa: E501
+
+        Create a new user for the authenticated user's organization.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.api_user_create(data, x_user_id, async_req=True)
+        >>> result = thread.get()
+
+        :param data: (required)
+        :type data: User
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request.
@@ -4198,23 +5059,25 @@ class ApiApi:
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
-            message = "Error! Please call the api_user_read_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
+            message = "Error! Please call the api_user_create_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.api_user_read_with_http_info(id, **kwargs)  # noqa: E501
+        return self.api_user_create_with_http_info(data, x_user_id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def api_user_read_with_http_info(self, id : Annotated[StrictStr, Field(..., description="UUID of the user to retrieve")], **kwargs) -> ApiResponse:  # noqa: E501
-        """api_user_read  # noqa: E501
+    def api_user_create_with_http_info(self, data : User, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+        """api_user_create  # noqa: E501
 
-        Retrieve details of a specific user  # noqa: E501
+        Create a new user for the authenticated user's organization.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_user_read_with_http_info(id, async_req=True)
+        >>> thread = api.api_user_create_with_http_info(data, x_user_id, async_req=True)
         >>> result = thread.get()
 
-        :param id: UUID of the user to retrieve (required)
-        :type id: str
+        :param data: (required)
+        :type data: User
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -4243,6 +5106,155 @@ class ApiApi:
         _params = locals()
 
         _all_params = [
+            'data',
+            'x_user_id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
+
+        # validate the arguments
+        for _key, _val in _params['kwargs'].items():
+            if _key not in _all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method api_user_create" % _key
+                )
+            _params[_key] = _val
+        del _params['kwargs']
+
+        _collection_formats = {}
+
+        # process the path parameters
+        _path_params = {}
+
+        # process the query parameters
+        _query_params = []
+        # process the header parameters
+        _header_params = dict(_params.get('_headers', {}))
+        if _params['x_user_id'] is not None:
+            _header_params['X-User-ID'] = _params['x_user_id']
+
+        # process the form parameters
+        _form_params = []
+        _files = {}
+        # process the body parameter
+        _body_params = None
+        if _params['data'] is not None:
+            _body_params = _params['data']
+
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # set the HTTP header `Content-Type`
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
+        if _content_types_list:
+                _header_params['Content-Type'] = _content_types_list
+
+        # authentication setting
+        _auth_settings = []  # noqa: E501
+
+        _response_types_map = {
+            '201': "User",
+        }
+
+        return self.api_client.call_api(
+            '/api/user/', 'POST',
+            _path_params,
+            _query_params,
+            _header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            response_types_map=_response_types_map,
+            auth_settings=_auth_settings,
+            async_req=_params.get('async_req'),
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=_params.get('_preload_content', True),
+            _request_timeout=_params.get('_request_timeout'),
+            collection_formats=_collection_formats,
+            _request_auth=_params.get('_request_auth'))
+
+    @validate_arguments
+    def api_user_delete(self, id : StrictStr, **kwargs) -> None:  # noqa: E501
+        """api_user_delete  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.api_user_delete(id, async_req=True)
+        >>> result = thread.get()
+
+        :param id: (required)
+        :type id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _request_timeout: timeout setting for this request.
+               If one number provided, it will be total request
+               timeout. It can also be a pair (tuple) of
+               (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: None
+        """
+        kwargs['_return_http_data_only'] = True
+        if '_preload_content' in kwargs:
+            message = "Error! Please call the api_user_delete_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
+            raise ValueError(message)
+        return self.api_user_delete_with_http_info(id, **kwargs)  # noqa: E501
+
+    @validate_arguments
+    def api_user_delete_with_http_info(self, id : StrictStr, **kwargs) -> ApiResponse:  # noqa: E501
+        """api_user_delete  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.api_user_delete_with_http_info(id, async_req=True)
+        >>> result = thread.get()
+
+        :param id: (required)
+        :type id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the ApiResponse.data will
+                                 be set to none and raw_data will store the
+                                 HTTP response body without reading/decoding.
+                                 Default is True.
+        :type _preload_content: bool, optional
+        :param _return_http_data_only: response data instead of ApiResponse
+                                       object with status code, headers, etc
+        :type _return_http_data_only: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: None
+        """
+
+        _params = locals()
+
+        _all_params = [
             'id'
         ]
         _all_params.extend(
@@ -4262,7 +5274,7 @@ class ApiApi:
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method api_user_read" % _key
+                    " to method api_user_delete" % _key
                 )
             _params[_key] = _val
         del _params['kwargs']
@@ -4277,6 +5289,148 @@ class ApiApi:
 
         # process the query parameters
         _query_params = []
+        # process the header parameters
+        _header_params = dict(_params.get('_headers', {}))
+        # process the form parameters
+        _form_params = []
+        _files = {}
+        # process the body parameter
+        _body_params = None
+        # authentication setting
+        _auth_settings = []  # noqa: E501
+
+        _response_types_map = {}
+
+        return self.api_client.call_api(
+            '/api/user/{id}/', 'DELETE',
+            _path_params,
+            _query_params,
+            _header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            response_types_map=_response_types_map,
+            auth_settings=_auth_settings,
+            async_req=_params.get('async_req'),
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=_params.get('_preload_content', True),
+            _request_timeout=_params.get('_request_timeout'),
+            collection_formats=_collection_formats,
+            _request_auth=_params.get('_request_auth'))
+
+    @validate_arguments
+    def api_user_list(self, id : Annotated[StrictStr, Field(..., description="UUID of the user to retrieve")], page : Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None, **kwargs) -> User:  # noqa: E501
+        """api_user_list  # noqa: E501
+
+        Retrieve details of a specific user  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.api_user_list(id, page, async_req=True)
+        >>> result = thread.get()
+
+        :param id: UUID of the user to retrieve (required)
+        :type id: str
+        :param page: A page number within the paginated result set.
+        :type page: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _request_timeout: timeout setting for this request.
+               If one number provided, it will be total request
+               timeout. It can also be a pair (tuple) of
+               (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: User
+        """
+        kwargs['_return_http_data_only'] = True
+        if '_preload_content' in kwargs:
+            message = "Error! Please call the api_user_list_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
+            raise ValueError(message)
+        return self.api_user_list_with_http_info(id, page, **kwargs)  # noqa: E501
+
+    @validate_arguments
+    def api_user_list_with_http_info(self, id : Annotated[StrictStr, Field(..., description="UUID of the user to retrieve")], page : Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+        """api_user_list  # noqa: E501
+
+        Retrieve details of a specific user  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.api_user_list_with_http_info(id, page, async_req=True)
+        >>> result = thread.get()
+
+        :param id: UUID of the user to retrieve (required)
+        :type id: str
+        :param page: A page number within the paginated result set.
+        :type page: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the ApiResponse.data will
+                                 be set to none and raw_data will store the
+                                 HTTP response body without reading/decoding.
+                                 Default is True.
+        :type _preload_content: bool, optional
+        :param _return_http_data_only: response data instead of ApiResponse
+                                       object with status code, headers, etc
+        :type _return_http_data_only: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(User, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        _params = locals()
+
+        _all_params = [
+            'id',
+            'page'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
+
+        # validate the arguments
+        for _key, _val in _params['kwargs'].items():
+            if _key not in _all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method api_user_list" % _key
+                )
+            _params[_key] = _val
+        del _params['kwargs']
+
+        _collection_formats = {}
+
+        # process the path parameters
+        _path_params = {}
+        if _params['id'] is not None:
+            _path_params['id'] = _params['id']
+
+
+        # process the query parameters
+        _query_params = []
+        if _params.get('page') is not None:  # noqa: E501
+            _query_params.append(('page', _params['page']))
+
         # process the header parameters
         _header_params = dict(_params.get('_headers', {}))
         # process the form parameters
@@ -4314,321 +5468,19 @@ class ApiApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def api_user_search_list(self, domain : Annotated[StrictStr, Field(..., description="Domain to filter users")], page : Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None, search : Annotated[Optional[StrictStr], Field(description="Search term for user's email, first name, or last name")] = None, **kwargs) -> ApiUserSearchList200Response:  # noqa: E501
-        """api_user_search_list  # noqa: E501
-
-        Search for users  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.api_user_search_list(domain, page, search, async_req=True)
-        >>> result = thread.get()
-
-        :param domain: Domain to filter users (required)
-        :type domain: str
-        :param page: A page number within the paginated result set.
-        :type page: int
-        :param search: Search term for user's email, first name, or last name
-        :type search: str
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _request_timeout: timeout setting for this request.
-               If one number provided, it will be total request
-               timeout. It can also be a pair (tuple) of
-               (connection, read) timeouts.
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: ApiUserSearchList200Response
-        """
-        kwargs['_return_http_data_only'] = True
-        if '_preload_content' in kwargs:
-            message = "Error! Please call the api_user_search_list_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
-            raise ValueError(message)
-        return self.api_user_search_list_with_http_info(domain, page, search, **kwargs)  # noqa: E501
-
-    @validate_arguments
-    def api_user_search_list_with_http_info(self, domain : Annotated[StrictStr, Field(..., description="Domain to filter users")], page : Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None, search : Annotated[Optional[StrictStr], Field(description="Search term for user's email, first name, or last name")] = None, **kwargs) -> ApiResponse:  # noqa: E501
-        """api_user_search_list  # noqa: E501
-
-        Search for users  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.api_user_search_list_with_http_info(domain, page, search, async_req=True)
-        >>> result = thread.get()
-
-        :param domain: Domain to filter users (required)
-        :type domain: str
-        :param page: A page number within the paginated result set.
-        :type page: int
-        :param search: Search term for user's email, first name, or last name
-        :type search: str
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _preload_content: if False, the ApiResponse.data will
-                                 be set to none and raw_data will store the
-                                 HTTP response body without reading/decoding.
-                                 Default is True.
-        :type _preload_content: bool, optional
-        :param _return_http_data_only: response data instead of ApiResponse
-                                       object with status code, headers, etc
-        :type _return_http_data_only: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :type _content_type: string, optional: force content-type for the request
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: tuple(ApiUserSearchList200Response, status_code(int), headers(HTTPHeaderDict))
-        """
-
-        _params = locals()
-
-        _all_params = [
-            'domain',
-            'page',
-            'search'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
-
-        # validate the arguments
-        for _key, _val in _params['kwargs'].items():
-            if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method api_user_search_list" % _key
-                )
-            _params[_key] = _val
-        del _params['kwargs']
-
-        _collection_formats = {}
-
-        # process the path parameters
-        _path_params = {}
-
-        # process the query parameters
-        _query_params = []
-        if _params.get('page') is not None:  # noqa: E501
-            _query_params.append(('page', _params['page']))
-
-        if _params.get('search') is not None:  # noqa: E501
-            _query_params.append(('search', _params['search']))
-
-        if _params.get('domain') is not None:  # noqa: E501
-            _query_params.append(('domain', _params['domain']))
-
-        # process the header parameters
-        _header_params = dict(_params.get('_headers', {}))
-        # process the form parameters
-        _form_params = []
-        _files = {}
-        # process the body parameter
-        _body_params = None
-        # set the HTTP header `Accept`
-        _header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # authentication setting
-        _auth_settings = []  # noqa: E501
-
-        _response_types_map = {
-            '200': "ApiUserSearchList200Response",
-        }
-
-        return self.api_client.call_api(
-            '/api/user/search/', 'GET',
-            _path_params,
-            _query_params,
-            _header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            response_types_map=_response_types_map,
-            auth_settings=_auth_settings,
-            async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=_params.get('_preload_content', True),
-            _request_timeout=_params.get('_request_timeout'),
-            collection_formats=_collection_formats,
-            _request_auth=_params.get('_request_auth'))
-
-    @validate_arguments
-    def api_user_update_partial_update(self, data : UserUpdate, **kwargs) -> UserUpdate:  # noqa: E501
-        """api_user_update_partial_update  # noqa: E501
+    def api_user_partial_update(self, id : StrictStr, data : User, **kwargs) -> User:  # noqa: E501
+        """api_user_partial_update  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_user_update_partial_update(data, async_req=True)
+        >>> thread = api.api_user_partial_update(id, data, async_req=True)
         >>> result = thread.get()
 
-        :param data: (required)
-        :type data: UserUpdate
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _request_timeout: timeout setting for this request.
-               If one number provided, it will be total request
-               timeout. It can also be a pair (tuple) of
-               (connection, read) timeouts.
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: UserUpdate
-        """
-        kwargs['_return_http_data_only'] = True
-        if '_preload_content' in kwargs:
-            message = "Error! Please call the api_user_update_partial_update_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
-            raise ValueError(message)
-        return self.api_user_update_partial_update_with_http_info(data, **kwargs)  # noqa: E501
-
-    @validate_arguments
-    def api_user_update_partial_update_with_http_info(self, data : UserUpdate, **kwargs) -> ApiResponse:  # noqa: E501
-        """api_user_update_partial_update  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.api_user_update_partial_update_with_http_info(data, async_req=True)
-        >>> result = thread.get()
-
-        :param data: (required)
-        :type data: UserUpdate
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _preload_content: if False, the ApiResponse.data will
-                                 be set to none and raw_data will store the
-                                 HTTP response body without reading/decoding.
-                                 Default is True.
-        :type _preload_content: bool, optional
-        :param _return_http_data_only: response data instead of ApiResponse
-                                       object with status code, headers, etc
-        :type _return_http_data_only: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :type _content_type: string, optional: force content-type for the request
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: tuple(UserUpdate, status_code(int), headers(HTTPHeaderDict))
-        """
-
-        _params = locals()
-
-        _all_params = [
-            'data'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
-
-        # validate the arguments
-        for _key, _val in _params['kwargs'].items():
-            if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method api_user_update_partial_update" % _key
-                )
-            _params[_key] = _val
-        del _params['kwargs']
-
-        _collection_formats = {}
-
-        # process the path parameters
-        _path_params = {}
-
-        # process the query parameters
-        _query_params = []
-        # process the header parameters
-        _header_params = dict(_params.get('_headers', {}))
-        # process the form parameters
-        _form_params = []
-        _files = {}
-        # process the body parameter
-        _body_params = None
-        if _params['data'] is not None:
-            _body_params = _params['data']
-
-        # set the HTTP header `Accept`
-        _header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json']))
-        if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
-
-        # authentication setting
-        _auth_settings = []  # noqa: E501
-
-        _response_types_map = {
-            '200': "UserUpdate",
-        }
-
-        return self.api_client.call_api(
-            '/api/user/update/', 'PATCH',
-            _path_params,
-            _query_params,
-            _header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            response_types_map=_response_types_map,
-            auth_settings=_auth_settings,
-            async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=_params.get('_preload_content', True),
-            _request_timeout=_params.get('_request_timeout'),
-            collection_formats=_collection_formats,
-            _request_auth=_params.get('_request_auth'))
-
-    @validate_arguments
-    def api_user_update_update(self, id : Annotated[StrictStr, Field(..., description="UUID of the user to update")], data : UserUpdate, **kwargs) -> UserUpdate:  # noqa: E501
-        """api_user_update_update  # noqa: E501
-
-        Update a specific user's details  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.api_user_update_update(id, data, async_req=True)
-        >>> result = thread.get()
-
-        :param id: UUID of the user to update (required)
+        :param id: (required)
         :type id: str
         :param data: (required)
-        :type data: UserUpdate
+        :type data: User
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request.
@@ -4638,29 +5490,28 @@ class ApiApi:
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: UserUpdate
+        :rtype: User
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
-            message = "Error! Please call the api_user_update_update_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
+            message = "Error! Please call the api_user_partial_update_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.api_user_update_update_with_http_info(id, data, **kwargs)  # noqa: E501
+        return self.api_user_partial_update_with_http_info(id, data, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def api_user_update_update_with_http_info(self, id : Annotated[StrictStr, Field(..., description="UUID of the user to update")], data : UserUpdate, **kwargs) -> ApiResponse:  # noqa: E501
-        """api_user_update_update  # noqa: E501
+    def api_user_partial_update_with_http_info(self, id : StrictStr, data : User, **kwargs) -> ApiResponse:  # noqa: E501
+        """api_user_partial_update  # noqa: E501
 
-        Update a specific user's details  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_user_update_update_with_http_info(id, data, async_req=True)
+        >>> thread = api.api_user_partial_update_with_http_info(id, data, async_req=True)
         >>> result = thread.get()
 
-        :param id: UUID of the user to update (required)
+        :param id: (required)
         :type id: str
         :param data: (required)
-        :type data: UserUpdate
+        :type data: User
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -4683,7 +5534,7 @@ class ApiApi:
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(UserUpdate, status_code(int), headers(HTTPHeaderDict))
+        :rtype: tuple(User, status_code(int), headers(HTTPHeaderDict))
         """
 
         _params = locals()
@@ -4709,7 +5560,7 @@ class ApiApi:
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method api_user_update_update" % _key
+                    " to method api_user_partial_update" % _key
                 )
             _params[_key] = _val
         del _params['kwargs']
@@ -4749,12 +5600,11 @@ class ApiApi:
         _auth_settings = []  # noqa: E501
 
         _response_types_map = {
-            '200': "UserUpdate",
-            '404': None,
+            '200': "User",
         }
 
         return self.api_client.call_api(
-            '/api/user/update/', 'PUT',
+            '/api/user/{id}/', 'PATCH',
             _path_params,
             _query_params,
             _header_params,
@@ -4771,20 +5621,495 @@ class ApiApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def api_userstories_create(self, data : UserStory, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> UserStory:  # noqa: E501
-        """api_userstories_create  # noqa: E501
+    def api_user_picker_list(self, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, search : Annotated[Optional[StrictStr], Field(description="Search term for filtering users by email, last name, or first name")] = None, sort : Annotated[Optional[StrictStr], Field(description="Field to sort the results by")] = None, limit : Annotated[Optional[StrictInt], Field(description="Maximum number of results to return")] = None, **kwargs) -> List[User]:  # noqa: E501
+        """api_user_picker_list  # noqa: E501
 
-        Create a new user story for the authenticated user's organization.  # noqa: E501
+        Retrieve list of users matching none or all of search parameters.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_userstories_create(data, x_user_id, async_req=True)
+        >>> thread = api.api_user_picker_list(x_user_id, search, sort, limit, async_req=True)
+        >>> result = thread.get()
+
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
+        :param search: Search term for filtering users by email, last name, or first name
+        :type search: str
+        :param sort: Field to sort the results by
+        :type sort: str
+        :param limit: Maximum number of results to return
+        :type limit: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _request_timeout: timeout setting for this request.
+               If one number provided, it will be total request
+               timeout. It can also be a pair (tuple) of
+               (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: List[User]
+        """
+        kwargs['_return_http_data_only'] = True
+        if '_preload_content' in kwargs:
+            message = "Error! Please call the api_user_picker_list_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
+            raise ValueError(message)
+        return self.api_user_picker_list_with_http_info(x_user_id, search, sort, limit, **kwargs)  # noqa: E501
+
+    @validate_arguments
+    def api_user_picker_list_with_http_info(self, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, search : Annotated[Optional[StrictStr], Field(description="Search term for filtering users by email, last name, or first name")] = None, sort : Annotated[Optional[StrictStr], Field(description="Field to sort the results by")] = None, limit : Annotated[Optional[StrictInt], Field(description="Maximum number of results to return")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+        """api_user_picker_list  # noqa: E501
+
+        Retrieve list of users matching none or all of search parameters.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.api_user_picker_list_with_http_info(x_user_id, search, sort, limit, async_req=True)
+        >>> result = thread.get()
+
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
+        :param search: Search term for filtering users by email, last name, or first name
+        :type search: str
+        :param sort: Field to sort the results by
+        :type sort: str
+        :param limit: Maximum number of results to return
+        :type limit: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the ApiResponse.data will
+                                 be set to none and raw_data will store the
+                                 HTTP response body without reading/decoding.
+                                 Default is True.
+        :type _preload_content: bool, optional
+        :param _return_http_data_only: response data instead of ApiResponse
+                                       object with status code, headers, etc
+        :type _return_http_data_only: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(List[User], status_code(int), headers(HTTPHeaderDict))
+        """
+
+        _params = locals()
+
+        _all_params = [
+            'x_user_id',
+            'search',
+            'sort',
+            'limit'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
+
+        # validate the arguments
+        for _key, _val in _params['kwargs'].items():
+            if _key not in _all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method api_user_picker_list" % _key
+                )
+            _params[_key] = _val
+        del _params['kwargs']
+
+        _collection_formats = {}
+
+        # process the path parameters
+        _path_params = {}
+
+        # process the query parameters
+        _query_params = []
+        if _params.get('search') is not None:  # noqa: E501
+            _query_params.append(('search', _params['search']))
+
+        if _params.get('sort') is not None:  # noqa: E501
+            _query_params.append(('sort', _params['sort']))
+
+        if _params.get('limit') is not None:  # noqa: E501
+            _query_params.append(('limit', _params['limit']))
+
+        # process the header parameters
+        _header_params = dict(_params.get('_headers', {}))
+        if _params['x_user_id'] is not None:
+            _header_params['X-User-ID'] = _params['x_user_id']
+
+        # process the form parameters
+        _form_params = []
+        _files = {}
+        # process the body parameter
+        _body_params = None
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # authentication setting
+        _auth_settings = []  # noqa: E501
+
+        _response_types_map = {
+            '200': "List[User]",
+            '404': None,
+        }
+
+        return self.api_client.call_api(
+            '/api/user/picker/', 'GET',
+            _path_params,
+            _query_params,
+            _header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            response_types_map=_response_types_map,
+            auth_settings=_auth_settings,
+            async_req=_params.get('async_req'),
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=_params.get('_preload_content', True),
+            _request_timeout=_params.get('_request_timeout'),
+            collection_formats=_collection_formats,
+            _request_auth=_params.get('_request_auth'))
+
+    @validate_arguments
+    def api_user_read(self, id : StrictStr, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> List[User]:  # noqa: E501
+        """api_user_read  # noqa: E501
+
+        Get a list of all PRDs for the authenticated user's organization.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.api_user_read(id, x_user_id, async_req=True)
+        >>> result = thread.get()
+
+        :param id: (required)
+        :type id: str
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _request_timeout: timeout setting for this request.
+               If one number provided, it will be total request
+               timeout. It can also be a pair (tuple) of
+               (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: List[User]
+        """
+        kwargs['_return_http_data_only'] = True
+        if '_preload_content' in kwargs:
+            message = "Error! Please call the api_user_read_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
+            raise ValueError(message)
+        return self.api_user_read_with_http_info(id, x_user_id, **kwargs)  # noqa: E501
+
+    @validate_arguments
+    def api_user_read_with_http_info(self, id : StrictStr, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+        """api_user_read  # noqa: E501
+
+        Get a list of all PRDs for the authenticated user's organization.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.api_user_read_with_http_info(id, x_user_id, async_req=True)
+        >>> result = thread.get()
+
+        :param id: (required)
+        :type id: str
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the ApiResponse.data will
+                                 be set to none and raw_data will store the
+                                 HTTP response body without reading/decoding.
+                                 Default is True.
+        :type _preload_content: bool, optional
+        :param _return_http_data_only: response data instead of ApiResponse
+                                       object with status code, headers, etc
+        :type _return_http_data_only: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(List[User], status_code(int), headers(HTTPHeaderDict))
+        """
+
+        _params = locals()
+
+        _all_params = [
+            'id',
+            'x_user_id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
+
+        # validate the arguments
+        for _key, _val in _params['kwargs'].items():
+            if _key not in _all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method api_user_read" % _key
+                )
+            _params[_key] = _val
+        del _params['kwargs']
+
+        _collection_formats = {}
+
+        # process the path parameters
+        _path_params = {}
+        if _params['id'] is not None:
+            _path_params['id'] = _params['id']
+
+
+        # process the query parameters
+        _query_params = []
+        # process the header parameters
+        _header_params = dict(_params.get('_headers', {}))
+        if _params['x_user_id'] is not None:
+            _header_params['X-User-ID'] = _params['x_user_id']
+
+        # process the form parameters
+        _form_params = []
+        _files = {}
+        # process the body parameter
+        _body_params = None
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # authentication setting
+        _auth_settings = []  # noqa: E501
+
+        _response_types_map = {
+            '200': "List[User]",
+        }
+
+        return self.api_client.call_api(
+            '/api/user/{id}/', 'GET',
+            _path_params,
+            _query_params,
+            _header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            response_types_map=_response_types_map,
+            auth_settings=_auth_settings,
+            async_req=_params.get('async_req'),
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=_params.get('_preload_content', True),
+            _request_timeout=_params.get('_request_timeout'),
+            collection_formats=_collection_formats,
+            _request_auth=_params.get('_request_auth'))
+
+    @validate_arguments
+    def api_user_update(self, id : Annotated[StrictStr, Field(..., description="UUID of the user to update")], data : User, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> User:  # noqa: E501
+        """api_user_update  # noqa: E501
+
+        Update a specific user's details  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.api_user_update(id, data, x_user_id, async_req=True)
+        >>> result = thread.get()
+
+        :param id: UUID of the user to update (required)
+        :type id: str
+        :param data: (required)
+        :type data: User
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _request_timeout: timeout setting for this request.
+               If one number provided, it will be total request
+               timeout. It can also be a pair (tuple) of
+               (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: User
+        """
+        kwargs['_return_http_data_only'] = True
+        if '_preload_content' in kwargs:
+            message = "Error! Please call the api_user_update_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
+            raise ValueError(message)
+        return self.api_user_update_with_http_info(id, data, x_user_id, **kwargs)  # noqa: E501
+
+    @validate_arguments
+    def api_user_update_with_http_info(self, id : Annotated[StrictStr, Field(..., description="UUID of the user to update")], data : User, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+        """api_user_update  # noqa: E501
+
+        Update a specific user's details  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.api_user_update_with_http_info(id, data, x_user_id, async_req=True)
+        >>> result = thread.get()
+
+        :param id: UUID of the user to update (required)
+        :type id: str
+        :param data: (required)
+        :type data: User
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the ApiResponse.data will
+                                 be set to none and raw_data will store the
+                                 HTTP response body without reading/decoding.
+                                 Default is True.
+        :type _preload_content: bool, optional
+        :param _return_http_data_only: response data instead of ApiResponse
+                                       object with status code, headers, etc
+        :type _return_http_data_only: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(User, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        _params = locals()
+
+        _all_params = [
+            'id',
+            'data',
+            'x_user_id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
+
+        # validate the arguments
+        for _key, _val in _params['kwargs'].items():
+            if _key not in _all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method api_user_update" % _key
+                )
+            _params[_key] = _val
+        del _params['kwargs']
+
+        _collection_formats = {}
+
+        # process the path parameters
+        _path_params = {}
+        if _params['id'] is not None:
+            _path_params['id'] = _params['id']
+
+
+        # process the query parameters
+        _query_params = []
+        # process the header parameters
+        _header_params = dict(_params.get('_headers', {}))
+        if _params['x_user_id'] is not None:
+            _header_params['X-User-ID'] = _params['x_user_id']
+
+        # process the form parameters
+        _form_params = []
+        _files = {}
+        # process the body parameter
+        _body_params = None
+        if _params['data'] is not None:
+            _body_params = _params['data']
+
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # set the HTTP header `Content-Type`
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
+        if _content_types_list:
+                _header_params['Content-Type'] = _content_types_list
+
+        # authentication setting
+        _auth_settings = []  # noqa: E501
+
+        _response_types_map = {
+            '200': "User",
+            '404': None,
+        }
+
+        return self.api_client.call_api(
+            '/api/user/{id}/', 'PUT',
+            _path_params,
+            _query_params,
+            _header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            response_types_map=_response_types_map,
+            auth_settings=_auth_settings,
+            async_req=_params.get('async_req'),
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=_params.get('_preload_content', True),
+            _request_timeout=_params.get('_request_timeout'),
+            collection_formats=_collection_formats,
+            _request_auth=_params.get('_request_auth'))
+
+    @validate_arguments
+    def api_userstories_create(self, data : UserStory, **kwargs) -> UserStory:  # noqa: E501
+        """api_userstories_create  # noqa: E501
+
+        Create a new user story.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.api_userstories_create(data, async_req=True)
         >>> result = thread.get()
 
         :param data: (required)
         :type data: UserStory
-        :param x_user_id: User ID (required when using API key)
-        :type x_user_id: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request.
@@ -4800,23 +6125,21 @@ class ApiApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the api_userstories_create_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.api_userstories_create_with_http_info(data, x_user_id, **kwargs)  # noqa: E501
+        return self.api_userstories_create_with_http_info(data, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def api_userstories_create_with_http_info(self, data : UserStory, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def api_userstories_create_with_http_info(self, data : UserStory, **kwargs) -> ApiResponse:  # noqa: E501
         """api_userstories_create  # noqa: E501
 
-        Create a new user story for the authenticated user's organization.  # noqa: E501
+        Create a new user story.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_userstories_create_with_http_info(data, x_user_id, async_req=True)
+        >>> thread = api.api_userstories_create_with_http_info(data, async_req=True)
         >>> result = thread.get()
 
         :param data: (required)
         :type data: UserStory
-        :param x_user_id: User ID (required when using API key)
-        :type x_user_id: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -4845,8 +6168,7 @@ class ApiApi:
         _params = locals()
 
         _all_params = [
-            'data',
-            'x_user_id'
+            'data'
         ]
         _all_params.extend(
             [
@@ -4879,9 +6201,6 @@ class ApiApi:
         _query_params = []
         # process the header parameters
         _header_params = dict(_params.get('_headers', {}))
-        if _params['x_user_id'] is not None:
-            _header_params['X-User-ID'] = _params['x_user_id']
-
         # process the form parameters
         _form_params = []
         _files = {}
@@ -5068,18 +6387,30 @@ class ApiApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def api_userstories_list(self, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> List[UserStory]:  # noqa: E501
+    def api_userstories_list(self, search : Annotated[Optional[StrictStr], Field(description="Search term for as_a, i_want_to, so_that, or freetext_override fields")] = None, status : Annotated[Optional[StrictStr], Field(description="Filter by status")] = None, prd : Annotated[Optional[StrictInt], Field(description="Filter by PRD ID")] = None, sort : Annotated[Optional[StrictStr], Field(description="Sort field (prefix with '-' for descending order)")] = None, limit : Annotated[Optional[StrictInt], Field(description="Limit the number of results")] = None, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, format : Annotated[Optional[StrictStr], Field(description="Response format (json or excel, default is json)")] = None, **kwargs) -> List[UserStory]:  # noqa: E501
         """api_userstories_list  # noqa: E501
 
-        Get a list of all user stories for the authenticated user's organization.  # noqa: E501
+        List or Search for User Stories  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_userstories_list(x_user_id, async_req=True)
+        >>> thread = api.api_userstories_list(search, status, prd, sort, limit, x_user_id, format, async_req=True)
         >>> result = thread.get()
 
+        :param search: Search term for as_a, i_want_to, so_that, or freetext_override fields
+        :type search: str
+        :param status: Filter by status
+        :type status: str
+        :param prd: Filter by PRD ID
+        :type prd: int
+        :param sort: Sort field (prefix with '-' for descending order)
+        :type sort: str
+        :param limit: Limit the number of results
+        :type limit: int
         :param x_user_id: User ID (required when using API key)
         :type x_user_id: str
+        :param format: Response format (json or excel, default is json)
+        :type format: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request.
@@ -5095,21 +6426,33 @@ class ApiApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the api_userstories_list_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.api_userstories_list_with_http_info(x_user_id, **kwargs)  # noqa: E501
+        return self.api_userstories_list_with_http_info(search, status, prd, sort, limit, x_user_id, format, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def api_userstories_list_with_http_info(self, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def api_userstories_list_with_http_info(self, search : Annotated[Optional[StrictStr], Field(description="Search term for as_a, i_want_to, so_that, or freetext_override fields")] = None, status : Annotated[Optional[StrictStr], Field(description="Filter by status")] = None, prd : Annotated[Optional[StrictInt], Field(description="Filter by PRD ID")] = None, sort : Annotated[Optional[StrictStr], Field(description="Sort field (prefix with '-' for descending order)")] = None, limit : Annotated[Optional[StrictInt], Field(description="Limit the number of results")] = None, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, format : Annotated[Optional[StrictStr], Field(description="Response format (json or excel, default is json)")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """api_userstories_list  # noqa: E501
 
-        Get a list of all user stories for the authenticated user's organization.  # noqa: E501
+        List or Search for User Stories  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_userstories_list_with_http_info(x_user_id, async_req=True)
+        >>> thread = api.api_userstories_list_with_http_info(search, status, prd, sort, limit, x_user_id, format, async_req=True)
         >>> result = thread.get()
 
+        :param search: Search term for as_a, i_want_to, so_that, or freetext_override fields
+        :type search: str
+        :param status: Filter by status
+        :type status: str
+        :param prd: Filter by PRD ID
+        :type prd: int
+        :param sort: Sort field (prefix with '-' for descending order)
+        :type sort: str
+        :param limit: Limit the number of results
+        :type limit: int
         :param x_user_id: User ID (required when using API key)
         :type x_user_id: str
+        :param format: Response format (json or excel, default is json)
+        :type format: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -5138,7 +6481,13 @@ class ApiApi:
         _params = locals()
 
         _all_params = [
-            'x_user_id'
+            'search',
+            'status',
+            'prd',
+            'sort',
+            'limit',
+            'x_user_id',
+            'format'
         ]
         _all_params.extend(
             [
@@ -5169,6 +6518,24 @@ class ApiApi:
 
         # process the query parameters
         _query_params = []
+        if _params.get('search') is not None:  # noqa: E501
+            _query_params.append(('search', _params['search']))
+
+        if _params.get('status') is not None:  # noqa: E501
+            _query_params.append(('status', _params['status']))
+
+        if _params.get('prd') is not None:  # noqa: E501
+            _query_params.append(('prd', _params['prd']))
+
+        if _params.get('sort') is not None:  # noqa: E501
+            _query_params.append(('sort', _params['sort']))
+
+        if _params.get('limit') is not None:  # noqa: E501
+            _query_params.append(('limit', _params['limit']))
+
+        if _params.get('format') is not None:  # noqa: E501
+            _query_params.append(('format', _params['format']))
+
         # process the header parameters
         _header_params = dict(_params.get('_headers', {}))
         if _params['x_user_id'] is not None:
@@ -5503,178 +6870,6 @@ class ApiApi:
 
         return self.api_client.call_api(
             '/api/userstories/{userstory_id}/', 'GET',
-            _path_params,
-            _query_params,
-            _header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            response_types_map=_response_types_map,
-            auth_settings=_auth_settings,
-            async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=_params.get('_preload_content', True),
-            _request_timeout=_params.get('_request_timeout'),
-            collection_formats=_collection_formats,
-            _request_auth=_params.get('_request_auth'))
-
-    @validate_arguments
-    def api_userstories_search_list(self, status : Annotated[Optional[StrictStr], Field(description="Filter by status")] = None, search : Annotated[Optional[StrictStr], Field(description="Search string for as_a, i_want_to, so_that, or freetext_override fields")] = None, sort : Annotated[Optional[StrictStr], Field(description="Sort field (created_at, updated_at, due_date, priority, status). Use '-' prefix for descending order")] = None, limit : Annotated[Optional[StrictInt], Field(description="Limit the number of results")] = None, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> List[UserStory]:  # noqa: E501
-        """api_userstories_search_list  # noqa: E501
-
-        Search and filter UserStory data  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.api_userstories_search_list(status, search, sort, limit, x_user_id, async_req=True)
-        >>> result = thread.get()
-
-        :param status: Filter by status
-        :type status: str
-        :param search: Search string for as_a, i_want_to, so_that, or freetext_override fields
-        :type search: str
-        :param sort: Sort field (created_at, updated_at, due_date, priority, status). Use '-' prefix for descending order
-        :type sort: str
-        :param limit: Limit the number of results
-        :type limit: int
-        :param x_user_id: User ID (required when using API key)
-        :type x_user_id: str
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _request_timeout: timeout setting for this request.
-               If one number provided, it will be total request
-               timeout. It can also be a pair (tuple) of
-               (connection, read) timeouts.
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: List[UserStory]
-        """
-        kwargs['_return_http_data_only'] = True
-        if '_preload_content' in kwargs:
-            message = "Error! Please call the api_userstories_search_list_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
-            raise ValueError(message)
-        return self.api_userstories_search_list_with_http_info(status, search, sort, limit, x_user_id, **kwargs)  # noqa: E501
-
-    @validate_arguments
-    def api_userstories_search_list_with_http_info(self, status : Annotated[Optional[StrictStr], Field(description="Filter by status")] = None, search : Annotated[Optional[StrictStr], Field(description="Search string for as_a, i_want_to, so_that, or freetext_override fields")] = None, sort : Annotated[Optional[StrictStr], Field(description="Sort field (created_at, updated_at, due_date, priority, status). Use '-' prefix for descending order")] = None, limit : Annotated[Optional[StrictInt], Field(description="Limit the number of results")] = None, x_user_id : Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None, **kwargs) -> ApiResponse:  # noqa: E501
-        """api_userstories_search_list  # noqa: E501
-
-        Search and filter UserStory data  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.api_userstories_search_list_with_http_info(status, search, sort, limit, x_user_id, async_req=True)
-        >>> result = thread.get()
-
-        :param status: Filter by status
-        :type status: str
-        :param search: Search string for as_a, i_want_to, so_that, or freetext_override fields
-        :type search: str
-        :param sort: Sort field (created_at, updated_at, due_date, priority, status). Use '-' prefix for descending order
-        :type sort: str
-        :param limit: Limit the number of results
-        :type limit: int
-        :param x_user_id: User ID (required when using API key)
-        :type x_user_id: str
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _preload_content: if False, the ApiResponse.data will
-                                 be set to none and raw_data will store the
-                                 HTTP response body without reading/decoding.
-                                 Default is True.
-        :type _preload_content: bool, optional
-        :param _return_http_data_only: response data instead of ApiResponse
-                                       object with status code, headers, etc
-        :type _return_http_data_only: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :type _content_type: string, optional: force content-type for the request
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: tuple(List[UserStory], status_code(int), headers(HTTPHeaderDict))
-        """
-
-        _params = locals()
-
-        _all_params = [
-            'status',
-            'search',
-            'sort',
-            'limit',
-            'x_user_id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
-
-        # validate the arguments
-        for _key, _val in _params['kwargs'].items():
-            if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method api_userstories_search_list" % _key
-                )
-            _params[_key] = _val
-        del _params['kwargs']
-
-        _collection_formats = {}
-
-        # process the path parameters
-        _path_params = {}
-
-        # process the query parameters
-        _query_params = []
-        if _params.get('status') is not None:  # noqa: E501
-            _query_params.append(('status', _params['status']))
-
-        if _params.get('search') is not None:  # noqa: E501
-            _query_params.append(('search', _params['search']))
-
-        if _params.get('sort') is not None:  # noqa: E501
-            _query_params.append(('sort', _params['sort']))
-
-        if _params.get('limit') is not None:  # noqa: E501
-            _query_params.append(('limit', _params['limit']))
-
-        # process the header parameters
-        _header_params = dict(_params.get('_headers', {}))
-        if _params['x_user_id'] is not None:
-            _header_params['X-User-ID'] = _params['x_user_id']
-
-        # process the form parameters
-        _form_params = []
-        _files = {}
-        # process the body parameter
-        _body_params = None
-        # set the HTTP header `Accept`
-        _header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # authentication setting
-        _auth_settings = []  # noqa: E501
-
-        _response_types_map = {
-            '200': "List[UserStory]",
-        }
-
-        return self.api_client.call_api(
-            '/api/userstories/search', 'GET',
             _path_params,
             _query_params,
             _header_params,

@@ -20,9 +20,8 @@ import json
 
 from datetime import datetime
 from typing import Optional
-from pydantic import BaseModel, Field, StrictStr, validator
+from pydantic import BaseModel, Field, StrictStr, constr, validator
 from pp_sdk.models.goal_base import GoalBase
-from pp_sdk.models.user import User
 
 class Status(BaseModel):
     """
@@ -32,13 +31,14 @@ class Status(BaseModel):
     goal: StrictStr = Field(...)
     goal_details: Optional[GoalBase] = None
     status: Optional[StrictStr] = None
+    status_display: Optional[constr(strict=True, min_length=1)] = None
     var_date: Optional[datetime] = Field(default=None, alias="date")
     status_note: Optional[StrictStr] = None
     path_to_green: Optional[StrictStr] = None
     publishing_state: Optional[StrictStr] = None
-    created_by: Optional[User] = None
+    created_by: Optional[StrictStr] = None
     created_date: Optional[datetime] = None
-    __properties = ["id", "goal", "goal_details", "status", "date", "status_note", "path_to_green", "publishing_state", "created_by", "created_date"]
+    __properties = ["id", "goal", "goal_details", "status", "status_display", "date", "status_note", "path_to_green", "publishing_state", "created_by", "created_date"]
 
     @validator('status')
     def status_validate_enum(cls, value):
@@ -83,15 +83,14 @@ class Status(BaseModel):
         _dict = self.dict(by_alias=True,
                           exclude={
                             "id",
+                            "status_display",
+                            "created_by",
                             "created_date",
                           },
                           exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of goal_details
         if self.goal_details:
             _dict['goal_details'] = self.goal_details.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of created_by
-        if self.created_by:
-            _dict['created_by'] = self.created_by.to_dict()
         # set to None if var_date (nullable) is None
         # and __fields_set__ contains the field
         if self.var_date is None and "var_date" in self.__fields_set__:
@@ -123,11 +122,12 @@ class Status(BaseModel):
             "goal": obj.get("goal"),
             "goal_details": GoalBase.from_dict(obj.get("goal_details")) if obj.get("goal_details") is not None else None,
             "status": obj.get("status"),
+            "status_display": obj.get("status_display"),
             "var_date": obj.get("date"),
             "status_note": obj.get("status_note"),
             "path_to_green": obj.get("path_to_green"),
             "publishing_state": obj.get("publishing_state"),
-            "created_by": User.from_dict(obj.get("created_by")) if obj.get("created_by") is not None else None,
+            "created_by": obj.get("created_by"),
             "created_date": obj.get("created_date")
         })
         return _obj

@@ -8,14 +8,13 @@ Name | Type | Description | Notes
 **name** | **str** |  | 
 **description** | **str** |  | [optional] 
 **charter** | **str** |  | [optional] 
-**principal_users** | [**List[User]**](User.md) |  | [optional] [readonly] 
-**stakeholder_users** | [**List[User]**](User.md) |  | [optional] [readonly] 
+**principal_users** | **str** |  | [optional] [readonly] 
+**stakeholder_users** | **str** |  | [optional] [readonly] 
 **parent** | **str** |  | [optional] 
-**tags** | [**List[Tag]**](Tag.md) |  | [optional] [readonly] 
-**created_by** | [**User**](User.md) |  | [optional] 
+**tags** | **str** |  | [optional] [readonly] 
+**created_by** | **str** |  | [optional] [readonly] 
 **created_date** | **datetime** |  | [optional] [readonly] 
 **modified_date** | **datetime** |  | [optional] [readonly] 
-**organization** | [**Organization**](Organization.md) |  | [optional] 
 
 ## Example
 

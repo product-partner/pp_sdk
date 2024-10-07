@@ -8,11 +8,12 @@ Name | Type | Description | Notes
 **goal** | **str** |  | 
 **goal_details** | [**GoalBase**](GoalBase.md) |  | [optional] 
 **status** | **str** |  | [optional] 
+**status_display** | **str** |  | [optional] [readonly] 
 **var_date** | **datetime** |  | [optional] 
 **status_note** | **str** |  | [optional] 
 **path_to_green** | **str** |  | [optional] 
 **publishing_state** | **str** |  | [optional] 
-**created_by** | [**User**](User.md) |  | [optional] 
+**created_by** | **str** |  | [optional] [readonly] 
 **created_date** | **datetime** |  | [optional] [readonly] 
 
 ## Example

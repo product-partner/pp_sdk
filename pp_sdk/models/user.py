@@ -65,6 +65,8 @@ class User(BaseModel):
         _dict = self.dict(by_alias=True,
                           exclude={
                             "id",
+                            "date_joined",
+                            "last_login",
                           },
                           exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of organization
@@ -73,11 +75,6 @@ class User(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of address
         if self.address:
             _dict['address'] = self.address.to_dict()
-        # set to None if last_login (nullable) is None
-        # and __fields_set__ contains the field
-        if self.last_login is None and "last_login" in self.__fields_set__:
-            _dict['last_login'] = None
-
         return _dict
 
     @classmethod

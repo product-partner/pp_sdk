@@ -6,6 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] [readonly] 
 **tag** | **str** |  | 
+**archived** | **bool** |  | [optional] 
+**created_date** | **datetime** |  | [optional] [readonly] 
 
 ## Example
 

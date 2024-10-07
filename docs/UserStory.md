@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] [readonly] 
-**prd** | **str** |  | 
+**prd** | **str** |  | [optional] 
 **as_a** | **str** |  | [optional] 
 **i_want_to** | **str** |  | [optional] 
 **so_that** | **str** |  | [optional] 
@@ -15,9 +15,8 @@ Name | Type | Description | Notes
 **due_date** | **datetime** |  | [optional] 
 **status** | **str** |  | [optional] 
 **priority** | **str** |  | [optional] 
-**tags** | [**List[Tag]**](Tag.md) |  | [optional] [readonly] 
-**created_by** | [**UserBase**](UserBase.md) |  | [optional] 
-**organization** | [**Organization**](Organization.md) |  | [optional] 
+**tags** | **str** |  | [optional] [readonly] 
+**created_by** | **str** |  | [optional] [readonly] 
 
 ## Example
 

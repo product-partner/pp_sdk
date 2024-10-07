@@ -19,12 +19,8 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import List, Optional
-from pydantic import BaseModel, Field, StrictStr, conlist, constr, validator
-from pp_sdk.models.organization import Organization
-from pp_sdk.models.program_base import ProgramBase
-from pp_sdk.models.tag import Tag
-from pp_sdk.models.user_base import UserBase
+from typing import Optional
+from pydantic import BaseModel, Field, StrictStr, constr, validator
 
 class PRD(BaseModel):
     """
@@ -32,19 +28,17 @@ class PRD(BaseModel):
     """
     id: Optional[StrictStr] = None
     title: constr(strict=True, max_length=255, min_length=1) = Field(...)
-    programs: Optional[conlist(ProgramBase)] = None
     description: Optional[StrictStr] = None
     body: Optional[StrictStr] = None
-    created_date: Optional[datetime] = None
-    modified_date: Optional[datetime] = None
-    due_date: Optional[datetime] = None
     status: Optional[StrictStr] = None
-    tags: Optional[conlist(Tag)] = None
-    owner_user: Optional[UserBase] = None
-    stakeholder_users: Optional[conlist(UserBase)] = None
-    created_by: Optional[UserBase] = None
-    organization: Optional[Organization] = None
-    __properties = ["id", "title", "programs", "description", "body", "created_date", "modified_date", "due_date", "status", "tags", "owner_user", "stakeholder_users", "created_by", "organization"]
+    due_date: Optional[datetime] = None
+    modified_date: Optional[datetime] = None
+    tags: Optional[StrictStr] = None
+    stakeholder_users: Optional[StrictStr] = None
+    programs: Optional[StrictStr] = None
+    created_by: Optional[StrictStr] = None
+    created_date: Optional[datetime] = None
+    __properties = ["id", "title", "description", "body", "status", "due_date", "modified_date", "tags", "stakeholder_users", "programs", "created_by", "created_date"]
 
     @validator('status')
     def status_validate_enum(cls, value):
@@ -52,8 +46,8 @@ class PRD(BaseModel):
         if value is None:
             return value
 
-        if value not in ('DRAFT', 'IN_REVIEW', 'APPROVED', 'PUBLISHED'):
-            raise ValueError("must be one of enum values ('DRAFT', 'IN_REVIEW', 'APPROVED', 'PUBLISHED')")
+        if value not in ('DRAFT', 'PENDING_REVIEW', 'IN_REVIEW', 'APPROVED', 'PUBLISHED'):
+            raise ValueError("must be one of enum values ('DRAFT', 'PENDING_REVIEW', 'IN_REVIEW', 'APPROVED', 'PUBLISHED')")
         return value
 
     class Config:
@@ -79,43 +73,14 @@ class PRD(BaseModel):
         _dict = self.dict(by_alias=True,
                           exclude={
                             "id",
-                            "programs",
-                            "created_date",
                             "modified_date",
                             "tags",
                             "stakeholder_users",
+                            "programs",
+                            "created_by",
+                            "created_date",
                           },
                           exclude_none=True)
-        # override the default output from pydantic by calling `to_dict()` of each item in programs (list)
-        _items = []
-        if self.programs:
-            for _item in self.programs:
-                if _item:
-                    _items.append(_item.to_dict())
-            _dict['programs'] = _items
-        # override the default output from pydantic by calling `to_dict()` of each item in tags (list)
-        _items = []
-        if self.tags:
-            for _item in self.tags:
-                if _item:
-                    _items.append(_item.to_dict())
-            _dict['tags'] = _items
-        # override the default output from pydantic by calling `to_dict()` of owner_user
-        if self.owner_user:
-            _dict['owner_user'] = self.owner_user.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of each item in stakeholder_users (list)
-        _items = []
-        if self.stakeholder_users:
-            for _item in self.stakeholder_users:
-                if _item:
-                    _items.append(_item.to_dict())
-            _dict['stakeholder_users'] = _items
-        # override the default output from pydantic by calling `to_dict()` of created_by
-        if self.created_by:
-            _dict['created_by'] = self.created_by.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of organization
-        if self.organization:
-            _dict['organization'] = self.organization.to_dict()
         # set to None if description (nullable) is None
         # and __fields_set__ contains the field
         if self.description is None and "description" in self.__fields_set__:
@@ -125,11 +90,6 @@ class PRD(BaseModel):
         # and __fields_set__ contains the field
         if self.body is None and "body" in self.__fields_set__:
             _dict['body'] = None
-
-        # set to None if due_date (nullable) is None
-        # and __fields_set__ contains the field
-        if self.due_date is None and "due_date" in self.__fields_set__:
-            _dict['due_date'] = None
 
         return _dict
 
@@ -145,18 +105,16 @@ class PRD(BaseModel):
         _obj = PRD.parse_obj({
             "id": obj.get("id"),
             "title": obj.get("title"),
-            "programs": [ProgramBase.from_dict(_item) for _item in obj.get("programs")] if obj.get("programs") is not None else None,
             "description": obj.get("description"),
             "body": obj.get("body"),
-            "created_date": obj.get("created_date"),
-            "modified_date": obj.get("modified_date"),
-            "due_date": obj.get("due_date"),
             "status": obj.get("status"),
-            "tags": [Tag.from_dict(_item) for _item in obj.get("tags")] if obj.get("tags") is not None else None,
-            "owner_user": UserBase.from_dict(obj.get("owner_user")) if obj.get("owner_user") is not None else None,
-            "stakeholder_users": [UserBase.from_dict(_item) for _item in obj.get("stakeholder_users")] if obj.get("stakeholder_users") is not None else None,
-            "created_by": UserBase.from_dict(obj.get("created_by")) if obj.get("created_by") is not None else None,
-            "organization": Organization.from_dict(obj.get("organization")) if obj.get("organization") is not None else None
+            "due_date": obj.get("due_date"),
+            "modified_date": obj.get("modified_date"),
+            "tags": obj.get("tags"),
+            "stakeholder_users": obj.get("stakeholder_users"),
+            "programs": obj.get("programs"),
+            "created_by": obj.get("created_by"),
+            "created_date": obj.get("created_date")
         })
         return _obj
 

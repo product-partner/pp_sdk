@@ -6,18 +6,16 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] [readonly] 
 **title** | **str** |  | 
-**programs** | [**List[ProgramBase]**](ProgramBase.md) |  | [optional] [readonly] 
 **description** | **str** |  | [optional] 
 **body** | **str** |  | [optional] 
-**created_date** | **datetime** |  | [optional] [readonly] 
-**modified_date** | **datetime** |  | [optional] [readonly] 
-**due_date** | **datetime** |  | [optional] 
 **status** | **str** |  | [optional] 
-**tags** | [**List[Tag]**](Tag.md) |  | [optional] [readonly] 
-**owner_user** | [**UserBase**](UserBase.md) |  | [optional] 
-**stakeholder_users** | [**List[UserBase]**](UserBase.md) |  | [optional] [readonly] 
-**created_by** | [**UserBase**](UserBase.md) |  | [optional] 
-**organization** | [**Organization**](Organization.md) |  | [optional] 
+**due_date** | **datetime** |  | [optional] 
+**modified_date** | **datetime** |  | [optional] [readonly] 
+**tags** | **str** |  | [optional] [readonly] 
+**stakeholder_users** | **str** |  | [optional] [readonly] 
+**programs** | **str** |  | [optional] [readonly] 
+**created_by** | **str** |  | [optional] [readonly] 
+**created_date** | **datetime** |  | [optional] [readonly] 
 
 ## Example
 

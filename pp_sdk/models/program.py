@@ -19,11 +19,8 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import List, Optional
-from pydantic import BaseModel, Field, StrictStr, conlist, constr
-from pp_sdk.models.organization import Organization
-from pp_sdk.models.tag import Tag
-from pp_sdk.models.user import User
+from typing import Optional
+from pydantic import BaseModel, Field, StrictStr, constr
 
 class Program(BaseModel):
     """
@@ -33,15 +30,14 @@ class Program(BaseModel):
     name: constr(strict=True, max_length=255, min_length=1) = Field(...)
     description: Optional[StrictStr] = None
     charter: Optional[StrictStr] = None
-    principal_users: Optional[conlist(User)] = None
-    stakeholder_users: Optional[conlist(User)] = None
+    principal_users: Optional[StrictStr] = None
+    stakeholder_users: Optional[StrictStr] = None
     parent: Optional[StrictStr] = None
-    tags: Optional[conlist(Tag)] = None
-    created_by: Optional[User] = None
+    tags: Optional[StrictStr] = None
+    created_by: Optional[StrictStr] = None
     created_date: Optional[datetime] = None
     modified_date: Optional[datetime] = None
-    organization: Optional[Organization] = None
-    __properties = ["id", "name", "description", "charter", "principal_users", "stakeholder_users", "parent", "tags", "created_by", "created_date", "modified_date", "organization"]
+    __properties = ["id", "name", "description", "charter", "principal_users", "stakeholder_users", "parent", "tags", "created_by", "created_date", "modified_date"]
 
     class Config:
         """Pydantic configuration"""
@@ -69,37 +65,11 @@ class Program(BaseModel):
                             "principal_users",
                             "stakeholder_users",
                             "tags",
+                            "created_by",
                             "created_date",
                             "modified_date",
                           },
                           exclude_none=True)
-        # override the default output from pydantic by calling `to_dict()` of each item in principal_users (list)
-        _items = []
-        if self.principal_users:
-            for _item in self.principal_users:
-                if _item:
-                    _items.append(_item.to_dict())
-            _dict['principal_users'] = _items
-        # override the default output from pydantic by calling `to_dict()` of each item in stakeholder_users (list)
-        _items = []
-        if self.stakeholder_users:
-            for _item in self.stakeholder_users:
-                if _item:
-                    _items.append(_item.to_dict())
-            _dict['stakeholder_users'] = _items
-        # override the default output from pydantic by calling `to_dict()` of each item in tags (list)
-        _items = []
-        if self.tags:
-            for _item in self.tags:
-                if _item:
-                    _items.append(_item.to_dict())
-            _dict['tags'] = _items
-        # override the default output from pydantic by calling `to_dict()` of created_by
-        if self.created_by:
-            _dict['created_by'] = self.created_by.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of organization
-        if self.organization:
-            _dict['organization'] = self.organization.to_dict()
         # set to None if description (nullable) is None
         # and __fields_set__ contains the field
         if self.description is None and "description" in self.__fields_set__:
@@ -141,14 +111,13 @@ class Program(BaseModel):
             "name": obj.get("name"),
             "description": obj.get("description"),
             "charter": obj.get("charter"),
-            "principal_users": [User.from_dict(_item) for _item in obj.get("principal_users")] if obj.get("principal_users") is not None else None,
-            "stakeholder_users": [User.from_dict(_item) for _item in obj.get("stakeholder_users")] if obj.get("stakeholder_users") is not None else None,
+            "principal_users": obj.get("principal_users"),
+            "stakeholder_users": obj.get("stakeholder_users"),
             "parent": obj.get("parent"),
-            "tags": [Tag.from_dict(_item) for _item in obj.get("tags")] if obj.get("tags") is not None else None,
-            "created_by": User.from_dict(obj.get("created_by")) if obj.get("created_by") is not None else None,
+            "tags": obj.get("tags"),
+            "created_by": obj.get("created_by"),
             "created_date": obj.get("created_date"),
-            "modified_date": obj.get("modified_date"),
-            "organization": Organization.from_dict(obj.get("organization")) if obj.get("organization") is not None else None
+            "modified_date": obj.get("modified_date")
         })
         return _obj
 

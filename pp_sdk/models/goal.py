@@ -19,12 +19,8 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import List, Optional
-from pydantic import BaseModel, Field, StrictStr, conint, conlist, constr
-from pp_sdk.models.prd import PRD
-from pp_sdk.models.program import Program
-from pp_sdk.models.tag import Tag
-from pp_sdk.models.user import User
+from typing import Optional
+from pydantic import BaseModel, Field, StrictStr, conint, constr
 
 class Goal(BaseModel):
     """
@@ -39,17 +35,15 @@ class Goal(BaseModel):
     modified_date: Optional[datetime] = None
     original_due_date: Optional[datetime] = None
     current_due_date: Optional[datetime] = None
-    prd: Optional[conlist(PRD)] = None
-    owner_users: Optional[constr(strict=True, max_length=255)] = None
-    program: Optional[constr(strict=True, max_length=255)] = None
-    program_dependent_goals: Optional[conlist(Program)] = None
-    stakeholders_users: Optional[conlist(User)] = None
-    tags: Optional[conlist(Tag)] = None
+    owner_users: Optional[StrictStr] = None
+    programs: Optional[StrictStr] = None
+    stakeholder_users: Optional[StrictStr] = None
+    tags: Optional[StrictStr] = None
     version: Optional[conint(strict=True, le=2147483647, ge=-2147483648)] = None
     version_summary: Optional[StrictStr] = None
-    created_by: Optional[User] = None
-    organization: Optional[StrictStr] = None
-    __properties = ["id", "name", "goal_language", "description", "why_it_matters", "created_date", "modified_date", "original_due_date", "current_due_date", "prd", "owner_users", "program", "program_dependent_goals", "stakeholders_users", "tags", "version", "version_summary", "created_by", "organization"]
+    created_by: Optional[StrictStr] = None
+    status: Optional[StrictStr] = None
+    __properties = ["id", "name", "goal_language", "description", "why_it_matters", "created_date", "modified_date", "original_due_date", "current_due_date", "owner_users", "programs", "stakeholder_users", "tags", "version", "version_summary", "created_by", "status"]
 
     class Config:
         """Pydantic configuration"""
@@ -76,44 +70,14 @@ class Goal(BaseModel):
                             "id",
                             "created_date",
                             "modified_date",
-                            "prd",
-                            "program_dependent_goals",
-                            "stakeholders_users",
+                            "owner_users",
+                            "programs",
+                            "stakeholder_users",
                             "tags",
-                            "organization",
+                            "created_by",
+                            "status",
                           },
                           exclude_none=True)
-        # override the default output from pydantic by calling `to_dict()` of each item in prd (list)
-        _items = []
-        if self.prd:
-            for _item in self.prd:
-                if _item:
-                    _items.append(_item.to_dict())
-            _dict['prd'] = _items
-        # override the default output from pydantic by calling `to_dict()` of each item in program_dependent_goals (list)
-        _items = []
-        if self.program_dependent_goals:
-            for _item in self.program_dependent_goals:
-                if _item:
-                    _items.append(_item.to_dict())
-            _dict['program_dependent_goals'] = _items
-        # override the default output from pydantic by calling `to_dict()` of each item in stakeholders_users (list)
-        _items = []
-        if self.stakeholders_users:
-            for _item in self.stakeholders_users:
-                if _item:
-                    _items.append(_item.to_dict())
-            _dict['stakeholders_users'] = _items
-        # override the default output from pydantic by calling `to_dict()` of each item in tags (list)
-        _items = []
-        if self.tags:
-            for _item in self.tags:
-                if _item:
-                    _items.append(_item.to_dict())
-            _dict['tags'] = _items
-        # override the default output from pydantic by calling `to_dict()` of created_by
-        if self.created_by:
-            _dict['created_by'] = self.created_by.to_dict()
         # set to None if description (nullable) is None
         # and __fields_set__ contains the field
         if self.description is None and "description" in self.__fields_set__:
@@ -124,45 +88,10 @@ class Goal(BaseModel):
         if self.why_it_matters is None and "why_it_matters" in self.__fields_set__:
             _dict['why_it_matters'] = None
 
-        # set to None if created_date (nullable) is None
-        # and __fields_set__ contains the field
-        if self.created_date is None and "created_date" in self.__fields_set__:
-            _dict['created_date'] = None
-
-        # set to None if modified_date (nullable) is None
-        # and __fields_set__ contains the field
-        if self.modified_date is None and "modified_date" in self.__fields_set__:
-            _dict['modified_date'] = None
-
-        # set to None if original_due_date (nullable) is None
-        # and __fields_set__ contains the field
-        if self.original_due_date is None and "original_due_date" in self.__fields_set__:
-            _dict['original_due_date'] = None
-
-        # set to None if current_due_date (nullable) is None
-        # and __fields_set__ contains the field
-        if self.current_due_date is None and "current_due_date" in self.__fields_set__:
-            _dict['current_due_date'] = None
-
-        # set to None if owner_users (nullable) is None
-        # and __fields_set__ contains the field
-        if self.owner_users is None and "owner_users" in self.__fields_set__:
-            _dict['owner_users'] = None
-
-        # set to None if program (nullable) is None
-        # and __fields_set__ contains the field
-        if self.program is None and "program" in self.__fields_set__:
-            _dict['program'] = None
-
         # set to None if version (nullable) is None
         # and __fields_set__ contains the field
         if self.version is None and "version" in self.__fields_set__:
             _dict['version'] = None
-
-        # set to None if organization (nullable) is None
-        # and __fields_set__ contains the field
-        if self.organization is None and "organization" in self.__fields_set__:
-            _dict['organization'] = None
 
         return _dict
 
@@ -185,16 +114,14 @@ class Goal(BaseModel):
             "modified_date": obj.get("modified_date"),
             "original_due_date": obj.get("original_due_date"),
             "current_due_date": obj.get("current_due_date"),
-            "prd": [PRD.from_dict(_item) for _item in obj.get("prd")] if obj.get("prd") is not None else None,
             "owner_users": obj.get("owner_users"),
-            "program": obj.get("program"),
-            "program_dependent_goals": [Program.from_dict(_item) for _item in obj.get("program_dependent_goals")] if obj.get("program_dependent_goals") is not None else None,
-            "stakeholders_users": [User.from_dict(_item) for _item in obj.get("stakeholders_users")] if obj.get("stakeholders_users") is not None else None,
-            "tags": [Tag.from_dict(_item) for _item in obj.get("tags")] if obj.get("tags") is not None else None,
+            "programs": obj.get("programs"),
+            "stakeholder_users": obj.get("stakeholder_users"),
+            "tags": obj.get("tags"),
             "version": obj.get("version"),
             "version_summary": obj.get("version_summary"),
-            "created_by": User.from_dict(obj.get("created_by")) if obj.get("created_by") is not None else None,
-            "organization": obj.get("organization")
+            "created_by": obj.get("created_by"),
+            "status": obj.get("status")
         })
         return _obj
 

@@ -8,20 +8,20 @@ Method | HTTP request | Description
 [**api_goals_delete**](ApiApi.md#api_goals_delete) | **DELETE** /api/goals/{goal_id}/ | 
 [**api_goals_list**](ApiApi.md#api_goals_list) | **GET** /api/goals/ | 
 [**api_goals_partial_update**](ApiApi.md#api_goals_partial_update) | **PATCH** /api/goals/{goal_id}/ | 
+[**api_goals_picker_list**](ApiApi.md#api_goals_picker_list) | **GET** /api/goals/picker/ | 
 [**api_goals_read**](ApiApi.md#api_goals_read) | **GET** /api/goals/{goal_id}/ | 
-[**api_goals_search_list**](ApiApi.md#api_goals_search_list) | **GET** /api/goals/search/ | 
 [**api_goals_update**](ApiApi.md#api_goals_update) | **PUT** /api/goals/{goal_id}/ | 
 [**api_prds_create**](ApiApi.md#api_prds_create) | **POST** /api/prds/ | 
 [**api_prds_delete**](ApiApi.md#api_prds_delete) | **DELETE** /api/prds/{prd_id}/ | 
 [**api_prds_list**](ApiApi.md#api_prds_list) | **GET** /api/prds/ | 
 [**api_prds_partial_update**](ApiApi.md#api_prds_partial_update) | **PATCH** /api/prds/{prd_id}/ | 
 [**api_prds_read**](ApiApi.md#api_prds_read) | **GET** /api/prds/{prd_id}/ | 
-[**api_prds_search_list**](ApiApi.md#api_prds_search_list) | **GET** /api/prds/search/ | 
 [**api_prds_update**](ApiApi.md#api_prds_update) | **PUT** /api/prds/{prd_id}/ | 
 [**api_programs_create**](ApiApi.md#api_programs_create) | **POST** /api/programs/ | 
 [**api_programs_delete**](ApiApi.md#api_programs_delete) | **DELETE** /api/programs/{program_id}/ | 
 [**api_programs_list**](ApiApi.md#api_programs_list) | **GET** /api/programs/ | 
 [**api_programs_partial_update**](ApiApi.md#api_programs_partial_update) | **PATCH** /api/programs/{program_id}/ | 
+[**api_programs_picker_list**](ApiApi.md#api_programs_picker_list) | **GET** /api/programs/picker/ | 
 [**api_programs_read**](ApiApi.md#api_programs_read) | **GET** /api/programs/{program_id}/ | 
 [**api_programs_update**](ApiApi.md#api_programs_update) | **PUT** /api/programs/{program_id}/ | 
 [**api_status_create**](ApiApi.md#api_status_create) | **POST** /api/status/ | 
@@ -30,17 +30,24 @@ Method | HTTP request | Description
 [**api_status_partial_update**](ApiApi.md#api_status_partial_update) | **PATCH** /api/status/{status_id}/ | 
 [**api_status_read**](ApiApi.md#api_status_read) | **GET** /api/status/{status_id}/ | 
 [**api_status_update**](ApiApi.md#api_status_update) | **PUT** /api/status/{status_id}/ | 
-[**api_user_create_create**](ApiApi.md#api_user_create_create) | **POST** /api/user/create/ | 
-[**api_user_read**](ApiApi.md#api_user_read) | **GET** /api/user/ | 
-[**api_user_search_list**](ApiApi.md#api_user_search_list) | **GET** /api/user/search/ | 
-[**api_user_update_partial_update**](ApiApi.md#api_user_update_partial_update) | **PATCH** /api/user/update/ | 
-[**api_user_update_update**](ApiApi.md#api_user_update_update) | **PUT** /api/user/update/ | 
+[**api_tags_create**](ApiApi.md#api_tags_create) | **POST** /api/tags/ | 
+[**api_tags_delete**](ApiApi.md#api_tags_delete) | **DELETE** /api/tags/{tag_id}/ | 
+[**api_tags_list**](ApiApi.md#api_tags_list) | **GET** /api/tags/ | 
+[**api_tags_partial_update**](ApiApi.md#api_tags_partial_update) | **PATCH** /api/tags/{tag_id}/ | 
+[**api_tags_read**](ApiApi.md#api_tags_read) | **GET** /api/tags/{tag_id}/ | 
+[**api_tags_update**](ApiApi.md#api_tags_update) | **PUT** /api/tags/{tag_id}/ | 
+[**api_user_create**](ApiApi.md#api_user_create) | **POST** /api/user/ | 
+[**api_user_delete**](ApiApi.md#api_user_delete) | **DELETE** /api/user/{id}/ | 
+[**api_user_list**](ApiApi.md#api_user_list) | **GET** /api/user/ | 
+[**api_user_partial_update**](ApiApi.md#api_user_partial_update) | **PATCH** /api/user/{id}/ | 
+[**api_user_picker_list**](ApiApi.md#api_user_picker_list) | **GET** /api/user/picker/ | 
+[**api_user_read**](ApiApi.md#api_user_read) | **GET** /api/user/{id}/ | 
+[**api_user_update**](ApiApi.md#api_user_update) | **PUT** /api/user/{id}/ | 
 [**api_userstories_create**](ApiApi.md#api_userstories_create) | **POST** /api/userstories/ | 
 [**api_userstories_delete**](ApiApi.md#api_userstories_delete) | **DELETE** /api/userstories/{userstory_id}/ | 
 [**api_userstories_list**](ApiApi.md#api_userstories_list) | **GET** /api/userstories/ | 
 [**api_userstories_partial_update**](ApiApi.md#api_userstories_partial_update) | **PATCH** /api/userstories/{userstory_id}/ | 
 [**api_userstories_read**](ApiApi.md#api_userstories_read) | **GET** /api/userstories/{userstory_id}/ | 
-[**api_userstories_search_list**](ApiApi.md#api_userstories_search_list) | **GET** /api/userstories/search | 
 [**api_userstories_update**](ApiApi.md#api_userstories_update) | **PUT** /api/userstories/{userstory_id}/ | 
 
 
@@ -174,11 +181,11 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **api_goals_list**
-> List[Goal] api_goals_list(x_user_id=x_user_id)
+> List[Goal] api_goals_list(page=page, search=search, stakeholder_users=stakeholder_users, status=status, sort=sort, limit=limit, tags=tags, x_user_id=x_user_id)
 
 
 
-Get a list of all goals for the authenticated user.
+List or Search for Goals
 
 ### Example
 
@@ -201,10 +208,17 @@ configuration = pp_sdk.Configuration(
 with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pp_sdk.ApiApi(api_client)
+    page = 56 # int | A page number within the paginated result set. (optional)
+    search = 'search_example' # str | Search term for goal name, language, or description (optional)
+    stakeholder_users = 'stakeholder_users_example' # str | Comma-separated list of stakeholder IDs (optional)
+    status = 'status_example' # str | Filter by status (optional)
+    sort = 'sort_example' # str | Sort field (prefix with '-' for descending order) (optional)
+    limit = 56 # int | Limit the number of results (optional)
+    tags = 'tags_example' # str | Filter by tags, one or more (optional)
     x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
     try:
-        api_response = api_instance.api_goals_list(x_user_id=x_user_id)
+        api_response = api_instance.api_goals_list(page=page, search=search, stakeholder_users=stakeholder_users, status=status, sort=sort, limit=limit, tags=tags, x_user_id=x_user_id)
         print("The response of ApiApi->api_goals_list:\n")
         pprint(api_response)
     except Exception as e:
@@ -217,6 +231,13 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **page** | **int**| A page number within the paginated result set. | [optional] 
+ **search** | **str**| Search term for goal name, language, or description | [optional] 
+ **stakeholder_users** | **str**| Comma-separated list of stakeholder IDs | [optional] 
+ **status** | **str**| Filter by status | [optional] 
+ **sort** | **str**| Sort field (prefix with &#39;-&#39; for descending order) | [optional] 
+ **limit** | **int**| Limit the number of results | [optional] 
+ **tags** | **str**| Filter by tags, one or more | [optional] 
  **x_user_id** | **str**| User ID (required when using API key) | [optional] 
 
 ### Return type
@@ -304,6 +325,67 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** |  |  -  |
+**404** | Not found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **api_goals_picker_list**
+> List[GoalPicker] api_goals_picker_list()
+
+
+
+### Example
+
+```python
+import time
+import os
+import pp_sdk
+from pp_sdk.models.goal_picker import GoalPicker
+from pp_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://0.0.0.0:8000
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pp_sdk.Configuration(
+    host = "http://0.0.0.0:8000"
+)
+
+
+# Enter a context with an instance of the API client
+with pp_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pp_sdk.ApiApi(api_client)
+
+    try:
+        api_response = api_instance.api_goals_picker_list()
+        print("The response of ApiApi->api_goals_picker_list:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ApiApi->api_goals_picker_list: %s\n" % e)
+```
+
+
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**List[GoalPicker]**](GoalPicker.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -356,82 +438,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Goal**](Goal.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **api_goals_search_list**
-> List[Goal] api_goals_search_list(search=search, stakeholders_users=stakeholders_users, status=status, sort=sort, limit=limit, x_user_id=x_user_id)
-
-
-
-Search for PRDs
-
-### Example
-
-```python
-import time
-import os
-import pp_sdk
-from pp_sdk.models.goal import Goal
-from pp_sdk.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to http://0.0.0.0:8000
-# See configuration.py for a list of all supported configuration parameters.
-configuration = pp_sdk.Configuration(
-    host = "http://0.0.0.0:8000"
-)
-
-
-# Enter a context with an instance of the API client
-with pp_sdk.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = pp_sdk.ApiApi(api_client)
-    search = 'search_example' # str | Search term for goal name, language, or description (optional)
-    stakeholders_users = 'stakeholders_users_example' # str | Comma-separated list of stakeholder IDs (optional)
-    status = 'status_example' # str | Filter by status (optional)
-    sort = 'sort_example' # str | Sort field (prefix with '-' for descending order) (optional)
-    limit = 56 # int | Limit the number of results (optional)
-    x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
-
-    try:
-        api_response = api_instance.api_goals_search_list(search=search, stakeholders_users=stakeholders_users, status=status, sort=sort, limit=limit, x_user_id=x_user_id)
-        print("The response of ApiApi->api_goals_search_list:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling ApiApi->api_goals_search_list: %s\n" % e)
-```
-
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **search** | **str**| Search term for goal name, language, or description | [optional] 
- **stakeholders_users** | **str**| Comma-separated list of stakeholder IDs | [optional] 
- **status** | **str**| Filter by status | [optional] 
- **sort** | **str**| Sort field (prefix with &#39;-&#39; for descending order) | [optional] 
- **limit** | **int**| Limit the number of results | [optional] 
- **x_user_id** | **str**| User ID (required when using API key) | [optional] 
-
-### Return type
-
-[**List[Goal]**](Goal.md)
 
 ### Authorization
 
@@ -514,6 +520,7 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** |  |  -  |
+**404** | Not found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -651,7 +658,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **api_prds_list**
-> List[PRD] api_prds_list(x_user_id=x_user_id)
+> List[PRD] api_prds_list(x_user_id=x_user_id, stakeholders=stakeholders, status=status, search=search, sort=sort, limit=limit, tags=tags)
 
 
 
@@ -679,9 +686,15 @@ with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pp_sdk.ApiApi(api_client)
     x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
+    stakeholders = 'stakeholders_example' # str | Comma-separated list of stakeholder user IDs to filter by (optional)
+    status = 'status_example' # str | Status to filter by (optional)
+    search = 'search_example' # str | Search term to filter PRDs by title, description, or body (optional)
+    sort = 'sort_example' # str | Field to sort by (e.g., 'title', '-created_date') (optional)
+    limit = 56 # int | Limit the number of PRDs returned (optional)
+    tags = 'tags_example' # str | Comma-separated list of tag names to filter PRDs by (optional)
 
     try:
-        api_response = api_instance.api_prds_list(x_user_id=x_user_id)
+        api_response = api_instance.api_prds_list(x_user_id=x_user_id, stakeholders=stakeholders, status=status, search=search, sort=sort, limit=limit, tags=tags)
         print("The response of ApiApi->api_prds_list:\n")
         pprint(api_response)
     except Exception as e:
@@ -695,6 +708,12 @@ with pp_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **x_user_id** | **str**| User ID (required when using API key) | [optional] 
+ **stakeholders** | **str**| Comma-separated list of stakeholder user IDs to filter by | [optional] 
+ **status** | **str**| Status to filter by | [optional] 
+ **search** | **str**| Search term to filter PRDs by title, description, or body | [optional] 
+ **sort** | **str**| Field to sort by (e.g., &#39;title&#39;, &#39;-created_date&#39;) | [optional] 
+ **limit** | **int**| Limit the number of PRDs returned | [optional] 
+ **tags** | **str**| Comma-separated list of tag names to filter PRDs by | [optional] 
 
 ### Return type
 
@@ -717,7 +736,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **api_prds_partial_update**
-> PRDDetail api_prds_partial_update(prd_id, data, x_user_id=x_user_id)
+> PRD api_prds_partial_update(prd_id, data, x_user_id=x_user_id)
 
 
 
@@ -729,7 +748,7 @@ Partially update a specific PRD.
 import time
 import os
 import pp_sdk
-from pp_sdk.models.prd_detail import PRDDetail
+from pp_sdk.models.prd import PRD
 from pp_sdk.rest import ApiException
 from pprint import pprint
 
@@ -745,7 +764,7 @@ with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pp_sdk.ApiApi(api_client)
     prd_id = 'prd_id_example' # str | 
-    data = pp_sdk.PRDDetail() # PRDDetail | 
+    data = pp_sdk.PRD() # PRD | 
     x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
     try:
@@ -763,12 +782,12 @@ with pp_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **prd_id** | **str**|  | 
- **data** | [**PRDDetail**](PRDDetail.md)|  | 
+ **data** | [**PRD**](PRD.md)|  | 
  **x_user_id** | **str**| User ID (required when using API key) | [optional] 
 
 ### Return type
 
-[**PRDDetail**](PRDDetail.md)
+[**PRD**](PRD.md)
 
 ### Authorization
 
@@ -787,7 +806,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **api_prds_read**
-> PRDDetail api_prds_read(prd_id, x_user_id=x_user_id)
+> PRD api_prds_read(prd_id, x_user_id=x_user_id)
 
 
 
@@ -799,7 +818,7 @@ Get details of a specific PRD.
 import time
 import os
 import pp_sdk
-from pp_sdk.models.prd_detail import PRDDetail
+from pp_sdk.models.prd import PRD
 from pp_sdk.rest import ApiException
 from pprint import pprint
 
@@ -836,7 +855,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PRDDetail**](PRDDetail.md)
+[**PRD**](PRD.md)
 
 ### Authorization
 
@@ -854,12 +873,12 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **api_prds_search_list**
-> List[PRD] api_prds_search_list(q=q, x_user_id=x_user_id)
+# **api_prds_update**
+> PRD api_prds_update(prd_id, data, x_user_id=x_user_id)
 
 
 
-Search for PRDs
+Update a specific PRD.
 
 ### Example
 
@@ -882,76 +901,8 @@ configuration = pp_sdk.Configuration(
 with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pp_sdk.ApiApi(api_client)
-    q = 'q_example' # str | query string, to search across name or description (optional)
-    x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
-
-    try:
-        api_response = api_instance.api_prds_search_list(q=q, x_user_id=x_user_id)
-        print("The response of ApiApi->api_prds_search_list:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling ApiApi->api_prds_search_list: %s\n" % e)
-```
-
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **q** | **str**| query string, to search across name or description | [optional] 
- **x_user_id** | **str**| User ID (required when using API key) | [optional] 
-
-### Return type
-
-[**List[PRD]**](PRD.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **api_prds_update**
-> PRDDetail api_prds_update(prd_id, data, x_user_id=x_user_id)
-
-
-
-Update a specific PRD.
-
-### Example
-
-```python
-import time
-import os
-import pp_sdk
-from pp_sdk.models.prd_detail import PRDDetail
-from pp_sdk.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to http://0.0.0.0:8000
-# See configuration.py for a list of all supported configuration parameters.
-configuration = pp_sdk.Configuration(
-    host = "http://0.0.0.0:8000"
-)
-
-
-# Enter a context with an instance of the API client
-with pp_sdk.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = pp_sdk.ApiApi(api_client)
     prd_id = 'prd_id_example' # str | 
-    data = pp_sdk.PRDDetail() # PRDDetail | 
+    data = pp_sdk.PRD() # PRD | 
     x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
     try:
@@ -969,12 +920,12 @@ with pp_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **prd_id** | **str**|  | 
- **data** | [**PRDDetail**](PRDDetail.md)|  | 
+ **data** | [**PRD**](PRD.md)|  | 
  **x_user_id** | **str**| User ID (required when using API key) | [optional] 
 
 ### Return type
 
-[**PRDDetail**](PRDDetail.md)
+[**PRD**](PRD.md)
 
 ### Authorization
 
@@ -1126,7 +1077,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **api_programs_list**
-> List[Program] api_programs_list(search=search, ordering=ordering, x_user_id=x_user_id, tags=tags, limit=limit)
+> List[Program] api_programs_list(page=page, x_user_id=x_user_id, search=search, tags=tags, ordering=ordering)
 
 
 
@@ -1153,14 +1104,14 @@ configuration = pp_sdk.Configuration(
 with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pp_sdk.ApiApi(api_client)
-    search = 'search_example' # str | Search in name and description (optional)
-    ordering = 'ordering_example' # str | Sort by field (prefix with '-' for descending) (optional)
+    page = 56 # int | A page number within the paginated result set. (optional)
     x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
+    search = 'search_example' # str | Search in name and description (optional)
     tags = 'tags_example' # str | Filter by tags (comma-separated) (optional)
-    limit = 56 # int | Limit the number of results (optional)
+    ordering = 'ordering_example' # str | Sort by field (prefix with '-' for descending) (optional)
 
     try:
-        api_response = api_instance.api_programs_list(search=search, ordering=ordering, x_user_id=x_user_id, tags=tags, limit=limit)
+        api_response = api_instance.api_programs_list(page=page, x_user_id=x_user_id, search=search, tags=tags, ordering=ordering)
         print("The response of ApiApi->api_programs_list:\n")
         pprint(api_response)
     except Exception as e:
@@ -1173,11 +1124,11 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **search** | **str**| Search in name and description | [optional] 
- **ordering** | **str**| Sort by field (prefix with &#39;-&#39; for descending) | [optional] 
+ **page** | **int**| A page number within the paginated result set. | [optional] 
  **x_user_id** | **str**| User ID (required when using API key) | [optional] 
+ **search** | **str**| Search in name and description | [optional] 
  **tags** | **str**| Filter by tags (comma-separated) | [optional] 
- **limit** | **int**| Limit the number of results | [optional] 
+ **ordering** | **str**| Sort by field (prefix with &#39;-&#39; for descending) | [optional] 
 
 ### Return type
 
@@ -1260,6 +1211,66 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **api_programs_picker_list**
+> List[ProgramPicker] api_programs_picker_list()
+
+
+
+### Example
+
+```python
+import time
+import os
+import pp_sdk
+from pp_sdk.models.program_picker import ProgramPicker
+from pp_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://0.0.0.0:8000
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pp_sdk.Configuration(
+    host = "http://0.0.0.0:8000"
+)
+
+
+# Enter a context with an instance of the API client
+with pp_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pp_sdk.ApiApi(api_client)
+
+    try:
+        api_response = api_instance.api_programs_picker_list()
+        print("The response of ApiApi->api_programs_picker_list:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ApiApi->api_programs_picker_list: %s\n" % e)
+```
+
+
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**List[ProgramPicker]**](ProgramPicker.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 ### HTTP response details
@@ -1541,7 +1552,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **api_status_list**
-> List[Status] api_status_list(page=page, x_user_id=x_user_id)
+> List[Status] api_status_list(page=page, x_user_id=x_user_id, status=status, search=search, sort=sort, liimit=liimit, goal_ids=goal_ids)
 
 
 
@@ -1570,9 +1581,14 @@ with pp_sdk.ApiClient(configuration) as api_client:
     api_instance = pp_sdk.ApiApi(api_client)
     page = 56 # int | A page number within the paginated result set. (optional)
     x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
+    status = 'status_example' # str | Filter by a status value (optional)
+    search = 'search_example' # str | Search by keyword against status note or path to green (optional)
+    sort = 'sort_example' # str | Sort by field (prefix with '-' for descending) (optional)
+    liimit = 'liimit_example' # str | Sort by field (prefix with '-' for descending) (optional)
+    goal_ids = 'goal_ids_example' # str | Filter on goals, using the UUID of the goal. (optional)
 
     try:
-        api_response = api_instance.api_status_list(page=page, x_user_id=x_user_id)
+        api_response = api_instance.api_status_list(page=page, x_user_id=x_user_id, status=status, search=search, sort=sort, liimit=liimit, goal_ids=goal_ids)
         print("The response of ApiApi->api_status_list:\n")
         pprint(api_response)
     except Exception as e:
@@ -1587,6 +1603,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| A page number within the paginated result set. | [optional] 
  **x_user_id** | **str**| User ID (required when using API key) | [optional] 
+ **status** | **str**| Filter by a status value | [optional] 
+ **search** | **str**| Search by keyword against status note or path to green | [optional] 
+ **sort** | **str**| Sort by field (prefix with &#39;-&#39; for descending) | [optional] 
+ **liimit** | **str**| Sort by field (prefix with &#39;-&#39; for descending) | [optional] 
+ **goal_ids** | **str**| Filter on goals, using the UUID of the goal. | [optional] 
 
 ### Return type
 
@@ -1816,10 +1837,12 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **api_user_create_create**
-> UserCreate api_user_create_create(data)
+# **api_tags_create**
+> Tag api_tags_create(data, x_user_id=x_user_id)
 
 
+
+Create a new tag for the authenticated user.
 
 ### Example
 
@@ -1827,7 +1850,7 @@ No authorization required
 import time
 import os
 import pp_sdk
-from pp_sdk.models.user_create import UserCreate
+from pp_sdk.models.tag import Tag
 from pp_sdk.rest import ApiException
 from pprint import pprint
 
@@ -1842,14 +1865,15 @@ configuration = pp_sdk.Configuration(
 with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pp_sdk.ApiApi(api_client)
-    data = pp_sdk.UserCreate() # UserCreate | 
+    data = pp_sdk.Tag() # Tag | 
+    x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
     try:
-        api_response = api_instance.api_user_create_create(data)
-        print("The response of ApiApi->api_user_create_create:\n")
+        api_response = api_instance.api_tags_create(data, x_user_id=x_user_id)
+        print("The response of ApiApi->api_tags_create:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling ApiApi->api_user_create_create: %s\n" % e)
+        print("Exception when calling ApiApi->api_tags_create: %s\n" % e)
 ```
 
 
@@ -1858,11 +1882,12 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **data** | [**UserCreate**](UserCreate.md)|  | 
+ **data** | [**Tag**](Tag.md)|  | 
+ **x_user_id** | **str**| User ID (required when using API key) | [optional] 
 
 ### Return type
 
-[**UserCreate**](UserCreate.md)
+[**Tag**](Tag.md)
 
 ### Authorization
 
@@ -1880,8 +1905,480 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **api_user_read**
-> User api_user_read(id)
+# **api_tags_delete**
+> api_tags_delete(tag_id, x_user_id=x_user_id)
+
+
+
+Delete a specific tag.
+
+### Example
+
+```python
+import time
+import os
+import pp_sdk
+from pp_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://0.0.0.0:8000
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pp_sdk.Configuration(
+    host = "http://0.0.0.0:8000"
+)
+
+
+# Enter a context with an instance of the API client
+with pp_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pp_sdk.ApiApi(api_client)
+    tag_id = 'tag_id_example' # str | 
+    x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
+
+    try:
+        api_instance.api_tags_delete(tag_id, x_user_id=x_user_id)
+    except Exception as e:
+        print("Exception when calling ApiApi->api_tags_delete: %s\n" % e)
+```
+
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tag_id** | **str**|  | 
+ **x_user_id** | **str**| User ID (required when using API key) | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No content |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **api_tags_list**
+> List[Tag] api_tags_list(page=page, x_user_id=x_user_id, search=search)
+
+
+
+Get a list of all tags for the authenticated user.
+
+### Example
+
+```python
+import time
+import os
+import pp_sdk
+from pp_sdk.models.tag import Tag
+from pp_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://0.0.0.0:8000
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pp_sdk.Configuration(
+    host = "http://0.0.0.0:8000"
+)
+
+
+# Enter a context with an instance of the API client
+with pp_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pp_sdk.ApiApi(api_client)
+    page = 56 # int | A page number within the paginated result set. (optional)
+    x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
+    search = 'search_example' # str | Search tags by name (optional)
+
+    try:
+        api_response = api_instance.api_tags_list(page=page, x_user_id=x_user_id, search=search)
+        print("The response of ApiApi->api_tags_list:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ApiApi->api_tags_list: %s\n" % e)
+```
+
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **page** | **int**| A page number within the paginated result set. | [optional] 
+ **x_user_id** | **str**| User ID (required when using API key) | [optional] 
+ **search** | **str**| Search tags by name | [optional] 
+
+### Return type
+
+[**List[Tag]**](Tag.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **api_tags_partial_update**
+> Tag api_tags_partial_update(tag_id, data, x_user_id=x_user_id)
+
+
+
+Partially update a specific tag.
+
+### Example
+
+```python
+import time
+import os
+import pp_sdk
+from pp_sdk.models.tag import Tag
+from pp_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://0.0.0.0:8000
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pp_sdk.Configuration(
+    host = "http://0.0.0.0:8000"
+)
+
+
+# Enter a context with an instance of the API client
+with pp_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pp_sdk.ApiApi(api_client)
+    tag_id = 'tag_id_example' # str | 
+    data = pp_sdk.Tag() # Tag | 
+    x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
+
+    try:
+        api_response = api_instance.api_tags_partial_update(tag_id, data, x_user_id=x_user_id)
+        print("The response of ApiApi->api_tags_partial_update:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ApiApi->api_tags_partial_update: %s\n" % e)
+```
+
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tag_id** | **str**|  | 
+ **data** | [**Tag**](Tag.md)|  | 
+ **x_user_id** | **str**| User ID (required when using API key) | [optional] 
+
+### Return type
+
+[**Tag**](Tag.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **api_tags_read**
+> Tag api_tags_read(tag_id, x_user_id=x_user_id)
+
+
+
+Get details of a specific tag.
+
+### Example
+
+```python
+import time
+import os
+import pp_sdk
+from pp_sdk.models.tag import Tag
+from pp_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://0.0.0.0:8000
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pp_sdk.Configuration(
+    host = "http://0.0.0.0:8000"
+)
+
+
+# Enter a context with an instance of the API client
+with pp_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pp_sdk.ApiApi(api_client)
+    tag_id = 'tag_id_example' # str | 
+    x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
+
+    try:
+        api_response = api_instance.api_tags_read(tag_id, x_user_id=x_user_id)
+        print("The response of ApiApi->api_tags_read:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ApiApi->api_tags_read: %s\n" % e)
+```
+
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tag_id** | **str**|  | 
+ **x_user_id** | **str**| User ID (required when using API key) | [optional] 
+
+### Return type
+
+[**Tag**](Tag.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **api_tags_update**
+> Tag api_tags_update(tag_id, data, x_user_id=x_user_id)
+
+
+
+Update a specific tag.
+
+### Example
+
+```python
+import time
+import os
+import pp_sdk
+from pp_sdk.models.tag import Tag
+from pp_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://0.0.0.0:8000
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pp_sdk.Configuration(
+    host = "http://0.0.0.0:8000"
+)
+
+
+# Enter a context with an instance of the API client
+with pp_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pp_sdk.ApiApi(api_client)
+    tag_id = 'tag_id_example' # str | 
+    data = pp_sdk.Tag() # Tag | 
+    x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
+
+    try:
+        api_response = api_instance.api_tags_update(tag_id, data, x_user_id=x_user_id)
+        print("The response of ApiApi->api_tags_update:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ApiApi->api_tags_update: %s\n" % e)
+```
+
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tag_id** | **str**|  | 
+ **data** | [**Tag**](Tag.md)|  | 
+ **x_user_id** | **str**| User ID (required when using API key) | [optional] 
+
+### Return type
+
+[**Tag**](Tag.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **api_user_create**
+> User api_user_create(data, x_user_id=x_user_id)
+
+
+
+Create a new user for the authenticated user's organization.
+
+### Example
+
+```python
+import time
+import os
+import pp_sdk
+from pp_sdk.models.user import User
+from pp_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://0.0.0.0:8000
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pp_sdk.Configuration(
+    host = "http://0.0.0.0:8000"
+)
+
+
+# Enter a context with an instance of the API client
+with pp_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pp_sdk.ApiApi(api_client)
+    data = pp_sdk.User() # User | 
+    x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
+
+    try:
+        api_response = api_instance.api_user_create(data, x_user_id=x_user_id)
+        print("The response of ApiApi->api_user_create:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ApiApi->api_user_create: %s\n" % e)
+```
+
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **data** | [**User**](User.md)|  | 
+ **x_user_id** | **str**| User ID (required when using API key) | [optional] 
+
+### Return type
+
+[**User**](User.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **api_user_delete**
+> api_user_delete(id)
+
+
+
+### Example
+
+```python
+import time
+import os
+import pp_sdk
+from pp_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://0.0.0.0:8000
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pp_sdk.Configuration(
+    host = "http://0.0.0.0:8000"
+)
+
+
+# Enter a context with an instance of the API client
+with pp_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pp_sdk.ApiApi(api_client)
+    id = 'id_example' # str | 
+
+    try:
+        api_instance.api_user_delete(id)
+    except Exception as e:
+        print("Exception when calling ApiApi->api_user_delete: %s\n" % e)
+```
+
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **api_user_list**
+> User api_user_list(id, page=page)
 
 
 
@@ -1909,13 +2406,14 @@ with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pp_sdk.ApiApi(api_client)
     id = 'id_example' # str | UUID of the user to retrieve
+    page = 56 # int | A page number within the paginated result set. (optional)
 
     try:
-        api_response = api_instance.api_user_read(id)
-        print("The response of ApiApi->api_user_read:\n")
+        api_response = api_instance.api_user_list(id, page=page)
+        print("The response of ApiApi->api_user_list:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling ApiApi->api_user_read: %s\n" % e)
+        print("Exception when calling ApiApi->api_user_list: %s\n" % e)
 ```
 
 
@@ -1925,6 +2423,7 @@ with pp_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| UUID of the user to retrieve | 
+ **page** | **int**| A page number within the paginated result set. | [optional] 
 
 ### Return type
 
@@ -1947,12 +2446,10 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **api_user_search_list**
-> ApiUserSearchList200Response api_user_search_list(domain, page=page, search=search)
+# **api_user_partial_update**
+> User api_user_partial_update(id, data)
 
 
-
-Search for users
 
 ### Example
 
@@ -1960,7 +2457,7 @@ Search for users
 import time
 import os
 import pp_sdk
-from pp_sdk.models.api_user_search_list200_response import ApiUserSearchList200Response
+from pp_sdk.models.user import User
 from pp_sdk.rest import ApiException
 from pprint import pprint
 
@@ -1975,16 +2472,15 @@ configuration = pp_sdk.Configuration(
 with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pp_sdk.ApiApi(api_client)
-    domain = 'domain_example' # str | Domain to filter users
-    page = 56 # int | A page number within the paginated result set. (optional)
-    search = 'search_example' # str | Search term for user's email, first name, or last name (optional)
+    id = 'id_example' # str | 
+    data = pp_sdk.User() # User | 
 
     try:
-        api_response = api_instance.api_user_search_list(domain, page=page, search=search)
-        print("The response of ApiApi->api_user_search_list:\n")
+        api_response = api_instance.api_user_partial_update(id, data)
+        print("The response of ApiApi->api_user_partial_update:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling ApiApi->api_user_search_list: %s\n" % e)
+        print("Exception when calling ApiApi->api_user_partial_update: %s\n" % e)
 ```
 
 
@@ -1993,77 +2489,12 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **domain** | **str**| Domain to filter users | 
- **page** | **int**| A page number within the paginated result set. | [optional] 
- **search** | **str**| Search term for user&#39;s email, first name, or last name | [optional] 
+ **id** | **str**|  | 
+ **data** | [**User**](User.md)|  | 
 
 ### Return type
 
-[**ApiUserSearchList200Response**](ApiUserSearchList200Response.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **api_user_update_partial_update**
-> UserUpdate api_user_update_partial_update(data)
-
-
-
-### Example
-
-```python
-import time
-import os
-import pp_sdk
-from pp_sdk.models.user_update import UserUpdate
-from pp_sdk.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to http://0.0.0.0:8000
-# See configuration.py for a list of all supported configuration parameters.
-configuration = pp_sdk.Configuration(
-    host = "http://0.0.0.0:8000"
-)
-
-
-# Enter a context with an instance of the API client
-with pp_sdk.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = pp_sdk.ApiApi(api_client)
-    data = pp_sdk.UserUpdate() # UserUpdate | 
-
-    try:
-        api_response = api_instance.api_user_update_partial_update(data)
-        print("The response of ApiApi->api_user_update_partial_update:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling ApiApi->api_user_update_partial_update: %s\n" % e)
-```
-
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **data** | [**UserUpdate**](UserUpdate.md)|  | 
-
-### Return type
-
-[**UserUpdate**](UserUpdate.md)
+[**User**](User.md)
 
 ### Authorization
 
@@ -2081,8 +2512,149 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **api_user_update_update**
-> UserUpdate api_user_update_update(id, data)
+# **api_user_picker_list**
+> List[User] api_user_picker_list(x_user_id=x_user_id, search=search, sort=sort, limit=limit)
+
+
+
+Retrieve list of users matching none or all of search parameters.
+
+### Example
+
+```python
+import time
+import os
+import pp_sdk
+from pp_sdk.models.user import User
+from pp_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://0.0.0.0:8000
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pp_sdk.Configuration(
+    host = "http://0.0.0.0:8000"
+)
+
+
+# Enter a context with an instance of the API client
+with pp_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pp_sdk.ApiApi(api_client)
+    x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
+    search = 'search_example' # str | Search term for filtering users by email, last name, or first name (optional)
+    sort = 'sort_example' # str | Field to sort the results by (optional)
+    limit = 56 # int | Maximum number of results to return (optional)
+
+    try:
+        api_response = api_instance.api_user_picker_list(x_user_id=x_user_id, search=search, sort=sort, limit=limit)
+        print("The response of ApiApi->api_user_picker_list:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ApiApi->api_user_picker_list: %s\n" % e)
+```
+
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **x_user_id** | **str**| User ID (required when using API key) | [optional] 
+ **search** | **str**| Search term for filtering users by email, last name, or first name | [optional] 
+ **sort** | **str**| Field to sort the results by | [optional] 
+ **limit** | **int**| Maximum number of results to return | [optional] 
+
+### Return type
+
+[**List[User]**](User.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+**404** | User not found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **api_user_read**
+> List[User] api_user_read(id, x_user_id=x_user_id)
+
+
+
+Get a list of all PRDs for the authenticated user's organization.
+
+### Example
+
+```python
+import time
+import os
+import pp_sdk
+from pp_sdk.models.user import User
+from pp_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://0.0.0.0:8000
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pp_sdk.Configuration(
+    host = "http://0.0.0.0:8000"
+)
+
+
+# Enter a context with an instance of the API client
+with pp_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pp_sdk.ApiApi(api_client)
+    id = 'id_example' # str | 
+    x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
+
+    try:
+        api_response = api_instance.api_user_read(id, x_user_id=x_user_id)
+        print("The response of ApiApi->api_user_read:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ApiApi->api_user_read: %s\n" % e)
+```
+
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**|  | 
+ **x_user_id** | **str**| User ID (required when using API key) | [optional] 
+
+### Return type
+
+[**List[User]**](User.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **api_user_update**
+> User api_user_update(id, data, x_user_id=x_user_id)
 
 
 
@@ -2094,7 +2666,7 @@ Update a specific user's details
 import time
 import os
 import pp_sdk
-from pp_sdk.models.user_update import UserUpdate
+from pp_sdk.models.user import User
 from pp_sdk.rest import ApiException
 from pprint import pprint
 
@@ -2110,14 +2682,15 @@ with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pp_sdk.ApiApi(api_client)
     id = 'id_example' # str | UUID of the user to update
-    data = pp_sdk.UserUpdate() # UserUpdate | 
+    data = pp_sdk.User() # User | 
+    x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
     try:
-        api_response = api_instance.api_user_update_update(id, data)
-        print("The response of ApiApi->api_user_update_update:\n")
+        api_response = api_instance.api_user_update(id, data, x_user_id=x_user_id)
+        print("The response of ApiApi->api_user_update:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling ApiApi->api_user_update_update: %s\n" % e)
+        print("Exception when calling ApiApi->api_user_update: %s\n" % e)
 ```
 
 
@@ -2127,11 +2700,12 @@ with pp_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| UUID of the user to update | 
- **data** | [**UserUpdate**](UserUpdate.md)|  | 
+ **data** | [**User**](User.md)|  | 
+ **x_user_id** | **str**| User ID (required when using API key) | [optional] 
 
 ### Return type
 
-[**UserUpdate**](UserUpdate.md)
+[**User**](User.md)
 
 ### Authorization
 
@@ -2151,11 +2725,11 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **api_userstories_create**
-> UserStory api_userstories_create(data, x_user_id=x_user_id)
+> UserStory api_userstories_create(data)
 
 
 
-Create a new user story for the authenticated user's organization.
+Create a new user story.
 
 ### Example
 
@@ -2179,10 +2753,9 @@ with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pp_sdk.ApiApi(api_client)
     data = pp_sdk.UserStory() # UserStory | 
-    x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
     try:
-        api_response = api_instance.api_userstories_create(data, x_user_id=x_user_id)
+        api_response = api_instance.api_userstories_create(data)
         print("The response of ApiApi->api_userstories_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -2196,7 +2769,6 @@ with pp_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **data** | [**UserStory**](UserStory.md)|  | 
- **x_user_id** | **str**| User ID (required when using API key) | [optional] 
 
 ### Return type
 
@@ -2284,11 +2856,11 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **api_userstories_list**
-> List[UserStory] api_userstories_list(x_user_id=x_user_id)
+> List[UserStory] api_userstories_list(search=search, status=status, prd=prd, sort=sort, limit=limit, x_user_id=x_user_id, format=format)
 
 
 
-Get a list of all user stories for the authenticated user's organization.
+List or Search for User Stories
 
 ### Example
 
@@ -2311,10 +2883,16 @@ configuration = pp_sdk.Configuration(
 with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pp_sdk.ApiApi(api_client)
+    search = 'search_example' # str | Search term for as_a, i_want_to, so_that, or freetext_override fields (optional)
+    status = 'status_example' # str | Filter by status (optional)
+    prd = 56 # int | Filter by PRD ID (optional)
+    sort = 'sort_example' # str | Sort field (prefix with '-' for descending order) (optional)
+    limit = 56 # int | Limit the number of results (optional)
     x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
+    format = 'format_example' # str | Response format (json or excel, default is json) (optional)
 
     try:
-        api_response = api_instance.api_userstories_list(x_user_id=x_user_id)
+        api_response = api_instance.api_userstories_list(search=search, status=status, prd=prd, sort=sort, limit=limit, x_user_id=x_user_id, format=format)
         print("The response of ApiApi->api_userstories_list:\n")
         pprint(api_response)
     except Exception as e:
@@ -2327,7 +2905,13 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **search** | **str**| Search term for as_a, i_want_to, so_that, or freetext_override fields | [optional] 
+ **status** | **str**| Filter by status | [optional] 
+ **prd** | **int**| Filter by PRD ID | [optional] 
+ **sort** | **str**| Sort field (prefix with &#39;-&#39; for descending order) | [optional] 
+ **limit** | **int**| Limit the number of results | [optional] 
  **x_user_id** | **str**| User ID (required when using API key) | [optional] 
+ **format** | **str**| Response format (json or excel, default is json) | [optional] 
 
 ### Return type
 
@@ -2470,80 +3054,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**UserStory**](UserStory.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **api_userstories_search_list**
-> List[UserStory] api_userstories_search_list(status=status, search=search, sort=sort, limit=limit, x_user_id=x_user_id)
-
-
-
-Search and filter UserStory data
-
-### Example
-
-```python
-import time
-import os
-import pp_sdk
-from pp_sdk.models.user_story import UserStory
-from pp_sdk.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to http://0.0.0.0:8000
-# See configuration.py for a list of all supported configuration parameters.
-configuration = pp_sdk.Configuration(
-    host = "http://0.0.0.0:8000"
-)
-
-
-# Enter a context with an instance of the API client
-with pp_sdk.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = pp_sdk.ApiApi(api_client)
-    status = 'status_example' # str | Filter by status (optional)
-    search = 'search_example' # str | Search string for as_a, i_want_to, so_that, or freetext_override fields (optional)
-    sort = 'sort_example' # str | Sort field (created_at, updated_at, due_date, priority, status). Use '-' prefix for descending order (optional)
-    limit = 56 # int | Limit the number of results (optional)
-    x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
-
-    try:
-        api_response = api_instance.api_userstories_search_list(status=status, search=search, sort=sort, limit=limit, x_user_id=x_user_id)
-        print("The response of ApiApi->api_userstories_search_list:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling ApiApi->api_userstories_search_list: %s\n" % e)
-```
-
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **status** | **str**| Filter by status | [optional] 
- **search** | **str**| Search string for as_a, i_want_to, so_that, or freetext_override fields | [optional] 
- **sort** | **str**| Sort field (created_at, updated_at, due_date, priority, status). Use &#39;-&#39; prefix for descending order | [optional] 
- **limit** | **int**| Limit the number of results | [optional] 
- **x_user_id** | **str**| User ID (required when using API key) | [optional] 
-
-### Return type
-
-[**List[UserStory]**](UserStory.md)
 
 ### Authorization
 
