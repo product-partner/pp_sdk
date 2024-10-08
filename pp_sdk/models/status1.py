@@ -18,7 +18,6 @@ import pprint
 import re  # noqa: F401
 import json
 
-from datetime import date
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
@@ -31,7 +30,7 @@ class Status1(BaseModel):
     id: Optional[StrictStr] = None
     status: Optional[StrictStr] = None
     status_display: Optional[StrictStr] = None
-    var_date: Optional[date] = Field(default=None, alias="date")
+    var_date: Optional[StrictStr] = Field(default=None, alias="date")
     __properties: ClassVar[List[str]] = ["id", "status", "status_display", "date"]
 
     model_config = ConfigDict(

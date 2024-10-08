@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **id** | **str** |  | [optional] 
 **status** | **str** |  | [optional] 
 **status_display** | **str** |  | [optional] 
-**var_date** | **date** |  | [optional] 
+**var_date** | **str** |  | [optional] 
 
 ## Example
 
