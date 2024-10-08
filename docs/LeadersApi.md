@@ -14,9 +14,8 @@ Method | HTTP request | Description
 
 ### Example
 
+
 ```python
-import time
-import os
 import pp_sdk
 from pp_sdk.rest import ApiException
 from pprint import pprint
@@ -42,6 +41,7 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -58,6 +58,7 @@ No authorization required
  - **Accept**: Not defined
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** |  |  -  |

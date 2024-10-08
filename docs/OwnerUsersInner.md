@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] 
@@ -19,7 +20,7 @@ json = "{}"
 # create an instance of OwnerUsersInner from a JSON string
 owner_users_inner_instance = OwnerUsersInner.from_json(json)
 # print the JSON string representation of the object
-print OwnerUsersInner.to_json()
+print(OwnerUsersInner.to_json())
 
 # convert the object into a dict
 owner_users_inner_dict = owner_users_inner_instance.to_dict()

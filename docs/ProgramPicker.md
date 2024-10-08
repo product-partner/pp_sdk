@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] [readonly] 
@@ -18,7 +19,7 @@ json = "{}"
 # create an instance of ProgramPicker from a JSON string
 program_picker_instance = ProgramPicker.from_json(json)
 # print the JSON string representation of the object
-print ProgramPicker.to_json()
+print(ProgramPicker.to_json())
 
 # convert the object into a dict
 program_picker_dict = program_picker_instance.to_dict()

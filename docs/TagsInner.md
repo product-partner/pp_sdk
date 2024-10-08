@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] 
@@ -17,7 +18,7 @@ json = "{}"
 # create an instance of TagsInner from a JSON string
 tags_inner_instance = TagsInner.from_json(json)
 # print the JSON string representation of the object
-print TagsInner.to_json()
+print(TagsInner.to_json())
 
 # convert the object into a dict
 tags_inner_dict = tags_inner_instance.to_dict()

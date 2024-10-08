@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] [readonly] 
@@ -19,7 +20,7 @@ json = "{}"
 # create an instance of Tag from a JSON string
 tag_instance = Tag.from_json(json)
 # print the JSON string representation of the object
-print Tag.to_json()
+print(Tag.to_json())
 
 # convert the object into a dict
 tag_dict = tag_instance.to_dict()

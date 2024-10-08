@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] 
@@ -19,7 +20,7 @@ json = "{}"
 # create an instance of CreatedBy from a JSON string
 created_by_instance = CreatedBy.from_json(json)
 # print the JSON string representation of the object
-print CreatedBy.to_json()
+print(CreatedBy.to_json())
 
 # convert the object into a dict
 created_by_dict = created_by_instance.to_dict()

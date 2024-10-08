@@ -61,8 +61,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_created_by.py
-test/test_owner_users_inner.py
-test/test_programs_inner.py
-test/test_tags_inner.py
 tox.ini

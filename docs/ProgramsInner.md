@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] 
@@ -17,7 +18,7 @@ json = "{}"
 # create an instance of ProgramsInner from a JSON string
 programs_inner_instance = ProgramsInner.from_json(json)
 # print the JSON string representation of the object
-print ProgramsInner.to_json()
+print(ProgramsInner.to_json())
 
 # convert the object into a dict
 programs_inner_dict = programs_inner_instance.to_dict()
