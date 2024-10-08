@@ -16,6 +16,7 @@
 
 # import models into model package
 from pp_sdk.models.address import Address
+from pp_sdk.models.api_prds_create_request import ApiPrdsCreateRequest
 from pp_sdk.models.api_status_create_request import ApiStatusCreateRequest
 from pp_sdk.models.created_by import CreatedBy
 from pp_sdk.models.goal import Goal

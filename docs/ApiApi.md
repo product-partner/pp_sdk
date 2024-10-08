@@ -551,6 +551,7 @@ Create a new PRD for the authenticated user's organization.
 
 ```python
 import pp_sdk
+from pp_sdk.models.api_prds_create_request import ApiPrdsCreateRequest
 from pp_sdk.models.prd import PRD
 from pp_sdk.rest import ApiException
 from pprint import pprint
@@ -566,7 +567,7 @@ configuration = pp_sdk.Configuration(
 with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pp_sdk.ApiApi(api_client)
-    data = pp_sdk.PRD() # PRD | 
+    data = pp_sdk.ApiPrdsCreateRequest() # ApiPrdsCreateRequest | 
     x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
     try:
@@ -584,7 +585,7 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **data** | [**PRD**](PRD.md)|  | 
+ **data** | [**ApiPrdsCreateRequest**](ApiPrdsCreateRequest.md)|  | 
  **x_user_id** | **str**| User ID (required when using API key) | [optional] 
 
 ### Return type

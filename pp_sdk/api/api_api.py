@@ -20,6 +20,7 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictInt, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
+from pp_sdk.models.api_prds_create_request import ApiPrdsCreateRequest
 from pp_sdk.models.api_status_create_request import ApiStatusCreateRequest
 from pp_sdk.models.goal import Goal
 from pp_sdk.models.goal_picker import GoalPicker
@@ -2062,7 +2063,7 @@ class ApiApi:
     @validate_call
     def api_prds_create(
         self,
-        data: PRD,
+        data: ApiPrdsCreateRequest,
         x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
@@ -2082,7 +2083,7 @@ class ApiApi:
         Create a new PRD for the authenticated user's organization.
 
         :param data: (required)
-        :type data: PRD
+        :type data: ApiPrdsCreateRequest
         :param x_user_id: User ID (required when using API key)
         :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -2133,7 +2134,7 @@ class ApiApi:
     @validate_call
     def api_prds_create_with_http_info(
         self,
-        data: PRD,
+        data: ApiPrdsCreateRequest,
         x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
@@ -2153,7 +2154,7 @@ class ApiApi:
         Create a new PRD for the authenticated user's organization.
 
         :param data: (required)
-        :type data: PRD
+        :type data: ApiPrdsCreateRequest
         :param x_user_id: User ID (required when using API key)
         :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -2204,7 +2205,7 @@ class ApiApi:
     @validate_call
     def api_prds_create_without_preload_content(
         self,
-        data: PRD,
+        data: ApiPrdsCreateRequest,
         x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
@@ -2224,7 +2225,7 @@ class ApiApi:
         Create a new PRD for the authenticated user's organization.
 
         :param data: (required)
-        :type data: PRD
+        :type data: ApiPrdsCreateRequest
         :param x_user_id: User ID (required when using API key)
         :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
