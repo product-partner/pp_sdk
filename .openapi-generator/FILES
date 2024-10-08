@@ -65,5 +65,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_api_status_create_request.py
 tox.ini
