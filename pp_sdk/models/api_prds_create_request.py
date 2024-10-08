@@ -44,8 +44,8 @@ class ApiPrdsCreateRequest(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['RED', 'YELLOW', 'GREEN', 'NOT_STARTED', 'COMPLETED', 'COMPLETED_LATE', 'CANCELLED', 'DEFERRED']):
-            raise ValueError("must be one of enum values ('RED', 'YELLOW', 'GREEN', 'NOT_STARTED', 'COMPLETED', 'COMPLETED_LATE', 'CANCELLED', 'DEFERRED')")
+        if value not in set(['DRAFT', 'PENDING_REVIEW', 'IN_REVIEW', 'APPROVED', 'PUBLISHED']):
+            raise ValueError("must be one of enum values ('DRAFT', 'PENDING_REVIEW', 'IN_REVIEW', 'APPROVED', 'PUBLISHED')")
         return value
 
     model_config = ConfigDict(
