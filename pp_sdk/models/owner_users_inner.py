@@ -20,16 +20,17 @@ import json
 
 
 from typing import Optional
-from pydantic import BaseModel, StrictStr, constr
+from pydantic import BaseModel, StrictStr
 
-class ProgramPicker(BaseModel):
+class OwnerUsersInner(BaseModel):
     """
-    ProgramPicker
+    OwnerUsersInner
     """
     id: Optional[StrictStr] = None
-    name: Optional[constr(strict=True, min_length=1)] = None
-    description: Optional[constr(strict=True, min_length=1)] = None
-    __properties = ["id", "name", "description"]
+    email: Optional[StrictStr] = None
+    first_name: Optional[StrictStr] = None
+    last_name: Optional[StrictStr] = None
+    __properties = ["id", "email", "first_name", "last_name"]
 
     class Config:
         """Pydantic configuration"""
@@ -45,39 +46,32 @@ class ProgramPicker(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> ProgramPicker:
-        """Create an instance of ProgramPicker from a JSON string"""
+    def from_json(cls, json_str: str) -> OwnerUsersInner:
+        """Create an instance of OwnerUsersInner from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
         _dict = self.dict(by_alias=True,
                           exclude={
-                            "id",
-                            "name",
-                            "description",
                           },
                           exclude_none=True)
-        # set to None if description (nullable) is None
-        # and __fields_set__ contains the field
-        if self.description is None and "description" in self.__fields_set__:
-            _dict['description'] = None
-
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> ProgramPicker:
-        """Create an instance of ProgramPicker from a dict"""
+    def from_dict(cls, obj: dict) -> OwnerUsersInner:
+        """Create an instance of OwnerUsersInner from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return ProgramPicker.parse_obj(obj)
+            return OwnerUsersInner.parse_obj(obj)
 
-        _obj = ProgramPicker.parse_obj({
+        _obj = OwnerUsersInner.parse_obj({
             "id": obj.get("id"),
-            "name": obj.get("name"),
-            "description": obj.get("description")
+            "email": obj.get("email"),
+            "first_name": obj.get("first_name"),
+            "last_name": obj.get("last_name")
         })
         return _obj
 

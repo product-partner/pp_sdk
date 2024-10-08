@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] [readonly] 
@@ -12,10 +11,10 @@ Name | Type | Description | Notes
 **status** | **str** |  | [optional] 
 **due_date** | **datetime** |  | [optional] 
 **modified_date** | **datetime** |  | [optional] [readonly] 
-**tags** | **str** |  | [optional] [readonly] 
-**stakeholder_users** | **str** |  | [optional] [readonly] 
-**programs** | **str** |  | [optional] [readonly] 
-**created_by** | **str** |  | [optional] [readonly] 
+**tags** | [**List[TagsInner]**](TagsInner.md) |  | [optional] [readonly] 
+**stakeholder_users** | [**List[OwnerUsersInner]**](OwnerUsersInner.md) |  | [optional] [readonly] 
+**programs** | [**List[ProgramsInner]**](ProgramsInner.md) |  | [optional] [readonly] 
+**created_by** | [**CreatedBy**](CreatedBy.md) |  | [optional] 
 **created_date** | **datetime** |  | [optional] [readonly] 
 
 ## Example
@@ -28,7 +27,7 @@ json = "{}"
 # create an instance of PRD from a JSON string
 prd_instance = PRD.from_json(json)
 # print the JSON string representation of the object
-print(PRD.to_json())
+print PRD.to_json()
 
 # convert the object into a dict
 prd_dict = prd_instance.to_dict()

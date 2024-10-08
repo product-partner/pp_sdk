@@ -5,11 +5,11 @@ All URIs are relative to *http://0.0.0.0:8000*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**prd_template_create**](PrdApi.md#prd_template_create) | **POST** /prd/template/ | 
-[**prd_template_delete**](PrdApi.md#prd_template_delete) | **DELETE** /prd/template/{id}/ | 
+[**prd_template_delete**](PrdApi.md#prd_template_delete) | **DELETE** /prd/template/{prdtemplate_id}/ | 
 [**prd_template_list**](PrdApi.md#prd_template_list) | **GET** /prd/template/ | 
-[**prd_template_partial_update**](PrdApi.md#prd_template_partial_update) | **PATCH** /prd/template/{id}/ | 
-[**prd_template_read**](PrdApi.md#prd_template_read) | **GET** /prd/template/{id}/ | 
-[**prd_template_update**](PrdApi.md#prd_template_update) | **PUT** /prd/template/{id}/ | 
+[**prd_template_partial_update**](PrdApi.md#prd_template_partial_update) | **PATCH** /prd/template/{prdtemplate_id}/ | 
+[**prd_template_read**](PrdApi.md#prd_template_read) | **GET** /prd/template/{prdtemplate_id}/ | 
+[**prd_template_update**](PrdApi.md#prd_template_update) | **PUT** /prd/template/{prdtemplate_id}/ | 
 
 
 # **prd_template_create**
@@ -21,8 +21,9 @@ List or create PRD templates for the authenticated user's organization.
 
 ### Example
 
-
 ```python
+import time
+import os
 import pp_sdk
 from pp_sdk.models.prd_template import PRDTemplate
 from pp_sdk.rest import ApiException
@@ -54,7 +55,6 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **data** | [**PRDTemplate**](PRDTemplate.md)|  | 
@@ -74,7 +74,6 @@ No authorization required
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** |  |  -  |
@@ -82,7 +81,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **prd_template_delete**
-> prd_template_delete(id, x_user_id=x_user_id)
+> prd_template_delete(prdtemplate_id, x_user_id=x_user_id)
 
 
 
@@ -90,8 +89,9 @@ Retrieve, update or delete a PRD template.
 
 ### Example
 
-
 ```python
+import time
+import os
 import pp_sdk
 from pp_sdk.rest import ApiException
 from pprint import pprint
@@ -107,11 +107,11 @@ configuration = pp_sdk.Configuration(
 with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pp_sdk.PrdApi(api_client)
-    id = 'id_example' # str | 
+    prdtemplate_id = 'prdtemplate_id_example' # str | 
     x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
     try:
-        api_instance.prd_template_delete(id, x_user_id=x_user_id)
+        api_instance.prd_template_delete(prdtemplate_id, x_user_id=x_user_id)
     except Exception as e:
         print("Exception when calling PrdApi->prd_template_delete: %s\n" % e)
 ```
@@ -120,10 +120,9 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**|  | 
+ **prdtemplate_id** | **str**|  | 
  **x_user_id** | **str**| User ID (required when using API key) | [optional] 
 
 ### Return type
@@ -140,7 +139,6 @@ No authorization required
  - **Accept**: Not defined
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | No Content |  -  |
@@ -156,8 +154,9 @@ List PRD templates for the authenticated user's organization.
 
 ### Example
 
-
 ```python
+import time
+import os
 import pp_sdk
 from pp_sdk.models.prd_template import PRDTemplate
 from pp_sdk.rest import ApiException
@@ -190,7 +189,6 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| A page number within the paginated result set. | [optional] 
@@ -211,7 +209,6 @@ No authorization required
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** |  |  -  |
@@ -219,7 +216,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **prd_template_partial_update**
-> PRDTemplate prd_template_partial_update(id, data, x_user_id=x_user_id)
+> PRDTemplate prd_template_partial_update(prdtemplate_id, data, x_user_id=x_user_id)
 
 
 
@@ -227,8 +224,9 @@ Retrieve, update or delete a PRD template.
 
 ### Example
 
-
 ```python
+import time
+import os
 import pp_sdk
 from pp_sdk.models.prd_template import PRDTemplate
 from pp_sdk.rest import ApiException
@@ -245,12 +243,12 @@ configuration = pp_sdk.Configuration(
 with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pp_sdk.PrdApi(api_client)
-    id = 'id_example' # str | 
+    prdtemplate_id = 'prdtemplate_id_example' # str | 
     data = pp_sdk.PRDTemplate() # PRDTemplate | 
     x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
     try:
-        api_response = api_instance.prd_template_partial_update(id, data, x_user_id=x_user_id)
+        api_response = api_instance.prd_template_partial_update(prdtemplate_id, data, x_user_id=x_user_id)
         print("The response of PrdApi->prd_template_partial_update:\n")
         pprint(api_response)
     except Exception as e:
@@ -261,10 +259,9 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**|  | 
+ **prdtemplate_id** | **str**|  | 
  **data** | [**PRDTemplate**](PRDTemplate.md)|  | 
  **x_user_id** | **str**| User ID (required when using API key) | [optional] 
 
@@ -282,7 +279,6 @@ No authorization required
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** |  |  -  |
@@ -290,7 +286,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **prd_template_read**
-> PRDTemplate prd_template_read(id, x_user_id=x_user_id)
+> PRDTemplate prd_template_read(prdtemplate_id, x_user_id=x_user_id)
 
 
 
@@ -298,8 +294,9 @@ Get a PRD template.
 
 ### Example
 
-
 ```python
+import time
+import os
 import pp_sdk
 from pp_sdk.models.prd_template import PRDTemplate
 from pp_sdk.rest import ApiException
@@ -316,11 +313,11 @@ configuration = pp_sdk.Configuration(
 with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pp_sdk.PrdApi(api_client)
-    id = 'id_example' # str | 
+    prdtemplate_id = 'prdtemplate_id_example' # str | 
     x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
     try:
-        api_response = api_instance.prd_template_read(id, x_user_id=x_user_id)
+        api_response = api_instance.prd_template_read(prdtemplate_id, x_user_id=x_user_id)
         print("The response of PrdApi->prd_template_read:\n")
         pprint(api_response)
     except Exception as e:
@@ -331,10 +328,9 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**|  | 
+ **prdtemplate_id** | **str**|  | 
  **x_user_id** | **str**| User ID (required when using API key) | [optional] 
 
 ### Return type
@@ -351,7 +347,6 @@ No authorization required
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** |  |  -  |
@@ -359,7 +354,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **prd_template_update**
-> PRDTemplate prd_template_update(id, data, x_user_id=x_user_id)
+> PRDTemplate prd_template_update(prdtemplate_id, data, x_user_id=x_user_id)
 
 
 
@@ -367,8 +362,9 @@ Retrieve, update or delete a PRD template.
 
 ### Example
 
-
 ```python
+import time
+import os
 import pp_sdk
 from pp_sdk.models.prd_template import PRDTemplate
 from pp_sdk.rest import ApiException
@@ -385,12 +381,12 @@ configuration = pp_sdk.Configuration(
 with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pp_sdk.PrdApi(api_client)
-    id = 'id_example' # str | 
+    prdtemplate_id = 'prdtemplate_id_example' # str | 
     data = pp_sdk.PRDTemplate() # PRDTemplate | 
     x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
     try:
-        api_response = api_instance.prd_template_update(id, data, x_user_id=x_user_id)
+        api_response = api_instance.prd_template_update(prdtemplate_id, data, x_user_id=x_user_id)
         print("The response of PrdApi->prd_template_update:\n")
         pprint(api_response)
     except Exception as e:
@@ -401,10 +397,9 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**|  | 
+ **prdtemplate_id** | **str**|  | 
  **data** | [**PRDTemplate**](PRDTemplate.md)|  | 
  **x_user_id** | **str**| User ID (required when using API key) | [optional] 
 
@@ -422,7 +417,6 @@ No authorization required
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** |  |  -  |

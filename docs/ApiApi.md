@@ -60,8 +60,9 @@ Create a new goal.
 
 ### Example
 
-
 ```python
+import time
+import os
 import pp_sdk
 from pp_sdk.models.goal import Goal
 from pp_sdk.rest import ApiException
@@ -92,7 +93,6 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **data** | [**Goal**](Goal.md)|  | 
@@ -111,7 +111,6 @@ No authorization required
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** |  |  -  |
@@ -127,8 +126,9 @@ Delete a specific goal.
 
 ### Example
 
-
 ```python
+import time
+import os
 import pp_sdk
 from pp_sdk.rest import ApiException
 from pprint import pprint
@@ -156,7 +156,6 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **goal_id** | **str**|  | 
@@ -175,7 +174,6 @@ No authorization required
  - **Accept**: Not defined
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | No content |  -  |
@@ -191,8 +189,9 @@ List or Search for Goals
 
 ### Example
 
-
 ```python
+import time
+import os
 import pp_sdk
 from pp_sdk.models.goal import Goal
 from pp_sdk.rest import ApiException
@@ -230,7 +229,6 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| A page number within the paginated result set. | [optional] 
@@ -256,7 +254,6 @@ No authorization required
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** |  |  -  |
@@ -272,8 +269,9 @@ Partially update a specific goal.
 
 ### Example
 
-
 ```python
+import time
+import os
 import pp_sdk
 from pp_sdk.models.goal import Goal
 from pp_sdk.rest import ApiException
@@ -305,7 +303,6 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **goal_id** | **str**|  | 
@@ -325,7 +322,6 @@ No authorization required
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** |  |  -  |
@@ -342,8 +338,9 @@ List or Search for Goals in picker, a reduced set of functions and returned valu
 
 ### Example
 
-
 ```python
+import time
+import os
 import pp_sdk
 from pp_sdk.models.goal_picker import GoalPicker
 from pp_sdk.rest import ApiException
@@ -377,7 +374,6 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| A page number within the paginated result set. | [optional] 
@@ -399,7 +395,6 @@ No authorization required
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** |  |  -  |
@@ -415,8 +410,9 @@ Get details of a specific goal.
 
 ### Example
 
-
 ```python
+import time
+import os
 import pp_sdk
 from pp_sdk.models.goal import Goal
 from pp_sdk.rest import ApiException
@@ -447,7 +443,6 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **goal_id** | **str**|  | 
@@ -466,7 +461,6 @@ No authorization required
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** |  |  -  |
@@ -482,8 +476,9 @@ Update a specific goal.
 
 ### Example
 
-
 ```python
+import time
+import os
 import pp_sdk
 from pp_sdk.models.goal import Goal
 from pp_sdk.rest import ApiException
@@ -515,7 +510,6 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **goal_id** | **str**|  | 
@@ -535,7 +529,6 @@ No authorization required
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** |  |  -  |
@@ -552,8 +545,9 @@ Create a new PRD for the authenticated user's organization.
 
 ### Example
 
-
 ```python
+import time
+import os
 import pp_sdk
 from pp_sdk.models.prd import PRD
 from pp_sdk.rest import ApiException
@@ -585,7 +579,6 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **data** | [**PRD**](PRD.md)|  | 
@@ -605,7 +598,6 @@ No authorization required
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** |  |  -  |
@@ -621,8 +613,9 @@ Delete a specific PRD.
 
 ### Example
 
-
 ```python
+import time
+import os
 import pp_sdk
 from pp_sdk.rest import ApiException
 from pprint import pprint
@@ -651,7 +644,6 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **prd_id** | **str**|  | 
@@ -671,7 +663,6 @@ No authorization required
  - **Accept**: Not defined
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | No content |  -  |
@@ -687,8 +678,9 @@ Get a list of all PRDs for the authenticated user's organization.
 
 ### Example
 
-
 ```python
+import time
+import os
 import pp_sdk
 from pp_sdk.models.prd import PRD
 from pp_sdk.rest import ApiException
@@ -725,7 +717,6 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **x_user_id** | **str**| User ID (required when using API key) | [optional] 
@@ -750,7 +741,6 @@ No authorization required
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** |  |  -  |
@@ -766,8 +756,9 @@ Partially update a specific PRD.
 
 ### Example
 
-
 ```python
+import time
+import os
 import pp_sdk
 from pp_sdk.models.prd import PRD
 from pp_sdk.rest import ApiException
@@ -800,7 +791,6 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **prd_id** | **str**|  | 
@@ -821,7 +811,6 @@ No authorization required
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** |  |  -  |
@@ -837,8 +826,9 @@ Get details of a specific PRD.
 
 ### Example
 
-
 ```python
+import time
+import os
 import pp_sdk
 from pp_sdk.models.prd import PRD
 from pp_sdk.rest import ApiException
@@ -870,7 +860,6 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **prd_id** | **str**|  | 
@@ -890,7 +879,6 @@ No authorization required
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** |  |  -  |
@@ -906,8 +894,9 @@ Update a specific PRD.
 
 ### Example
 
-
 ```python
+import time
+import os
 import pp_sdk
 from pp_sdk.models.prd import PRD
 from pp_sdk.rest import ApiException
@@ -940,7 +929,6 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **prd_id** | **str**|  | 
@@ -961,7 +949,6 @@ No authorization required
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** |  |  -  |
@@ -977,8 +964,9 @@ Create a new program for the authenticated user.
 
 ### Example
 
-
 ```python
+import time
+import os
 import pp_sdk
 from pp_sdk.models.program import Program
 from pp_sdk.rest import ApiException
@@ -1010,7 +998,6 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **data** | [**Program**](Program.md)|  | 
@@ -1030,7 +1017,6 @@ No authorization required
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** |  |  -  |
@@ -1046,8 +1032,9 @@ Delete a specific program.
 
 ### Example
 
-
 ```python
+import time
+import os
 import pp_sdk
 from pp_sdk.rest import ApiException
 from pprint import pprint
@@ -1076,7 +1063,6 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **program_id** | **str**|  | 
@@ -1096,7 +1082,6 @@ No authorization required
  - **Accept**: Not defined
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | No content |  -  |
@@ -1112,8 +1097,9 @@ Get a list of all programs for the authenticated user.
 
 ### Example
 
-
 ```python
+import time
+import os
 import pp_sdk
 from pp_sdk.models.program import Program
 from pp_sdk.rest import ApiException
@@ -1148,7 +1134,6 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| A page number within the paginated result set. | [optional] 
@@ -1171,7 +1156,6 @@ No authorization required
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** |  |  -  |
@@ -1187,8 +1171,9 @@ Partially update a specific program.
 
 ### Example
 
-
 ```python
+import time
+import os
 import pp_sdk
 from pp_sdk.models.program import Program
 from pp_sdk.rest import ApiException
@@ -1221,7 +1206,6 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **program_id** | **str**|  | 
@@ -1242,7 +1226,6 @@ No authorization required
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** |  |  -  |
@@ -1256,8 +1239,9 @@ No authorization required
 
 ### Example
 
-
 ```python
+import time
+import os
 import pp_sdk
 from pp_sdk.models.program_picker import ProgramPicker
 from pp_sdk.rest import ApiException
@@ -1286,7 +1270,6 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 
 ### Parameters
-
 This endpoint does not need any parameter.
 
 ### Return type
@@ -1303,7 +1286,6 @@ No authorization required
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** |  |  -  |
@@ -1319,8 +1301,9 @@ Get details of a specific program.
 
 ### Example
 
-
 ```python
+import time
+import os
 import pp_sdk
 from pp_sdk.models.program import Program
 from pp_sdk.rest import ApiException
@@ -1352,7 +1335,6 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **program_id** | **str**|  | 
@@ -1372,7 +1354,6 @@ No authorization required
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** |  |  -  |
@@ -1388,8 +1369,9 @@ Update a specific program.
 
 ### Example
 
-
 ```python
+import time
+import os
 import pp_sdk
 from pp_sdk.models.program import Program
 from pp_sdk.rest import ApiException
@@ -1422,7 +1404,6 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **program_id** | **str**|  | 
@@ -1443,7 +1424,6 @@ No authorization required
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** |  |  -  |
@@ -1459,8 +1439,9 @@ Create a new status for the authenticated user.
 
 ### Example
 
-
 ```python
+import time
+import os
 import pp_sdk
 from pp_sdk.models.status import Status
 from pp_sdk.rest import ApiException
@@ -1492,7 +1473,6 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **data** | [**Status**](Status.md)|  | 
@@ -1512,7 +1492,6 @@ No authorization required
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** |  |  -  |
@@ -1528,8 +1507,9 @@ Delete a specific status.
 
 ### Example
 
-
 ```python
+import time
+import os
 import pp_sdk
 from pp_sdk.rest import ApiException
 from pprint import pprint
@@ -1558,7 +1538,6 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **status_id** | **str**|  | 
@@ -1578,7 +1557,6 @@ No authorization required
  - **Accept**: Not defined
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | No content |  -  |
@@ -1594,8 +1572,9 @@ Get a list of all statuses for the authenticated user.
 
 ### Example
 
-
 ```python
+import time
+import os
 import pp_sdk
 from pp_sdk.models.status import Status
 from pp_sdk.rest import ApiException
@@ -1632,7 +1611,6 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| A page number within the paginated result set. | [optional] 
@@ -1657,7 +1635,6 @@ No authorization required
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** |  |  -  |
@@ -1673,8 +1650,9 @@ Partially update a specific status.
 
 ### Example
 
-
 ```python
+import time
+import os
 import pp_sdk
 from pp_sdk.models.status import Status
 from pp_sdk.rest import ApiException
@@ -1707,7 +1685,6 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **status_id** | **str**|  | 
@@ -1728,7 +1705,6 @@ No authorization required
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** |  |  -  |
@@ -1744,8 +1720,9 @@ Get details of a specific status.
 
 ### Example
 
-
 ```python
+import time
+import os
 import pp_sdk
 from pp_sdk.models.status import Status
 from pp_sdk.rest import ApiException
@@ -1777,7 +1754,6 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **status_id** | **str**|  | 
@@ -1797,7 +1773,6 @@ No authorization required
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** |  |  -  |
@@ -1813,8 +1788,9 @@ Update a specific status.
 
 ### Example
 
-
 ```python
+import time
+import os
 import pp_sdk
 from pp_sdk.models.status import Status
 from pp_sdk.rest import ApiException
@@ -1847,7 +1823,6 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **status_id** | **str**|  | 
@@ -1868,7 +1843,6 @@ No authorization required
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** |  |  -  |
@@ -1884,8 +1858,9 @@ Create a new tag for the authenticated user.
 
 ### Example
 
-
 ```python
+import time
+import os
 import pp_sdk
 from pp_sdk.models.tag import Tag
 from pp_sdk.rest import ApiException
@@ -1917,7 +1892,6 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **data** | [**Tag**](Tag.md)|  | 
@@ -1937,7 +1911,6 @@ No authorization required
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** |  |  -  |
@@ -1953,8 +1926,9 @@ Delete a specific tag.
 
 ### Example
 
-
 ```python
+import time
+import os
 import pp_sdk
 from pp_sdk.rest import ApiException
 from pprint import pprint
@@ -1983,7 +1957,6 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tag_id** | **str**|  | 
@@ -2003,7 +1976,6 @@ No authorization required
  - **Accept**: Not defined
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | No content |  -  |
@@ -2019,8 +1991,9 @@ Get a list of all tags for the authenticated user.
 
 ### Example
 
-
 ```python
+import time
+import os
 import pp_sdk
 from pp_sdk.models.tag import Tag
 from pp_sdk.rest import ApiException
@@ -2053,7 +2026,6 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| A page number within the paginated result set. | [optional] 
@@ -2074,7 +2046,6 @@ No authorization required
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** |  |  -  |
@@ -2090,8 +2061,9 @@ Partially update a specific tag.
 
 ### Example
 
-
 ```python
+import time
+import os
 import pp_sdk
 from pp_sdk.models.tag import Tag
 from pp_sdk.rest import ApiException
@@ -2124,7 +2096,6 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tag_id** | **str**|  | 
@@ -2145,7 +2116,6 @@ No authorization required
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** |  |  -  |
@@ -2161,8 +2131,9 @@ Get details of a specific tag.
 
 ### Example
 
-
 ```python
+import time
+import os
 import pp_sdk
 from pp_sdk.models.tag import Tag
 from pp_sdk.rest import ApiException
@@ -2194,7 +2165,6 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tag_id** | **str**|  | 
@@ -2214,7 +2184,6 @@ No authorization required
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** |  |  -  |
@@ -2230,8 +2199,9 @@ Update a specific tag.
 
 ### Example
 
-
 ```python
+import time
+import os
 import pp_sdk
 from pp_sdk.models.tag import Tag
 from pp_sdk.rest import ApiException
@@ -2264,7 +2234,6 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tag_id** | **str**|  | 
@@ -2285,7 +2254,6 @@ No authorization required
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** |  |  -  |
@@ -2301,8 +2269,9 @@ Create a new user for the authenticated user's organization.
 
 ### Example
 
-
 ```python
+import time
+import os
 import pp_sdk
 from pp_sdk.models.user import User
 from pp_sdk.rest import ApiException
@@ -2334,7 +2303,6 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **data** | [**User**](User.md)|  | 
@@ -2354,7 +2322,6 @@ No authorization required
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** |  |  -  |
@@ -2368,8 +2335,9 @@ No authorization required
 
 ### Example
 
-
 ```python
+import time
+import os
 import pp_sdk
 from pp_sdk.rest import ApiException
 from pprint import pprint
@@ -2397,7 +2365,6 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**|  | 
@@ -2416,7 +2383,6 @@ No authorization required
  - **Accept**: Not defined
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** |  |  -  |
@@ -2432,8 +2398,9 @@ Retrieve details of a specific user
 
 ### Example
 
-
 ```python
+import time
+import os
 import pp_sdk
 from pp_sdk.models.user import User
 from pp_sdk.rest import ApiException
@@ -2465,7 +2432,6 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| UUID of the user to retrieve | 
@@ -2485,7 +2451,6 @@ No authorization required
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** |  |  -  |
@@ -2500,8 +2465,9 @@ No authorization required
 
 ### Example
 
-
 ```python
+import time
+import os
 import pp_sdk
 from pp_sdk.models.user import User
 from pp_sdk.rest import ApiException
@@ -2533,7 +2499,6 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**|  | 
@@ -2553,7 +2518,6 @@ No authorization required
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** |  |  -  |
@@ -2569,8 +2533,9 @@ Retrieve list of users matching none or all of search parameters.
 
 ### Example
 
-
 ```python
+import time
+import os
 import pp_sdk
 from pp_sdk.models.user import User
 from pp_sdk.rest import ApiException
@@ -2604,7 +2569,6 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **x_user_id** | **str**| User ID (required when using API key) | [optional] 
@@ -2626,7 +2590,6 @@ No authorization required
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** |  |  -  |
@@ -2643,8 +2606,9 @@ Get a list of all PRDs for the authenticated user's organization.
 
 ### Example
 
-
 ```python
+import time
+import os
 import pp_sdk
 from pp_sdk.models.user import User
 from pp_sdk.rest import ApiException
@@ -2676,7 +2640,6 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**|  | 
@@ -2696,7 +2659,6 @@ No authorization required
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** |  |  -  |
@@ -2712,8 +2674,9 @@ Update a specific user's details
 
 ### Example
 
-
 ```python
+import time
+import os
 import pp_sdk
 from pp_sdk.models.user import User
 from pp_sdk.rest import ApiException
@@ -2746,7 +2709,6 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| UUID of the user to update | 
@@ -2767,7 +2729,6 @@ No authorization required
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** |  |  -  |
@@ -2784,8 +2745,9 @@ Create a new user story.
 
 ### Example
 
-
 ```python
+import time
+import os
 import pp_sdk
 from pp_sdk.models.user_story import UserStory
 from pp_sdk.rest import ApiException
@@ -2816,7 +2778,6 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **data** | [**UserStory**](UserStory.md)|  | 
@@ -2835,7 +2796,6 @@ No authorization required
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** |  |  -  |
@@ -2851,8 +2811,9 @@ Delete a specific user story.
 
 ### Example
 
-
 ```python
+import time
+import os
 import pp_sdk
 from pp_sdk.rest import ApiException
 from pprint import pprint
@@ -2881,7 +2842,6 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userstory_id** | **str**|  | 
@@ -2901,7 +2861,6 @@ No authorization required
  - **Accept**: Not defined
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | No content |  -  |
@@ -2917,8 +2876,9 @@ List or Search for User Stories
 
 ### Example
 
-
 ```python
+import time
+import os
 import pp_sdk
 from pp_sdk.models.user_story import UserStory
 from pp_sdk.rest import ApiException
@@ -2955,7 +2915,6 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **search** | **str**| Search term for as_a, i_want_to, so_that, or freetext_override fields | [optional] 
@@ -2980,7 +2939,6 @@ No authorization required
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** |  |  -  |
@@ -2996,8 +2954,9 @@ Partially update a specific user story.
 
 ### Example
 
-
 ```python
+import time
+import os
 import pp_sdk
 from pp_sdk.models.user_story import UserStory
 from pp_sdk.rest import ApiException
@@ -3030,7 +2989,6 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userstory_id** | **str**|  | 
@@ -3051,7 +3009,6 @@ No authorization required
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** |  |  -  |
@@ -3067,8 +3024,9 @@ Get details of a specific user story.
 
 ### Example
 
-
 ```python
+import time
+import os
 import pp_sdk
 from pp_sdk.models.user_story import UserStory
 from pp_sdk.rest import ApiException
@@ -3100,7 +3058,6 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userstory_id** | **str**|  | 
@@ -3120,7 +3077,6 @@ No authorization required
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** |  |  -  |
@@ -3136,8 +3092,9 @@ Update a specific user story.
 
 ### Example
 
-
 ```python
+import time
+import os
 import pp_sdk
 from pp_sdk.models.user_story import UserStory
 from pp_sdk.rest import ApiException
@@ -3170,7 +3127,6 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userstory_id** | **str**|  | 
@@ -3191,7 +3147,6 @@ No authorization required
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** |  |  -  |

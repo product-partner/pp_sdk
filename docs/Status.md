@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] [readonly] 
@@ -14,7 +13,7 @@ Name | Type | Description | Notes
 **status_note** | **str** |  | [optional] 
 **path_to_green** | **str** |  | [optional] 
 **publishing_state** | **str** |  | [optional] 
-**created_by** | **str** |  | [optional] [readonly] 
+**created_by** | [**CreatedBy**](CreatedBy.md) |  | [optional] 
 **created_date** | **datetime** |  | [optional] [readonly] 
 
 ## Example
@@ -27,7 +26,7 @@ json = "{}"
 # create an instance of Status from a JSON string
 status_instance = Status.from_json(json)
 # print the JSON string representation of the object
-print(Status.to_json())
+print Status.to_json()
 
 # convert the object into a dict
 status_dict = status_instance.to_dict()

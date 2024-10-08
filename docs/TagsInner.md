@@ -1,30 +1,28 @@
-# Tag
+# TagsInner
 
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** |  | [optional] [readonly] 
-**tag** | **str** |  | 
-**archived** | **bool** |  | [optional] 
-**created_date** | **datetime** |  | [optional] [readonly] 
+**id** | **str** |  | [optional] 
+**tag** | **str** |  | [optional] 
 
 ## Example
 
 ```python
-from pp_sdk.models.tag import Tag
+from pp_sdk.models.tags_inner import TagsInner
 
 # TODO update the JSON string below
 json = "{}"
-# create an instance of Tag from a JSON string
-tag_instance = Tag.from_json(json)
+# create an instance of TagsInner from a JSON string
+tags_inner_instance = TagsInner.from_json(json)
 # print the JSON string representation of the object
-print Tag.to_json()
+print TagsInner.to_json()
 
 # convert the object into a dict
-tag_dict = tag_instance.to_dict()
-# create an instance of Tag from a dict
-tag_from_dict = Tag.from_dict(tag_dict)
+tags_inner_dict = tags_inner_instance.to_dict()
+# create an instance of TagsInner from a dict
+tags_inner_from_dict = TagsInner.from_dict(tags_inner_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

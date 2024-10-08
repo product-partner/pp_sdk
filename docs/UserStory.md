@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] [readonly] 
@@ -16,8 +15,8 @@ Name | Type | Description | Notes
 **due_date** | **datetime** |  | [optional] 
 **status** | **str** |  | [optional] 
 **priority** | **str** |  | [optional] 
-**tags** | **str** |  | [optional] [readonly] 
-**created_by** | **str** |  | [optional] [readonly] 
+**tags** | [**List[TagsInner]**](TagsInner.md) |  | [optional] [readonly] 
+**created_by** | [**CreatedBy**](CreatedBy.md) |  | [optional] 
 
 ## Example
 
@@ -29,7 +28,7 @@ json = "{}"
 # create an instance of UserStory from a JSON string
 user_story_instance = UserStory.from_json(json)
 # print the JSON string representation of the object
-print(UserStory.to_json())
+print UserStory.to_json()
 
 # convert the object into a dict
 user_story_dict = user_story_instance.to_dict()

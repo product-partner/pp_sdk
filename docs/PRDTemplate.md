@@ -2,14 +2,13 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] [readonly] 
 **organization** | **str** |  | [optional] [readonly] 
 **title** | **str** |  | 
 **template** | **str** |  | 
-**created_by** | **str** |  | [optional] 
+**created_by** | [**CreatedBy**](CreatedBy.md) |  | [optional] 
 **created_date** | **datetime** |  | [optional] [readonly] 
 **modified_date** | **datetime** |  | [optional] [readonly] 
 
@@ -23,7 +22,7 @@ json = "{}"
 # create an instance of PRDTemplate from a JSON string
 prd_template_instance = PRDTemplate.from_json(json)
 # print the JSON string representation of the object
-print(PRDTemplate.to_json())
+print PRDTemplate.to_json()
 
 # convert the object into a dict
 prd_template_dict = prd_template_instance.to_dict()

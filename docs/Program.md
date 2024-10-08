@@ -2,18 +2,17 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] [readonly] 
 **name** | **str** |  | 
 **description** | **str** |  | [optional] 
 **charter** | **str** |  | [optional] 
-**principal_users** | **str** |  | [optional] [readonly] 
-**stakeholder_users** | **str** |  | [optional] [readonly] 
+**principal_users** | [**List[OwnerUsersInner]**](OwnerUsersInner.md) |  | [optional] [readonly] 
+**stakeholder_users** | [**List[OwnerUsersInner]**](OwnerUsersInner.md) |  | [optional] [readonly] 
 **parent** | **str** |  | [optional] 
-**tags** | **str** |  | [optional] [readonly] 
-**created_by** | **str** |  | [optional] [readonly] 
+**tags** | [**List[TagsInner]**](TagsInner.md) |  | [optional] [readonly] 
+**created_by** | [**CreatedBy**](CreatedBy.md) |  | [optional] 
 **created_date** | **datetime** |  | [optional] [readonly] 
 **modified_date** | **datetime** |  | [optional] [readonly] 
 
@@ -27,7 +26,7 @@ json = "{}"
 # create an instance of Program from a JSON string
 program_instance = Program.from_json(json)
 # print the JSON string representation of the object
-print(Program.to_json())
+print Program.to_json()
 
 # convert the object into a dict
 program_dict = program_instance.to_dict()

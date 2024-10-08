@@ -19,127 +19,126 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
-from typing_extensions import Annotated
-from typing import Optional, Set
-from typing_extensions import Self
+from typing import List, Optional
+from pydantic import BaseModel, Field, StrictStr, conint, conlist, constr
+from pp_sdk.models.created_by import CreatedBy
+from pp_sdk.models.owner_users_inner import OwnerUsersInner
+from pp_sdk.models.programs_inner import ProgramsInner
+from pp_sdk.models.tags_inner import TagsInner
 
 class Goal(BaseModel):
     """
     Goal
-    """ # noqa: E501
+    """
     id: Optional[StrictStr] = None
-    name: Annotated[str, Field(min_length=1, strict=True, max_length=255)]
-    goal_language: Annotated[str, Field(min_length=1, strict=True)]
+    name: constr(strict=True, max_length=255, min_length=1) = Field(...)
+    goal_language: constr(strict=True, min_length=1) = Field(...)
     description: Optional[StrictStr] = None
     why_it_matters: Optional[StrictStr] = None
     created_date: Optional[datetime] = None
     modified_date: Optional[datetime] = None
     original_due_date: Optional[datetime] = None
     current_due_date: Optional[datetime] = None
-    owner_users: Optional[StrictStr] = None
-    programs: Optional[StrictStr] = None
-    stakeholder_users: Optional[StrictStr] = None
-    tags: Optional[StrictStr] = None
-    version: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=-2147483648)]] = None
+    owner_users: Optional[conlist(OwnerUsersInner)] = None
+    programs: Optional[conlist(ProgramsInner)] = None
+    stakeholder_users: Optional[conlist(OwnerUsersInner)] = None
+    tags: Optional[conlist(TagsInner)] = None
+    version: Optional[conint(strict=True, le=2147483647, ge=-2147483648)] = None
     version_summary: Optional[StrictStr] = None
-    created_by: Optional[StrictStr] = None
+    created_by: Optional[CreatedBy] = None
     status: Optional[StrictStr] = None
-    additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["id", "name", "goal_language", "description", "why_it_matters", "created_date", "modified_date", "original_due_date", "current_due_date", "owner_users", "programs", "stakeholder_users", "tags", "version", "version_summary", "created_by", "status"]
+    __properties = ["id", "name", "goal_language", "description", "why_it_matters", "created_date", "modified_date", "original_due_date", "current_due_date", "owner_users", "programs", "stakeholder_users", "tags", "version", "version_summary", "created_by", "status"]
 
-    model_config = ConfigDict(
-        populate_by_name=True,
-        validate_assignment=True,
-        protected_namespaces=(),
-    )
-
+    class Config:
+        """Pydantic configuration"""
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.model_dump(by_alias=True))
+        return pprint.pformat(self.dict(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> Goal:
         """Create an instance of Goal from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self) -> Dict[str, Any]:
-        """Return the dictionary representation of the model using alias.
-
-        This has the following differences from calling pydantic's
-        `self.model_dump(by_alias=True)`:
-
-        * `None` is only added to the output dict for nullable fields that
-          were set at model initialization. Other fields with value `None`
-          are ignored.
-        * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
-        * Fields in `self.additional_properties` are added to the output dict.
-        """
-        excluded_fields: Set[str] = set([
-            "id",
-            "created_date",
-            "modified_date",
-            "owner_users",
-            "programs",
-            "stakeholder_users",
-            "tags",
-            "created_by",
-            "status",
-            "additional_properties",
-        ])
-
-        _dict = self.model_dump(
-            by_alias=True,
-            exclude=excluded_fields,
-            exclude_none=True,
-        )
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
+    def to_dict(self):
+        """Returns the dictionary representation of the model using alias"""
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                            "id",
+                            "created_date",
+                            "modified_date",
+                            "owner_users",
+                            "programs",
+                            "stakeholder_users",
+                            "tags",
+                            "status",
+                          },
+                          exclude_none=True)
+        # override the default output from pydantic by calling `to_dict()` of each item in owner_users (list)
+        _items = []
+        if self.owner_users:
+            for _item in self.owner_users:
+                if _item:
+                    _items.append(_item.to_dict())
+            _dict['owner_users'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in programs (list)
+        _items = []
+        if self.programs:
+            for _item in self.programs:
+                if _item:
+                    _items.append(_item.to_dict())
+            _dict['programs'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in stakeholder_users (list)
+        _items = []
+        if self.stakeholder_users:
+            for _item in self.stakeholder_users:
+                if _item:
+                    _items.append(_item.to_dict())
+            _dict['stakeholder_users'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in tags (list)
+        _items = []
+        if self.tags:
+            for _item in self.tags:
+                if _item:
+                    _items.append(_item.to_dict())
+            _dict['tags'] = _items
+        # override the default output from pydantic by calling `to_dict()` of created_by
+        if self.created_by:
+            _dict['created_by'] = self.created_by.to_dict()
         # set to None if description (nullable) is None
-        # and model_fields_set contains the field
-        if self.description is None and "description" in self.model_fields_set:
+        # and __fields_set__ contains the field
+        if self.description is None and "description" in self.__fields_set__:
             _dict['description'] = None
 
         # set to None if why_it_matters (nullable) is None
-        # and model_fields_set contains the field
-        if self.why_it_matters is None and "why_it_matters" in self.model_fields_set:
+        # and __fields_set__ contains the field
+        if self.why_it_matters is None and "why_it_matters" in self.__fields_set__:
             _dict['why_it_matters'] = None
 
         # set to None if version (nullable) is None
-        # and model_fields_set contains the field
-        if self.version is None and "version" in self.model_fields_set:
+        # and __fields_set__ contains the field
+        if self.version is None and "version" in self.__fields_set__:
             _dict['version'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: dict) -> Goal:
         """Create an instance of Goal from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return cls.model_validate(obj)
+            return Goal.parse_obj(obj)
 
-        _obj = cls.model_validate({
+        _obj = Goal.parse_obj({
             "id": obj.get("id"),
             "name": obj.get("name"),
             "goal_language": obj.get("goal_language"),
@@ -149,20 +148,15 @@ class Goal(BaseModel):
             "modified_date": obj.get("modified_date"),
             "original_due_date": obj.get("original_due_date"),
             "current_due_date": obj.get("current_due_date"),
-            "owner_users": obj.get("owner_users"),
-            "programs": obj.get("programs"),
-            "stakeholder_users": obj.get("stakeholder_users"),
-            "tags": obj.get("tags"),
+            "owner_users": [OwnerUsersInner.from_dict(_item) for _item in obj.get("owner_users")] if obj.get("owner_users") is not None else None,
+            "programs": [ProgramsInner.from_dict(_item) for _item in obj.get("programs")] if obj.get("programs") is not None else None,
+            "stakeholder_users": [OwnerUsersInner.from_dict(_item) for _item in obj.get("stakeholder_users")] if obj.get("stakeholder_users") is not None else None,
+            "tags": [TagsInner.from_dict(_item) for _item in obj.get("tags")] if obj.get("tags") is not None else None,
             "version": obj.get("version"),
             "version_summary": obj.get("version_summary"),
-            "created_by": obj.get("created_by"),
+            "created_by": CreatedBy.from_dict(obj.get("created_by")) if obj.get("created_by") is not None else None,
             "status": obj.get("status")
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 
