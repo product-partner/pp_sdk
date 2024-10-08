@@ -20,6 +20,7 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictInt, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
+from pp_sdk.models.api_status_create_request import ApiStatusCreateRequest
 from pp_sdk.models.goal import Goal
 from pp_sdk.models.goal_picker import GoalPicker
 from pp_sdk.models.prd import PRD
@@ -5841,7 +5842,7 @@ class ApiApi:
     @validate_call
     def api_status_create(
         self,
-        data: Status,
+        data: ApiStatusCreateRequest,
         x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
@@ -5861,7 +5862,7 @@ class ApiApi:
         Create a new status for the authenticated user.
 
         :param data: (required)
-        :type data: Status
+        :type data: ApiStatusCreateRequest
         :param x_user_id: User ID (required when using API key)
         :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -5912,7 +5913,7 @@ class ApiApi:
     @validate_call
     def api_status_create_with_http_info(
         self,
-        data: Status,
+        data: ApiStatusCreateRequest,
         x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
@@ -5932,7 +5933,7 @@ class ApiApi:
         Create a new status for the authenticated user.
 
         :param data: (required)
-        :type data: Status
+        :type data: ApiStatusCreateRequest
         :param x_user_id: User ID (required when using API key)
         :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -5983,7 +5984,7 @@ class ApiApi:
     @validate_call
     def api_status_create_without_preload_content(
         self,
-        data: Status,
+        data: ApiStatusCreateRequest,
         x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
@@ -6003,7 +6004,7 @@ class ApiApi:
         Create a new status for the authenticated user.
 
         :param data: (required)
-        :type data: Status
+        :type data: ApiStatusCreateRequest
         :param x_user_id: User ID (required when using API key)
         :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one

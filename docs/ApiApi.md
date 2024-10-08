@@ -1458,6 +1458,7 @@ Create a new status for the authenticated user.
 
 ```python
 import pp_sdk
+from pp_sdk.models.api_status_create_request import ApiStatusCreateRequest
 from pp_sdk.models.status import Status
 from pp_sdk.rest import ApiException
 from pprint import pprint
@@ -1473,7 +1474,7 @@ configuration = pp_sdk.Configuration(
 with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pp_sdk.ApiApi(api_client)
-    data = pp_sdk.Status() # Status | 
+    data = pp_sdk.ApiStatusCreateRequest() # ApiStatusCreateRequest | 
     x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
     try:
@@ -1491,7 +1492,7 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **data** | [**Status**](Status.md)|  | 
+ **data** | [**ApiStatusCreateRequest**](ApiStatusCreateRequest.md)|  | 
  **x_user_id** | **str**| User ID (required when using API key) | [optional] 
 
 ### Return type

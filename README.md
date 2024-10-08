@@ -143,6 +143,7 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [Address](docs/Address.md)
+ - [ApiStatusCreateRequest](docs/ApiStatusCreateRequest.md)
  - [CreatedBy](docs/CreatedBy.md)
  - [Goal](docs/Goal.md)
  - [GoalBase](docs/GoalBase.md)
