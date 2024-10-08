@@ -15,7 +15,7 @@
 """  # noqa: E501
 
 
-__version__ = "0.1.31"
+__version__ = "0.1.32"
 
 # import apis into sdk package
 from pp_sdk.api.api_api import ApiApi
@@ -48,6 +48,7 @@ from pp_sdk.models.program import Program
 from pp_sdk.models.program_picker import ProgramPicker
 from pp_sdk.models.programs_inner import ProgramsInner
 from pp_sdk.models.status import Status
+from pp_sdk.models.status1 import Status1
 from pp_sdk.models.tag import Tag
 from pp_sdk.models.tags_inner import TagsInner
 from pp_sdk.models.user import User

@@ -25,6 +25,7 @@ from typing_extensions import Annotated
 from pp_sdk.models.created_by import CreatedBy
 from pp_sdk.models.owner_users_inner import OwnerUsersInner
 from pp_sdk.models.programs_inner import ProgramsInner
+from pp_sdk.models.status1 import Status1
 from pp_sdk.models.tags_inner import TagsInner
 from typing import Optional, Set
 from typing_extensions import Self
@@ -49,7 +50,7 @@ class Goal(BaseModel):
     version: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=-2147483648)]] = None
     version_summary: Optional[StrictStr] = None
     created_by: Optional[CreatedBy] = None
-    status: Optional[StrictStr] = None
+    status: Optional[Status1] = None
     __properties: ClassVar[List[str]] = ["id", "name", "goal_language", "description", "why_it_matters", "created_date", "modified_date", "original_due_date", "current_due_date", "owner_users", "programs", "stakeholder_users", "tags", "version", "version_summary", "created_by", "status"]
 
     model_config = ConfigDict(
@@ -89,7 +90,6 @@ class Goal(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
             "id",
@@ -99,7 +99,6 @@ class Goal(BaseModel):
             "programs",
             "stakeholder_users",
             "tags",
-            "status",
         ])
 
         _dict = self.model_dump(
@@ -138,6 +137,9 @@ class Goal(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of created_by
         if self.created_by:
             _dict['created_by'] = self.created_by.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of status
+        if self.status:
+            _dict['status'] = self.status.to_dict()
         # set to None if description (nullable) is None
         # and model_fields_set contains the field
         if self.description is None and "description" in self.model_fields_set:
@@ -181,7 +183,7 @@ class Goal(BaseModel):
             "version": obj.get("version"),
             "version_summary": obj.get("version_summary"),
             "created_by": CreatedBy.from_dict(obj["created_by"]) if obj.get("created_by") is not None else None,
-            "status": obj.get("status")
+            "status": Status1.from_dict(obj["status"]) if obj.get("status") is not None else None
         })
         return _obj
 

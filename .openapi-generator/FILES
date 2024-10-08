@@ -20,6 +20,7 @@ docs/Program.md
 docs/ProgramPicker.md
 docs/ProgramsInner.md
 docs/Status.md
+docs/Status1.md
 docs/Tag.md
 docs/TagsInner.md
 docs/User.md
@@ -49,6 +50,7 @@ pp_sdk/models/program.py
 pp_sdk/models/program_picker.py
 pp_sdk/models/programs_inner.py
 pp_sdk/models/status.py
+pp_sdk/models/status1.py
 pp_sdk/models/tag.py
 pp_sdk/models/tags_inner.py
 pp_sdk/models/user.py
@@ -61,4 +63,5 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_status1.py
 tox.ini

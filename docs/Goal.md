@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 **version** | **int** |  | [optional] 
 **version_summary** | **str** |  | [optional] 
 **created_by** | [**CreatedBy**](CreatedBy.md) |  | [optional] 
-**status** | **str** |  | [optional] [readonly] 
+**status** | [**Status1**](Status1.md) |  | [optional] 
 
 ## Example
 

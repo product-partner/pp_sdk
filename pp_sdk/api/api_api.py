@@ -573,7 +573,6 @@ class ApiApi:
     @validate_call
     def api_goals_list(
         self,
-        page: Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None,
         search: Annotated[Optional[StrictStr], Field(description="Search term for goal name, language, or description")] = None,
         stakeholder_users: Annotated[Optional[StrictStr], Field(description="Comma-separated list of stakeholder IDs")] = None,
         status: Annotated[Optional[StrictStr], Field(description="Filter by status")] = None,
@@ -598,8 +597,6 @@ class ApiApi:
 
         List or Search for Goals
 
-        :param page: A page number within the paginated result set.
-        :type page: int
         :param search: Search term for goal name, language, or description
         :type search: str
         :param stakeholder_users: Comma-separated list of stakeholder IDs
@@ -637,7 +634,6 @@ class ApiApi:
         """ # noqa: E501
 
         _param = self._api_goals_list_serialize(
-            page=page,
             search=search,
             stakeholder_users=stakeholder_users,
             status=status,
@@ -668,7 +664,6 @@ class ApiApi:
     @validate_call
     def api_goals_list_with_http_info(
         self,
-        page: Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None,
         search: Annotated[Optional[StrictStr], Field(description="Search term for goal name, language, or description")] = None,
         stakeholder_users: Annotated[Optional[StrictStr], Field(description="Comma-separated list of stakeholder IDs")] = None,
         status: Annotated[Optional[StrictStr], Field(description="Filter by status")] = None,
@@ -693,8 +688,6 @@ class ApiApi:
 
         List or Search for Goals
 
-        :param page: A page number within the paginated result set.
-        :type page: int
         :param search: Search term for goal name, language, or description
         :type search: str
         :param stakeholder_users: Comma-separated list of stakeholder IDs
@@ -732,7 +725,6 @@ class ApiApi:
         """ # noqa: E501
 
         _param = self._api_goals_list_serialize(
-            page=page,
             search=search,
             stakeholder_users=stakeholder_users,
             status=status,
@@ -763,7 +755,6 @@ class ApiApi:
     @validate_call
     def api_goals_list_without_preload_content(
         self,
-        page: Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None,
         search: Annotated[Optional[StrictStr], Field(description="Search term for goal name, language, or description")] = None,
         stakeholder_users: Annotated[Optional[StrictStr], Field(description="Comma-separated list of stakeholder IDs")] = None,
         status: Annotated[Optional[StrictStr], Field(description="Filter by status")] = None,
@@ -788,8 +779,6 @@ class ApiApi:
 
         List or Search for Goals
 
-        :param page: A page number within the paginated result set.
-        :type page: int
         :param search: Search term for goal name, language, or description
         :type search: str
         :param stakeholder_users: Comma-separated list of stakeholder IDs
@@ -827,7 +816,6 @@ class ApiApi:
         """ # noqa: E501
 
         _param = self._api_goals_list_serialize(
-            page=page,
             search=search,
             stakeholder_users=stakeholder_users,
             status=status,
@@ -853,7 +841,6 @@ class ApiApi:
 
     def _api_goals_list_serialize(
         self,
-        page,
         search,
         stakeholder_users,
         status,
@@ -881,10 +868,6 @@ class ApiApi:
 
         # process the path parameters
         # process the query parameters
-        if page is not None:
-            
-            _query_params.append(('page', page))
-            
         if search is not None:
             
             _query_params.append(('search', search))
@@ -1239,7 +1222,6 @@ class ApiApi:
     @validate_call
     def api_goals_picker_list(
         self,
-        page: Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None,
         status: Annotated[Optional[StrictStr], Field(description="Optional filter to include all goals, pass 'all' or another status.")] = None,
         search: Annotated[Optional[StrictStr], Field(description="Search term for goal name, language, or description")] = None,
         x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
@@ -1260,8 +1242,6 @@ class ApiApi:
 
         List or Search for Goals in picker, a reduced set of functions and returned values but lighter weight and faster.
 
-        :param page: A page number within the paginated result set.
-        :type page: int
         :param status: Optional filter to include all goals, pass 'all' or another status.
         :type status: str
         :param search: Search term for goal name, language, or description
@@ -1291,7 +1271,6 @@ class ApiApi:
         """ # noqa: E501
 
         _param = self._api_goals_picker_list_serialize(
-            page=page,
             status=status,
             search=search,
             x_user_id=x_user_id,
@@ -1318,7 +1297,6 @@ class ApiApi:
     @validate_call
     def api_goals_picker_list_with_http_info(
         self,
-        page: Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None,
         status: Annotated[Optional[StrictStr], Field(description="Optional filter to include all goals, pass 'all' or another status.")] = None,
         search: Annotated[Optional[StrictStr], Field(description="Search term for goal name, language, or description")] = None,
         x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
@@ -1339,8 +1317,6 @@ class ApiApi:
 
         List or Search for Goals in picker, a reduced set of functions and returned values but lighter weight and faster.
 
-        :param page: A page number within the paginated result set.
-        :type page: int
         :param status: Optional filter to include all goals, pass 'all' or another status.
         :type status: str
         :param search: Search term for goal name, language, or description
@@ -1370,7 +1346,6 @@ class ApiApi:
         """ # noqa: E501
 
         _param = self._api_goals_picker_list_serialize(
-            page=page,
             status=status,
             search=search,
             x_user_id=x_user_id,
@@ -1397,7 +1372,6 @@ class ApiApi:
     @validate_call
     def api_goals_picker_list_without_preload_content(
         self,
-        page: Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None,
         status: Annotated[Optional[StrictStr], Field(description="Optional filter to include all goals, pass 'all' or another status.")] = None,
         search: Annotated[Optional[StrictStr], Field(description="Search term for goal name, language, or description")] = None,
         x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
@@ -1418,8 +1392,6 @@ class ApiApi:
 
         List or Search for Goals in picker, a reduced set of functions and returned values but lighter weight and faster.
 
-        :param page: A page number within the paginated result set.
-        :type page: int
         :param status: Optional filter to include all goals, pass 'all' or another status.
         :type status: str
         :param search: Search term for goal name, language, or description
@@ -1449,7 +1421,6 @@ class ApiApi:
         """ # noqa: E501
 
         _param = self._api_goals_picker_list_serialize(
-            page=page,
             status=status,
             search=search,
             x_user_id=x_user_id,
@@ -1471,7 +1442,6 @@ class ApiApi:
 
     def _api_goals_picker_list_serialize(
         self,
-        page,
         status,
         search,
         x_user_id,
@@ -1495,10 +1465,6 @@ class ApiApi:
 
         # process the path parameters
         # process the query parameters
-        if page is not None:
-            
-            _query_params.append(('page', page))
-            
         if status is not None:
             
             _query_params.append(('status', status))
