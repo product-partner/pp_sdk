@@ -2774,7 +2774,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **api_userstories_create**
-> UserStory api_userstories_create(data)
+> UserStory api_userstories_create(data, x_user_id=x_user_id)
 
 
 
@@ -2785,6 +2785,7 @@ Create a new user story.
 
 ```python
 import pp_sdk
+from pp_sdk.models.api_userstories_create_request import ApiUserstoriesCreateRequest
 from pp_sdk.models.user_story import UserStory
 from pp_sdk.rest import ApiException
 from pprint import pprint
@@ -2800,10 +2801,11 @@ configuration = pp_sdk.Configuration(
 with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pp_sdk.ApiApi(api_client)
-    data = pp_sdk.UserStory() # UserStory | 
+    data = pp_sdk.ApiUserstoriesCreateRequest() # ApiUserstoriesCreateRequest | 
+    x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
     try:
-        api_response = api_instance.api_userstories_create(data)
+        api_response = api_instance.api_userstories_create(data, x_user_id=x_user_id)
         print("The response of ApiApi->api_userstories_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -2817,7 +2819,8 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **data** | [**UserStory**](UserStory.md)|  | 
+ **data** | [**ApiUserstoriesCreateRequest**](ApiUserstoriesCreateRequest.md)|  | 
+ **x_user_id** | **str**| User ID (required when using API key) | [optional] 
 
 ### Return type
 

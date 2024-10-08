@@ -22,6 +22,7 @@ from typing import List, Optional
 from typing_extensions import Annotated
 from pp_sdk.models.api_prds_create_request import ApiPrdsCreateRequest
 from pp_sdk.models.api_status_create_request import ApiStatusCreateRequest
+from pp_sdk.models.api_userstories_create_request import ApiUserstoriesCreateRequest
 from pp_sdk.models.goal import Goal
 from pp_sdk.models.goal_picker import GoalPicker
 from pp_sdk.models.prd import PRD
@@ -11333,7 +11334,8 @@ class ApiApi:
     @validate_call
     def api_userstories_create(
         self,
-        data: UserStory,
+        data: ApiUserstoriesCreateRequest,
+        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -11352,7 +11354,9 @@ class ApiApi:
         Create a new user story.
 
         :param data: (required)
-        :type data: UserStory
+        :type data: ApiUserstoriesCreateRequest
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -11377,6 +11381,7 @@ class ApiApi:
 
         _param = self._api_userstories_create_serialize(
             data=data,
+            x_user_id=x_user_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -11400,7 +11405,8 @@ class ApiApi:
     @validate_call
     def api_userstories_create_with_http_info(
         self,
-        data: UserStory,
+        data: ApiUserstoriesCreateRequest,
+        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -11419,7 +11425,9 @@ class ApiApi:
         Create a new user story.
 
         :param data: (required)
-        :type data: UserStory
+        :type data: ApiUserstoriesCreateRequest
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -11444,6 +11452,7 @@ class ApiApi:
 
         _param = self._api_userstories_create_serialize(
             data=data,
+            x_user_id=x_user_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -11467,7 +11476,8 @@ class ApiApi:
     @validate_call
     def api_userstories_create_without_preload_content(
         self,
-        data: UserStory,
+        data: ApiUserstoriesCreateRequest,
+        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -11486,7 +11496,9 @@ class ApiApi:
         Create a new user story.
 
         :param data: (required)
-        :type data: UserStory
+        :type data: ApiUserstoriesCreateRequest
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -11511,6 +11523,7 @@ class ApiApi:
 
         _param = self._api_userstories_create_serialize(
             data=data,
+            x_user_id=x_user_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -11530,6 +11543,7 @@ class ApiApi:
     def _api_userstories_create_serialize(
         self,
         data,
+        x_user_id,
         _request_auth,
         _content_type,
         _headers,
@@ -11551,6 +11565,8 @@ class ApiApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
+        if x_user_id is not None:
+            _header_params['X-User-ID'] = x_user_id
         # process the form parameters
         # process the body parameter
         if data is not None:
