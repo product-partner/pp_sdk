@@ -9364,7 +9364,7 @@ class ApiApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> User:
+    ) -> List[User]:
         """api_user_create
 
         Create a new user for the authenticated user's organization.
@@ -9405,7 +9405,7 @@ class ApiApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "User",
+            '201': "List[User]",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -9435,7 +9435,7 @@ class ApiApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[User]:
+    ) -> ApiResponse[List[User]]:
         """api_user_create
 
         Create a new user for the authenticated user's organization.
@@ -9476,7 +9476,7 @@ class ApiApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "User",
+            '201': "List[User]",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -9547,7 +9547,7 @@ class ApiApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "User",
+            '201': "List[User]",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -9904,7 +9904,7 @@ class ApiApi:
     ) -> User:
         """api_user_list
 
-        Retrieve details of a specific user
+        Retrieve one or more users
 
         :param page: A page number within the paginated result set.
         :type page: int
@@ -9988,7 +9988,7 @@ class ApiApi:
     ) -> ApiResponse[User]:
         """api_user_list
 
-        Retrieve details of a specific user
+        Retrieve one or more users
 
         :param page: A page number within the paginated result set.
         :type page: int
@@ -10072,7 +10072,7 @@ class ApiApi:
     ) -> RESTResponseType:
         """api_user_list
 
-        Retrieve details of a specific user
+        Retrieve one or more users
 
         :param page: A page number within the paginated result set.
         :type page: int

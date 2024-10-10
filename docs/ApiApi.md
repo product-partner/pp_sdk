@@ -2291,7 +2291,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **api_user_create**
-> User api_user_create(data, x_user_id=x_user_id)
+> List[User] api_user_create(data, x_user_id=x_user_id)
 
 
 
@@ -2340,7 +2340,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**User**](User.md)
+[**List[User]**](User.md)
 
 ### Authorization
 
@@ -2426,7 +2426,7 @@ No authorization required
 
 
 
-Retrieve details of a specific user
+Retrieve one or more users
 
 ### Example
 
