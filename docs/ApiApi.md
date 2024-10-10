@@ -2422,7 +2422,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **api_user_list**
-> User api_user_list(id, page=page)
+> User api_user_list(id, page=page, search=search, limit=limit, sort=sort)
 
 
 
@@ -2450,9 +2450,12 @@ with pp_sdk.ApiClient(configuration) as api_client:
     api_instance = pp_sdk.ApiApi(api_client)
     id = 'id_example' # str | UUID of the user to retrieve
     page = 56 # int | A page number within the paginated result set. (optional)
+    search = 'search_example' # str | Search term for filtering users by email, last name, or first name (optional)
+    limit = 56 # int | Maximum number of results to return (optional)
+    sort = 'sort_example' # str | Field to sort the results by (optional)
 
     try:
-        api_response = api_instance.api_user_list(id, page=page)
+        api_response = api_instance.api_user_list(id, page=page, search=search, limit=limit, sort=sort)
         print("The response of ApiApi->api_user_list:\n")
         pprint(api_response)
     except Exception as e:
@@ -2468,6 +2471,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| UUID of the user to retrieve | 
  **page** | **int**| A page number within the paginated result set. | [optional] 
+ **search** | **str**| Search term for filtering users by email, last name, or first name | [optional] 
+ **limit** | **int**| Maximum number of results to return | [optional] 
+ **sort** | **str**| Field to sort the results by | [optional] 
 
 ### Return type
 

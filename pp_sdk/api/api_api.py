@@ -9886,6 +9886,9 @@ class ApiApi:
         self,
         id: Annotated[StrictStr, Field(description="UUID of the user to retrieve")],
         page: Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None,
+        search: Annotated[Optional[StrictStr], Field(description="Search term for filtering users by email, last name, or first name")] = None,
+        limit: Annotated[Optional[StrictInt], Field(description="Maximum number of results to return")] = None,
+        sort: Annotated[Optional[StrictStr], Field(description="Field to sort the results by")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -9907,6 +9910,12 @@ class ApiApi:
         :type id: str
         :param page: A page number within the paginated result set.
         :type page: int
+        :param search: Search term for filtering users by email, last name, or first name
+        :type search: str
+        :param limit: Maximum number of results to return
+        :type limit: int
+        :param sort: Field to sort the results by
+        :type sort: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -9932,6 +9941,9 @@ class ApiApi:
         _param = self._api_user_list_serialize(
             id=id,
             page=page,
+            search=search,
+            limit=limit,
+            sort=sort,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -9958,6 +9970,9 @@ class ApiApi:
         self,
         id: Annotated[StrictStr, Field(description="UUID of the user to retrieve")],
         page: Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None,
+        search: Annotated[Optional[StrictStr], Field(description="Search term for filtering users by email, last name, or first name")] = None,
+        limit: Annotated[Optional[StrictInt], Field(description="Maximum number of results to return")] = None,
+        sort: Annotated[Optional[StrictStr], Field(description="Field to sort the results by")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -9979,6 +9994,12 @@ class ApiApi:
         :type id: str
         :param page: A page number within the paginated result set.
         :type page: int
+        :param search: Search term for filtering users by email, last name, or first name
+        :type search: str
+        :param limit: Maximum number of results to return
+        :type limit: int
+        :param sort: Field to sort the results by
+        :type sort: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -10004,6 +10025,9 @@ class ApiApi:
         _param = self._api_user_list_serialize(
             id=id,
             page=page,
+            search=search,
+            limit=limit,
+            sort=sort,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -10030,6 +10054,9 @@ class ApiApi:
         self,
         id: Annotated[StrictStr, Field(description="UUID of the user to retrieve")],
         page: Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None,
+        search: Annotated[Optional[StrictStr], Field(description="Search term for filtering users by email, last name, or first name")] = None,
+        limit: Annotated[Optional[StrictInt], Field(description="Maximum number of results to return")] = None,
+        sort: Annotated[Optional[StrictStr], Field(description="Field to sort the results by")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -10051,6 +10078,12 @@ class ApiApi:
         :type id: str
         :param page: A page number within the paginated result set.
         :type page: int
+        :param search: Search term for filtering users by email, last name, or first name
+        :type search: str
+        :param limit: Maximum number of results to return
+        :type limit: int
+        :param sort: Field to sort the results by
+        :type sort: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -10076,6 +10109,9 @@ class ApiApi:
         _param = self._api_user_list_serialize(
             id=id,
             page=page,
+            search=search,
+            limit=limit,
+            sort=sort,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -10097,6 +10133,9 @@ class ApiApi:
         self,
         id,
         page,
+        search,
+        limit,
+        sort,
         _request_auth,
         _content_type,
         _headers,
@@ -10122,6 +10161,18 @@ class ApiApi:
         if page is not None:
             
             _query_params.append(('page', page))
+            
+        if search is not None:
+            
+            _query_params.append(('search', search))
+            
+        if limit is not None:
+            
+            _query_params.append(('limit', limit))
+            
+        if sort is not None:
+            
+            _query_params.append(('sort', sort))
             
         # process the header parameters
         # process the form parameters
