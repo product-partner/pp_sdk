@@ -15,7 +15,7 @@
 """  # noqa: E501
 
 
-__version__ = "0.2.10"
+__version__ = "0.2.11"
 
 # import apis into sdk package
 from pp_sdk.api.api_api import ApiApi
@@ -46,7 +46,7 @@ from pp_sdk.models.goal_picker import GoalPicker
 from pp_sdk.models.organization import Organization
 from pp_sdk.models.owner_users_inner import OwnerUsersInner
 from pp_sdk.models.prd import PRD
-from pp_sdk.models.prd1 import PRD1
+from pp_sdk.models.prd_reference import PRDReference
 from pp_sdk.models.prd_template import PRDTemplate
 from pp_sdk.models.program import Program
 from pp_sdk.models.program_picker import ProgramPicker

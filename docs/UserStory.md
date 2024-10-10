@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] [readonly] 
-**prd** | [**PRD1**](PRD1.md) |  | [optional] 
+**prd** | [**PRDReference**](PRDReference.md) |  | [optional] 
 **as_a** | **str** |  | [optional] 
 **i_want_to** | **str** |  | [optional] 
 **so_that** | **str** |  | [optional] 
