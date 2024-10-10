@@ -17,8 +17,8 @@ docs/LeadersApi.md
 docs/Organization.md
 docs/OwnerUsersInner.md
 docs/PRD.md
+docs/PRD1.md
 docs/PRDTemplate.md
-docs/Prd.md
 docs/PrdApi.md
 docs/Program.md
 docs/ProgramPicker.md
@@ -52,7 +52,7 @@ pp_sdk/models/goal_picker.py
 pp_sdk/models/organization.py
 pp_sdk/models/owner_users_inner.py
 pp_sdk/models/prd.py
-pp_sdk/models/prd.py
+pp_sdk/models/prd1.py
 pp_sdk/models/prd_template.py
 pp_sdk/models/program.py
 pp_sdk/models/program_picker.py
@@ -71,4 +71,5 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_prd1.py
 tox.ini

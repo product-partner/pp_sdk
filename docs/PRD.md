@@ -1,29 +1,39 @@
-# Prd
+# PRD
 
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** |  | [optional] 
-**title** | **str** |  | [optional] 
+**id** | **str** |  | [optional] [readonly] 
+**title** | **str** |  | 
+**description** | **str** |  | [optional] 
+**body** | **str** |  | [optional] 
+**status** | **str** |  | [optional] 
+**due_date** | **datetime** |  | [optional] 
+**modified_date** | **datetime** |  | [optional] [readonly] 
+**tags** | [**List[TagsInner]**](TagsInner.md) |  | [optional] [readonly] 
+**stakeholder_users** | [**List[OwnerUsersInner]**](OwnerUsersInner.md) |  | [optional] [readonly] 
+**programs** | [**List[ProgramsInner]**](ProgramsInner.md) |  | [optional] [readonly] 
+**created_by** | [**CreatedBy**](CreatedBy.md) |  | [optional] 
+**created_date** | **datetime** |  | [optional] [readonly] 
 
 ## Example
 
 ```python
-from pp_sdk.models.prd import Prd
+from pp_sdk.models.prd import PRD
 
 # TODO update the JSON string below
 json = "{}"
-# create an instance of Prd from a JSON string
-prd_instance = Prd.from_json(json)
+# create an instance of PRD from a JSON string
+prd_instance = PRD.from_json(json)
 # print the JSON string representation of the object
-print(Prd.to_json())
+print(PRD.to_json())
 
 # convert the object into a dict
 prd_dict = prd_instance.to_dict()
-# create an instance of Prd from a dict
-prd_from_dict = Prd.from_dict(prd_dict)
+# create an instance of PRD from a dict
+prd_from_dict = PRD.from_dict(prd_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

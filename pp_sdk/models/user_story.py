@@ -23,7 +23,7 @@ from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from pp_sdk.models.created_by import CreatedBy
-from pp_sdk.models.prd import Prd
+from pp_sdk.models.prd1 import PRD1
 from pp_sdk.models.tags_inner import TagsInner
 from typing import Optional, Set
 from typing_extensions import Self
@@ -33,7 +33,7 @@ class UserStory(BaseModel):
     UserStory
     """ # noqa: E501
     id: Optional[StrictStr] = None
-    prd: Optional[Prd] = None
+    prd: Optional[PRD1] = None
     as_a: Optional[Annotated[str, Field(strict=True, max_length=255)]] = None
     i_want_to: Optional[Annotated[str, Field(strict=True, max_length=255)]] = None
     so_that: Optional[Annotated[str, Field(strict=True, max_length=255)]] = None
@@ -160,7 +160,7 @@ class UserStory(BaseModel):
 
         _obj = cls.model_validate({
             "id": obj.get("id"),
-            "prd": Prd.from_dict(obj["prd"]) if obj.get("prd") is not None else None,
+            "prd": PRD1.from_dict(obj["prd"]) if obj.get("prd") is not None else None,
             "as_a": obj.get("as_a"),
             "i_want_to": obj.get("i_want_to"),
             "so_that": obj.get("so_that"),
