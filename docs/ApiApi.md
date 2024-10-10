@@ -2422,7 +2422,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **api_user_list**
-> User api_user_list(id, page=page, search=search, limit=limit, sort=sort)
+> User api_user_list(page=page, search=search, domain=domain, limit=limit, sort=sort)
 
 
 
@@ -2448,14 +2448,14 @@ configuration = pp_sdk.Configuration(
 with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pp_sdk.ApiApi(api_client)
-    id = 'id_example' # str | UUID of the user to retrieve
     page = 56 # int | A page number within the paginated result set. (optional)
     search = 'search_example' # str | Search term for filtering users by email, last name, or first name (optional)
+    domain = 'domain_example' # str | Search term for filtering users by the domain of the organzation (optional)
     limit = 56 # int | Maximum number of results to return (optional)
     sort = 'sort_example' # str | Field to sort the results by (optional)
 
     try:
-        api_response = api_instance.api_user_list(id, page=page, search=search, limit=limit, sort=sort)
+        api_response = api_instance.api_user_list(page=page, search=search, domain=domain, limit=limit, sort=sort)
         print("The response of ApiApi->api_user_list:\n")
         pprint(api_response)
     except Exception as e:
@@ -2469,9 +2469,9 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| UUID of the user to retrieve | 
  **page** | **int**| A page number within the paginated result set. | [optional] 
  **search** | **str**| Search term for filtering users by email, last name, or first name | [optional] 
+ **domain** | **str**| Search term for filtering users by the domain of the organzation | [optional] 
  **limit** | **int**| Maximum number of results to return | [optional] 
  **sort** | **str**| Field to sort the results by | [optional] 
 
@@ -2565,7 +2565,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **api_user_picker_list**
-> List[User] api_user_picker_list(x_user_id=x_user_id, search=search, sort=sort, limit=limit)
+> List[User] api_user_picker_list(search=search, sort=sort, limit=limit)
 
 
 
@@ -2591,13 +2591,12 @@ configuration = pp_sdk.Configuration(
 with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pp_sdk.ApiApi(api_client)
-    x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
     search = 'search_example' # str | Search term for filtering users by email, last name, or first name (optional)
     sort = 'sort_example' # str | Field to sort the results by (optional)
     limit = 56 # int | Maximum number of results to return (optional)
 
     try:
-        api_response = api_instance.api_user_picker_list(x_user_id=x_user_id, search=search, sort=sort, limit=limit)
+        api_response = api_instance.api_user_picker_list(search=search, sort=sort, limit=limit)
         print("The response of ApiApi->api_user_picker_list:\n")
         pprint(api_response)
     except Exception as e:
@@ -2611,7 +2610,6 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **x_user_id** | **str**| User ID (required when using API key) | [optional] 
  **search** | **str**| Search term for filtering users by email, last name, or first name | [optional] 
  **sort** | **str**| Field to sort the results by | [optional] 
  **limit** | **int**| Maximum number of results to return | [optional] 

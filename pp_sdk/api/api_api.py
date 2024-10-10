@@ -9884,9 +9884,9 @@ class ApiApi:
     @validate_call
     def api_user_list(
         self,
-        id: Annotated[StrictStr, Field(description="UUID of the user to retrieve")],
         page: Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None,
         search: Annotated[Optional[StrictStr], Field(description="Search term for filtering users by email, last name, or first name")] = None,
+        domain: Annotated[Optional[StrictStr], Field(description="Search term for filtering users by the domain of the organzation")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="Maximum number of results to return")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Field to sort the results by")] = None,
         _request_timeout: Union[
@@ -9906,12 +9906,12 @@ class ApiApi:
 
         Retrieve details of a specific user
 
-        :param id: UUID of the user to retrieve (required)
-        :type id: str
         :param page: A page number within the paginated result set.
         :type page: int
         :param search: Search term for filtering users by email, last name, or first name
         :type search: str
+        :param domain: Search term for filtering users by the domain of the organzation
+        :type domain: str
         :param limit: Maximum number of results to return
         :type limit: int
         :param sort: Field to sort the results by
@@ -9939,9 +9939,9 @@ class ApiApi:
         """ # noqa: E501
 
         _param = self._api_user_list_serialize(
-            id=id,
             page=page,
             search=search,
+            domain=domain,
             limit=limit,
             sort=sort,
             _request_auth=_request_auth,
@@ -9968,9 +9968,9 @@ class ApiApi:
     @validate_call
     def api_user_list_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="UUID of the user to retrieve")],
         page: Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None,
         search: Annotated[Optional[StrictStr], Field(description="Search term for filtering users by email, last name, or first name")] = None,
+        domain: Annotated[Optional[StrictStr], Field(description="Search term for filtering users by the domain of the organzation")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="Maximum number of results to return")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Field to sort the results by")] = None,
         _request_timeout: Union[
@@ -9990,12 +9990,12 @@ class ApiApi:
 
         Retrieve details of a specific user
 
-        :param id: UUID of the user to retrieve (required)
-        :type id: str
         :param page: A page number within the paginated result set.
         :type page: int
         :param search: Search term for filtering users by email, last name, or first name
         :type search: str
+        :param domain: Search term for filtering users by the domain of the organzation
+        :type domain: str
         :param limit: Maximum number of results to return
         :type limit: int
         :param sort: Field to sort the results by
@@ -10023,9 +10023,9 @@ class ApiApi:
         """ # noqa: E501
 
         _param = self._api_user_list_serialize(
-            id=id,
             page=page,
             search=search,
+            domain=domain,
             limit=limit,
             sort=sort,
             _request_auth=_request_auth,
@@ -10052,9 +10052,9 @@ class ApiApi:
     @validate_call
     def api_user_list_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="UUID of the user to retrieve")],
         page: Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None,
         search: Annotated[Optional[StrictStr], Field(description="Search term for filtering users by email, last name, or first name")] = None,
+        domain: Annotated[Optional[StrictStr], Field(description="Search term for filtering users by the domain of the organzation")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="Maximum number of results to return")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Field to sort the results by")] = None,
         _request_timeout: Union[
@@ -10074,12 +10074,12 @@ class ApiApi:
 
         Retrieve details of a specific user
 
-        :param id: UUID of the user to retrieve (required)
-        :type id: str
         :param page: A page number within the paginated result set.
         :type page: int
         :param search: Search term for filtering users by email, last name, or first name
         :type search: str
+        :param domain: Search term for filtering users by the domain of the organzation
+        :type domain: str
         :param limit: Maximum number of results to return
         :type limit: int
         :param sort: Field to sort the results by
@@ -10107,9 +10107,9 @@ class ApiApi:
         """ # noqa: E501
 
         _param = self._api_user_list_serialize(
-            id=id,
             page=page,
             search=search,
+            domain=domain,
             limit=limit,
             sort=sort,
             _request_auth=_request_auth,
@@ -10131,9 +10131,9 @@ class ApiApi:
 
     def _api_user_list_serialize(
         self,
-        id,
         page,
         search,
+        domain,
         limit,
         sort,
         _request_auth,
@@ -10155,8 +10155,6 @@ class ApiApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
-        if id is not None:
-            _path_params['id'] = id
         # process the query parameters
         if page is not None:
             
@@ -10165,6 +10163,10 @@ class ApiApi:
         if search is not None:
             
             _query_params.append(('search', search))
+            
+        if domain is not None:
+            
+            _query_params.append(('domain', domain))
             
         if limit is not None:
             
@@ -10496,7 +10498,6 @@ class ApiApi:
     @validate_call
     def api_user_picker_list(
         self,
-        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         search: Annotated[Optional[StrictStr], Field(description="Search term for filtering users by email, last name, or first name")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Field to sort the results by")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="Maximum number of results to return")] = None,
@@ -10517,8 +10518,6 @@ class ApiApi:
 
         Retrieve list of users matching none or all of search parameters.
 
-        :param x_user_id: User ID (required when using API key)
-        :type x_user_id: str
         :param search: Search term for filtering users by email, last name, or first name
         :type search: str
         :param sort: Field to sort the results by
@@ -10548,7 +10547,6 @@ class ApiApi:
         """ # noqa: E501
 
         _param = self._api_user_picker_list_serialize(
-            x_user_id=x_user_id,
             search=search,
             sort=sort,
             limit=limit,
@@ -10576,7 +10574,6 @@ class ApiApi:
     @validate_call
     def api_user_picker_list_with_http_info(
         self,
-        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         search: Annotated[Optional[StrictStr], Field(description="Search term for filtering users by email, last name, or first name")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Field to sort the results by")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="Maximum number of results to return")] = None,
@@ -10597,8 +10594,6 @@ class ApiApi:
 
         Retrieve list of users matching none or all of search parameters.
 
-        :param x_user_id: User ID (required when using API key)
-        :type x_user_id: str
         :param search: Search term for filtering users by email, last name, or first name
         :type search: str
         :param sort: Field to sort the results by
@@ -10628,7 +10623,6 @@ class ApiApi:
         """ # noqa: E501
 
         _param = self._api_user_picker_list_serialize(
-            x_user_id=x_user_id,
             search=search,
             sort=sort,
             limit=limit,
@@ -10656,7 +10650,6 @@ class ApiApi:
     @validate_call
     def api_user_picker_list_without_preload_content(
         self,
-        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         search: Annotated[Optional[StrictStr], Field(description="Search term for filtering users by email, last name, or first name")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Field to sort the results by")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="Maximum number of results to return")] = None,
@@ -10677,8 +10670,6 @@ class ApiApi:
 
         Retrieve list of users matching none or all of search parameters.
 
-        :param x_user_id: User ID (required when using API key)
-        :type x_user_id: str
         :param search: Search term for filtering users by email, last name, or first name
         :type search: str
         :param sort: Field to sort the results by
@@ -10708,7 +10699,6 @@ class ApiApi:
         """ # noqa: E501
 
         _param = self._api_user_picker_list_serialize(
-            x_user_id=x_user_id,
             search=search,
             sort=sort,
             limit=limit,
@@ -10731,7 +10721,6 @@ class ApiApi:
 
     def _api_user_picker_list_serialize(
         self,
-        x_user_id,
         search,
         sort,
         limit,
@@ -10768,8 +10757,6 @@ class ApiApi:
             _query_params.append(('limit', limit))
             
         # process the header parameters
-        if x_user_id is not None:
-            _header_params['X-User-ID'] = x_user_id
         # process the form parameters
         # process the body parameter
 
