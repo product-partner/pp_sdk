@@ -766,6 +766,7 @@ Partially update a specific PRD.
 
 ```python
 import pp_sdk
+from pp_sdk.models.api_prds_partial_update_request import ApiPrdsPartialUpdateRequest
 from pp_sdk.models.prd import PRD
 from pp_sdk.rest import ApiException
 from pprint import pprint
@@ -782,7 +783,7 @@ with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pp_sdk.ApiApi(api_client)
     prd_id = 'prd_id_example' # str | 
-    data = pp_sdk.PRD() # PRD | 
+    data = pp_sdk.ApiPrdsPartialUpdateRequest() # ApiPrdsPartialUpdateRequest | 
     x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
     try:
@@ -801,7 +802,7 @@ with pp_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **prd_id** | **str**|  | 
- **data** | [**PRD**](PRD.md)|  | 
+ **data** | [**ApiPrdsPartialUpdateRequest**](ApiPrdsPartialUpdateRequest.md)|  | 
  **x_user_id** | **str**| User ID (required when using API key) | [optional] 
 
 ### Return type

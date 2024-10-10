@@ -21,6 +21,7 @@ from pydantic import Field, StrictInt, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
 from pp_sdk.models.api_prds_create_request import ApiPrdsCreateRequest
+from pp_sdk.models.api_prds_partial_update_request import ApiPrdsPartialUpdateRequest
 from pp_sdk.models.api_status_create_request import ApiStatusCreateRequest
 from pp_sdk.models.api_userstories_create_request import ApiUserstoriesCreateRequest
 from pp_sdk.models.goal import Goal
@@ -2977,7 +2978,7 @@ class ApiApi:
     def api_prds_partial_update(
         self,
         prd_id: StrictStr,
-        data: PRD,
+        data: ApiPrdsPartialUpdateRequest,
         x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
@@ -2999,7 +3000,7 @@ class ApiApi:
         :param prd_id: (required)
         :type prd_id: str
         :param data: (required)
-        :type data: PRD
+        :type data: ApiPrdsPartialUpdateRequest
         :param x_user_id: User ID (required when using API key)
         :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -3052,7 +3053,7 @@ class ApiApi:
     def api_prds_partial_update_with_http_info(
         self,
         prd_id: StrictStr,
-        data: PRD,
+        data: ApiPrdsPartialUpdateRequest,
         x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
@@ -3074,7 +3075,7 @@ class ApiApi:
         :param prd_id: (required)
         :type prd_id: str
         :param data: (required)
-        :type data: PRD
+        :type data: ApiPrdsPartialUpdateRequest
         :param x_user_id: User ID (required when using API key)
         :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -3127,7 +3128,7 @@ class ApiApi:
     def api_prds_partial_update_without_preload_content(
         self,
         prd_id: StrictStr,
-        data: PRD,
+        data: ApiPrdsPartialUpdateRequest,
         x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
@@ -3149,7 +3150,7 @@ class ApiApi:
         :param prd_id: (required)
         :type prd_id: str
         :param data: (required)
-        :type data: PRD
+        :type data: ApiPrdsPartialUpdateRequest
         :param x_user_id: User ID (required when using API key)
         :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one

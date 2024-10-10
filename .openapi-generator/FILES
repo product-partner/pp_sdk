@@ -6,6 +6,7 @@ README.md
 docs/Address.md
 docs/ApiApi.md
 docs/ApiPrdsCreateRequest.md
+docs/ApiPrdsPartialUpdateRequest.md
 docs/ApiStatusCreateRequest.md
 docs/ApiUserstoriesCreateRequest.md
 docs/ChatApi.md
@@ -43,6 +44,7 @@ pp_sdk/exceptions.py
 pp_sdk/models/__init__.py
 pp_sdk/models/address.py
 pp_sdk/models/api_prds_create_request.py
+pp_sdk/models/api_prds_partial_update_request.py
 pp_sdk/models/api_status_create_request.py
 pp_sdk/models/api_userstories_create_request.py
 pp_sdk/models/created_by.py
@@ -71,4 +73,5 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_api_prds_partial_update_request.py
 tox.ini
