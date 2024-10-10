@@ -9364,7 +9364,7 @@ class ApiApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[User]:
+    ) -> User:
         """api_user_create
 
         Create a new user for the authenticated user's organization.
@@ -9405,7 +9405,7 @@ class ApiApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "List[User]",
+            '201': "User",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -9435,7 +9435,7 @@ class ApiApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[User]]:
+    ) -> ApiResponse[User]:
         """api_user_create
 
         Create a new user for the authenticated user's organization.
@@ -9476,7 +9476,7 @@ class ApiApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "List[User]",
+            '201': "User",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -9547,7 +9547,7 @@ class ApiApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "List[User]",
+            '201': "User",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -9901,7 +9901,7 @@ class ApiApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> User:
+    ) -> List[User]:
         """api_user_list
 
         Retrieve one or more users
@@ -9951,7 +9951,7 @@ class ApiApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "User",
+            '200': "List[User]",
             '404': None,
         }
         response_data = self.api_client.call_api(
@@ -9985,7 +9985,7 @@ class ApiApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[User]:
+    ) -> ApiResponse[List[User]]:
         """api_user_list
 
         Retrieve one or more users
@@ -10035,7 +10035,7 @@ class ApiApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "User",
+            '200': "List[User]",
             '404': None,
         }
         response_data = self.api_client.call_api(
@@ -10119,7 +10119,7 @@ class ApiApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "User",
+            '200': "List[User]",
             '404': None,
         }
         response_data = self.api_client.call_api(
