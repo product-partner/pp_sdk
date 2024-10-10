@@ -73,5 +73,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_api_prds_partial_update_request.py
 tox.ini
