@@ -4,6 +4,9 @@ All URIs are relative to *http://0.0.0.0:8000*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**api_chat**](ApiApi.md#api_chat) | **GET** /api/chat/ | 
+[**api_chat_history**](ApiApi.md#api_chat_history) | **GET** /api/chat/history/ | 
+[**api_chat_upload_file**](ApiApi.md#api_chat_upload_file) | **POST** /api/chat/upload/ | 
 [**api_goals_create**](ApiApi.md#api_goals_create) | **POST** /api/goals/ | 
 [**api_goals_delete**](ApiApi.md#api_goals_delete) | **DELETE** /api/goals/{goal_id}/ | 
 [**api_goals_list**](ApiApi.md#api_goals_list) | **GET** /api/goals/ | 
@@ -50,6 +53,212 @@ Method | HTTP request | Description
 [**api_userstories_read**](ApiApi.md#api_userstories_read) | **GET** /api/userstories/{userstory_id}/ | 
 [**api_userstories_update**](ApiApi.md#api_userstories_update) | **PUT** /api/userstories/{userstory_id}/ | 
 
+
+# **api_chat**
+> api_chat(page=page, msg=msg, doc_ids=doc_ids, action=action, stream=stream)
+
+
+
+Process chat message
+
+### Example
+
+
+```python
+import pp_sdk
+from pp_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://0.0.0.0:8000
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pp_sdk.Configuration(
+    host = "http://0.0.0.0:8000"
+)
+
+
+# Enter a context with an instance of the API client
+with pp_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pp_sdk.ApiApi(api_client)
+    page = 56 # int | A page number within the paginated result set. (optional)
+    msg = 'msg_example' # str | Chat message (optional)
+    doc_ids = 'doc_ids_example' # str | Document IDs to reference. Content will be extracted and sent to the LLM along with your message. (optional)
+    action = 'action_example' # str | Action (optional)
+    stream = True # bool | Stream the response (optional)
+
+    try:
+        api_instance.api_chat(page=page, msg=msg, doc_ids=doc_ids, action=action, stream=stream)
+    except Exception as e:
+        print("Exception when calling ApiApi->api_chat: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **page** | **int**| A page number within the paginated result set. | [optional] 
+ **msg** | **str**| Chat message | [optional] 
+ **doc_ids** | **str**| Document IDs to reference. Content will be extracted and sent to the LLM along with your message. | [optional] 
+ **action** | **str**| Action | [optional] 
+ **stream** | **bool**| Stream the response | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Chat response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **api_chat_history**
+> api_chat_history(page=page, last_created_date=last_created_date, sort_order=sort_order)
+
+
+
+Get chat history
+
+### Example
+
+
+```python
+import pp_sdk
+from pp_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://0.0.0.0:8000
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pp_sdk.Configuration(
+    host = "http://0.0.0.0:8000"
+)
+
+
+# Enter a context with an instance of the API client
+with pp_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pp_sdk.ApiApi(api_client)
+    page = 56 # int | Page number (optional)
+    last_created_date = 'last_created_date_example' # str | Last created date (optional)
+    sort_order = 'sort_order_example' # str | Sort order (asc/desc) (optional)
+
+    try:
+        api_instance.api_chat_history(page=page, last_created_date=last_created_date, sort_order=sort_order)
+    except Exception as e:
+        print("Exception when calling ApiApi->api_chat_history: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **page** | **int**| Page number | [optional] 
+ **last_created_date** | **str**| Last created date | [optional] 
+ **sort_order** | **str**| Sort order (asc/desc) | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Chat history list |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **api_chat_upload_file**
+> api_chat_upload_file(file)
+
+
+
+Upload a file
+
+### Example
+
+
+```python
+import pp_sdk
+from pp_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://0.0.0.0:8000
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pp_sdk.Configuration(
+    host = "http://0.0.0.0:8000"
+)
+
+
+# Enter a context with an instance of the API client
+with pp_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pp_sdk.ApiApi(api_client)
+    file = None # bytearray | 
+
+    try:
+        api_instance.api_chat_upload_file(file)
+    except Exception as e:
+        print("Exception when calling ApiApi->api_chat_upload_file: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **file** | **bytearray**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data, application/x-www-form-urlencoded
+ - **Accept**: Not defined
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | File uploaded successfully |  -  |
+**400** | Bad request |  -  |
+**500** | Internal server error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **api_goals_create**
 > Goal api_goals_create(data)

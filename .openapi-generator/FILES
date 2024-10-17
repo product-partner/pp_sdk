@@ -9,12 +9,10 @@ docs/ApiPrdsCreateRequest.md
 docs/ApiPrdsPartialUpdateRequest.md
 docs/ApiStatusCreateRequest.md
 docs/ApiUserstoriesCreateRequest.md
-docs/ChatApi.md
 docs/CreatedBy.md
 docs/Goal.md
 docs/GoalBase.md
 docs/GoalPicker.md
-docs/LeadersApi.md
 docs/Organization.md
 docs/OwnerUsersInner.md
 docs/PRD.md
@@ -34,8 +32,6 @@ git_push.sh
 pp_sdk/__init__.py
 pp_sdk/api/__init__.py
 pp_sdk/api/api_api.py
-pp_sdk/api/chat_api.py
-pp_sdk/api/leaders_api.py
 pp_sdk/api/prd_api.py
 pp_sdk/api_client.py
 pp_sdk/api_response.py
