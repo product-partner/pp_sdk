@@ -36,7 +36,7 @@ class Goal(BaseModel):
     """ # noqa: E501
     id: Optional[StrictStr] = None
     name: Annotated[str, Field(min_length=1, strict=True, max_length=255)]
-    goal_language: Annotated[str, Field(min_length=1, strict=True)]
+    goal_language: Optional[StrictStr] = None
     description: Optional[StrictStr] = None
     why_it_matters: Optional[StrictStr] = None
     created_date: Optional[datetime] = None
@@ -140,6 +140,11 @@ class Goal(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of status
         if self.status:
             _dict['status'] = self.status.to_dict()
+        # set to None if goal_language (nullable) is None
+        # and model_fields_set contains the field
+        if self.goal_language is None and "goal_language" in self.model_fields_set:
+            _dict['goal_language'] = None
+
         # set to None if description (nullable) is None
         # and model_fields_set contains the field
         if self.description is None and "description" in self.model_fields_set:

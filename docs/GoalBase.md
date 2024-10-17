@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] [readonly] 
 **name** | **str** |  | 
-**goal_language** | **str** |  | 
+**goal_language** | **str** |  | [optional] 
 **description** | **str** |  | [optional] 
 
 ## Example

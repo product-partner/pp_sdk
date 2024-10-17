@@ -30,7 +30,7 @@ class GoalBase(BaseModel):
     """ # noqa: E501
     id: Optional[StrictStr] = None
     name: Annotated[str, Field(min_length=1, strict=True, max_length=255)]
-    goal_language: Annotated[str, Field(min_length=1, strict=True)]
+    goal_language: Optional[StrictStr] = None
     description: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = ["id", "name", "goal_language", "description"]
 
@@ -75,6 +75,11 @@ class GoalBase(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if goal_language (nullable) is None
+        # and model_fields_set contains the field
+        if self.goal_language is None and "goal_language" in self.model_fields_set:
+            _dict['goal_language'] = None
+
         # set to None if description (nullable) is None
         # and model_fields_set contains the field
         if self.description is None and "description" in self.model_fields_set:

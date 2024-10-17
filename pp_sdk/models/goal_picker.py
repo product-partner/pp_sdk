@@ -78,6 +78,11 @@ class GoalPicker(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if goal_language (nullable) is None
+        # and model_fields_set contains the field
+        if self.goal_language is None and "goal_language" in self.model_fields_set:
+            _dict['goal_language'] = None
+
         return _dict
 
     @classmethod

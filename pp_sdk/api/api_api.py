@@ -378,6 +378,7 @@ class ApiApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
+            '404': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -445,6 +446,7 @@ class ApiApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
+            '404': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -512,6 +514,7 @@ class ApiApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
+            '404': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -583,6 +586,7 @@ class ApiApi:
         sort: Annotated[Optional[StrictStr], Field(description="Sort field (prefix with '-' for descending order)")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="Limit the number of results")] = None,
         tags: Annotated[Optional[StrictStr], Field(description="Filter by tags, one or more")] = None,
+        program: Annotated[Optional[StrictStr], Field(description="Filter by program UUID or name")] = None,
         x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
@@ -613,6 +617,8 @@ class ApiApi:
         :type limit: int
         :param tags: Filter by tags, one or more
         :type tags: str
+        :param program: Filter by program UUID or name
+        :type program: str
         :param x_user_id: User ID (required when using API key)
         :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -644,6 +650,7 @@ class ApiApi:
             sort=sort,
             limit=limit,
             tags=tags,
+            program=program,
             x_user_id=x_user_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -674,6 +681,7 @@ class ApiApi:
         sort: Annotated[Optional[StrictStr], Field(description="Sort field (prefix with '-' for descending order)")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="Limit the number of results")] = None,
         tags: Annotated[Optional[StrictStr], Field(description="Filter by tags, one or more")] = None,
+        program: Annotated[Optional[StrictStr], Field(description="Filter by program UUID or name")] = None,
         x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
@@ -704,6 +712,8 @@ class ApiApi:
         :type limit: int
         :param tags: Filter by tags, one or more
         :type tags: str
+        :param program: Filter by program UUID or name
+        :type program: str
         :param x_user_id: User ID (required when using API key)
         :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -735,6 +745,7 @@ class ApiApi:
             sort=sort,
             limit=limit,
             tags=tags,
+            program=program,
             x_user_id=x_user_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -765,6 +776,7 @@ class ApiApi:
         sort: Annotated[Optional[StrictStr], Field(description="Sort field (prefix with '-' for descending order)")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="Limit the number of results")] = None,
         tags: Annotated[Optional[StrictStr], Field(description="Filter by tags, one or more")] = None,
+        program: Annotated[Optional[StrictStr], Field(description="Filter by program UUID or name")] = None,
         x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
@@ -795,6 +807,8 @@ class ApiApi:
         :type limit: int
         :param tags: Filter by tags, one or more
         :type tags: str
+        :param program: Filter by program UUID or name
+        :type program: str
         :param x_user_id: User ID (required when using API key)
         :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -826,6 +840,7 @@ class ApiApi:
             sort=sort,
             limit=limit,
             tags=tags,
+            program=program,
             x_user_id=x_user_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -851,6 +866,7 @@ class ApiApi:
         sort,
         limit,
         tags,
+        program,
         x_user_id,
         _request_auth,
         _content_type,
@@ -895,6 +911,10 @@ class ApiApi:
         if tags is not None:
             
             _query_params.append(('tags', tags))
+            
+        if program is not None:
+            
+            _query_params.append(('program', program))
             
         # process the header parameters
         if x_user_id is not None:
@@ -2407,6 +2427,7 @@ class ApiApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
+            '404': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2478,6 +2499,7 @@ class ApiApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
+            '404': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2549,6 +2571,7 @@ class ApiApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
+            '404': None,
         }
         response_data = self.api_client.call_api(
             *_param,

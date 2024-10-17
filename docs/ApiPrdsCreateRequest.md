@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **title** | **str** |  | 
 **description** | **str** |  | 
-**body** | **str** |  | 
+**body** | **str** |  | [optional] 
 **status** | **str** |  | [optional] 
 **due_date** | **date** |  | [optional] 
 **tags** | **List[str]** | List of tags | [optional] 

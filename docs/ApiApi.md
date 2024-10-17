@@ -179,11 +179,12 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | No content |  -  |
+**404** | Not found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **api_goals_list**
-> List[Goal] api_goals_list(search=search, stakeholder_users=stakeholder_users, status=status, sort=sort, limit=limit, tags=tags, x_user_id=x_user_id)
+> List[Goal] api_goals_list(search=search, stakeholder_users=stakeholder_users, status=status, sort=sort, limit=limit, tags=tags, program=program, x_user_id=x_user_id)
 
 
 
@@ -215,10 +216,11 @@ with pp_sdk.ApiClient(configuration) as api_client:
     sort = 'sort_example' # str | Sort field (prefix with '-' for descending order) (optional)
     limit = 56 # int | Limit the number of results (optional)
     tags = 'tags_example' # str | Filter by tags, one or more (optional)
+    program = 'program_example' # str | Filter by program UUID or name (optional)
     x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
     try:
-        api_response = api_instance.api_goals_list(search=search, stakeholder_users=stakeholder_users, status=status, sort=sort, limit=limit, tags=tags, x_user_id=x_user_id)
+        api_response = api_instance.api_goals_list(search=search, stakeholder_users=stakeholder_users, status=status, sort=sort, limit=limit, tags=tags, program=program, x_user_id=x_user_id)
         print("The response of ApiApi->api_goals_list:\n")
         pprint(api_response)
     except Exception as e:
@@ -238,6 +240,7 @@ Name | Type | Description  | Notes
  **sort** | **str**| Sort field (prefix with &#39;-&#39; for descending order) | [optional] 
  **limit** | **int**| Limit the number of results | [optional] 
  **tags** | **str**| Filter by tags, one or more | [optional] 
+ **program** | **str**| Filter by program UUID or name | [optional] 
  **x_user_id** | **str**| User ID (required when using API key) | [optional] 
 
 ### Return type
@@ -672,6 +675,7 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | No content |  -  |
+**404** | Not found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

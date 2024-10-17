@@ -30,7 +30,7 @@ class ApiPrdsCreateRequest(BaseModel):
     """ # noqa: E501
     title: StrictStr
     description: StrictStr
-    body: StrictStr
+    body: Optional[StrictStr] = None
     status: Optional[StrictStr] = None
     due_date: Optional[date] = None
     tags: Optional[List[StrictStr]] = Field(default=None, description="List of tags")
