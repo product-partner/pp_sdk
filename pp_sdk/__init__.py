@@ -15,7 +15,7 @@
 """  # noqa: E501
 
 
-__version__ = "0.2.20"
+__version__ = "0.2.21"
 
 # import apis into sdk package
 from pp_sdk.api.api_api import ApiApi
@@ -34,6 +34,7 @@ from pp_sdk.exceptions import ApiException
 
 # import models into sdk package
 from pp_sdk.models.address import Address
+from pp_sdk.models.api_chat200_response import ApiChat200Response
 from pp_sdk.models.api_prds_create_request import ApiPrdsCreateRequest
 from pp_sdk.models.api_prds_partial_update_request import ApiPrdsPartialUpdateRequest
 from pp_sdk.models.api_status_create_request import ApiStatusCreateRequest

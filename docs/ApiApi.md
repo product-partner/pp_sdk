@@ -55,7 +55,7 @@ Method | HTTP request | Description
 
 
 # **api_chat**
-> api_chat(page=page, msg=msg, doc_ids=doc_ids, action=action, stream=stream)
+> ApiChat200Response api_chat(page=page, msg=msg, doc_ids=doc_ids, action=action, stream=stream)
 
 
 
@@ -66,6 +66,7 @@ Process chat message
 
 ```python
 import pp_sdk
+from pp_sdk.models.api_chat200_response import ApiChat200Response
 from pp_sdk.rest import ApiException
 from pprint import pprint
 
@@ -87,7 +88,9 @@ with pp_sdk.ApiClient(configuration) as api_client:
     stream = True # bool | Stream the response (optional)
 
     try:
-        api_instance.api_chat(page=page, msg=msg, doc_ids=doc_ids, action=action, stream=stream)
+        api_response = api_instance.api_chat(page=page, msg=msg, doc_ids=doc_ids, action=action, stream=stream)
+        print("The response of ApiApi->api_chat:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling ApiApi->api_chat: %s\n" % e)
 ```
@@ -107,7 +110,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**ApiChat200Response**](ApiChat200Response.md)
 
 ### Authorization
 
@@ -116,13 +119,14 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Chat response |  -  |
+**400** | Bad request |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
