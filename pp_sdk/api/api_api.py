@@ -61,6 +61,7 @@ class ApiApi:
         doc_ids: Annotated[Optional[StrictStr], Field(description="Document IDs to reference. Content will be extracted and sent to the LLM along with your message.")] = None,
         action: Annotated[Optional[StrictStr], Field(description="Action")] = None,
         stream: Annotated[Optional[StrictBool], Field(description="Stream the response")] = None,
+        response_format: Annotated[Optional[StrictStr], Field(description="Response format (html or text)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -88,6 +89,8 @@ class ApiApi:
         :type action: str
         :param stream: Stream the response
         :type stream: bool
+        :param response_format: Response format (html or text)
+        :type response_format: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -116,6 +119,7 @@ class ApiApi:
             doc_ids=doc_ids,
             action=action,
             stream=stream,
+            response_format=response_format,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -145,6 +149,7 @@ class ApiApi:
         doc_ids: Annotated[Optional[StrictStr], Field(description="Document IDs to reference. Content will be extracted and sent to the LLM along with your message.")] = None,
         action: Annotated[Optional[StrictStr], Field(description="Action")] = None,
         stream: Annotated[Optional[StrictBool], Field(description="Stream the response")] = None,
+        response_format: Annotated[Optional[StrictStr], Field(description="Response format (html or text)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -172,6 +177,8 @@ class ApiApi:
         :type action: str
         :param stream: Stream the response
         :type stream: bool
+        :param response_format: Response format (html or text)
+        :type response_format: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -200,6 +207,7 @@ class ApiApi:
             doc_ids=doc_ids,
             action=action,
             stream=stream,
+            response_format=response_format,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -229,6 +237,7 @@ class ApiApi:
         doc_ids: Annotated[Optional[StrictStr], Field(description="Document IDs to reference. Content will be extracted and sent to the LLM along with your message.")] = None,
         action: Annotated[Optional[StrictStr], Field(description="Action")] = None,
         stream: Annotated[Optional[StrictBool], Field(description="Stream the response")] = None,
+        response_format: Annotated[Optional[StrictStr], Field(description="Response format (html or text)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -256,6 +265,8 @@ class ApiApi:
         :type action: str
         :param stream: Stream the response
         :type stream: bool
+        :param response_format: Response format (html or text)
+        :type response_format: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -284,6 +295,7 @@ class ApiApi:
             doc_ids=doc_ids,
             action=action,
             stream=stream,
+            response_format=response_format,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -308,6 +320,7 @@ class ApiApi:
         doc_ids,
         action,
         stream,
+        response_format,
         _request_auth,
         _content_type,
         _headers,
@@ -347,6 +360,10 @@ class ApiApi:
         if stream is not None:
             
             _query_params.append(('stream', stream))
+            
+        if response_format is not None:
+            
+            _query_params.append(('response_format', response_format))
             
         # process the header parameters
         # process the form parameters

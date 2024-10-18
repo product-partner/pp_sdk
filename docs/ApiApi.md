@@ -55,7 +55,7 @@ Method | HTTP request | Description
 
 
 # **api_chat**
-> ApiChat200Response api_chat(page=page, msg=msg, doc_ids=doc_ids, action=action, stream=stream)
+> ApiChat200Response api_chat(page=page, msg=msg, doc_ids=doc_ids, action=action, stream=stream, response_format=response_format)
 
 
 
@@ -86,9 +86,10 @@ with pp_sdk.ApiClient(configuration) as api_client:
     doc_ids = 'doc_ids_example' # str | Document IDs to reference. Content will be extracted and sent to the LLM along with your message. (optional)
     action = 'action_example' # str | Action (optional)
     stream = True # bool | Stream the response (optional)
+    response_format = 'response_format_example' # str | Response format (html or text) (optional)
 
     try:
-        api_response = api_instance.api_chat(page=page, msg=msg, doc_ids=doc_ids, action=action, stream=stream)
+        api_response = api_instance.api_chat(page=page, msg=msg, doc_ids=doc_ids, action=action, stream=stream, response_format=response_format)
         print("The response of ApiApi->api_chat:\n")
         pprint(api_response)
     except Exception as e:
@@ -107,6 +108,7 @@ Name | Type | Description  | Notes
  **doc_ids** | **str**| Document IDs to reference. Content will be extracted and sent to the LLM along with your message. | [optional] 
  **action** | **str**| Action | [optional] 
  **stream** | **bool**| Stream the response | [optional] 
+ **response_format** | **str**| Response format (html or text) | [optional] 
 
 ### Return type
 
