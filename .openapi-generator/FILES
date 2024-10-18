@@ -6,6 +6,7 @@ README.md
 docs/Address.md
 docs/ApiApi.md
 docs/ApiChat200Response.md
+docs/ApiChatUploadFile200Response.md
 docs/ApiPrdsCreateRequest.md
 docs/ApiPrdsPartialUpdateRequest.md
 docs/ApiStatusCreateRequest.md
@@ -41,6 +42,7 @@ pp_sdk/exceptions.py
 pp_sdk/models/__init__.py
 pp_sdk/models/address.py
 pp_sdk/models/api_chat200_response.py
+pp_sdk/models/api_chat_upload_file200_response.py
 pp_sdk/models/api_prds_create_request.py
 pp_sdk/models/api_prds_partial_update_request.py
 pp_sdk/models/api_status_create_request.py
@@ -71,4 +73,5 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_api_chat_upload_file200_response.py
 tox.ini

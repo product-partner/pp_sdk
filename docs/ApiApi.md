@@ -55,7 +55,7 @@ Method | HTTP request | Description
 
 
 # **api_chat**
-> ApiChat200Response api_chat(page=page, msg=msg, doc_ids=doc_ids, action=action, stream=stream, response_format=response_format)
+> ApiChat200Response api_chat(page=page, x_user_id=x_user_id, x_caller_id=x_caller_id, x_caller_thread_id=x_caller_thread_id, msg=msg, doc_ids=doc_ids, action=action, stream=stream, response_format=response_format)
 
 
 
@@ -82,6 +82,9 @@ with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pp_sdk.ApiApi(api_client)
     page = 56 # int | A page number within the paginated result set. (optional)
+    x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
+    x_caller_id = 'x_caller_id_example' # str | Optional ID of the application calling the ID, used in conjunction with the caller_thread_id (optional)
+    x_caller_thread_id = 'x_caller_thread_id_example' # str | Caller-side thread ID used in conjunction with the caller_id to identify the conversation that this message is a part of. This will be looked up against the internal thread id in Product Partner. (optional)
     msg = 'msg_example' # str | Chat message (optional)
     doc_ids = 'doc_ids_example' # str | Document IDs to reference. Content will be extracted and sent to the LLM along with your message. (optional)
     action = 'action_example' # str | Action (optional)
@@ -89,7 +92,7 @@ with pp_sdk.ApiClient(configuration) as api_client:
     response_format = 'response_format_example' # str | Response format (html or text) (optional)
 
     try:
-        api_response = api_instance.api_chat(page=page, msg=msg, doc_ids=doc_ids, action=action, stream=stream, response_format=response_format)
+        api_response = api_instance.api_chat(page=page, x_user_id=x_user_id, x_caller_id=x_caller_id, x_caller_thread_id=x_caller_thread_id, msg=msg, doc_ids=doc_ids, action=action, stream=stream, response_format=response_format)
         print("The response of ApiApi->api_chat:\n")
         pprint(api_response)
     except Exception as e:
@@ -104,6 +107,9 @@ with pp_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| A page number within the paginated result set. | [optional] 
+ **x_user_id** | **str**| User ID (required when using API key) | [optional] 
+ **x_caller_id** | **str**| Optional ID of the application calling the ID, used in conjunction with the caller_thread_id | [optional] 
+ **x_caller_thread_id** | **str**| Caller-side thread ID used in conjunction with the caller_id to identify the conversation that this message is a part of. This will be looked up against the internal thread id in Product Partner. | [optional] 
  **msg** | **str**| Chat message | [optional] 
  **doc_ids** | **str**| Document IDs to reference. Content will be extracted and sent to the LLM along with your message. | [optional] 
  **action** | **str**| Action | [optional] 
@@ -133,7 +139,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **api_chat_history**
-> api_chat_history(page=page, last_created_date=last_created_date, sort_order=sort_order)
+> api_chat_history(page=page, x_user_id=x_user_id, x_caller_id=x_caller_id, x_caller_thread_id=x_caller_thread_id, last_created_date=last_created_date, sort_order=sort_order)
 
 
 
@@ -159,11 +165,14 @@ with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pp_sdk.ApiApi(api_client)
     page = 56 # int | Page number (optional)
+    x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
+    x_caller_id = 'x_caller_id_example' # str | Optional ID of the application calling the ID, used in conjunction with the caller_thread_id (optional)
+    x_caller_thread_id = 'x_caller_thread_id_example' # str | Caller-side thread ID used in conjunction with the caller_id to identify the conversation that this message is a part of. This will be looked up against the internal thread id in Product Partner. (optional)
     last_created_date = 'last_created_date_example' # str | Last created date (optional)
     sort_order = 'sort_order_example' # str | Sort order (asc/desc) (optional)
 
     try:
-        api_instance.api_chat_history(page=page, last_created_date=last_created_date, sort_order=sort_order)
+        api_instance.api_chat_history(page=page, x_user_id=x_user_id, x_caller_id=x_caller_id, x_caller_thread_id=x_caller_thread_id, last_created_date=last_created_date, sort_order=sort_order)
     except Exception as e:
         print("Exception when calling ApiApi->api_chat_history: %s\n" % e)
 ```
@@ -176,6 +185,9 @@ with pp_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| Page number | [optional] 
+ **x_user_id** | **str**| User ID (required when using API key) | [optional] 
+ **x_caller_id** | **str**| Optional ID of the application calling the ID, used in conjunction with the caller_thread_id | [optional] 
+ **x_caller_thread_id** | **str**| Caller-side thread ID used in conjunction with the caller_id to identify the conversation that this message is a part of. This will be looked up against the internal thread id in Product Partner. | [optional] 
  **last_created_date** | **str**| Last created date | [optional] 
  **sort_order** | **str**| Sort order (asc/desc) | [optional] 
 
@@ -201,7 +213,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **api_chat_upload_file**
-> api_chat_upload_file(file)
+> ApiChatUploadFile200Response api_chat_upload_file(file, x_user_id=x_user_id, x_caller_id=x_caller_id, x_caller_thread_id=x_caller_thread_id)
 
 
 
@@ -212,6 +224,7 @@ Upload a file
 
 ```python
 import pp_sdk
+from pp_sdk.models.api_chat_upload_file200_response import ApiChatUploadFile200Response
 from pp_sdk.rest import ApiException
 from pprint import pprint
 
@@ -227,9 +240,14 @@ with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pp_sdk.ApiApi(api_client)
     file = None # bytearray | 
+    x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
+    x_caller_id = 'x_caller_id_example' # str | Optional ID of the application calling the ID, used in conjunction with the caller_thread_id (optional)
+    x_caller_thread_id = 'x_caller_thread_id_example' # str | Caller-side thread ID used in conjunction with the caller_id to identify the conversation that this message is a part of. This will be looked up against the internal thread id in Product Partner. (optional)
 
     try:
-        api_instance.api_chat_upload_file(file)
+        api_response = api_instance.api_chat_upload_file(file, x_user_id=x_user_id, x_caller_id=x_caller_id, x_caller_thread_id=x_caller_thread_id)
+        print("The response of ApiApi->api_chat_upload_file:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling ApiApi->api_chat_upload_file: %s\n" % e)
 ```
@@ -242,10 +260,13 @@ with pp_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **file** | **bytearray**|  | 
+ **x_user_id** | **str**| User ID (required when using API key) | [optional] 
+ **x_caller_id** | **str**| Optional ID of the application calling the ID, used in conjunction with the caller_thread_id | [optional] 
+ **x_caller_thread_id** | **str**| Caller-side thread ID used in conjunction with the caller_id to identify the conversation that this message is a part of. This will be looked up against the internal thread id in Product Partner. | [optional] 
 
 ### Return type
 
-void (empty response body)
+[**ApiChatUploadFile200Response**](ApiChatUploadFile200Response.md)
 
 ### Authorization
 
@@ -254,7 +275,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data, application/x-www-form-urlencoded
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
 
