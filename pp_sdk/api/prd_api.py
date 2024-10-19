@@ -385,6 +385,7 @@ class PrdApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
+            '404': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -456,6 +457,7 @@ class PrdApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
+            '404': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -527,6 +529,7 @@ class PrdApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
+            '404': None,
         }
         response_data = self.api_client.call_api(
             *_param,

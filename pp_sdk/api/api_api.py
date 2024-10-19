@@ -786,6 +786,8 @@ class ApiApi:
         x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         x_caller_id: Annotated[Optional[StrictStr], Field(description="Optional ID of the application calling the ID, used in conjunction with the caller_thread_id")] = None,
         x_caller_thread_id: Annotated[Optional[StrictStr], Field(description="Caller-side thread ID used in conjunction with the caller_id to identify the conversation that this message is a part of. This will be looked up against the internal thread id in Product Partner.")] = None,
+        filename: Optional[Annotated[str, Field(min_length=1, strict=True)]] = None,
+        content_type: Optional[Annotated[str, Field(min_length=1, strict=True)]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -811,6 +813,10 @@ class ApiApi:
         :type x_caller_id: str
         :param x_caller_thread_id: Caller-side thread ID used in conjunction with the caller_id to identify the conversation that this message is a part of. This will be looked up against the internal thread id in Product Partner.
         :type x_caller_thread_id: str
+        :param filename:
+        :type filename: str
+        :param content_type:
+        :type content_type: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -838,6 +844,8 @@ class ApiApi:
             x_user_id=x_user_id,
             x_caller_id=x_caller_id,
             x_caller_thread_id=x_caller_thread_id,
+            filename=filename,
+            content_type=content_type,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -867,6 +875,8 @@ class ApiApi:
         x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         x_caller_id: Annotated[Optional[StrictStr], Field(description="Optional ID of the application calling the ID, used in conjunction with the caller_thread_id")] = None,
         x_caller_thread_id: Annotated[Optional[StrictStr], Field(description="Caller-side thread ID used in conjunction with the caller_id to identify the conversation that this message is a part of. This will be looked up against the internal thread id in Product Partner.")] = None,
+        filename: Optional[Annotated[str, Field(min_length=1, strict=True)]] = None,
+        content_type: Optional[Annotated[str, Field(min_length=1, strict=True)]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -892,6 +902,10 @@ class ApiApi:
         :type x_caller_id: str
         :param x_caller_thread_id: Caller-side thread ID used in conjunction with the caller_id to identify the conversation that this message is a part of. This will be looked up against the internal thread id in Product Partner.
         :type x_caller_thread_id: str
+        :param filename:
+        :type filename: str
+        :param content_type:
+        :type content_type: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -919,6 +933,8 @@ class ApiApi:
             x_user_id=x_user_id,
             x_caller_id=x_caller_id,
             x_caller_thread_id=x_caller_thread_id,
+            filename=filename,
+            content_type=content_type,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -948,6 +964,8 @@ class ApiApi:
         x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         x_caller_id: Annotated[Optional[StrictStr], Field(description="Optional ID of the application calling the ID, used in conjunction with the caller_thread_id")] = None,
         x_caller_thread_id: Annotated[Optional[StrictStr], Field(description="Caller-side thread ID used in conjunction with the caller_id to identify the conversation that this message is a part of. This will be looked up against the internal thread id in Product Partner.")] = None,
+        filename: Optional[Annotated[str, Field(min_length=1, strict=True)]] = None,
+        content_type: Optional[Annotated[str, Field(min_length=1, strict=True)]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -973,6 +991,10 @@ class ApiApi:
         :type x_caller_id: str
         :param x_caller_thread_id: Caller-side thread ID used in conjunction with the caller_id to identify the conversation that this message is a part of. This will be looked up against the internal thread id in Product Partner.
         :type x_caller_thread_id: str
+        :param filename:
+        :type filename: str
+        :param content_type:
+        :type content_type: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1000,6 +1022,8 @@ class ApiApi:
             x_user_id=x_user_id,
             x_caller_id=x_caller_id,
             x_caller_thread_id=x_caller_thread_id,
+            filename=filename,
+            content_type=content_type,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1024,6 +1048,8 @@ class ApiApi:
         x_user_id,
         x_caller_id,
         x_caller_thread_id,
+        filename,
+        content_type,
         _request_auth,
         _content_type,
         _headers,
@@ -1054,6 +1080,10 @@ class ApiApi:
         # process the form parameters
         if file is not None:
             _files['file'] = file
+        if filename is not None:
+            _form_params.append(('filename', filename))
+        if content_type is not None:
+            _form_params.append(('content_type', content_type))
         # process the body parameter
 
 
@@ -1637,6 +1667,7 @@ class ApiApi:
         limit: Annotated[Optional[StrictInt], Field(description="Limit the number of results")] = None,
         tags: Annotated[Optional[StrictStr], Field(description="Filter by tags, one or more")] = None,
         program: Annotated[Optional[StrictStr], Field(description="Filter by program UUID or name")] = None,
+        created_by: Annotated[Optional[StrictStr], Field(description="Filter to the objects created by this user")] = None,
         x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
@@ -1669,6 +1700,8 @@ class ApiApi:
         :type tags: str
         :param program: Filter by program UUID or name
         :type program: str
+        :param created_by: Filter to the objects created by this user
+        :type created_by: str
         :param x_user_id: User ID (required when using API key)
         :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1701,6 +1734,7 @@ class ApiApi:
             limit=limit,
             tags=tags,
             program=program,
+            created_by=created_by,
             x_user_id=x_user_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1732,6 +1766,7 @@ class ApiApi:
         limit: Annotated[Optional[StrictInt], Field(description="Limit the number of results")] = None,
         tags: Annotated[Optional[StrictStr], Field(description="Filter by tags, one or more")] = None,
         program: Annotated[Optional[StrictStr], Field(description="Filter by program UUID or name")] = None,
+        created_by: Annotated[Optional[StrictStr], Field(description="Filter to the objects created by this user")] = None,
         x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
@@ -1764,6 +1799,8 @@ class ApiApi:
         :type tags: str
         :param program: Filter by program UUID or name
         :type program: str
+        :param created_by: Filter to the objects created by this user
+        :type created_by: str
         :param x_user_id: User ID (required when using API key)
         :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1796,6 +1833,7 @@ class ApiApi:
             limit=limit,
             tags=tags,
             program=program,
+            created_by=created_by,
             x_user_id=x_user_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1827,6 +1865,7 @@ class ApiApi:
         limit: Annotated[Optional[StrictInt], Field(description="Limit the number of results")] = None,
         tags: Annotated[Optional[StrictStr], Field(description="Filter by tags, one or more")] = None,
         program: Annotated[Optional[StrictStr], Field(description="Filter by program UUID or name")] = None,
+        created_by: Annotated[Optional[StrictStr], Field(description="Filter to the objects created by this user")] = None,
         x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
@@ -1859,6 +1898,8 @@ class ApiApi:
         :type tags: str
         :param program: Filter by program UUID or name
         :type program: str
+        :param created_by: Filter to the objects created by this user
+        :type created_by: str
         :param x_user_id: User ID (required when using API key)
         :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1891,6 +1932,7 @@ class ApiApi:
             limit=limit,
             tags=tags,
             program=program,
+            created_by=created_by,
             x_user_id=x_user_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1917,6 +1959,7 @@ class ApiApi:
         limit,
         tags,
         program,
+        created_by,
         x_user_id,
         _request_auth,
         _content_type,
@@ -1965,6 +2008,10 @@ class ApiApi:
         if program is not None:
             
             _query_params.append(('program', program))
+            
+        if created_by is not None:
+            
+            _query_params.append(('created_by', created_by))
             
         # process the header parameters
         if x_user_id is not None:
@@ -3697,6 +3744,7 @@ class ApiApi:
         sort: Annotated[Optional[StrictStr], Field(description="Field to sort by (e.g., 'title', '-created_date')")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="Limit the number of PRDs returned")] = None,
         tags: Annotated[Optional[StrictStr], Field(description="Comma-separated list of tag names to filter PRDs by")] = None,
+        created_by: Annotated[Optional[StrictStr], Field(description="Optional UUID of the user who created the PRD to filter PRDs by")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3728,6 +3776,8 @@ class ApiApi:
         :type limit: int
         :param tags: Comma-separated list of tag names to filter PRDs by
         :type tags: str
+        :param created_by: Optional UUID of the user who created the PRD to filter PRDs by
+        :type created_by: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3758,6 +3808,7 @@ class ApiApi:
             sort=sort,
             limit=limit,
             tags=tags,
+            created_by=created_by,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3788,6 +3839,7 @@ class ApiApi:
         sort: Annotated[Optional[StrictStr], Field(description="Field to sort by (e.g., 'title', '-created_date')")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="Limit the number of PRDs returned")] = None,
         tags: Annotated[Optional[StrictStr], Field(description="Comma-separated list of tag names to filter PRDs by")] = None,
+        created_by: Annotated[Optional[StrictStr], Field(description="Optional UUID of the user who created the PRD to filter PRDs by")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3819,6 +3871,8 @@ class ApiApi:
         :type limit: int
         :param tags: Comma-separated list of tag names to filter PRDs by
         :type tags: str
+        :param created_by: Optional UUID of the user who created the PRD to filter PRDs by
+        :type created_by: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3849,6 +3903,7 @@ class ApiApi:
             sort=sort,
             limit=limit,
             tags=tags,
+            created_by=created_by,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3879,6 +3934,7 @@ class ApiApi:
         sort: Annotated[Optional[StrictStr], Field(description="Field to sort by (e.g., 'title', '-created_date')")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="Limit the number of PRDs returned")] = None,
         tags: Annotated[Optional[StrictStr], Field(description="Comma-separated list of tag names to filter PRDs by")] = None,
+        created_by: Annotated[Optional[StrictStr], Field(description="Optional UUID of the user who created the PRD to filter PRDs by")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3910,6 +3966,8 @@ class ApiApi:
         :type limit: int
         :param tags: Comma-separated list of tag names to filter PRDs by
         :type tags: str
+        :param created_by: Optional UUID of the user who created the PRD to filter PRDs by
+        :type created_by: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3940,6 +3998,7 @@ class ApiApi:
             sort=sort,
             limit=limit,
             tags=tags,
+            created_by=created_by,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3965,6 +4024,7 @@ class ApiApi:
         sort,
         limit,
         tags,
+        created_by,
         _request_auth,
         _content_type,
         _headers,
@@ -4008,6 +4068,10 @@ class ApiApi:
         if tags is not None:
             
             _query_params.append(('tags', tags))
+            
+        if created_by is not None:
+            
+            _query_params.append(('created_by', created_by))
             
         # process the header parameters
         if x_user_id is not None:

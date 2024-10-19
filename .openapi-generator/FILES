@@ -73,5 +73,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_api_chat_upload_file200_response.py
 tox.ini

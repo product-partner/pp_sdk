@@ -213,7 +213,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **api_chat_upload_file**
-> ApiChatUploadFile200Response api_chat_upload_file(file, x_user_id=x_user_id, x_caller_id=x_caller_id, x_caller_thread_id=x_caller_thread_id)
+> ApiChatUploadFile200Response api_chat_upload_file(file, x_user_id=x_user_id, x_caller_id=x_caller_id, x_caller_thread_id=x_caller_thread_id, filename=filename, content_type=content_type)
 
 
 
@@ -243,9 +243,11 @@ with pp_sdk.ApiClient(configuration) as api_client:
     x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
     x_caller_id = 'x_caller_id_example' # str | Optional ID of the application calling the ID, used in conjunction with the caller_thread_id (optional)
     x_caller_thread_id = 'x_caller_thread_id_example' # str | Caller-side thread ID used in conjunction with the caller_id to identify the conversation that this message is a part of. This will be looked up against the internal thread id in Product Partner. (optional)
+    filename = 'filename_example' # str |  (optional)
+    content_type = 'content_type_example' # str |  (optional)
 
     try:
-        api_response = api_instance.api_chat_upload_file(file, x_user_id=x_user_id, x_caller_id=x_caller_id, x_caller_thread_id=x_caller_thread_id)
+        api_response = api_instance.api_chat_upload_file(file, x_user_id=x_user_id, x_caller_id=x_caller_id, x_caller_thread_id=x_caller_thread_id, filename=filename, content_type=content_type)
         print("The response of ApiApi->api_chat_upload_file:\n")
         pprint(api_response)
     except Exception as e:
@@ -263,6 +265,8 @@ Name | Type | Description  | Notes
  **x_user_id** | **str**| User ID (required when using API key) | [optional] 
  **x_caller_id** | **str**| Optional ID of the application calling the ID, used in conjunction with the caller_thread_id | [optional] 
  **x_caller_thread_id** | **str**| Caller-side thread ID used in conjunction with the caller_id to identify the conversation that this message is a part of. This will be looked up against the internal thread id in Product Partner. | [optional] 
+ **filename** | **str**|  | [optional] 
+ **content_type** | **str**|  | [optional] 
 
 ### Return type
 
@@ -420,7 +424,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **api_goals_list**
-> List[Goal] api_goals_list(search=search, stakeholder_users=stakeholder_users, status=status, sort=sort, limit=limit, tags=tags, program=program, x_user_id=x_user_id)
+> List[Goal] api_goals_list(search=search, stakeholder_users=stakeholder_users, status=status, sort=sort, limit=limit, tags=tags, program=program, created_by=created_by, x_user_id=x_user_id)
 
 
 
@@ -453,10 +457,11 @@ with pp_sdk.ApiClient(configuration) as api_client:
     limit = 56 # int | Limit the number of results (optional)
     tags = 'tags_example' # str | Filter by tags, one or more (optional)
     program = 'program_example' # str | Filter by program UUID or name (optional)
+    created_by = 'created_by_example' # str | Filter to the objects created by this user (optional)
     x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
     try:
-        api_response = api_instance.api_goals_list(search=search, stakeholder_users=stakeholder_users, status=status, sort=sort, limit=limit, tags=tags, program=program, x_user_id=x_user_id)
+        api_response = api_instance.api_goals_list(search=search, stakeholder_users=stakeholder_users, status=status, sort=sort, limit=limit, tags=tags, program=program, created_by=created_by, x_user_id=x_user_id)
         print("The response of ApiApi->api_goals_list:\n")
         pprint(api_response)
     except Exception as e:
@@ -477,6 +482,7 @@ Name | Type | Description  | Notes
  **limit** | **int**| Limit the number of results | [optional] 
  **tags** | **str**| Filter by tags, one or more | [optional] 
  **program** | **str**| Filter by program UUID or name | [optional] 
+ **created_by** | **str**| Filter to the objects created by this user | [optional] 
  **x_user_id** | **str**| User ID (required when using API key) | [optional] 
 
 ### Return type
@@ -916,7 +922,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **api_prds_list**
-> List[PRD] api_prds_list(x_user_id=x_user_id, stakeholders=stakeholders, status=status, search=search, sort=sort, limit=limit, tags=tags)
+> List[PRD] api_prds_list(x_user_id=x_user_id, stakeholders=stakeholders, status=status, search=search, sort=sort, limit=limit, tags=tags, created_by=created_by)
 
 
 
@@ -949,9 +955,10 @@ with pp_sdk.ApiClient(configuration) as api_client:
     sort = 'sort_example' # str | Field to sort by (e.g., 'title', '-created_date') (optional)
     limit = 56 # int | Limit the number of PRDs returned (optional)
     tags = 'tags_example' # str | Comma-separated list of tag names to filter PRDs by (optional)
+    created_by = 'created_by_example' # str | Optional UUID of the user who created the PRD to filter PRDs by (optional)
 
     try:
-        api_response = api_instance.api_prds_list(x_user_id=x_user_id, stakeholders=stakeholders, status=status, search=search, sort=sort, limit=limit, tags=tags)
+        api_response = api_instance.api_prds_list(x_user_id=x_user_id, stakeholders=stakeholders, status=status, search=search, sort=sort, limit=limit, tags=tags, created_by=created_by)
         print("The response of ApiApi->api_prds_list:\n")
         pprint(api_response)
     except Exception as e:
@@ -972,6 +979,7 @@ Name | Type | Description  | Notes
  **sort** | **str**| Field to sort by (e.g., &#39;title&#39;, &#39;-created_date&#39;) | [optional] 
  **limit** | **int**| Limit the number of PRDs returned | [optional] 
  **tags** | **str**| Comma-separated list of tag names to filter PRDs by | [optional] 
+ **created_by** | **str**| Optional UUID of the user who created the PRD to filter PRDs by | [optional] 
 
 ### Return type
 
