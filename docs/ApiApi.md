@@ -7,6 +7,12 @@ Method | HTTP request | Description
 [**api_chat**](ApiApi.md#api_chat) | **GET** /api/chat/ | 
 [**api_chat_history**](ApiApi.md#api_chat_history) | **GET** /api/chat/history/ | 
 [**api_chat_upload_file**](ApiApi.md#api_chat_upload_file) | **POST** /api/chat/upload/ | 
+[**api_documents_create**](ApiApi.md#api_documents_create) | **POST** /api/documents/ | 
+[**api_documents_delete**](ApiApi.md#api_documents_delete) | **DELETE** /api/documents/{id}/ | 
+[**api_documents_list**](ApiApi.md#api_documents_list) | **GET** /api/documents/ | 
+[**api_documents_partial_update**](ApiApi.md#api_documents_partial_update) | **PATCH** /api/documents/{id}/ | 
+[**api_documents_read**](ApiApi.md#api_documents_read) | **GET** /api/documents/{id}/ | 
+[**api_documents_update**](ApiApi.md#api_documents_update) | **PUT** /api/documents/{id}/ | 
 [**api_goals_create**](ApiApi.md#api_goals_create) | **POST** /api/goals/ | 
 [**api_goals_delete**](ApiApi.md#api_goals_delete) | **DELETE** /api/goals/{goal_id}/ | 
 [**api_goals_list**](ApiApi.md#api_goals_list) | **GET** /api/goals/ | 
@@ -288,6 +294,426 @@ No authorization required
 **200** | File uploaded successfully |  -  |
 **400** | Bad request |  -  |
 **500** | Internal server error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **api_documents_create**
+> Document api_documents_create(data, x_user_id=x_user_id)
+
+
+
+Create a new Document for the authenticated user's organization.
+
+### Example
+
+
+```python
+import pp_sdk
+from pp_sdk.models.api_documents_create_request import ApiDocumentsCreateRequest
+from pp_sdk.models.document import Document
+from pp_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://0.0.0.0:8000
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pp_sdk.Configuration(
+    host = "http://0.0.0.0:8000"
+)
+
+
+# Enter a context with an instance of the API client
+with pp_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pp_sdk.ApiApi(api_client)
+    data = pp_sdk.ApiDocumentsCreateRequest() # ApiDocumentsCreateRequest | 
+    x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
+
+    try:
+        api_response = api_instance.api_documents_create(data, x_user_id=x_user_id)
+        print("The response of ApiApi->api_documents_create:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ApiApi->api_documents_create: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **data** | [**ApiDocumentsCreateRequest**](ApiDocumentsCreateRequest.md)|  | 
+ **x_user_id** | **str**| User ID (required when using API key) | [optional] 
+
+### Return type
+
+[**Document**](Document.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **api_documents_delete**
+> api_documents_delete(id)
+
+
+
+### Example
+
+
+```python
+import pp_sdk
+from pp_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://0.0.0.0:8000
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pp_sdk.Configuration(
+    host = "http://0.0.0.0:8000"
+)
+
+
+# Enter a context with an instance of the API client
+with pp_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pp_sdk.ApiApi(api_client)
+    id = 'id_example' # str | 
+
+    try:
+        api_instance.api_documents_delete(id)
+    except Exception as e:
+        print("Exception when calling ApiApi->api_documents_delete: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **api_documents_list**
+> List[Document] api_documents_list(x_user_id=x_user_id, stakeholders=stakeholders, publishing_state=publishing_state, search=search, sort=sort, limit=limit, tags=tags, created_by=created_by, type=type)
+
+
+
+Get a list of all Documents for the authenticated user's organization.
+
+### Example
+
+
+```python
+import pp_sdk
+from pp_sdk.models.document import Document
+from pp_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://0.0.0.0:8000
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pp_sdk.Configuration(
+    host = "http://0.0.0.0:8000"
+)
+
+
+# Enter a context with an instance of the API client
+with pp_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pp_sdk.ApiApi(api_client)
+    x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
+    stakeholders = 'stakeholders_example' # str | Comma-separated list of stakeholder user IDs to filter by (optional)
+    publishing_state = 'publishing_state_example' # str | Publishing state to filter by (optional)
+    search = 'search_example' # str | Search term to filter Documents by title or body (optional)
+    sort = 'sort_example' # str | Field to sort by (e.g., 'title', '-created_date') (optional)
+    limit = 56 # int | Limit the number of Documents returned (optional)
+    tags = 'tags_example' # str | Comma-separated list of tag names to filter Documents by (optional)
+    created_by = 'created_by_example' # str | Optional UUID of the user who created the Document to filter Documents by (optional)
+    type = 'type_example' # str | Type of document to filter by (optional)
+
+    try:
+        api_response = api_instance.api_documents_list(x_user_id=x_user_id, stakeholders=stakeholders, publishing_state=publishing_state, search=search, sort=sort, limit=limit, tags=tags, created_by=created_by, type=type)
+        print("The response of ApiApi->api_documents_list:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ApiApi->api_documents_list: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **x_user_id** | **str**| User ID (required when using API key) | [optional] 
+ **stakeholders** | **str**| Comma-separated list of stakeholder user IDs to filter by | [optional] 
+ **publishing_state** | **str**| Publishing state to filter by | [optional] 
+ **search** | **str**| Search term to filter Documents by title or body | [optional] 
+ **sort** | **str**| Field to sort by (e.g., &#39;title&#39;, &#39;-created_date&#39;) | [optional] 
+ **limit** | **int**| Limit the number of Documents returned | [optional] 
+ **tags** | **str**| Comma-separated list of tag names to filter Documents by | [optional] 
+ **created_by** | **str**| Optional UUID of the user who created the Document to filter Documents by | [optional] 
+ **type** | **str**| Type of document to filter by | [optional] 
+
+### Return type
+
+[**List[Document]**](Document.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **api_documents_partial_update**
+> Document api_documents_partial_update(id, data)
+
+
+
+### Example
+
+
+```python
+import pp_sdk
+from pp_sdk.models.document import Document
+from pp_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://0.0.0.0:8000
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pp_sdk.Configuration(
+    host = "http://0.0.0.0:8000"
+)
+
+
+# Enter a context with an instance of the API client
+with pp_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pp_sdk.ApiApi(api_client)
+    id = 'id_example' # str | 
+    data = pp_sdk.Document() # Document | 
+
+    try:
+        api_response = api_instance.api_documents_partial_update(id, data)
+        print("The response of ApiApi->api_documents_partial_update:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ApiApi->api_documents_partial_update: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**|  | 
+ **data** | [**Document**](Document.md)|  | 
+
+### Return type
+
+[**Document**](Document.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **api_documents_read**
+> Document api_documents_read(id, x_user_id=x_user_id, output_format=output_format)
+
+
+
+Get details of a specific document.
+
+### Example
+
+
+```python
+import pp_sdk
+from pp_sdk.models.document import Document
+from pp_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://0.0.0.0:8000
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pp_sdk.Configuration(
+    host = "http://0.0.0.0:8000"
+)
+
+
+# Enter a context with an instance of the API client
+with pp_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pp_sdk.ApiApi(api_client)
+    id = 'id_example' # str | 
+    x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
+    output_format = 'output_format_example' # str | Response format (json, text, html, docx, pdf) (optional)
+
+    try:
+        api_response = api_instance.api_documents_read(id, x_user_id=x_user_id, output_format=output_format)
+        print("The response of ApiApi->api_documents_read:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ApiApi->api_documents_read: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**|  | 
+ **x_user_id** | **str**| User ID (required when using API key) | [optional] 
+ **output_format** | **str**| Response format (json, text, html, docx, pdf) | [optional] 
+
+### Return type
+
+[**Document**](Document.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **api_documents_update**
+> Document api_documents_update(id, data)
+
+
+
+### Example
+
+
+```python
+import pp_sdk
+from pp_sdk.models.document import Document
+from pp_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://0.0.0.0:8000
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pp_sdk.Configuration(
+    host = "http://0.0.0.0:8000"
+)
+
+
+# Enter a context with an instance of the API client
+with pp_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pp_sdk.ApiApi(api_client)
+    id = 'id_example' # str | 
+    data = pp_sdk.Document() # Document | 
+
+    try:
+        api_response = api_instance.api_documents_update(id, data)
+        print("The response of ApiApi->api_documents_update:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ApiApi->api_documents_update: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**|  | 
+ **data** | [**Document**](Document.md)|  | 
+
+### Return type
+
+[**Document**](Document.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1350,7 +1776,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **api_programs_list**
-> List[Program] api_programs_list(page=page, x_user_id=x_user_id, search=search, tags=tags, ordering=ordering)
+> List[Program] api_programs_list(page=page, x_user_id=x_user_id, search=search, tags=tags, sort=sort)
 
 
 
@@ -1380,10 +1806,10 @@ with pp_sdk.ApiClient(configuration) as api_client:
     x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
     search = 'search_example' # str | Search in name and description (optional)
     tags = 'tags_example' # str | Filter by tags (comma-separated) (optional)
-    ordering = 'ordering_example' # str | Sort by field (prefix with '-' for descending) (optional)
+    sort = 'sort_example' # str | Sort by field (prefix with '-' for descending) (optional)
 
     try:
-        api_response = api_instance.api_programs_list(page=page, x_user_id=x_user_id, search=search, tags=tags, ordering=ordering)
+        api_response = api_instance.api_programs_list(page=page, x_user_id=x_user_id, search=search, tags=tags, sort=sort)
         print("The response of ApiApi->api_programs_list:\n")
         pprint(api_response)
     except Exception as e:
@@ -1401,7 +1827,7 @@ Name | Type | Description  | Notes
  **x_user_id** | **str**| User ID (required when using API key) | [optional] 
  **search** | **str**| Search in name and description | [optional] 
  **tags** | **str**| Filter by tags (comma-separated) | [optional] 
- **ordering** | **str**| Sort by field (prefix with &#39;-&#39; for descending) | [optional] 
+ **sort** | **str**| Sort by field (prefix with &#39;-&#39; for descending) | [optional] 
 
 ### Return type
 

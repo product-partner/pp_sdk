@@ -24,28 +24,29 @@ from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class ApiPrdsPartialUpdateRequest(BaseModel):
+class ApiDocumentsCreateRequest(BaseModel):
     """
-    ApiPrdsPartialUpdateRequest
+    ApiDocumentsCreateRequest
     """ # noqa: E501
-    title: Optional[StrictStr] = None
-    description: Optional[StrictStr] = None
-    body: Optional[StrictStr] = None
-    status: Optional[StrictStr] = None
-    due_date: Optional[date] = None
+    title: StrictStr
+    body: StrictStr
+    type: StrictStr
+    publishing_state: Optional[StrictStr] = None
+    document_covering_period_start: Optional[date] = None
+    document_covering_period_end: Optional[date] = None
     tags: Optional[List[StrictStr]] = Field(default=None, description="List of tags")
     stakeholder_users: Optional[List[StrictStr]] = Field(default=None, description="List of stakeholder user emails or UUIDs")
-    programs: Optional[List[StrictStr]] = Field(default=None, description="List of program UUIDs")
-    __properties: ClassVar[List[str]] = ["title", "description", "body", "status", "due_date", "tags", "stakeholder_users", "programs"]
+    program: Optional[StrictStr] = Field(default=None, description="Program UUID")
+    __properties: ClassVar[List[str]] = ["title", "body", "type", "publishing_state", "document_covering_period_start", "document_covering_period_end", "tags", "stakeholder_users", "program"]
 
-    @field_validator('status')
-    def status_validate_enum(cls, value):
+    @field_validator('publishing_state')
+    def publishing_state_validate_enum(cls, value):
         """Validates the enum"""
         if value is None:
             return value
 
-        if value not in set(['DRAFT', 'PENDING_REVIEW', 'IN_REVIEW', 'APPROVED', 'ARCHIVED', 'COMPLETED']):
-            raise ValueError("must be one of enum values ('DRAFT', 'PENDING_REVIEW', 'IN_REVIEW', 'APPROVED', 'ARCHIVED', 'COMPLETED')")
+        if value not in set(['PENDING_REVIEW', 'DRAFT', 'REJECTED', 'APPROVED', 'PUBLISHED']):
+            raise ValueError("must be one of enum values ('PENDING_REVIEW', 'DRAFT', 'REJECTED', 'APPROVED', 'PUBLISHED')")
         return value
 
     model_config = ConfigDict(
@@ -66,7 +67,7 @@ class ApiPrdsPartialUpdateRequest(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of ApiPrdsPartialUpdateRequest from a JSON string"""
+        """Create an instance of ApiDocumentsCreateRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -91,7 +92,7 @@ class ApiPrdsPartialUpdateRequest(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of ApiPrdsPartialUpdateRequest from a dict"""
+        """Create an instance of ApiDocumentsCreateRequest from a dict"""
         if obj is None:
             return None
 
@@ -100,13 +101,14 @@ class ApiPrdsPartialUpdateRequest(BaseModel):
 
         _obj = cls.model_validate({
             "title": obj.get("title"),
-            "description": obj.get("description"),
             "body": obj.get("body"),
-            "status": obj.get("status"),
-            "due_date": obj.get("due_date"),
+            "type": obj.get("type"),
+            "publishing_state": obj.get("publishing_state"),
+            "document_covering_period_start": obj.get("document_covering_period_start"),
+            "document_covering_period_end": obj.get("document_covering_period_end"),
             "tags": obj.get("tags"),
             "stakeholder_users": obj.get("stakeholder_users"),
-            "programs": obj.get("programs")
+            "program": obj.get("program")
         })
         return _obj
 

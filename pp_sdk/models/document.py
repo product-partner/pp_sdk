@@ -19,39 +19,47 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from pp_sdk.models.created_by import CreatedBy
 from pp_sdk.models.programs_inner import ProgramsInner
 from pp_sdk.models.stakeholder_users_inner import StakeholderUsersInner
-from pp_sdk.models.status1 import Status1
 from pp_sdk.models.tags_inner import TagsInner
 from typing import Optional, Set
 from typing_extensions import Self
 
-class Goal(BaseModel):
+class Document(BaseModel):
     """
-    Goal
+    Document
     """ # noqa: E501
     id: Optional[StrictStr] = None
-    name: Annotated[str, Field(min_length=1, strict=True, max_length=255)]
-    goal_language: Optional[StrictStr] = None
-    description: Optional[StrictStr] = None
-    why_it_matters: Optional[StrictStr] = None
+    type: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=255)]] = None
+    title: Annotated[str, Field(min_length=1, strict=True)]
+    body: Optional[Annotated[str, Field(min_length=1, strict=True)]] = None
+    created_by: Optional[CreatedBy] = None
     created_date: Optional[datetime] = None
     modified_date: Optional[datetime] = None
-    original_due_date: Optional[datetime] = None
-    current_due_date: Optional[datetime] = None
-    owner_users: Optional[List[StakeholderUsersInner]] = None
+    reviewed_date: Optional[datetime] = None
+    document_covering_period_start: Optional[datetime] = None
+    document_covering_period_end: Optional[datetime] = None
+    publishing_state: Optional[StrictStr] = None
     programs: Optional[List[ProgramsInner]] = None
-    stakeholder_users: Optional[List[StakeholderUsersInner]] = None
     tags: Optional[List[TagsInner]] = None
-    version: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=-2147483648)]] = None
+    stakeholder_users: Optional[List[StakeholderUsersInner]] = None
+    version: Optional[StrictInt] = None
     version_summary: Optional[StrictStr] = None
-    created_by: Optional[CreatedBy] = None
-    status: Optional[Status1] = None
-    __properties: ClassVar[List[str]] = ["id", "name", "goal_language", "description", "why_it_matters", "created_date", "modified_date", "original_due_date", "current_due_date", "owner_users", "programs", "stakeholder_users", "tags", "version", "version_summary", "created_by", "status"]
+    __properties: ClassVar[List[str]] = ["id", "type", "title", "body", "created_by", "created_date", "modified_date", "reviewed_date", "document_covering_period_start", "document_covering_period_end", "publishing_state", "programs", "tags", "stakeholder_users", "version", "version_summary"]
+
+    @field_validator('publishing_state')
+    def publishing_state_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['PENDING_REVIEW', 'DRAFT', 'REJECTED', 'APPROVED', 'PUBLISHED']):
+            raise ValueError("must be one of enum values ('PENDING_REVIEW', 'DRAFT', 'REJECTED', 'APPROVED', 'PUBLISHED')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -71,7 +79,7 @@ class Goal(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of Goal from a JSON string"""
+        """Create an instance of Document from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -95,10 +103,10 @@ class Goal(BaseModel):
             "id",
             "created_date",
             "modified_date",
-            "owner_users",
             "programs",
-            "stakeholder_users",
             "tags",
+            "stakeholder_users",
+            "version",
         ])
 
         _dict = self.model_dump(
@@ -106,13 +114,9 @@ class Goal(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in owner_users (list)
-        _items = []
-        if self.owner_users:
-            for _item_owner_users in self.owner_users:
-                if _item_owner_users:
-                    _items.append(_item_owner_users.to_dict())
-            _dict['owner_users'] = _items
+        # override the default output from pydantic by calling `to_dict()` of created_by
+        if self.created_by:
+            _dict['created_by'] = self.created_by.to_dict()
         # override the default output from pydantic by calling `to_dict()` of each item in programs (list)
         _items = []
         if self.programs:
@@ -120,13 +124,6 @@ class Goal(BaseModel):
                 if _item_programs:
                     _items.append(_item_programs.to_dict())
             _dict['programs'] = _items
-        # override the default output from pydantic by calling `to_dict()` of each item in stakeholder_users (list)
-        _items = []
-        if self.stakeholder_users:
-            for _item_stakeholder_users in self.stakeholder_users:
-                if _item_stakeholder_users:
-                    _items.append(_item_stakeholder_users.to_dict())
-            _dict['stakeholder_users'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in tags (list)
         _items = []
         if self.tags:
@@ -134,26 +131,22 @@ class Goal(BaseModel):
                 if _item_tags:
                     _items.append(_item_tags.to_dict())
             _dict['tags'] = _items
-        # override the default output from pydantic by calling `to_dict()` of created_by
-        if self.created_by:
-            _dict['created_by'] = self.created_by.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of status
-        if self.status:
-            _dict['status'] = self.status.to_dict()
-        # set to None if goal_language (nullable) is None
+        # override the default output from pydantic by calling `to_dict()` of each item in stakeholder_users (list)
+        _items = []
+        if self.stakeholder_users:
+            for _item_stakeholder_users in self.stakeholder_users:
+                if _item_stakeholder_users:
+                    _items.append(_item_stakeholder_users.to_dict())
+            _dict['stakeholder_users'] = _items
+        # set to None if type (nullable) is None
         # and model_fields_set contains the field
-        if self.goal_language is None and "goal_language" in self.model_fields_set:
-            _dict['goal_language'] = None
+        if self.type is None and "type" in self.model_fields_set:
+            _dict['type'] = None
 
-        # set to None if description (nullable) is None
+        # set to None if body (nullable) is None
         # and model_fields_set contains the field
-        if self.description is None and "description" in self.model_fields_set:
-            _dict['description'] = None
-
-        # set to None if why_it_matters (nullable) is None
-        # and model_fields_set contains the field
-        if self.why_it_matters is None and "why_it_matters" in self.model_fields_set:
-            _dict['why_it_matters'] = None
+        if self.body is None and "body" in self.model_fields_set:
+            _dict['body'] = None
 
         # set to None if version (nullable) is None
         # and model_fields_set contains the field
@@ -164,7 +157,7 @@ class Goal(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of Goal from a dict"""
+        """Create an instance of Document from a dict"""
         if obj is None:
             return None
 
@@ -173,22 +166,21 @@ class Goal(BaseModel):
 
         _obj = cls.model_validate({
             "id": obj.get("id"),
-            "name": obj.get("name"),
-            "goal_language": obj.get("goal_language"),
-            "description": obj.get("description"),
-            "why_it_matters": obj.get("why_it_matters"),
+            "type": obj.get("type"),
+            "title": obj.get("title"),
+            "body": obj.get("body"),
+            "created_by": CreatedBy.from_dict(obj["created_by"]) if obj.get("created_by") is not None else None,
             "created_date": obj.get("created_date"),
             "modified_date": obj.get("modified_date"),
-            "original_due_date": obj.get("original_due_date"),
-            "current_due_date": obj.get("current_due_date"),
-            "owner_users": [StakeholderUsersInner.from_dict(_item) for _item in obj["owner_users"]] if obj.get("owner_users") is not None else None,
+            "reviewed_date": obj.get("reviewed_date"),
+            "document_covering_period_start": obj.get("document_covering_period_start"),
+            "document_covering_period_end": obj.get("document_covering_period_end"),
+            "publishing_state": obj.get("publishing_state"),
             "programs": [ProgramsInner.from_dict(_item) for _item in obj["programs"]] if obj.get("programs") is not None else None,
-            "stakeholder_users": [StakeholderUsersInner.from_dict(_item) for _item in obj["stakeholder_users"]] if obj.get("stakeholder_users") is not None else None,
             "tags": [TagsInner.from_dict(_item) for _item in obj["tags"]] if obj.get("tags") is not None else None,
+            "stakeholder_users": [StakeholderUsersInner.from_dict(_item) for _item in obj["stakeholder_users"]] if obj.get("stakeholder_users") is not None else None,
             "version": obj.get("version"),
-            "version_summary": obj.get("version_summary"),
-            "created_by": CreatedBy.from_dict(obj["created_by"]) if obj.get("created_by") is not None else None,
-            "status": Status1.from_dict(obj["status"]) if obj.get("status") is not None else None
+            "version_summary": obj.get("version_summary")
         })
         return _obj
 

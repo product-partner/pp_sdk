@@ -18,35 +18,20 @@ import pprint
 import re  # noqa: F401
 import json
 
-from datetime import date
-from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class ApiPrdsPartialUpdateRequest(BaseModel):
+class StakeholderUsersInner(BaseModel):
     """
-    ApiPrdsPartialUpdateRequest
+    StakeholderUsersInner
     """ # noqa: E501
-    title: Optional[StrictStr] = None
-    description: Optional[StrictStr] = None
-    body: Optional[StrictStr] = None
-    status: Optional[StrictStr] = None
-    due_date: Optional[date] = None
-    tags: Optional[List[StrictStr]] = Field(default=None, description="List of tags")
-    stakeholder_users: Optional[List[StrictStr]] = Field(default=None, description="List of stakeholder user emails or UUIDs")
-    programs: Optional[List[StrictStr]] = Field(default=None, description="List of program UUIDs")
-    __properties: ClassVar[List[str]] = ["title", "description", "body", "status", "due_date", "tags", "stakeholder_users", "programs"]
-
-    @field_validator('status')
-    def status_validate_enum(cls, value):
-        """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in set(['DRAFT', 'PENDING_REVIEW', 'IN_REVIEW', 'APPROVED', 'ARCHIVED', 'COMPLETED']):
-            raise ValueError("must be one of enum values ('DRAFT', 'PENDING_REVIEW', 'IN_REVIEW', 'APPROVED', 'ARCHIVED', 'COMPLETED')")
-        return value
+    id: Optional[StrictStr] = None
+    email: Optional[StrictStr] = None
+    first_name: Optional[StrictStr] = None
+    last_name: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["id", "email", "first_name", "last_name"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -66,7 +51,7 @@ class ApiPrdsPartialUpdateRequest(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of ApiPrdsPartialUpdateRequest from a JSON string"""
+        """Create an instance of StakeholderUsersInner from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -91,7 +76,7 @@ class ApiPrdsPartialUpdateRequest(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of ApiPrdsPartialUpdateRequest from a dict"""
+        """Create an instance of StakeholderUsersInner from a dict"""
         if obj is None:
             return None
 
@@ -99,14 +84,10 @@ class ApiPrdsPartialUpdateRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "title": obj.get("title"),
-            "description": obj.get("description"),
-            "body": obj.get("body"),
-            "status": obj.get("status"),
-            "due_date": obj.get("due_date"),
-            "tags": obj.get("tags"),
-            "stakeholder_users": obj.get("stakeholder_users"),
-            "programs": obj.get("programs")
+            "id": obj.get("id"),
+            "email": obj.get("email"),
+            "first_name": obj.get("first_name"),
+            "last_name": obj.get("last_name")
         })
         return _obj
 

@@ -9,8 +9,8 @@ Name | Type | Description | Notes
 **name** | **str** |  | 
 **description** | **str** |  | [optional] 
 **charter** | **str** |  | [optional] 
-**principal_users** | [**List[OwnerUsersInner]**](OwnerUsersInner.md) |  | [optional] [readonly] 
-**stakeholder_users** | [**List[OwnerUsersInner]**](OwnerUsersInner.md) |  | [optional] [readonly] 
+**principal_users** | [**List[StakeholderUsersInner]**](StakeholderUsersInner.md) |  | [optional] [readonly] 
+**stakeholder_users** | [**List[StakeholderUsersInner]**](StakeholderUsersInner.md) |  | [optional] [readonly] 
 **parent** | **str** |  | [optional] 
 **tags** | [**List[TagsInner]**](TagsInner.md) |  | [optional] [readonly] 
 **created_by** | [**CreatedBy**](CreatedBy.md) |  | [optional] 

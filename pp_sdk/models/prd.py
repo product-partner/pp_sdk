@@ -23,8 +23,8 @@ from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from pp_sdk.models.created_by import CreatedBy
-from pp_sdk.models.owner_users_inner import OwnerUsersInner
 from pp_sdk.models.programs_inner import ProgramsInner
+from pp_sdk.models.stakeholder_users_inner import StakeholderUsersInner
 from pp_sdk.models.tags_inner import TagsInner
 from typing import Optional, Set
 from typing_extensions import Self
@@ -41,7 +41,7 @@ class PRD(BaseModel):
     due_date: Optional[datetime] = None
     modified_date: Optional[datetime] = None
     tags: Optional[List[TagsInner]] = None
-    stakeholder_users: Optional[List[OwnerUsersInner]] = None
+    stakeholder_users: Optional[List[StakeholderUsersInner]] = None
     programs: Optional[List[ProgramsInner]] = None
     created_by: Optional[CreatedBy] = None
     created_date: Optional[datetime] = None
@@ -53,8 +53,8 @@ class PRD(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['DRAFT', 'PENDING_REVIEW', 'IN_REVIEW', 'APPROVED', 'PUBLISHED']):
-            raise ValueError("must be one of enum values ('DRAFT', 'PENDING_REVIEW', 'IN_REVIEW', 'APPROVED', 'PUBLISHED')")
+        if value not in set(['DRAFT', 'PENDING_REVIEW', 'IN_REVIEW', 'APPROVED', 'ARCHIVED', 'COMPLETED']):
+            raise ValueError("must be one of enum values ('DRAFT', 'PENDING_REVIEW', 'IN_REVIEW', 'APPROVED', 'ARCHIVED', 'COMPLETED')")
         return value
 
     model_config = ConfigDict(
@@ -111,23 +111,23 @@ class PRD(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in tags (list)
         _items = []
         if self.tags:
-            for _item in self.tags:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_tags in self.tags:
+                if _item_tags:
+                    _items.append(_item_tags.to_dict())
             _dict['tags'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in stakeholder_users (list)
         _items = []
         if self.stakeholder_users:
-            for _item in self.stakeholder_users:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_stakeholder_users in self.stakeholder_users:
+                if _item_stakeholder_users:
+                    _items.append(_item_stakeholder_users.to_dict())
             _dict['stakeholder_users'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in programs (list)
         _items = []
         if self.programs:
-            for _item in self.programs:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_programs in self.programs:
+                if _item_programs:
+                    _items.append(_item_programs.to_dict())
             _dict['programs'] = _items
         # override the default output from pydantic by calling `to_dict()` of created_by
         if self.created_by:
@@ -162,7 +162,7 @@ class PRD(BaseModel):
             "due_date": obj.get("due_date"),
             "modified_date": obj.get("modified_date"),
             "tags": [TagsInner.from_dict(_item) for _item in obj["tags"]] if obj.get("tags") is not None else None,
-            "stakeholder_users": [OwnerUsersInner.from_dict(_item) for _item in obj["stakeholder_users"]] if obj.get("stakeholder_users") is not None else None,
+            "stakeholder_users": [StakeholderUsersInner.from_dict(_item) for _item in obj["stakeholder_users"]] if obj.get("stakeholder_users") is not None else None,
             "programs": [ProgramsInner.from_dict(_item) for _item in obj["programs"]] if obj.get("programs") is not None else None,
             "created_by": CreatedBy.from_dict(obj["created_by"]) if obj.get("created_by") is not None else None,
             "created_date": obj.get("created_date")

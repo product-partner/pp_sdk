@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **due_date** | **datetime** |  | [optional] 
 **modified_date** | **datetime** |  | [optional] [readonly] 
 **tags** | [**List[TagsInner]**](TagsInner.md) |  | [optional] [readonly] 
-**stakeholder_users** | [**List[OwnerUsersInner]**](OwnerUsersInner.md) |  | [optional] [readonly] 
+**stakeholder_users** | [**List[StakeholderUsersInner]**](StakeholderUsersInner.md) |  | [optional] [readonly] 
 **programs** | [**List[ProgramsInner]**](ProgramsInner.md) |  | [optional] [readonly] 
 **created_by** | [**CreatedBy**](CreatedBy.md) |  | [optional] 
 **created_date** | **datetime** |  | [optional] [readonly] 

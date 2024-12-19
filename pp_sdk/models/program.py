@@ -23,7 +23,7 @@ from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from pp_sdk.models.created_by import CreatedBy
-from pp_sdk.models.owner_users_inner import OwnerUsersInner
+from pp_sdk.models.stakeholder_users_inner import StakeholderUsersInner
 from pp_sdk.models.tags_inner import TagsInner
 from typing import Optional, Set
 from typing_extensions import Self
@@ -36,8 +36,8 @@ class Program(BaseModel):
     name: Annotated[str, Field(min_length=1, strict=True, max_length=255)]
     description: Optional[StrictStr] = None
     charter: Optional[StrictStr] = None
-    principal_users: Optional[List[OwnerUsersInner]] = None
-    stakeholder_users: Optional[List[OwnerUsersInner]] = None
+    principal_users: Optional[List[StakeholderUsersInner]] = None
+    stakeholder_users: Optional[List[StakeholderUsersInner]] = None
     parent: Optional[StrictStr] = None
     tags: Optional[List[TagsInner]] = None
     created_by: Optional[CreatedBy] = None
@@ -99,23 +99,23 @@ class Program(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in principal_users (list)
         _items = []
         if self.principal_users:
-            for _item in self.principal_users:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_principal_users in self.principal_users:
+                if _item_principal_users:
+                    _items.append(_item_principal_users.to_dict())
             _dict['principal_users'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in stakeholder_users (list)
         _items = []
         if self.stakeholder_users:
-            for _item in self.stakeholder_users:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_stakeholder_users in self.stakeholder_users:
+                if _item_stakeholder_users:
+                    _items.append(_item_stakeholder_users.to_dict())
             _dict['stakeholder_users'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in tags (list)
         _items = []
         if self.tags:
-            for _item in self.tags:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_tags in self.tags:
+                if _item_tags:
+                    _items.append(_item_tags.to_dict())
             _dict['tags'] = _items
         # override the default output from pydantic by calling `to_dict()` of created_by
         if self.created_by:
@@ -161,8 +161,8 @@ class Program(BaseModel):
             "name": obj.get("name"),
             "description": obj.get("description"),
             "charter": obj.get("charter"),
-            "principal_users": [OwnerUsersInner.from_dict(_item) for _item in obj["principal_users"]] if obj.get("principal_users") is not None else None,
-            "stakeholder_users": [OwnerUsersInner.from_dict(_item) for _item in obj["stakeholder_users"]] if obj.get("stakeholder_users") is not None else None,
+            "principal_users": [StakeholderUsersInner.from_dict(_item) for _item in obj["principal_users"]] if obj.get("principal_users") is not None else None,
+            "stakeholder_users": [StakeholderUsersInner.from_dict(_item) for _item in obj["stakeholder_users"]] if obj.get("stakeholder_users") is not None else None,
             "parent": obj.get("parent"),
             "tags": [TagsInner.from_dict(_item) for _item in obj["tags"]] if obj.get("tags") is not None else None,
             "created_by": CreatedBy.from_dict(obj["created_by"]) if obj.get("created_by") is not None else None,
