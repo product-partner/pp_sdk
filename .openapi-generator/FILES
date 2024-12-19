@@ -77,7 +77,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_api_documents_create_request.py
-test/test_document.py
-test/test_stakeholder_users_inner.py
 tox.ini
