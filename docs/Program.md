@@ -8,11 +8,12 @@ Name | Type | Description | Notes
 **id** | **str** |  | [optional] [readonly] 
 **name** | **str** |  | 
 **description** | **str** |  | [optional] 
+**mission** | **str** |  | [optional] 
 **charter** | **str** |  | [optional] 
 **principal_users** | [**List[StakeholderUsersInner]**](StakeholderUsersInner.md) |  | [optional] [readonly] 
 **stakeholder_users** | [**List[StakeholderUsersInner]**](StakeholderUsersInner.md) |  | [optional] [readonly] 
 **parent** | **str** |  | [optional] 
-**tags** | [**List[TagsInner]**](TagsInner.md) |  | [optional] [readonly] 
+**tags** | [**List[TagsInner]**](TagsInner.md) |  | [optional] 
 **created_by** | [**CreatedBy**](CreatedBy.md) |  | [optional] 
 **created_date** | **datetime** |  | [optional] [readonly] 
 **modified_date** | **datetime** |  | [optional] [readonly] 

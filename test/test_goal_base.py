@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.goal_base import GoalBase
+from pp_sdk.models.goal_base import GoalBase
 
 class TestGoalBase(unittest.TestCase):
     """GoalBase unit test stubs"""
@@ -38,13 +38,12 @@ class TestGoalBase(unittest.TestCase):
             return GoalBase(
                 id = '',
                 name = '0',
-                goal_language = '0',
+                goal_language = '',
                 description = ''
             )
         else:
             return GoalBase(
                 name = '0',
-                goal_language = '0',
         )
         """
 

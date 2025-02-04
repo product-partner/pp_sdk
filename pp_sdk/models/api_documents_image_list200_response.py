@@ -18,40 +18,21 @@ import pprint
 import re  # noqa: F401
 import json
 
-from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from pp_sdk.models.document import Document
 from typing import Optional, Set
 from typing_extensions import Self
 
-class ApiStatusCreateRequest(BaseModel):
+class ApiDocumentsImageList200Response(BaseModel):
     """
-    ApiStatusCreateRequest
+    ApiDocumentsImageList200Response
     """ # noqa: E501
-    goal: StrictStr
-    status: StrictStr
-    var_date: Optional[datetime] = Field(default=None, alias="date")
-    status_note: Optional[StrictStr] = None
-    path_to_green: Optional[StrictStr] = None
-    publishing_state: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["goal", "status", "date", "status_note", "path_to_green", "publishing_state"]
-
-    @field_validator('status')
-    def status_validate_enum(cls, value):
-        """Validates the enum"""
-        if value not in set(['RED', 'YELLOW', 'GREEN', 'NOT_STARTED', 'COMPLETED', 'COMPLETED_LATE', 'CANCELLED', 'DEFERRED', 'DELETED']):
-            raise ValueError("must be one of enum values ('RED', 'YELLOW', 'GREEN', 'NOT_STARTED', 'COMPLETED', 'COMPLETED_LATE', 'CANCELLED', 'DEFERRED', 'DELETED')")
-        return value
-
-    @field_validator('publishing_state')
-    def publishing_state_validate_enum(cls, value):
-        """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in set(['PENDING_REVIEW', 'DRAFT', 'REJECTED', 'APPROVED', 'PUBLISHED']):
-            raise ValueError("must be one of enum values ('PENDING_REVIEW', 'DRAFT', 'REJECTED', 'APPROVED', 'PUBLISHED')")
-        return value
+    count: StrictInt
+    next: Optional[StrictStr] = None
+    previous: Optional[StrictStr] = None
+    results: List[Document]
+    __properties: ClassVar[List[str]] = ["count", "next", "previous", "results"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -71,7 +52,7 @@ class ApiStatusCreateRequest(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of ApiStatusCreateRequest from a JSON string"""
+        """Create an instance of ApiDocumentsImageList200Response from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -92,11 +73,28 @@ class ApiStatusCreateRequest(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in results (list)
+        _items = []
+        if self.results:
+            for _item_results in self.results:
+                if _item_results:
+                    _items.append(_item_results.to_dict())
+            _dict['results'] = _items
+        # set to None if next (nullable) is None
+        # and model_fields_set contains the field
+        if self.next is None and "next" in self.model_fields_set:
+            _dict['next'] = None
+
+        # set to None if previous (nullable) is None
+        # and model_fields_set contains the field
+        if self.previous is None and "previous" in self.model_fields_set:
+            _dict['previous'] = None
+
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of ApiStatusCreateRequest from a dict"""
+        """Create an instance of ApiDocumentsImageList200Response from a dict"""
         if obj is None:
             return None
 
@@ -104,12 +102,10 @@ class ApiStatusCreateRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "goal": obj.get("goal"),
-            "status": obj.get("status"),
-            "date": obj.get("date"),
-            "status_note": obj.get("status_note"),
-            "path_to_green": obj.get("path_to_green"),
-            "publishing_state": obj.get("publishing_state")
+            "count": obj.get("count"),
+            "next": obj.get("next"),
+            "previous": obj.get("previous"),
+            "results": [Document.from_dict(_item) for _item in obj["results"]] if obj.get("results") is not None else None
         })
         return _obj
 

@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] [readonly] 
-**prd** | [**PRDReference**](PRDReference.md) |  | [optional] 
+**prd** | [**PRDField**](PRDField.md) |  | [optional] 
 **as_a** | **str** |  | [optional] 
 **i_want_to** | **str** |  | [optional] 
 **so_that** | **str** |  | [optional] 
@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **due_date** | **datetime** |  | [optional] 
 **status** | **str** |  | [optional] 
 **priority** | **str** |  | [optional] 
-**tags** | [**List[TagsInner]**](TagsInner.md) |  | [optional] [readonly] 
+**tags** | [**List[TagsInner]**](TagsInner.md) |  | [optional] 
 **created_by** | [**CreatedBy**](CreatedBy.md) |  | [optional] 
 
 ## Example

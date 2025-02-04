@@ -92,12 +92,10 @@ class PRD(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
             "id",
             "modified_date",
-            "tags",
             "stakeholder_users",
             "programs",
             "created_date",
@@ -141,6 +139,11 @@ class PRD(BaseModel):
         # and model_fields_set contains the field
         if self.body is None and "body" in self.model_fields_set:
             _dict['body'] = None
+
+        # set to None if due_date (nullable) is None
+        # and model_fields_set contains the field
+        if self.due_date is None and "due_date" in self.model_fields_set:
+            _dict['due_date'] = None
 
         return _dict
 

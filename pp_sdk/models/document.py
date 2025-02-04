@@ -34,7 +34,7 @@ class Document(BaseModel):
     Document
     """ # noqa: E501
     id: Optional[StrictStr] = None
-    type: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=255)]] = None
+    type: Optional[StrictStr] = None
     title: Annotated[str, Field(min_length=1, strict=True)]
     body: Optional[Annotated[str, Field(min_length=1, strict=True)]] = None
     created_by: Optional[CreatedBy] = None
@@ -49,7 +49,20 @@ class Document(BaseModel):
     stakeholder_users: Optional[List[StakeholderUsersInner]] = None
     version: Optional[StrictInt] = None
     version_summary: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["id", "type", "title", "body", "created_by", "created_date", "modified_date", "reviewed_date", "document_covering_period_start", "document_covering_period_end", "publishing_state", "programs", "tags", "stakeholder_users", "version", "version_summary"]
+    image_url: Optional[StrictStr] = None
+    original_filename: Optional[Annotated[str, Field(min_length=1, strict=True)]] = None
+    blob_id: Optional[Annotated[str, Field(min_length=1, strict=True)]] = None
+    __properties: ClassVar[List[str]] = ["id", "type", "title", "body", "created_by", "created_date", "modified_date", "reviewed_date", "document_covering_period_start", "document_covering_period_end", "publishing_state", "programs", "tags", "stakeholder_users", "version", "version_summary", "image_url", "original_filename", "blob_id"]
+
+    @field_validator('type')
+    def type_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['PRD', 'USER_FILE', 'IMAGE', 'QBR', 'LIVE_BRIEF', 'ROADMAP_REVIEW', 'NOTES', 'OTHER']):
+            raise ValueError("must be one of enum values ('PRD', 'USER_FILE', 'IMAGE', 'QBR', 'LIVE_BRIEF', 'ROADMAP_REVIEW', 'NOTES', 'OTHER')")
+        return value
 
     @field_validator('publishing_state')
     def publishing_state_validate_enum(cls, value):
@@ -98,15 +111,19 @@ class Document(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
             "id",
             "created_date",
             "modified_date",
             "programs",
-            "tags",
             "stakeholder_users",
             "version",
+            "image_url",
+            "original_filename",
+            "blob_id",
         ])
 
         _dict = self.model_dump(
@@ -148,6 +165,21 @@ class Document(BaseModel):
         if self.body is None and "body" in self.model_fields_set:
             _dict['body'] = None
 
+        # set to None if reviewed_date (nullable) is None
+        # and model_fields_set contains the field
+        if self.reviewed_date is None and "reviewed_date" in self.model_fields_set:
+            _dict['reviewed_date'] = None
+
+        # set to None if document_covering_period_start (nullable) is None
+        # and model_fields_set contains the field
+        if self.document_covering_period_start is None and "document_covering_period_start" in self.model_fields_set:
+            _dict['document_covering_period_start'] = None
+
+        # set to None if document_covering_period_end (nullable) is None
+        # and model_fields_set contains the field
+        if self.document_covering_period_end is None and "document_covering_period_end" in self.model_fields_set:
+            _dict['document_covering_period_end'] = None
+
         # set to None if version (nullable) is None
         # and model_fields_set contains the field
         if self.version is None and "version" in self.model_fields_set:
@@ -180,7 +212,10 @@ class Document(BaseModel):
             "tags": [TagsInner.from_dict(_item) for _item in obj["tags"]] if obj.get("tags") is not None else None,
             "stakeholder_users": [StakeholderUsersInner.from_dict(_item) for _item in obj["stakeholder_users"]] if obj.get("stakeholder_users") is not None else None,
             "version": obj.get("version"),
-            "version_summary": obj.get("version_summary")
+            "version_summary": obj.get("version_summary"),
+            "image_url": obj.get("image_url"),
+            "original_filename": obj.get("original_filename"),
+            "blob_id": obj.get("blob_id")
         })
         return _obj
 

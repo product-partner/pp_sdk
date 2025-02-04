@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.user_story import UserStory
+from pp_sdk.models.user_story import UserStory
 
 class TestUserStory(unittest.TestCase):
     """UserStory unit test stubs"""
@@ -37,7 +37,9 @@ class TestUserStory(unittest.TestCase):
         if include_optional:
             return UserStory(
                 id = '',
-                prd = '',
+                prd = pp_sdk.models.prd_field.PRD Field(
+                    id = '', 
+                    title = '', ),
                 as_a = '',
                 i_want_to = '',
                 so_that = '',
@@ -48,22 +50,18 @@ class TestUserStory(unittest.TestCase):
                 status = 'RED',
                 priority = '',
                 tags = [
-                    openapi_client.models.tag.Tag(
+                    pp_sdk.models.tags_inner.Tags_inner(
                         id = '', 
-                        tag = '0', )
+                        tag = '', )
                     ],
-                created_by = openapi_client.models.user_base.UserBase(
+                created_by = pp_sdk.models.created_by.Created by(
                     id = '', 
-                    email = '0', 
+                    email = '', 
                     first_name = '', 
-                    last_name = '', ),
-                organization = openapi_client.models.organization.Organization(
-                    id = '', 
-                    name = '0', )
+                    last_name = '', )
             )
         else:
             return UserStory(
-                prd = '',
         )
         """
 

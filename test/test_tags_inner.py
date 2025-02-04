@@ -14,9 +14,8 @@
 
 
 import unittest
-import datetime
 
-from pp_sdk.models.tags_inner import TagsInner  # noqa: E501
+from pp_sdk.models.tags_inner import TagsInner
 
 class TestTagsInner(unittest.TestCase):
     """TagsInner unit test stubs"""
@@ -29,12 +28,12 @@ class TestTagsInner(unittest.TestCase):
 
     def make_instance(self, include_optional) -> TagsInner:
         """Test TagsInner
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `TagsInner`
         """
-        model = TagsInner()  # noqa: E501
+        model = TagsInner()
         if include_optional:
             return TagsInner(
                 id = '',

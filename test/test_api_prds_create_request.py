@@ -39,7 +39,7 @@ class TestApiPrdsCreateRequest(unittest.TestCase):
                 title = '',
                 description = '',
                 body = '',
-                status = 'RED',
+                status = 'DRAFT',
                 due_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
                 tags = [
                     ''
@@ -55,7 +55,6 @@ class TestApiPrdsCreateRequest(unittest.TestCase):
             return ApiPrdsCreateRequest(
                 title = '',
                 description = '',
-                body = '',
         )
         """
 

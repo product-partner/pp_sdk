@@ -15,10 +15,10 @@
 
 import unittest
 
-from pp_sdk.models.programs_inner import ProgramsInner
+from pp_sdk.models.prd_field import PRDField
 
-class TestProgramsInner(unittest.TestCase):
-    """ProgramsInner unit test stubs"""
+class TestPRDField(unittest.TestCase):
+    """PRDField unit test stubs"""
 
     def setUp(self):
         pass
@@ -26,26 +26,26 @@ class TestProgramsInner(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> ProgramsInner:
-        """Test ProgramsInner
+    def make_instance(self, include_optional) -> PRDField:
+        """Test PRDField
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `ProgramsInner`
+        # uncomment below to create an instance of `PRDField`
         """
-        model = ProgramsInner()
+        model = PRDField()
         if include_optional:
-            return ProgramsInner(
+            return PRDField(
                 id = '',
-                name = ''
+                title = ''
             )
         else:
-            return ProgramsInner(
+            return PRDField(
         )
         """
 
-    def testProgramsInner(self):
-        """Test ProgramsInner"""
+    def testPRDField(self):
+        """Test PRDField"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

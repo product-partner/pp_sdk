@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**message** | **str** |  | [optional] 
-**filename** | **str** |  | [optional] 
-**doc_id** | **str** |  | [optional] 
+**message** | **str** | Upload status message | [optional] 
+**filename** | **str** | Name of the uploaded file | [optional] 
+**doc_id** | **str** | Document ID of the uploaded file | [optional] 
 
 ## Example
 

@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.status import Status
+from pp_sdk.models.status import Status
 
 class TestStatus(unittest.TestCase):
     """Status unit test stubs"""
@@ -37,40 +37,28 @@ class TestStatus(unittest.TestCase):
         if include_optional:
             return Status(
                 id = '',
-                goal = openapi_client.models.goal_base.GoalBase(
+                goal = '',
+                goal_details = pp_sdk.models.goal_base.GoalBase(
                     id = '', 
                     name = '0', 
-                    goal_language = '0', 
+                    goal_language = '', 
                     description = '', ),
                 status = 'RED',
+                status_display = '0',
                 var_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
                 status_note = '',
                 path_to_green = '',
                 publishing_state = 'PENDING_REVIEW',
-                created_by = openapi_client.models.user.User(
+                created_by = pp_sdk.models.created_by.Created by(
                     id = '', 
-                    email = '0', 
+                    email = '', 
                     first_name = '', 
-                    last_name = '', 
-                    is_active = True, 
-                    is_staff = True, 
-                    date_joined = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                    last_login = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                    organization = openapi_client.models.organization.Organization(
-                        id = '', 
-                        name = '0', ), 
-                    address = openapi_client.models.address.Address(
-                        street_address = '0', 
-                        city = '0', 
-                        state = '0', 
-                        postal_code = '0', 
-                        country = '0', ), 
-                    user_facts = openapi_client.models.user_facts.User facts(), 
-                    walkthrough_status = openapi_client.models.walkthrough_status.Walkthrough status(), ),
+                    last_name = '', ),
                 created_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f')
             )
         else:
             return Status(
+                goal = '',
         )
         """
 

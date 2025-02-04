@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -27,9 +27,9 @@ class ApiChatUploadFile200Response(BaseModel):
     """
     ApiChatUploadFile200Response
     """ # noqa: E501
-    message: Optional[StrictStr] = None
-    filename: Optional[StrictStr] = None
-    doc_id: Optional[StrictStr] = None
+    message: Optional[StrictStr] = Field(default=None, description="Upload status message")
+    filename: Optional[StrictStr] = Field(default=None, description="Name of the uploaded file")
+    doc_id: Optional[StrictStr] = Field(default=None, description="Document ID of the uploaded file")
     __properties: ClassVar[List[str]] = ["message", "filename", "doc_id"]
 
     model_config = ConfigDict(

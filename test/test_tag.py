@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.tag import Tag
+from pp_sdk.models.tag import Tag
 
 class TestTag(unittest.TestCase):
     """Tag unit test stubs"""
@@ -37,7 +37,9 @@ class TestTag(unittest.TestCase):
         if include_optional:
             return Tag(
                 id = '',
-                tag = '0'
+                tag = '0',
+                archived = True,
+                created_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f')
             )
         else:
             return Tag(

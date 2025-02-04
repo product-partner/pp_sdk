@@ -18,40 +18,25 @@ import pprint
 import re  # noqa: F401
 import json
 
-from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class ApiStatusCreateRequest(BaseModel):
+class ApiChatHistory200Response(BaseModel):
     """
-    ApiStatusCreateRequest
+    ApiChatHistory200Response
     """ # noqa: E501
-    goal: StrictStr
-    status: StrictStr
-    var_date: Optional[datetime] = Field(default=None, alias="date")
-    status_note: Optional[StrictStr] = None
-    path_to_green: Optional[StrictStr] = None
-    publishing_state: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["goal", "status", "date", "status_note", "path_to_green", "publishing_state"]
-
-    @field_validator('status')
-    def status_validate_enum(cls, value):
-        """Validates the enum"""
-        if value not in set(['RED', 'YELLOW', 'GREEN', 'NOT_STARTED', 'COMPLETED', 'COMPLETED_LATE', 'CANCELLED', 'DEFERRED', 'DELETED']):
-            raise ValueError("must be one of enum values ('RED', 'YELLOW', 'GREEN', 'NOT_STARTED', 'COMPLETED', 'COMPLETED_LATE', 'CANCELLED', 'DEFERRED', 'DELETED')")
-        return value
-
-    @field_validator('publishing_state')
-    def publishing_state_validate_enum(cls, value):
-        """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in set(['PENDING_REVIEW', 'DRAFT', 'REJECTED', 'APPROVED', 'PUBLISHED']):
-            raise ValueError("must be one of enum values ('PENDING_REVIEW', 'DRAFT', 'REJECTED', 'APPROVED', 'PUBLISHED')")
-        return value
+    chat_history: Optional[List[Dict[str, Any]]] = Field(default=None, description="List of chat history items")
+    has_next: Optional[StrictBool] = None
+    has_previous: Optional[StrictBool] = None
+    first_date: Optional[StrictStr] = None
+    last_date: Optional[StrictStr] = None
+    sort_order: Optional[StrictStr] = None
+    start_index: Optional[StrictInt] = None
+    page: Optional[StrictInt] = None
+    items_per_page: Optional[StrictInt] = None
+    __properties: ClassVar[List[str]] = ["chat_history", "has_next", "has_previous", "first_date", "last_date", "sort_order", "start_index", "page", "items_per_page"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -71,7 +56,7 @@ class ApiStatusCreateRequest(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of ApiStatusCreateRequest from a JSON string"""
+        """Create an instance of ApiChatHistory200Response from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -96,7 +81,7 @@ class ApiStatusCreateRequest(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of ApiStatusCreateRequest from a dict"""
+        """Create an instance of ApiChatHistory200Response from a dict"""
         if obj is None:
             return None
 
@@ -104,12 +89,15 @@ class ApiStatusCreateRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "goal": obj.get("goal"),
-            "status": obj.get("status"),
-            "date": obj.get("date"),
-            "status_note": obj.get("status_note"),
-            "path_to_green": obj.get("path_to_green"),
-            "publishing_state": obj.get("publishing_state")
+            "chat_history": obj.get("chat_history"),
+            "has_next": obj.get("has_next"),
+            "has_previous": obj.get("has_previous"),
+            "first_date": obj.get("first_date"),
+            "last_date": obj.get("last_date"),
+            "sort_order": obj.get("sort_order"),
+            "start_index": obj.get("start_index"),
+            "page": obj.get("page"),
+            "items_per_page": obj.get("items_per_page")
         })
         return _obj
 

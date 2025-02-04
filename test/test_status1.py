@@ -39,7 +39,7 @@ class TestStatus1(unittest.TestCase):
                 id = '',
                 status = '',
                 status_display = '',
-                var_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date()
+                var_date = ''
             )
         else:
             return Status1(

@@ -14,9 +14,8 @@
 
 
 import unittest
-import datetime
 
-from pp_sdk.models.goal_picker import GoalPicker  # noqa: E501
+from pp_sdk.models.goal_picker import GoalPicker
 
 class TestGoalPicker(unittest.TestCase):
     """GoalPicker unit test stubs"""
@@ -29,12 +28,12 @@ class TestGoalPicker(unittest.TestCase):
 
     def make_instance(self, include_optional) -> GoalPicker:
         """Test GoalPicker
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `GoalPicker`
         """
-        model = GoalPicker()  # noqa: E501
+        model = GoalPicker()
         if include_optional:
             return GoalPicker(
                 id = '',

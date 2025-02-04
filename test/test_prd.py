@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.prd import PRD
+from pp_sdk.models.prd import PRD
 
 class TestPRD(unittest.TestCase):
     """PRD unit test stubs"""
@@ -38,42 +38,34 @@ class TestPRD(unittest.TestCase):
             return PRD(
                 id = '',
                 title = '0',
-                programs = [
-                    openapi_client.models.program_base.ProgramBase(
-                        id = '', 
-                        name = '0', )
-                    ],
                 description = '',
                 body = '',
-                created_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
-                modified_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
-                due_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
                 status = 'DRAFT',
+                due_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
+                modified_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
                 tags = [
-                    openapi_client.models.tag.Tag(
+                    pp_sdk.models.tags_inner.Tags_inner(
                         id = '', 
-                        tag = '0', )
+                        tag = '', )
                     ],
-                owner_user = openapi_client.models.user_base.UserBase(
-                    id = '', 
-                    email = '0', 
-                    first_name = '', 
-                    last_name = '', ),
                 stakeholder_users = [
-                    openapi_client.models.user_base.UserBase(
+                    pp_sdk.models.stakeholder_users_inner.Stakeholder_users_inner(
                         id = '', 
-                        email = '0', 
+                        email = '', 
                         first_name = '', 
                         last_name = '', )
                     ],
-                created_by = openapi_client.models.user_base.UserBase(
+                programs = [
+                    pp_sdk.models.programs_inner.Programs_inner(
+                        id = '', 
+                        name = '', )
+                    ],
+                created_by = pp_sdk.models.created_by.Created by(
                     id = '', 
-                    email = '0', 
+                    email = '', 
                     first_name = '', 
                     last_name = '', ),
-                organization = openapi_client.models.organization.Organization(
-                    id = '', 
-                    name = '0', )
+                created_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f')
             )
         else:
             return PRD(

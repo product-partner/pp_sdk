@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **owner_users** | [**List[StakeholderUsersInner]**](StakeholderUsersInner.md) |  | [optional] [readonly] 
 **programs** | [**List[ProgramsInner]**](ProgramsInner.md) |  | [optional] [readonly] 
 **stakeholder_users** | [**List[StakeholderUsersInner]**](StakeholderUsersInner.md) |  | [optional] [readonly] 
-**tags** | [**List[TagsInner]**](TagsInner.md) |  | [optional] [readonly] 
+**tags** | [**List[TagsInner]**](TagsInner.md) |  | [optional] 
 **version** | **int** |  | [optional] 
 **version_summary** | **str** |  | [optional] 
 **created_by** | [**CreatedBy**](CreatedBy.md) |  | [optional] 

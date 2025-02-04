@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**api_chat_upload_file**](ApiApi.md#api_chat_upload_file) | **POST** /api/chat/upload/ | 
 [**api_documents_create**](ApiApi.md#api_documents_create) | **POST** /api/documents/ | 
 [**api_documents_delete**](ApiApi.md#api_documents_delete) | **DELETE** /api/documents/{id}/ | 
+[**api_documents_image_list**](ApiApi.md#api_documents_image_list) | **GET** /api/documents/{id}/image/ | 
 [**api_documents_list**](ApiApi.md#api_documents_list) | **GET** /api/documents/ | 
 [**api_documents_partial_update**](ApiApi.md#api_documents_partial_update) | **PATCH** /api/documents/{id}/ | 
 [**api_documents_read**](ApiApi.md#api_documents_read) | **GET** /api/documents/{id}/ | 
@@ -58,10 +59,16 @@ Method | HTTP request | Description
 [**api_userstories_partial_update**](ApiApi.md#api_userstories_partial_update) | **PATCH** /api/userstories/{userstory_id}/ | 
 [**api_userstories_read**](ApiApi.md#api_userstories_read) | **GET** /api/userstories/{userstory_id}/ | 
 [**api_userstories_update**](ApiApi.md#api_userstories_update) | **PUT** /api/userstories/{userstory_id}/ | 
+[**api_userstory_create**](ApiApi.md#api_userstory_create) | **POST** /api/userstory/ | 
+[**api_userstory_delete**](ApiApi.md#api_userstory_delete) | **DELETE** /api/userstory/{userstory_id}/ | 
+[**api_userstory_list**](ApiApi.md#api_userstory_list) | **GET** /api/userstory/ | 
+[**api_userstory_partial_update**](ApiApi.md#api_userstory_partial_update) | **PATCH** /api/userstory/{userstory_id}/ | 
+[**api_userstory_read**](ApiApi.md#api_userstory_read) | **GET** /api/userstory/{userstory_id}/ | 
+[**api_userstory_update**](ApiApi.md#api_userstory_update) | **PUT** /api/userstory/{userstory_id}/ | 
 
 
 # **api_chat**
-> ApiChat200Response api_chat(page=page, x_user_id=x_user_id, x_caller_id=x_caller_id, x_caller_thread_id=x_caller_thread_id, msg=msg, doc_ids=doc_ids, action=action, stream=stream, response_format=response_format)
+> object api_chat(page=page, x_user_id=x_user_id, x_caller_id=x_caller_id, x_caller_thread_id=x_caller_thread_id, msg=msg, doc_ids=doc_ids, action=action, stream=stream, response_format=response_format)
 
 
 
@@ -72,7 +79,6 @@ Process chat message
 
 ```python
 import pp_sdk
-from pp_sdk.models.api_chat200_response import ApiChat200Response
 from pp_sdk.rest import ApiException
 from pprint import pprint
 
@@ -92,7 +98,7 @@ with pp_sdk.ApiClient(configuration) as api_client:
     x_caller_id = 'x_caller_id_example' # str | Optional ID of the application calling the ID, used in conjunction with the caller_thread_id (optional)
     x_caller_thread_id = 'x_caller_thread_id_example' # str | Caller-side thread ID used in conjunction with the caller_id to identify the conversation that this message is a part of. This will be looked up against the internal thread id in Product Partner. (optional)
     msg = 'msg_example' # str | Chat message (optional)
-    doc_ids = 'doc_ids_example' # str | Document IDs to reference. Content will be extracted and sent to the LLM along with your message. (optional)
+    doc_ids = 'doc_ids_example' # str | Document IDs to reference (optional)
     action = 'action_example' # str | Action (optional)
     stream = True # bool | Stream the response (optional)
     response_format = 'response_format_example' # str | Response format (html or text) (optional)
@@ -117,14 +123,14 @@ Name | Type | Description  | Notes
  **x_caller_id** | **str**| Optional ID of the application calling the ID, used in conjunction with the caller_thread_id | [optional] 
  **x_caller_thread_id** | **str**| Caller-side thread ID used in conjunction with the caller_id to identify the conversation that this message is a part of. This will be looked up against the internal thread id in Product Partner. | [optional] 
  **msg** | **str**| Chat message | [optional] 
- **doc_ids** | **str**| Document IDs to reference. Content will be extracted and sent to the LLM along with your message. | [optional] 
+ **doc_ids** | **str**| Document IDs to reference | [optional] 
  **action** | **str**| Action | [optional] 
  **stream** | **bool**| Stream the response | [optional] 
  **response_format** | **str**| Response format (html or text) | [optional] 
 
 ### Return type
 
-[**ApiChat200Response**](ApiChat200Response.md)
+**object**
 
 ### Authorization
 
@@ -145,7 +151,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **api_chat_history**
-> api_chat_history(page=page, x_user_id=x_user_id, x_caller_id=x_caller_id, x_caller_thread_id=x_caller_thread_id, last_created_date=last_created_date, sort_order=sort_order)
+> ApiChatHistory200Response api_chat_history(page=page, x_user_id=x_user_id, x_caller_id=x_caller_id, x_caller_thread_id=x_caller_thread_id, last_created_date=last_created_date, sort_order=sort_order)
 
 
 
@@ -156,6 +162,7 @@ Get chat history
 
 ```python
 import pp_sdk
+from pp_sdk.models.api_chat_history200_response import ApiChatHistory200Response
 from pp_sdk.rest import ApiException
 from pprint import pprint
 
@@ -178,7 +185,9 @@ with pp_sdk.ApiClient(configuration) as api_client:
     sort_order = 'sort_order_example' # str | Sort order (asc/desc) (optional)
 
     try:
-        api_instance.api_chat_history(page=page, x_user_id=x_user_id, x_caller_id=x_caller_id, x_caller_thread_id=x_caller_thread_id, last_created_date=last_created_date, sort_order=sort_order)
+        api_response = api_instance.api_chat_history(page=page, x_user_id=x_user_id, x_caller_id=x_caller_id, x_caller_thread_id=x_caller_thread_id, last_created_date=last_created_date, sort_order=sort_order)
+        print("The response of ApiApi->api_chat_history:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling ApiApi->api_chat_history: %s\n" % e)
 ```
@@ -199,7 +208,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**ApiChatHistory200Response**](ApiChatHistory200Response.md)
 
 ### Authorization
 
@@ -208,13 +217,13 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Chat history list |  -  |
+**200** | Chat history retrieved successfully |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -426,6 +435,75 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **api_documents_image_list**
+> ApiDocumentsImageList200Response api_documents_image_list(id, page=page)
+
+
+
+Retrieve document image
+
+### Example
+
+
+```python
+import pp_sdk
+from pp_sdk.models.api_documents_image_list200_response import ApiDocumentsImageList200Response
+from pp_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://0.0.0.0:8000
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pp_sdk.Configuration(
+    host = "http://0.0.0.0:8000"
+)
+
+
+# Enter a context with an instance of the API client
+with pp_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pp_sdk.ApiApi(api_client)
+    id = 'id_example' # str | 
+    page = 56 # int | A page number within the paginated result set. (optional)
+
+    try:
+        api_response = api_instance.api_documents_image_list(id, page=page)
+        print("The response of ApiApi->api_documents_image_list:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ApiApi->api_documents_image_list: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**|  | 
+ **page** | **int**| A page number within the paginated result set. | [optional] 
+
+### Return type
+
+[**ApiDocumentsImageList200Response**](ApiDocumentsImageList200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -3844,6 +3922,432 @@ with pp_sdk.ApiClient(configuration) as api_client:
         pprint(api_response)
     except Exception as e:
         print("Exception when calling ApiApi->api_userstories_update: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **userstory_id** | **str**|  | 
+ **data** | [**UserStory**](UserStory.md)|  | 
+ **x_user_id** | **str**| User ID (required when using API key) | [optional] 
+
+### Return type
+
+[**UserStory**](UserStory.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **api_userstory_create**
+> UserStory api_userstory_create(data, x_user_id=x_user_id)
+
+
+
+Create a new user story.
+
+### Example
+
+
+```python
+import pp_sdk
+from pp_sdk.models.api_userstories_create_request import ApiUserstoriesCreateRequest
+from pp_sdk.models.user_story import UserStory
+from pp_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://0.0.0.0:8000
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pp_sdk.Configuration(
+    host = "http://0.0.0.0:8000"
+)
+
+
+# Enter a context with an instance of the API client
+with pp_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pp_sdk.ApiApi(api_client)
+    data = pp_sdk.ApiUserstoriesCreateRequest() # ApiUserstoriesCreateRequest | 
+    x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
+
+    try:
+        api_response = api_instance.api_userstory_create(data, x_user_id=x_user_id)
+        print("The response of ApiApi->api_userstory_create:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ApiApi->api_userstory_create: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **data** | [**ApiUserstoriesCreateRequest**](ApiUserstoriesCreateRequest.md)|  | 
+ **x_user_id** | **str**| User ID (required when using API key) | [optional] 
+
+### Return type
+
+[**UserStory**](UserStory.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **api_userstory_delete**
+> api_userstory_delete(userstory_id, x_user_id=x_user_id)
+
+
+
+Delete a specific user story.
+
+### Example
+
+
+```python
+import pp_sdk
+from pp_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://0.0.0.0:8000
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pp_sdk.Configuration(
+    host = "http://0.0.0.0:8000"
+)
+
+
+# Enter a context with an instance of the API client
+with pp_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pp_sdk.ApiApi(api_client)
+    userstory_id = 'userstory_id_example' # str | 
+    x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
+
+    try:
+        api_instance.api_userstory_delete(userstory_id, x_user_id=x_user_id)
+    except Exception as e:
+        print("Exception when calling ApiApi->api_userstory_delete: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **userstory_id** | **str**|  | 
+ **x_user_id** | **str**| User ID (required when using API key) | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No content |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **api_userstory_list**
+> List[UserStory] api_userstory_list(search=search, status=status, prd=prd, sort=sort, limit=limit, x_user_id=x_user_id, format=format)
+
+
+
+List or Search for User Stories
+
+### Example
+
+
+```python
+import pp_sdk
+from pp_sdk.models.user_story import UserStory
+from pp_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://0.0.0.0:8000
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pp_sdk.Configuration(
+    host = "http://0.0.0.0:8000"
+)
+
+
+# Enter a context with an instance of the API client
+with pp_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pp_sdk.ApiApi(api_client)
+    search = 'search_example' # str | Search term for as_a, i_want_to, so_that, or freetext_override fields (optional)
+    status = 'status_example' # str | Filter by status (optional)
+    prd = 56 # int | Filter by PRD ID (optional)
+    sort = 'sort_example' # str | Sort field (prefix with '-' for descending order) (optional)
+    limit = 56 # int | Limit the number of results (optional)
+    x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
+    format = 'format_example' # str | Response format (json or excel, default is json) (optional)
+
+    try:
+        api_response = api_instance.api_userstory_list(search=search, status=status, prd=prd, sort=sort, limit=limit, x_user_id=x_user_id, format=format)
+        print("The response of ApiApi->api_userstory_list:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ApiApi->api_userstory_list: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **search** | **str**| Search term for as_a, i_want_to, so_that, or freetext_override fields | [optional] 
+ **status** | **str**| Filter by status | [optional] 
+ **prd** | **int**| Filter by PRD ID | [optional] 
+ **sort** | **str**| Sort field (prefix with &#39;-&#39; for descending order) | [optional] 
+ **limit** | **int**| Limit the number of results | [optional] 
+ **x_user_id** | **str**| User ID (required when using API key) | [optional] 
+ **format** | **str**| Response format (json or excel, default is json) | [optional] 
+
+### Return type
+
+[**List[UserStory]**](UserStory.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **api_userstory_partial_update**
+> UserStory api_userstory_partial_update(userstory_id, data, x_user_id=x_user_id)
+
+
+
+Partially update a specific user story.
+
+### Example
+
+
+```python
+import pp_sdk
+from pp_sdk.models.user_story import UserStory
+from pp_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://0.0.0.0:8000
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pp_sdk.Configuration(
+    host = "http://0.0.0.0:8000"
+)
+
+
+# Enter a context with an instance of the API client
+with pp_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pp_sdk.ApiApi(api_client)
+    userstory_id = 'userstory_id_example' # str | 
+    data = pp_sdk.UserStory() # UserStory | 
+    x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
+
+    try:
+        api_response = api_instance.api_userstory_partial_update(userstory_id, data, x_user_id=x_user_id)
+        print("The response of ApiApi->api_userstory_partial_update:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ApiApi->api_userstory_partial_update: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **userstory_id** | **str**|  | 
+ **data** | [**UserStory**](UserStory.md)|  | 
+ **x_user_id** | **str**| User ID (required when using API key) | [optional] 
+
+### Return type
+
+[**UserStory**](UserStory.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **api_userstory_read**
+> UserStory api_userstory_read(userstory_id, x_user_id=x_user_id)
+
+
+
+Get details of a specific user story.
+
+### Example
+
+
+```python
+import pp_sdk
+from pp_sdk.models.user_story import UserStory
+from pp_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://0.0.0.0:8000
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pp_sdk.Configuration(
+    host = "http://0.0.0.0:8000"
+)
+
+
+# Enter a context with an instance of the API client
+with pp_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pp_sdk.ApiApi(api_client)
+    userstory_id = 'userstory_id_example' # str | 
+    x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
+
+    try:
+        api_response = api_instance.api_userstory_read(userstory_id, x_user_id=x_user_id)
+        print("The response of ApiApi->api_userstory_read:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ApiApi->api_userstory_read: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **userstory_id** | **str**|  | 
+ **x_user_id** | **str**| User ID (required when using API key) | [optional] 
+
+### Return type
+
+[**UserStory**](UserStory.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **api_userstory_update**
+> UserStory api_userstory_update(userstory_id, data, x_user_id=x_user_id)
+
+
+
+Update a specific user story.
+
+### Example
+
+
+```python
+import pp_sdk
+from pp_sdk.models.user_story import UserStory
+from pp_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://0.0.0.0:8000
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pp_sdk.Configuration(
+    host = "http://0.0.0.0:8000"
+)
+
+
+# Enter a context with an instance of the API client
+with pp_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pp_sdk.ApiApi(api_client)
+    userstory_id = 'userstory_id_example' # str | 
+    data = pp_sdk.UserStory() # UserStory | 
+    x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
+
+    try:
+        api_response = api_instance.api_userstory_update(userstory_id, data, x_user_id=x_user_id)
+        print("The response of ApiApi->api_userstory_update:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ApiApi->api_userstory_update: %s\n" % e)
 ```
 
 

@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.address import Address
+from pp_sdk.models.address import Address
 
 class TestAddress(unittest.TestCase):
     """Address unit test stubs"""

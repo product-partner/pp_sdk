@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.goal import Goal
+from pp_sdk.models.goal import Goal
 
 class TestGoal(unittest.TestCase):
     """Goal unit test stubs"""
@@ -38,160 +38,53 @@ class TestGoal(unittest.TestCase):
             return Goal(
                 id = '',
                 name = '0',
-                goal_language = '0',
+                goal_language = '',
                 description = '',
                 why_it_matters = '',
                 created_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
                 modified_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
                 original_due_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
                 current_due_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
-                prd = [
-                    openapi_client.models.prd.PRD(
+                owner_users = [
+                    pp_sdk.models.stakeholder_users_inner.Stakeholder_users_inner(
                         id = '', 
-                        title = '0', 
-                        programs = [
-                            openapi_client.models.program_base.ProgramBase(
-                                id = '', 
-                                name = '0', )
-                            ], 
-                        description = '', 
-                        body = '', 
-                        created_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                        modified_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                        due_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                        status = 'DRAFT', 
-                        tags = [
-                            openapi_client.models.tag.Tag(
-                                id = '', 
-                                tag = '0', )
-                            ], 
-                        owner_user = openapi_client.models.user_base.UserBase(
-                            id = '', 
-                            email = '0', 
-                            first_name = '', 
-                            last_name = '', ), 
-                        stakeholder_users = [
-                            openapi_client.models.user_base.UserBase(
-                                id = '', 
-                                email = '0', 
-                                first_name = '', 
-                                last_name = '', )
-                            ], 
-                        created_by = , 
-                        organization = openapi_client.models.organization.Organization(
-                            id = '', 
-                            name = '0', ), )
-                    ],
-                owner_users = '',
-                program = '',
-                program_dependent_goals = [
-                    openapi_client.models.program.Program(
-                        id = '', 
-                        name = '0', 
-                        description = '', 
-                        principal_users = [
-                            openapi_client.models.user.User(
-                                id = '', 
-                                email = '0', 
-                                first_name = '', 
-                                last_name = '', 
-                                is_active = True, 
-                                is_staff = True, 
-                                date_joined = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                                last_login = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                                organization = openapi_client.models.organization.Organization(
-                                    id = '', 
-                                    name = '0', ), 
-                                address = openapi_client.models.address.Address(
-                                    street_address = '0', 
-                                    city = '0', 
-                                    state = '0', 
-                                    postal_code = '0', 
-                                    country = '0', ), 
-                                user_facts = openapi_client.models.user_facts.User facts(), 
-                                walkthrough_status = openapi_client.models.walkthrough_status.Walkthrough status(), )
-                            ], 
-                        stakeholder_users = [
-                            openapi_client.models.user.User(
-                                id = '', 
-                                email = '0', 
-                                first_name = '', 
-                                last_name = '', 
-                                is_active = True, 
-                                is_staff = True, 
-                                date_joined = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                                last_login = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                                user_facts = openapi_client.models.user_facts.User facts(), 
-                                walkthrough_status = openapi_client.models.walkthrough_status.Walkthrough status(), )
-                            ], 
-                        parent = '', 
-                        tags = [
-                            openapi_client.models.tag.Tag(
-                                id = '', 
-                                tag = '0', )
-                            ], 
-                        created_by = , 
-                        created_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                        modified_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                        organization = openapi_client.models.organization.Organization(
-                            id = '', 
-                            name = '0', ), )
-                    ],
-                stakeholders_users = [
-                    openapi_client.models.user.User(
-                        id = '', 
-                        email = '0', 
+                        email = '', 
                         first_name = '', 
-                        last_name = '', 
-                        is_active = True, 
-                        is_staff = True, 
-                        date_joined = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                        last_login = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                        organization = openapi_client.models.organization.Organization(
-                            id = '', 
-                            name = '0', ), 
-                        address = openapi_client.models.address.Address(
-                            street_address = '0', 
-                            city = '0', 
-                            state = '0', 
-                            postal_code = '0', 
-                            country = '0', ), 
-                        user_facts = openapi_client.models.user_facts.User facts(), 
-                        walkthrough_status = openapi_client.models.walkthrough_status.Walkthrough status(), )
+                        last_name = '', )
+                    ],
+                programs = [
+                    pp_sdk.models.programs_inner.Programs_inner(
+                        id = '', 
+                        name = '', )
+                    ],
+                stakeholder_users = [
+                    pp_sdk.models.stakeholder_users_inner.Stakeholder_users_inner(
+                        id = '', 
+                        email = '', 
+                        first_name = '', 
+                        last_name = '', )
                     ],
                 tags = [
-                    openapi_client.models.tag.Tag(
+                    pp_sdk.models.tags_inner.Tags_inner(
                         id = '', 
-                        tag = '0', )
+                        tag = '', )
                     ],
                 version = -2147483648,
                 version_summary = '',
-                created_by = openapi_client.models.user.User(
+                created_by = pp_sdk.models.created_by.Created by(
                     id = '', 
-                    email = '0', 
+                    email = '', 
                     first_name = '', 
-                    last_name = '', 
-                    is_active = True, 
-                    is_staff = True, 
-                    date_joined = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                    last_login = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                    organization = openapi_client.models.organization.Organization(
-                        id = '', 
-                        name = '0', ), 
-                    address = openapi_client.models.address.Address(
-                        street_address = '0', 
-                        city = '0', 
-                        state = '0', 
-                        postal_code = '0', 
-                        country = '0', ), 
-                    user_facts = openapi_client.models.user_facts.User facts(), 
-                    walkthrough_status = openapi_client.models.walkthrough_status.Walkthrough status(), ),
-                organization = ''
+                    last_name = '', ),
+                status = pp_sdk.models.status.Status(
+                    id = '', 
+                    status = '', 
+                    status_display = '', 
+                    date = '', )
             )
         else:
             return Goal(
                 name = '0',
-                goal_language = '0',
         )
         """
 

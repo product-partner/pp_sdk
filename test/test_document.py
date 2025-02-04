@@ -37,7 +37,7 @@ class TestDocument(unittest.TestCase):
         if include_optional:
             return Document(
                 id = '',
-                type = '0',
+                type = 'PRD',
                 title = '0',
                 body = '0',
                 created_by = pp_sdk.models.created_by.Created by(
@@ -69,7 +69,10 @@ class TestDocument(unittest.TestCase):
                         last_name = '', )
                     ],
                 version = 56,
-                version_summary = ''
+                version_summary = '',
+                image_url = '',
+                original_filename = '0',
+                blob_id = '0'
             )
         else:
             return Document(

@@ -15,7 +15,7 @@
 """  # noqa: E501
 
 
-__version__ = "0.2.27"
+__version__ = "0.2.39"
 
 # import apis into sdk package
 from pp_sdk.api.api_api import ApiApi
@@ -34,9 +34,10 @@ from pp_sdk.exceptions import ApiException
 
 # import models into sdk package
 from pp_sdk.models.address import Address
-from pp_sdk.models.api_chat200_response import ApiChat200Response
+from pp_sdk.models.api_chat_history200_response import ApiChatHistory200Response
 from pp_sdk.models.api_chat_upload_file200_response import ApiChatUploadFile200Response
 from pp_sdk.models.api_documents_create_request import ApiDocumentsCreateRequest
+from pp_sdk.models.api_documents_image_list200_response import ApiDocumentsImageList200Response
 from pp_sdk.models.api_prds_create_request import ApiPrdsCreateRequest
 from pp_sdk.models.api_prds_partial_update_request import ApiPrdsPartialUpdateRequest
 from pp_sdk.models.api_status_create_request import ApiStatusCreateRequest
@@ -48,7 +49,7 @@ from pp_sdk.models.goal_base import GoalBase
 from pp_sdk.models.goal_picker import GoalPicker
 from pp_sdk.models.organization import Organization
 from pp_sdk.models.prd import PRD
-from pp_sdk.models.prd_reference import PRDReference
+from pp_sdk.models.prd_field import PRDField
 from pp_sdk.models.prd_template import PRDTemplate
 from pp_sdk.models.program import Program
 from pp_sdk.models.program_picker import ProgramPicker

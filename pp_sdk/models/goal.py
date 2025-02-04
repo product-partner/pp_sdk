@@ -89,7 +89,6 @@ class Goal(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
             "id",
@@ -98,7 +97,6 @@ class Goal(BaseModel):
             "owner_users",
             "programs",
             "stakeholder_users",
-            "tags",
         ])
 
         _dict = self.model_dump(
@@ -154,6 +152,26 @@ class Goal(BaseModel):
         # and model_fields_set contains the field
         if self.why_it_matters is None and "why_it_matters" in self.model_fields_set:
             _dict['why_it_matters'] = None
+
+        # set to None if created_date (nullable) is None
+        # and model_fields_set contains the field
+        if self.created_date is None and "created_date" in self.model_fields_set:
+            _dict['created_date'] = None
+
+        # set to None if modified_date (nullable) is None
+        # and model_fields_set contains the field
+        if self.modified_date is None and "modified_date" in self.model_fields_set:
+            _dict['modified_date'] = None
+
+        # set to None if original_due_date (nullable) is None
+        # and model_fields_set contains the field
+        if self.original_due_date is None and "original_due_date" in self.model_fields_set:
+            _dict['original_due_date'] = None
+
+        # set to None if current_due_date (nullable) is None
+        # and model_fields_set contains the field
+        if self.current_due_date is None and "current_due_date" in self.model_fields_set:
+            _dict['current_due_date'] = None
 
         # set to None if version (nullable) is None
         # and model_fields_set contains the field

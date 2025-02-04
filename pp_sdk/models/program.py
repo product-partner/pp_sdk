@@ -35,6 +35,7 @@ class Program(BaseModel):
     id: Optional[StrictStr] = None
     name: Annotated[str, Field(min_length=1, strict=True, max_length=255)]
     description: Optional[StrictStr] = None
+    mission: Optional[StrictStr] = None
     charter: Optional[StrictStr] = None
     principal_users: Optional[List[StakeholderUsersInner]] = None
     stakeholder_users: Optional[List[StakeholderUsersInner]] = None
@@ -43,7 +44,7 @@ class Program(BaseModel):
     created_by: Optional[CreatedBy] = None
     created_date: Optional[datetime] = None
     modified_date: Optional[datetime] = None
-    __properties: ClassVar[List[str]] = ["id", "name", "description", "charter", "principal_users", "stakeholder_users", "parent", "tags", "created_by", "created_date", "modified_date"]
+    __properties: ClassVar[List[str]] = ["id", "name", "description", "mission", "charter", "principal_users", "stakeholder_users", "parent", "tags", "created_by", "created_date", "modified_date"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -80,13 +81,11 @@ class Program(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
             "id",
             "principal_users",
             "stakeholder_users",
-            "tags",
             "created_date",
             "modified_date",
         ])
@@ -125,6 +124,11 @@ class Program(BaseModel):
         if self.description is None and "description" in self.model_fields_set:
             _dict['description'] = None
 
+        # set to None if mission (nullable) is None
+        # and model_fields_set contains the field
+        if self.mission is None and "mission" in self.model_fields_set:
+            _dict['mission'] = None
+
         # set to None if charter (nullable) is None
         # and model_fields_set contains the field
         if self.charter is None and "charter" in self.model_fields_set:
@@ -160,6 +164,7 @@ class Program(BaseModel):
             "id": obj.get("id"),
             "name": obj.get("name"),
             "description": obj.get("description"),
+            "mission": obj.get("mission"),
             "charter": obj.get("charter"),
             "principal_users": [StakeholderUsersInner.from_dict(_item) for _item in obj["principal_users"]] if obj.get("principal_users") is not None else None,
             "stakeholder_users": [StakeholderUsersInner.from_dict(_item) for _item in obj["stakeholder_users"]] if obj.get("stakeholder_users") is not None else None,

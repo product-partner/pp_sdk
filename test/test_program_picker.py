@@ -14,9 +14,8 @@
 
 
 import unittest
-import datetime
 
-from pp_sdk.models.program_picker import ProgramPicker  # noqa: E501
+from pp_sdk.models.program_picker import ProgramPicker
 
 class TestProgramPicker(unittest.TestCase):
     """ProgramPicker unit test stubs"""
@@ -29,12 +28,12 @@ class TestProgramPicker(unittest.TestCase):
 
     def make_instance(self, include_optional) -> ProgramPicker:
         """Test ProgramPicker
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `ProgramPicker`
         """
-        model = ProgramPicker()  # noqa: E501
+        model = ProgramPicker()
         if include_optional:
             return ProgramPicker(
                 id = '',

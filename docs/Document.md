@@ -17,10 +17,13 @@ Name | Type | Description | Notes
 **document_covering_period_end** | **datetime** |  | [optional] 
 **publishing_state** | **str** |  | [optional] 
 **programs** | [**List[ProgramsInner]**](ProgramsInner.md) |  | [optional] [readonly] 
-**tags** | [**List[TagsInner]**](TagsInner.md) |  | [optional] [readonly] 
+**tags** | [**List[TagsInner]**](TagsInner.md) |  | [optional] 
 **stakeholder_users** | [**List[StakeholderUsersInner]**](StakeholderUsersInner.md) |  | [optional] [readonly] 
 **version** | **int** |  | [optional] [readonly] 
 **version_summary** | **str** |  | [optional] 
+**image_url** | **str** |  | [optional] [readonly] 
+**original_filename** | **str** |  | [optional] [readonly] 
+**blob_id** | **str** |  | [optional] [readonly] 
 
 ## Example
 

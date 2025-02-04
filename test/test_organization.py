@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.organization import Organization
+from pp_sdk.models.organization import Organization
 
 class TestOrganization(unittest.TestCase):
     """Organization unit test stubs"""

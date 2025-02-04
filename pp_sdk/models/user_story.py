@@ -23,7 +23,7 @@ from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from pp_sdk.models.created_by import CreatedBy
-from pp_sdk.models.prd_reference import PRDReference
+from pp_sdk.models.prd_field import PRDField
 from pp_sdk.models.tags_inner import TagsInner
 from typing import Optional, Set
 from typing_extensions import Self
@@ -33,7 +33,7 @@ class UserStory(BaseModel):
     UserStory
     """ # noqa: E501
     id: Optional[StrictStr] = None
-    prd: Optional[PRDReference] = None
+    prd: Optional[PRDField] = None
     as_a: Optional[Annotated[str, Field(strict=True, max_length=255)]] = None
     i_want_to: Optional[Annotated[str, Field(strict=True, max_length=255)]] = None
     so_that: Optional[Annotated[str, Field(strict=True, max_length=255)]] = None
@@ -53,8 +53,8 @@ class UserStory(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['RED', 'YELLOW', 'GREEN', 'NOT_STARTED', 'COMPLETED', 'COMPLETED_LATE', 'CANCELLED', 'DEFERRED']):
-            raise ValueError("must be one of enum values ('RED', 'YELLOW', 'GREEN', 'NOT_STARTED', 'COMPLETED', 'COMPLETED_LATE', 'CANCELLED', 'DEFERRED')")
+        if value not in set(['RED', 'YELLOW', 'GREEN', 'NOT_STARTED', 'COMPLETED', 'COMPLETED_LATE', 'CANCELLED', 'DEFERRED', 'DELETED']):
+            raise ValueError("must be one of enum values ('RED', 'YELLOW', 'GREEN', 'NOT_STARTED', 'COMPLETED', 'COMPLETED_LATE', 'CANCELLED', 'DEFERRED', 'DELETED')")
         return value
 
     model_config = ConfigDict(
@@ -90,13 +90,11 @@ class UserStory(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
             "id",
             "created_date",
             "modified_date",
-            "tags",
         ])
 
         _dict = self.model_dump(
@@ -160,7 +158,7 @@ class UserStory(BaseModel):
 
         _obj = cls.model_validate({
             "id": obj.get("id"),
-            "prd": PRDReference.from_dict(obj["prd"]) if obj.get("prd") is not None else None,
+            "prd": PRDField.from_dict(obj["prd"]) if obj.get("prd") is not None else None,
             "as_a": obj.get("as_a"),
             "i_want_to": obj.get("i_want_to"),
             "so_that": obj.get("so_that"),

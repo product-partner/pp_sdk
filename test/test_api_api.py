@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.api.api_api import ApiApi
+from pp_sdk.api.api_api import ApiApi
 
 
 class TestApiApi(unittest.TestCase):
@@ -25,6 +25,66 @@ class TestApiApi(unittest.TestCase):
         self.api = ApiApi()
 
     def tearDown(self) -> None:
+        pass
+
+    def test_api_chat(self) -> None:
+        """Test case for api_chat
+
+        """
+        pass
+
+    def test_api_chat_history(self) -> None:
+        """Test case for api_chat_history
+
+        """
+        pass
+
+    def test_api_chat_upload_file(self) -> None:
+        """Test case for api_chat_upload_file
+
+        """
+        pass
+
+    def test_api_documents_create(self) -> None:
+        """Test case for api_documents_create
+
+        """
+        pass
+
+    def test_api_documents_delete(self) -> None:
+        """Test case for api_documents_delete
+
+        """
+        pass
+
+    def test_api_documents_image_list(self) -> None:
+        """Test case for api_documents_image_list
+
+        """
+        pass
+
+    def test_api_documents_list(self) -> None:
+        """Test case for api_documents_list
+
+        """
+        pass
+
+    def test_api_documents_partial_update(self) -> None:
+        """Test case for api_documents_partial_update
+
+        """
+        pass
+
+    def test_api_documents_read(self) -> None:
+        """Test case for api_documents_read
+
+        """
+        pass
+
+    def test_api_documents_update(self) -> None:
+        """Test case for api_documents_update
+
+        """
         pass
 
     def test_api_goals_create(self) -> None:
@@ -47,6 +107,12 @@ class TestApiApi(unittest.TestCase):
 
     def test_api_goals_partial_update(self) -> None:
         """Test case for api_goals_partial_update
+
+        """
+        pass
+
+    def test_api_goals_picker_list(self) -> None:
+        """Test case for api_goals_picker_list
 
         """
         pass
@@ -99,6 +165,48 @@ class TestApiApi(unittest.TestCase):
         """
         pass
 
+    def test_api_programs_create(self) -> None:
+        """Test case for api_programs_create
+
+        """
+        pass
+
+    def test_api_programs_delete(self) -> None:
+        """Test case for api_programs_delete
+
+        """
+        pass
+
+    def test_api_programs_list(self) -> None:
+        """Test case for api_programs_list
+
+        """
+        pass
+
+    def test_api_programs_partial_update(self) -> None:
+        """Test case for api_programs_partial_update
+
+        """
+        pass
+
+    def test_api_programs_picker_list(self) -> None:
+        """Test case for api_programs_picker_list
+
+        """
+        pass
+
+    def test_api_programs_read(self) -> None:
+        """Test case for api_programs_read
+
+        """
+        pass
+
+    def test_api_programs_update(self) -> None:
+        """Test case for api_programs_update
+
+        """
+        pass
+
     def test_api_status_create(self) -> None:
         """Test case for api_status_create
 
@@ -135,8 +243,68 @@ class TestApiApi(unittest.TestCase):
         """
         pass
 
-    def test_api_user_create_create(self) -> None:
-        """Test case for api_user_create_create
+    def test_api_tags_create(self) -> None:
+        """Test case for api_tags_create
+
+        """
+        pass
+
+    def test_api_tags_delete(self) -> None:
+        """Test case for api_tags_delete
+
+        """
+        pass
+
+    def test_api_tags_list(self) -> None:
+        """Test case for api_tags_list
+
+        """
+        pass
+
+    def test_api_tags_partial_update(self) -> None:
+        """Test case for api_tags_partial_update
+
+        """
+        pass
+
+    def test_api_tags_read(self) -> None:
+        """Test case for api_tags_read
+
+        """
+        pass
+
+    def test_api_tags_update(self) -> None:
+        """Test case for api_tags_update
+
+        """
+        pass
+
+    def test_api_user_create(self) -> None:
+        """Test case for api_user_create
+
+        """
+        pass
+
+    def test_api_user_delete(self) -> None:
+        """Test case for api_user_delete
+
+        """
+        pass
+
+    def test_api_user_list(self) -> None:
+        """Test case for api_user_list
+
+        """
+        pass
+
+    def test_api_user_partial_update(self) -> None:
+        """Test case for api_user_partial_update
+
+        """
+        pass
+
+    def test_api_user_picker_list(self) -> None:
+        """Test case for api_user_picker_list
 
         """
         pass
@@ -147,20 +315,80 @@ class TestApiApi(unittest.TestCase):
         """
         pass
 
-    def test_api_user_search_list(self) -> None:
-        """Test case for api_user_search_list
+    def test_api_user_update(self) -> None:
+        """Test case for api_user_update
 
         """
         pass
 
-    def test_api_user_update_partial_update(self) -> None:
-        """Test case for api_user_update_partial_update
+    def test_api_userstories_create(self) -> None:
+        """Test case for api_userstories_create
 
         """
         pass
 
-    def test_api_user_update_update(self) -> None:
-        """Test case for api_user_update_update
+    def test_api_userstories_delete(self) -> None:
+        """Test case for api_userstories_delete
+
+        """
+        pass
+
+    def test_api_userstories_list(self) -> None:
+        """Test case for api_userstories_list
+
+        """
+        pass
+
+    def test_api_userstories_partial_update(self) -> None:
+        """Test case for api_userstories_partial_update
+
+        """
+        pass
+
+    def test_api_userstories_read(self) -> None:
+        """Test case for api_userstories_read
+
+        """
+        pass
+
+    def test_api_userstories_update(self) -> None:
+        """Test case for api_userstories_update
+
+        """
+        pass
+
+    def test_api_userstory_create(self) -> None:
+        """Test case for api_userstory_create
+
+        """
+        pass
+
+    def test_api_userstory_delete(self) -> None:
+        """Test case for api_userstory_delete
+
+        """
+        pass
+
+    def test_api_userstory_list(self) -> None:
+        """Test case for api_userstory_list
+
+        """
+        pass
+
+    def test_api_userstory_partial_update(self) -> None:
+        """Test case for api_userstory_partial_update
+
+        """
+        pass
+
+    def test_api_userstory_read(self) -> None:
+        """Test case for api_userstory_read
+
+        """
+        pass
+
+    def test_api_userstory_update(self) -> None:
+        """Test case for api_userstory_update
 
         """
         pass

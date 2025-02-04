@@ -18,40 +18,18 @@ import pprint
 import re  # noqa: F401
 import json
 
-from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class ApiStatusCreateRequest(BaseModel):
+class PRDField(BaseModel):
     """
-    ApiStatusCreateRequest
+    PRDField
     """ # noqa: E501
-    goal: StrictStr
-    status: StrictStr
-    var_date: Optional[datetime] = Field(default=None, alias="date")
-    status_note: Optional[StrictStr] = None
-    path_to_green: Optional[StrictStr] = None
-    publishing_state: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["goal", "status", "date", "status_note", "path_to_green", "publishing_state"]
-
-    @field_validator('status')
-    def status_validate_enum(cls, value):
-        """Validates the enum"""
-        if value not in set(['RED', 'YELLOW', 'GREEN', 'NOT_STARTED', 'COMPLETED', 'COMPLETED_LATE', 'CANCELLED', 'DEFERRED', 'DELETED']):
-            raise ValueError("must be one of enum values ('RED', 'YELLOW', 'GREEN', 'NOT_STARTED', 'COMPLETED', 'COMPLETED_LATE', 'CANCELLED', 'DEFERRED', 'DELETED')")
-        return value
-
-    @field_validator('publishing_state')
-    def publishing_state_validate_enum(cls, value):
-        """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in set(['PENDING_REVIEW', 'DRAFT', 'REJECTED', 'APPROVED', 'PUBLISHED']):
-            raise ValueError("must be one of enum values ('PENDING_REVIEW', 'DRAFT', 'REJECTED', 'APPROVED', 'PUBLISHED')")
-        return value
+    id: Optional[StrictStr] = None
+    title: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["id", "title"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -71,7 +49,7 @@ class ApiStatusCreateRequest(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of ApiStatusCreateRequest from a JSON string"""
+        """Create an instance of PRDField from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -96,7 +74,7 @@ class ApiStatusCreateRequest(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of ApiStatusCreateRequest from a dict"""
+        """Create an instance of PRDField from a dict"""
         if obj is None:
             return None
 
@@ -104,12 +82,8 @@ class ApiStatusCreateRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "goal": obj.get("goal"),
-            "status": obj.get("status"),
-            "date": obj.get("date"),
-            "status_note": obj.get("status_note"),
-            "path_to_green": obj.get("path_to_green"),
-            "publishing_state": obj.get("publishing_state")
+            "id": obj.get("id"),
+            "title": obj.get("title")
         })
         return _obj
 

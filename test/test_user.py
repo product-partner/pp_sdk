@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.user import User
+from pp_sdk.models.user import User
 
 class TestUser(unittest.TestCase):
     """User unit test stubs"""
@@ -44,17 +44,17 @@ class TestUser(unittest.TestCase):
                 is_staff = True,
                 date_joined = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
                 last_login = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
-                organization = openapi_client.models.organization.Organization(
+                organization = pp_sdk.models.organization.Organization(
                     id = '', 
                     name = '0', ),
-                address = openapi_client.models.address.Address(
+                address = pp_sdk.models.address.Address(
                     street_address = '0', 
                     city = '0', 
                     state = '0', 
                     postal_code = '0', 
                     country = '0', ),
-                user_facts = openapi_client.models.user_facts.User facts(),
-                walkthrough_status = openapi_client.models.walkthrough_status.Walkthrough status()
+                user_facts = pp_sdk.models.user_facts.User facts(),
+                walkthrough_status = pp_sdk.models.walkthrough_status.Walkthrough status()
             )
         else:
             return User(

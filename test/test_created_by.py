@@ -14,9 +14,8 @@
 
 
 import unittest
-import datetime
 
-from pp_sdk.models.created_by import CreatedBy  # noqa: E501
+from pp_sdk.models.created_by import CreatedBy
 
 class TestCreatedBy(unittest.TestCase):
     """CreatedBy unit test stubs"""
@@ -29,12 +28,12 @@ class TestCreatedBy(unittest.TestCase):
 
     def make_instance(self, include_optional) -> CreatedBy:
         """Test CreatedBy
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `CreatedBy`
         """
-        model = CreatedBy()  # noqa: E501
+        model = CreatedBy()
         if include_optional:
             return CreatedBy(
                 id = '',

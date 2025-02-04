@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.api.prd_api import PrdApi
+from pp_sdk.api.prd_api import PrdApi
 
 
 class TestPrdApi(unittest.TestCase):
@@ -27,8 +27,38 @@ class TestPrdApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
-    def test_prd_list_list(self) -> None:
-        """Test case for prd_list_list
+    def test_prd_template_create(self) -> None:
+        """Test case for prd_template_create
+
+        """
+        pass
+
+    def test_prd_template_delete(self) -> None:
+        """Test case for prd_template_delete
+
+        """
+        pass
+
+    def test_prd_template_list(self) -> None:
+        """Test case for prd_template_list
+
+        """
+        pass
+
+    def test_prd_template_partial_update(self) -> None:
+        """Test case for prd_template_partial_update
+
+        """
+        pass
+
+    def test_prd_template_read(self) -> None:
+        """Test case for prd_template_read
+
+        """
+        pass
+
+    def test_prd_template_update(self) -> None:
+        """Test case for prd_template_update
 
         """
         pass

@@ -14,9 +14,8 @@
 
 
 import unittest
-import datetime
 
-from pp_sdk.models.prd_template import PRDTemplate  # noqa: E501
+from pp_sdk.models.prd_template import PRDTemplate
 
 class TestPRDTemplate(unittest.TestCase):
     """PRDTemplate unit test stubs"""
@@ -29,19 +28,23 @@ class TestPRDTemplate(unittest.TestCase):
 
     def make_instance(self, include_optional) -> PRDTemplate:
         """Test PRDTemplate
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `PRDTemplate`
         """
-        model = PRDTemplate()  # noqa: E501
+        model = PRDTemplate()
         if include_optional:
             return PRDTemplate(
                 id = '',
                 organization = '',
                 title = '0',
                 template = '0',
-                created_by = '',
+                created_by = pp_sdk.models.created_by.Created by(
+                    id = '', 
+                    email = '', 
+                    first_name = '', 
+                    last_name = '', ),
                 created_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
                 modified_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f')
             )
