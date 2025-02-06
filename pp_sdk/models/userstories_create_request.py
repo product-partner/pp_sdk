@@ -18,35 +18,35 @@ import pprint
 import re  # noqa: F401
 import json
 
-from datetime import date
+from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class ApiDocumentsCreateRequest(BaseModel):
+class UserstoriesCreateRequest(BaseModel):
     """
-    ApiDocumentsCreateRequest
+    UserstoriesCreateRequest
     """ # noqa: E501
-    title: StrictStr
-    body: Optional[StrictStr] = None
-    type: StrictStr
-    publishing_state: Optional[StrictStr] = None
-    document_covering_period_start: Optional[date] = None
-    document_covering_period_end: Optional[date] = None
-    tags: Optional[List[StrictStr]] = Field(default=None, description="List of tags")
-    stakeholder_users: Optional[List[StrictStr]] = Field(default=None, description="List of stakeholder user emails or UUIDs")
-    program: Optional[StrictStr] = Field(default=None, description="Program UUID")
-    __properties: ClassVar[List[str]] = ["title", "body", "type", "publishing_state", "document_covering_period_start", "document_covering_period_end", "tags", "stakeholder_users", "program"]
+    prd: StrictStr = Field(description="PRD UUID")
+    as_a: Optional[StrictStr] = None
+    i_want_to: Optional[StrictStr] = None
+    so_that: Optional[StrictStr] = None
+    freetext_override: Optional[StrictStr] = None
+    due_date: Optional[datetime] = None
+    status: Optional[StrictStr] = None
+    priority: Optional[StrictStr] = None
+    tags: Optional[List[StrictStr]] = Field(default=None, description="List of tag UUIDs")
+    __properties: ClassVar[List[str]] = ["prd", "as_a", "i_want_to", "so_that", "freetext_override", "due_date", "status", "priority", "tags"]
 
-    @field_validator('publishing_state')
-    def publishing_state_validate_enum(cls, value):
+    @field_validator('status')
+    def status_validate_enum(cls, value):
         """Validates the enum"""
         if value is None:
             return value
 
-        if value not in set(['PENDING_REVIEW', 'DRAFT', 'REJECTED', 'APPROVED', 'PUBLISHED']):
-            raise ValueError("must be one of enum values ('PENDING_REVIEW', 'DRAFT', 'REJECTED', 'APPROVED', 'PUBLISHED')")
+        if value not in set(['RED', 'YELLOW', 'GREEN', 'NOT_STARTED', 'COMPLETED', 'COMPLETED_LATE', 'CANCELLED', 'DEFERRED', 'DELETED']):
+            raise ValueError("must be one of enum values ('RED', 'YELLOW', 'GREEN', 'NOT_STARTED', 'COMPLETED', 'COMPLETED_LATE', 'CANCELLED', 'DEFERRED', 'DELETED')")
         return value
 
     model_config = ConfigDict(
@@ -67,7 +67,7 @@ class ApiDocumentsCreateRequest(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of ApiDocumentsCreateRequest from a JSON string"""
+        """Create an instance of UserstoriesCreateRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -92,7 +92,7 @@ class ApiDocumentsCreateRequest(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of ApiDocumentsCreateRequest from a dict"""
+        """Create an instance of UserstoriesCreateRequest from a dict"""
         if obj is None:
             return None
 
@@ -100,15 +100,15 @@ class ApiDocumentsCreateRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "title": obj.get("title"),
-            "body": obj.get("body"),
-            "type": obj.get("type"),
-            "publishing_state": obj.get("publishing_state"),
-            "document_covering_period_start": obj.get("document_covering_period_start"),
-            "document_covering_period_end": obj.get("document_covering_period_end"),
-            "tags": obj.get("tags"),
-            "stakeholder_users": obj.get("stakeholder_users"),
-            "program": obj.get("program")
+            "prd": obj.get("prd"),
+            "as_a": obj.get("as_a"),
+            "i_want_to": obj.get("i_want_to"),
+            "so_that": obj.get("so_that"),
+            "freetext_override": obj.get("freetext_override"),
+            "due_date": obj.get("due_date"),
+            "status": obj.get("status"),
+            "priority": obj.get("priority"),
+            "tags": obj.get("tags")
         })
         return _obj
 

@@ -1,31 +1,33 @@
-# pp_sdk.ProgramsApi
+# pp_sdk.DocumentsApi
 
 All URIs are relative to *http://0.0.0.0:8000/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**programs_create**](ProgramsApi.md#programs_create) | **POST** /programs/ | 
-[**programs_delete**](ProgramsApi.md#programs_delete) | **DELETE** /programs/{program_id}/ | 
-[**programs_list**](ProgramsApi.md#programs_list) | **GET** /programs/ | 
-[**programs_partial_update**](ProgramsApi.md#programs_partial_update) | **PATCH** /programs/{program_id}/ | 
-[**programs_picker_list**](ProgramsApi.md#programs_picker_list) | **GET** /programs/picker/ | 
-[**programs_read**](ProgramsApi.md#programs_read) | **GET** /programs/{program_id}/ | 
-[**programs_update**](ProgramsApi.md#programs_update) | **PUT** /programs/{program_id}/ | 
+[**documents_create**](DocumentsApi.md#documents_create) | **POST** /documents/ | 
+[**documents_delete**](DocumentsApi.md#documents_delete) | **DELETE** /documents/{id}/ | 
+[**documents_image_list**](DocumentsApi.md#documents_image_list) | **GET** /documents/{id}/image/ | 
+[**documents_list**](DocumentsApi.md#documents_list) | **GET** /documents/ | 
+[**documents_partial_update**](DocumentsApi.md#documents_partial_update) | **PATCH** /documents/{id}/ | 
+[**documents_picker_list**](DocumentsApi.md#documents_picker_list) | **GET** /documents/picker/ | 
+[**documents_read**](DocumentsApi.md#documents_read) | **GET** /documents/{id}/ | 
+[**documents_update**](DocumentsApi.md#documents_update) | **PUT** /documents/{id}/ | 
 
 
-# **programs_create**
-> Program programs_create(data, x_user_id=x_user_id)
+# **documents_create**
+> Document documents_create(data, x_user_id=x_user_id)
 
 
 
-Create a new program for the authenticated user.
+Create a new Document for the authenticated user's organization.
 
 ### Example
 
 
 ```python
 import pp_sdk
-from pp_sdk.models.program import Program
+from pp_sdk.models.document import Document
+from pp_sdk.models.documents_create_request import DocumentsCreateRequest
 from pp_sdk.rest import ApiException
 from pprint import pprint
 
@@ -39,16 +41,16 @@ configuration = pp_sdk.Configuration(
 # Enter a context with an instance of the API client
 with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = pp_sdk.ProgramsApi(api_client)
-    data = pp_sdk.Program() # Program | 
+    api_instance = pp_sdk.DocumentsApi(api_client)
+    data = pp_sdk.DocumentsCreateRequest() # DocumentsCreateRequest | 
     x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
     try:
-        api_response = api_instance.programs_create(data, x_user_id=x_user_id)
-        print("The response of ProgramsApi->programs_create:\n")
+        api_response = api_instance.documents_create(data, x_user_id=x_user_id)
+        print("The response of DocumentsApi->documents_create:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling ProgramsApi->programs_create: %s\n" % e)
+        print("Exception when calling DocumentsApi->documents_create: %s\n" % e)
 ```
 
 
@@ -58,12 +60,12 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **data** | [**Program**](Program.md)|  | 
+ **data** | [**DocumentsCreateRequest**](DocumentsCreateRequest.md)|  | 
  **x_user_id** | **str**| User ID (required when using API key) | [optional] 
 
 ### Return type
 
-[**Program**](Program.md)
+[**Document**](Document.md)
 
 ### Authorization
 
@@ -82,12 +84,12 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **programs_delete**
-> programs_delete(program_id, x_user_id=x_user_id)
+# **documents_delete**
+> documents_delete(id, x_user_id=x_user_id)
 
 
 
-Delete a specific program.
+Delete a specific document.
 
 ### Example
 
@@ -107,14 +109,14 @@ configuration = pp_sdk.Configuration(
 # Enter a context with an instance of the API client
 with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = pp_sdk.ProgramsApi(api_client)
-    program_id = 'program_id_example' # str | 
+    api_instance = pp_sdk.DocumentsApi(api_client)
+    id = 'id_example' # str | 
     x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
     try:
-        api_instance.programs_delete(program_id, x_user_id=x_user_id)
+        api_instance.documents_delete(id, x_user_id=x_user_id)
     except Exception as e:
-        print("Exception when calling ProgramsApi->programs_delete: %s\n" % e)
+        print("Exception when calling DocumentsApi->documents_delete: %s\n" % e)
 ```
 
 
@@ -124,7 +126,7 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **program_id** | **str**|  | 
+ **id** | **str**|  | 
  **x_user_id** | **str**| User ID (required when using API key) | [optional] 
 
 ### Return type
@@ -148,19 +150,18 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **programs_list**
-> List[Program] programs_list(page=page, x_user_id=x_user_id, search=search, tags=tags, sort=sort)
+# **documents_image_list**
+> documents_image_list(id, page=page, x_user_id=x_user_id)
 
 
 
-Get a list of all programs for the authenticated user.
+Retrieve document image
 
 ### Example
 
 
 ```python
 import pp_sdk
-from pp_sdk.models.program import Program
 from pp_sdk.rest import ApiException
 from pprint import pprint
 
@@ -174,19 +175,15 @@ configuration = pp_sdk.Configuration(
 # Enter a context with an instance of the API client
 with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = pp_sdk.ProgramsApi(api_client)
+    api_instance = pp_sdk.DocumentsApi(api_client)
+    id = 'id_example' # str | 
     page = 56 # int | A page number within the paginated result set. (optional)
     x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
-    search = 'search_example' # str | Search in name and description (optional)
-    tags = 'tags_example' # str | Filter by tags (comma-separated) (optional)
-    sort = 'sort_example' # str | Sort by field (prefix with '-' for descending) (optional)
 
     try:
-        api_response = api_instance.programs_list(page=page, x_user_id=x_user_id, search=search, tags=tags, sort=sort)
-        print("The response of ProgramsApi->programs_list:\n")
-        pprint(api_response)
+        api_instance.documents_image_list(id, page=page, x_user_id=x_user_id)
     except Exception as e:
-        print("Exception when calling ProgramsApi->programs_list: %s\n" % e)
+        print("Exception when calling DocumentsApi->documents_image_list: %s\n" % e)
 ```
 
 
@@ -196,15 +193,99 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **id** | **str**|  | 
  **page** | **int**| A page number within the paginated result set. | [optional] 
  **x_user_id** | **str**| User ID (required when using API key) | [optional] 
- **search** | **str**| Search in name and description | [optional] 
- **tags** | **str**| Filter by tags (comma-separated) | [optional] 
- **sort** | **str**| Sort by field (prefix with &#39;-&#39; for descending) | [optional] 
 
 ### Return type
 
-[**List[Program]**](Program.md)
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Returns the image file with appropriate content-type |  -  |
+**400** | Error when document is not an image or has invalid data |  -  |
+**404** | Image not found |  -  |
+**500** | Server error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **documents_list**
+> List[Document] documents_list(x_user_id=x_user_id, stakeholders=stakeholders, publishing_state=publishing_state, search=search, sort=sort, limit=limit, tags=tags, created_by=created_by, type=type)
+
+
+
+Get a list of all Documents for the authenticated user's organization.
+
+### Example
+
+
+```python
+import pp_sdk
+from pp_sdk.models.document import Document
+from pp_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://0.0.0.0:8000/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pp_sdk.Configuration(
+    host = "http://0.0.0.0:8000/api"
+)
+
+
+# Enter a context with an instance of the API client
+with pp_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pp_sdk.DocumentsApi(api_client)
+    x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
+    stakeholders = 'stakeholders_example' # str | Comma-separated list of stakeholder user IDs to filter by (optional)
+    publishing_state = 'publishing_state_example' # str | Publishing state to filter by (optional)
+    search = 'search_example' # str | Search term to filter Documents by title or body (optional)
+    sort = 'sort_example' # str | Field to sort by (e.g., 'title', '-created_date') (optional)
+    limit = 56 # int | Limit the number of Documents returned (optional)
+    tags = 'tags_example' # str | Comma-separated list of tag names to filter Documents by (optional)
+    created_by = 'created_by_example' # str | Optional UUID of the user who created the Document to filter Documents by (optional)
+    type = 'type_example' # str | Type of document to filter by (optional)
+
+    try:
+        api_response = api_instance.documents_list(x_user_id=x_user_id, stakeholders=stakeholders, publishing_state=publishing_state, search=search, sort=sort, limit=limit, tags=tags, created_by=created_by, type=type)
+        print("The response of DocumentsApi->documents_list:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DocumentsApi->documents_list: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **x_user_id** | **str**| User ID (required when using API key) | [optional] 
+ **stakeholders** | **str**| Comma-separated list of stakeholder user IDs to filter by | [optional] 
+ **publishing_state** | **str**| Publishing state to filter by | [optional] 
+ **search** | **str**| Search term to filter Documents by title or body | [optional] 
+ **sort** | **str**| Field to sort by (e.g., &#39;title&#39;, &#39;-created_date&#39;) | [optional] 
+ **limit** | **int**| Limit the number of Documents returned | [optional] 
+ **tags** | **str**| Comma-separated list of tag names to filter Documents by | [optional] 
+ **created_by** | **str**| Optional UUID of the user who created the Document to filter Documents by | [optional] 
+ **type** | **str**| Type of document to filter by | [optional] 
+
+### Return type
+
+[**List[Document]**](Document.md)
 
 ### Authorization
 
@@ -223,19 +304,19 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **programs_partial_update**
-> Program programs_partial_update(program_id, data, x_user_id=x_user_id)
+# **documents_partial_update**
+> Document documents_partial_update(id, data, x_user_id=x_user_id)
 
 
 
-Partially update a specific program.
+Partially update a specific document.
 
 ### Example
 
 
 ```python
 import pp_sdk
-from pp_sdk.models.program import Program
+from pp_sdk.models.document import Document
 from pp_sdk.rest import ApiException
 from pprint import pprint
 
@@ -249,17 +330,17 @@ configuration = pp_sdk.Configuration(
 # Enter a context with an instance of the API client
 with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = pp_sdk.ProgramsApi(api_client)
-    program_id = 'program_id_example' # str | 
-    data = pp_sdk.Program() # Program | 
+    api_instance = pp_sdk.DocumentsApi(api_client)
+    id = 'id_example' # str | 
+    data = pp_sdk.Document() # Document | 
     x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
     try:
-        api_response = api_instance.programs_partial_update(program_id, data, x_user_id=x_user_id)
-        print("The response of ProgramsApi->programs_partial_update:\n")
+        api_response = api_instance.documents_partial_update(id, data, x_user_id=x_user_id)
+        print("The response of DocumentsApi->documents_partial_update:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling ProgramsApi->programs_partial_update: %s\n" % e)
+        print("Exception when calling DocumentsApi->documents_partial_update: %s\n" % e)
 ```
 
 
@@ -269,13 +350,13 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **program_id** | **str**|  | 
- **data** | [**Program**](Program.md)|  | 
+ **id** | **str**|  | 
+ **data** | [**Document**](Document.md)|  | 
  **x_user_id** | **str**| User ID (required when using API key) | [optional] 
 
 ### Return type
 
-[**Program**](Program.md)
+[**Document**](Document.md)
 
 ### Authorization
 
@@ -294,8 +375,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **programs_picker_list**
-> List[ProgramPicker] programs_picker_list()
+# **documents_picker_list**
+> List[DocumentPicker] documents_picker_list()
 
 
 
@@ -304,7 +385,7 @@ No authorization required
 
 ```python
 import pp_sdk
-from pp_sdk.models.program_picker import ProgramPicker
+from pp_sdk.models.document_picker import DocumentPicker
 from pp_sdk.rest import ApiException
 from pprint import pprint
 
@@ -318,14 +399,14 @@ configuration = pp_sdk.Configuration(
 # Enter a context with an instance of the API client
 with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = pp_sdk.ProgramsApi(api_client)
+    api_instance = pp_sdk.DocumentsApi(api_client)
 
     try:
-        api_response = api_instance.programs_picker_list()
-        print("The response of ProgramsApi->programs_picker_list:\n")
+        api_response = api_instance.documents_picker_list()
+        print("The response of DocumentsApi->documents_picker_list:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling ProgramsApi->programs_picker_list: %s\n" % e)
+        print("Exception when calling DocumentsApi->documents_picker_list: %s\n" % e)
 ```
 
 
@@ -336,7 +417,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**List[ProgramPicker]**](ProgramPicker.md)
+[**List[DocumentPicker]**](DocumentPicker.md)
 
 ### Authorization
 
@@ -355,19 +436,19 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **programs_read**
-> Program programs_read(program_id, x_user_id=x_user_id)
+# **documents_read**
+> Document documents_read(id, x_user_id=x_user_id, output_format=output_format)
 
 
 
-Get details of a specific program.
+Get details of a specific document.
 
 ### Example
 
 
 ```python
 import pp_sdk
-from pp_sdk.models.program import Program
+from pp_sdk.models.document import Document
 from pp_sdk.rest import ApiException
 from pprint import pprint
 
@@ -381,16 +462,17 @@ configuration = pp_sdk.Configuration(
 # Enter a context with an instance of the API client
 with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = pp_sdk.ProgramsApi(api_client)
-    program_id = 'program_id_example' # str | 
+    api_instance = pp_sdk.DocumentsApi(api_client)
+    id = 'id_example' # str | 
     x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
+    output_format = 'output_format_example' # str | Response format (json, text, html, docx, pdf) (optional)
 
     try:
-        api_response = api_instance.programs_read(program_id, x_user_id=x_user_id)
-        print("The response of ProgramsApi->programs_read:\n")
+        api_response = api_instance.documents_read(id, x_user_id=x_user_id, output_format=output_format)
+        print("The response of DocumentsApi->documents_read:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling ProgramsApi->programs_read: %s\n" % e)
+        print("Exception when calling DocumentsApi->documents_read: %s\n" % e)
 ```
 
 
@@ -400,12 +482,13 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **program_id** | **str**|  | 
+ **id** | **str**|  | 
  **x_user_id** | **str**| User ID (required when using API key) | [optional] 
+ **output_format** | **str**| Response format (json, text, html, docx, pdf) | [optional] 
 
 ### Return type
 
-[**Program**](Program.md)
+[**Document**](Document.md)
 
 ### Authorization
 
@@ -424,19 +507,19 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **programs_update**
-> Program programs_update(program_id, data, x_user_id=x_user_id)
+# **documents_update**
+> Document documents_update(id, data, x_user_id=x_user_id)
 
 
 
-Update a specific program.
+Update a specific document.
 
 ### Example
 
 
 ```python
 import pp_sdk
-from pp_sdk.models.program import Program
+from pp_sdk.models.document import Document
 from pp_sdk.rest import ApiException
 from pprint import pprint
 
@@ -450,17 +533,17 @@ configuration = pp_sdk.Configuration(
 # Enter a context with an instance of the API client
 with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = pp_sdk.ProgramsApi(api_client)
-    program_id = 'program_id_example' # str | 
-    data = pp_sdk.Program() # Program | 
+    api_instance = pp_sdk.DocumentsApi(api_client)
+    id = 'id_example' # str | 
+    data = pp_sdk.Document() # Document | 
     x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
     try:
-        api_response = api_instance.programs_update(program_id, data, x_user_id=x_user_id)
-        print("The response of ProgramsApi->programs_update:\n")
+        api_response = api_instance.documents_update(id, data, x_user_id=x_user_id)
+        print("The response of DocumentsApi->documents_update:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling ProgramsApi->programs_update: %s\n" % e)
+        print("Exception when calling DocumentsApi->documents_update: %s\n" % e)
 ```
 
 
@@ -470,13 +553,13 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **program_id** | **str**|  | 
- **data** | [**Program**](Program.md)|  | 
+ **id** | **str**|  | 
+ **data** | [**Document**](Document.md)|  | 
  **x_user_id** | **str**| User ID (required when using API key) | [optional] 
 
 ### Return type
 
-[**Program**](Program.md)
+[**Document**](Document.md)
 
 ### Authorization
 

@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **goal_language** | **str** |  | [optional] 
 **description** | **str** |  | [optional] 
 **why_it_matters** | **str** |  | [optional] 
+**prd** | **str** |  | [optional] 
 **created_date** | **datetime** |  | [optional] [readonly] 
 **modified_date** | **datetime** |  | [optional] [readonly] 
 **original_due_date** | **datetime** |  | [optional] 

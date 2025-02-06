@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.api.userstory_api import UserstoryApi
+from pp_sdk.api.userstory_api import UserstoryApi
 
 
 class TestUserstoryApi(unittest.TestCase):
@@ -27,8 +27,38 @@ class TestUserstoryApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
-    def test_userstory_search_list(self) -> None:
-        """Test case for userstory_search_list
+    def test_userstory_create(self) -> None:
+        """Test case for userstory_create
+
+        """
+        pass
+
+    def test_userstory_delete(self) -> None:
+        """Test case for userstory_delete
+
+        """
+        pass
+
+    def test_userstory_list(self) -> None:
+        """Test case for userstory_list
+
+        """
+        pass
+
+    def test_userstory_partial_update(self) -> None:
+        """Test case for userstory_partial_update
+
+        """
+        pass
+
+    def test_userstory_read(self) -> None:
+        """Test case for userstory_read
+
+        """
+        pass
+
+    def test_userstory_update(self) -> None:
+        """Test case for userstory_update
 
         """
         pass

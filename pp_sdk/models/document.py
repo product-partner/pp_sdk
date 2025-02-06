@@ -36,7 +36,7 @@ class Document(BaseModel):
     id: Optional[StrictStr] = None
     type: Optional[StrictStr] = None
     title: Annotated[str, Field(min_length=1, strict=True)]
-    body: Optional[Annotated[str, Field(min_length=1, strict=True)]] = None
+    body: Optional[StrictStr] = None
     created_by: Optional[CreatedBy] = None
     created_date: Optional[datetime] = None
     modified_date: Optional[datetime] = None
@@ -112,7 +112,6 @@ class Document(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
             "id",
@@ -122,7 +121,6 @@ class Document(BaseModel):
             "stakeholder_users",
             "version",
             "image_url",
-            "original_filename",
             "blob_id",
         ])
 
@@ -160,11 +158,6 @@ class Document(BaseModel):
         if self.type is None and "type" in self.model_fields_set:
             _dict['type'] = None
 
-        # set to None if body (nullable) is None
-        # and model_fields_set contains the field
-        if self.body is None and "body" in self.model_fields_set:
-            _dict['body'] = None
-
         # set to None if reviewed_date (nullable) is None
         # and model_fields_set contains the field
         if self.reviewed_date is None and "reviewed_date" in self.model_fields_set:
@@ -184,6 +177,11 @@ class Document(BaseModel):
         # and model_fields_set contains the field
         if self.version is None and "version" in self.model_fields_set:
             _dict['version'] = None
+
+        # set to None if original_filename (nullable) is None
+        # and model_fields_set contains the field
+        if self.original_filename is None and "original_filename" in self.model_fields_set:
+            _dict['original_filename'] = None
 
         return _dict
 

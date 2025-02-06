@@ -1,4 +1,4 @@
-# ApiDocumentsCreateRequest
+# DocumentsCreateRequest
 
 
 ## Properties
@@ -18,19 +18,19 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from pp_sdk.models.api_documents_create_request import ApiDocumentsCreateRequest
+from pp_sdk.models.documents_create_request import DocumentsCreateRequest
 
 # TODO update the JSON string below
 json = "{}"
-# create an instance of ApiDocumentsCreateRequest from a JSON string
-api_documents_create_request_instance = ApiDocumentsCreateRequest.from_json(json)
+# create an instance of DocumentsCreateRequest from a JSON string
+documents_create_request_instance = DocumentsCreateRequest.from_json(json)
 # print the JSON string representation of the object
-print(ApiDocumentsCreateRequest.to_json())
+print(DocumentsCreateRequest.to_json())
 
 # convert the object into a dict
-api_documents_create_request_dict = api_documents_create_request_instance.to_dict()
-# create an instance of ApiDocumentsCreateRequest from a dict
-api_documents_create_request_from_dict = ApiDocumentsCreateRequest.from_dict(api_documents_create_request_dict)
+documents_create_request_dict = documents_create_request_instance.to_dict()
+# create an instance of DocumentsCreateRequest from a dict
+documents_create_request_from_dict = DocumentsCreateRequest.from_dict(documents_create_request_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

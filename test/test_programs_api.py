@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.api.programs_api import ProgramsApi
+from pp_sdk.api.programs_api import ProgramsApi
 
 
 class TestProgramsApi(unittest.TestCase):
@@ -27,20 +27,44 @@ class TestProgramsApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
+    def test_programs_create(self) -> None:
+        """Test case for programs_create
+
+        """
+        pass
+
+    def test_programs_delete(self) -> None:
+        """Test case for programs_delete
+
+        """
+        pass
+
     def test_programs_list(self) -> None:
         """Test case for programs_list
 
         """
         pass
 
-    def test_programs_list_list(self) -> None:
-        """Test case for programs_list_list
+    def test_programs_partial_update(self) -> None:
+        """Test case for programs_partial_update
 
         """
         pass
 
-    def test_programs_search_list(self) -> None:
-        """Test case for programs_search_list
+    def test_programs_picker_list(self) -> None:
+        """Test case for programs_picker_list
+
+        """
+        pass
+
+    def test_programs_read(self) -> None:
+        """Test case for programs_read
+
+        """
+        pass
+
+    def test_programs_update(self) -> None:
+        """Test case for programs_update
 
         """
         pass

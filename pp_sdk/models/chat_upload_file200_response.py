@@ -18,36 +18,19 @@ import pprint
 import re  # noqa: F401
 import json
 
-from datetime import date
-from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class ApiDocumentsCreateRequest(BaseModel):
+class ChatUploadFile200Response(BaseModel):
     """
-    ApiDocumentsCreateRequest
+    ChatUploadFile200Response
     """ # noqa: E501
-    title: StrictStr
-    body: Optional[StrictStr] = None
-    type: StrictStr
-    publishing_state: Optional[StrictStr] = None
-    document_covering_period_start: Optional[date] = None
-    document_covering_period_end: Optional[date] = None
-    tags: Optional[List[StrictStr]] = Field(default=None, description="List of tags")
-    stakeholder_users: Optional[List[StrictStr]] = Field(default=None, description="List of stakeholder user emails or UUIDs")
-    program: Optional[StrictStr] = Field(default=None, description="Program UUID")
-    __properties: ClassVar[List[str]] = ["title", "body", "type", "publishing_state", "document_covering_period_start", "document_covering_period_end", "tags", "stakeholder_users", "program"]
-
-    @field_validator('publishing_state')
-    def publishing_state_validate_enum(cls, value):
-        """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in set(['PENDING_REVIEW', 'DRAFT', 'REJECTED', 'APPROVED', 'PUBLISHED']):
-            raise ValueError("must be one of enum values ('PENDING_REVIEW', 'DRAFT', 'REJECTED', 'APPROVED', 'PUBLISHED')")
-        return value
+    message: Optional[StrictStr] = Field(default=None, description="Upload status message")
+    filename: Optional[StrictStr] = Field(default=None, description="Name of the uploaded file")
+    doc_id: Optional[StrictStr] = Field(default=None, description="Document ID of the uploaded file")
+    __properties: ClassVar[List[str]] = ["message", "filename", "doc_id"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -67,7 +50,7 @@ class ApiDocumentsCreateRequest(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of ApiDocumentsCreateRequest from a JSON string"""
+        """Create an instance of ChatUploadFile200Response from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -92,7 +75,7 @@ class ApiDocumentsCreateRequest(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of ApiDocumentsCreateRequest from a dict"""
+        """Create an instance of ChatUploadFile200Response from a dict"""
         if obj is None:
             return None
 
@@ -100,15 +83,9 @@ class ApiDocumentsCreateRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "title": obj.get("title"),
-            "body": obj.get("body"),
-            "type": obj.get("type"),
-            "publishing_state": obj.get("publishing_state"),
-            "document_covering_period_start": obj.get("document_covering_period_start"),
-            "document_covering_period_end": obj.get("document_covering_period_end"),
-            "tags": obj.get("tags"),
-            "stakeholder_users": obj.get("stakeholder_users"),
-            "program": obj.get("program")
+            "message": obj.get("message"),
+            "filename": obj.get("filename"),
+            "doc_id": obj.get("doc_id")
         })
         return _obj
 

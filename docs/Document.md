@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 **version** | **int** |  | [optional] [readonly] 
 **version_summary** | **str** |  | [optional] 
 **image_url** | **str** |  | [optional] [readonly] 
-**original_filename** | **str** |  | [optional] [readonly] 
+**original_filename** | **str** |  | [optional] 
 **blob_id** | **str** |  | [optional] [readonly] 
 
 ## Example

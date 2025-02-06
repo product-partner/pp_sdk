@@ -1,31 +1,31 @@
-# pp_sdk.UserstoryApi
+# pp_sdk.UserApi
 
 All URIs are relative to *http://0.0.0.0:8000/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**userstory_create**](UserstoryApi.md#userstory_create) | **POST** /userstory/ | 
-[**userstory_delete**](UserstoryApi.md#userstory_delete) | **DELETE** /userstory/{userstory_id}/ | 
-[**userstory_list**](UserstoryApi.md#userstory_list) | **GET** /userstory/ | 
-[**userstory_partial_update**](UserstoryApi.md#userstory_partial_update) | **PATCH** /userstory/{userstory_id}/ | 
-[**userstory_read**](UserstoryApi.md#userstory_read) | **GET** /userstory/{userstory_id}/ | 
-[**userstory_update**](UserstoryApi.md#userstory_update) | **PUT** /userstory/{userstory_id}/ | 
+[**user_create**](UserApi.md#user_create) | **POST** /user/ | 
+[**user_delete**](UserApi.md#user_delete) | **DELETE** /user/{id}/ | 
+[**user_list**](UserApi.md#user_list) | **GET** /user/ | 
+[**user_partial_update**](UserApi.md#user_partial_update) | **PATCH** /user/{id}/ | 
+[**user_picker_list**](UserApi.md#user_picker_list) | **GET** /user/picker/ | 
+[**user_read**](UserApi.md#user_read) | **GET** /user/{id}/ | 
+[**user_update**](UserApi.md#user_update) | **PUT** /user/{id}/ | 
 
 
-# **userstory_create**
-> UserStory userstory_create(data, x_user_id=x_user_id)
+# **user_create**
+> User user_create(data, x_user_id=x_user_id)
 
 
 
-Create a new user story.
+Create a new user for the authenticated user's organization.
 
 ### Example
 
 
 ```python
 import pp_sdk
-from pp_sdk.models.user_story import UserStory
-from pp_sdk.models.userstories_create_request import UserstoriesCreateRequest
+from pp_sdk.models.user import User
 from pp_sdk.rest import ApiException
 from pprint import pprint
 
@@ -39,16 +39,16 @@ configuration = pp_sdk.Configuration(
 # Enter a context with an instance of the API client
 with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = pp_sdk.UserstoryApi(api_client)
-    data = pp_sdk.UserstoriesCreateRequest() # UserstoriesCreateRequest | 
+    api_instance = pp_sdk.UserApi(api_client)
+    data = pp_sdk.User() # User | 
     x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
     try:
-        api_response = api_instance.userstory_create(data, x_user_id=x_user_id)
-        print("The response of UserstoryApi->userstory_create:\n")
+        api_response = api_instance.user_create(data, x_user_id=x_user_id)
+        print("The response of UserApi->user_create:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling UserstoryApi->userstory_create: %s\n" % e)
+        print("Exception when calling UserApi->user_create: %s\n" % e)
 ```
 
 
@@ -58,12 +58,12 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **data** | [**UserstoriesCreateRequest**](UserstoriesCreateRequest.md)|  | 
+ **data** | [**User**](User.md)|  | 
  **x_user_id** | **str**| User ID (required when using API key) | [optional] 
 
 ### Return type
 
-[**UserStory**](UserStory.md)
+[**User**](User.md)
 
 ### Authorization
 
@@ -82,12 +82,10 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **userstory_delete**
-> userstory_delete(userstory_id, x_user_id=x_user_id)
+# **user_delete**
+> user_delete(id)
 
 
-
-Delete a specific user story.
 
 ### Example
 
@@ -107,14 +105,13 @@ configuration = pp_sdk.Configuration(
 # Enter a context with an instance of the API client
 with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = pp_sdk.UserstoryApi(api_client)
-    userstory_id = 'userstory_id_example' # str | 
-    x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
+    api_instance = pp_sdk.UserApi(api_client)
+    id = 'id_example' # str | 
 
     try:
-        api_instance.userstory_delete(userstory_id, x_user_id=x_user_id)
+        api_instance.user_delete(id)
     except Exception as e:
-        print("Exception when calling UserstoryApi->userstory_delete: %s\n" % e)
+        print("Exception when calling UserApi->user_delete: %s\n" % e)
 ```
 
 
@@ -124,8 +121,7 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userstory_id** | **str**|  | 
- **x_user_id** | **str**| User ID (required when using API key) | [optional] 
+ **id** | **str**|  | 
 
 ### Return type
 
@@ -144,23 +140,23 @@ No authorization required
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | No content |  -  |
+**204** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **userstory_list**
-> List[UserStory] userstory_list(search=search, status=status, prd=prd, sort=sort, limit=limit, x_user_id=x_user_id, format=format)
+# **user_list**
+> List[User] user_list(page=page, search=search, domain=domain, limit=limit, sort=sort)
 
 
 
-List or Search for User Stories
+Retrieve one or more users
 
 ### Example
 
 
 ```python
 import pp_sdk
-from pp_sdk.models.user_story import UserStory
+from pp_sdk.models.user import User
 from pp_sdk.rest import ApiException
 from pprint import pprint
 
@@ -174,21 +170,19 @@ configuration = pp_sdk.Configuration(
 # Enter a context with an instance of the API client
 with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = pp_sdk.UserstoryApi(api_client)
-    search = 'search_example' # str | Search term for as_a, i_want_to, so_that, or freetext_override fields (optional)
-    status = 'status_example' # str | Filter by status (optional)
-    prd = 56 # int | Filter by PRD ID (optional)
-    sort = 'sort_example' # str | Sort field (prefix with '-' for descending order) (optional)
-    limit = 56 # int | Limit the number of results (optional)
-    x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
-    format = 'format_example' # str | Response format (json or excel, default is json) (optional)
+    api_instance = pp_sdk.UserApi(api_client)
+    page = 56 # int | A page number within the paginated result set. (optional)
+    search = 'search_example' # str | Search term for filtering users by email, last name, or first name (optional)
+    domain = 'domain_example' # str | Search term for filtering users by the domain of the organzation (optional)
+    limit = 56 # int | Maximum number of results to return (optional)
+    sort = 'sort_example' # str | Field to sort the results by (optional)
 
     try:
-        api_response = api_instance.userstory_list(search=search, status=status, prd=prd, sort=sort, limit=limit, x_user_id=x_user_id, format=format)
-        print("The response of UserstoryApi->userstory_list:\n")
+        api_response = api_instance.user_list(page=page, search=search, domain=domain, limit=limit, sort=sort)
+        print("The response of UserApi->user_list:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling UserstoryApi->userstory_list: %s\n" % e)
+        print("Exception when calling UserApi->user_list: %s\n" % e)
 ```
 
 
@@ -198,17 +192,15 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **search** | **str**| Search term for as_a, i_want_to, so_that, or freetext_override fields | [optional] 
- **status** | **str**| Filter by status | [optional] 
- **prd** | **int**| Filter by PRD ID | [optional] 
- **sort** | **str**| Sort field (prefix with &#39;-&#39; for descending order) | [optional] 
- **limit** | **int**| Limit the number of results | [optional] 
- **x_user_id** | **str**| User ID (required when using API key) | [optional] 
- **format** | **str**| Response format (json or excel, default is json) | [optional] 
+ **page** | **int**| A page number within the paginated result set. | [optional] 
+ **search** | **str**| Search term for filtering users by email, last name, or first name | [optional] 
+ **domain** | **str**| Search term for filtering users by the domain of the organzation | [optional] 
+ **limit** | **int**| Maximum number of results to return | [optional] 
+ **sort** | **str**| Field to sort the results by | [optional] 
 
 ### Return type
 
-[**List[UserStory]**](UserStory.md)
+[**List[User]**](User.md)
 
 ### Authorization
 
@@ -224,22 +216,21 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** |  |  -  |
+**404** | User not found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **userstory_partial_update**
-> UserStory userstory_partial_update(userstory_id, data, x_user_id=x_user_id)
+# **user_partial_update**
+> User user_partial_update(id, data)
 
 
-
-Partially update a specific user story.
 
 ### Example
 
 
 ```python
 import pp_sdk
-from pp_sdk.models.user_story import UserStory
+from pp_sdk.models.user import User
 from pp_sdk.rest import ApiException
 from pprint import pprint
 
@@ -253,17 +244,16 @@ configuration = pp_sdk.Configuration(
 # Enter a context with an instance of the API client
 with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = pp_sdk.UserstoryApi(api_client)
-    userstory_id = 'userstory_id_example' # str | 
-    data = pp_sdk.UserStory() # UserStory | 
-    x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
+    api_instance = pp_sdk.UserApi(api_client)
+    id = 'id_example' # str | 
+    data = pp_sdk.User() # User | 
 
     try:
-        api_response = api_instance.userstory_partial_update(userstory_id, data, x_user_id=x_user_id)
-        print("The response of UserstoryApi->userstory_partial_update:\n")
+        api_response = api_instance.user_partial_update(id, data)
+        print("The response of UserApi->user_partial_update:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling UserstoryApi->userstory_partial_update: %s\n" % e)
+        print("Exception when calling UserApi->user_partial_update: %s\n" % e)
 ```
 
 
@@ -273,13 +263,12 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userstory_id** | **str**|  | 
- **data** | [**UserStory**](UserStory.md)|  | 
- **x_user_id** | **str**| User ID (required when using API key) | [optional] 
+ **id** | **str**|  | 
+ **data** | [**User**](User.md)|  | 
 
 ### Return type
 
-[**UserStory**](UserStory.md)
+[**User**](User.md)
 
 ### Authorization
 
@@ -298,19 +287,19 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **userstory_read**
-> UserStory userstory_read(userstory_id, x_user_id=x_user_id)
+# **user_picker_list**
+> List[User] user_picker_list(search=search, sort=sort, limit=limit)
 
 
 
-Get details of a specific user story.
+Retrieve list of users matching none or all of search parameters.
 
 ### Example
 
 
 ```python
 import pp_sdk
-from pp_sdk.models.user_story import UserStory
+from pp_sdk.models.user import User
 from pp_sdk.rest import ApiException
 from pprint import pprint
 
@@ -324,16 +313,17 @@ configuration = pp_sdk.Configuration(
 # Enter a context with an instance of the API client
 with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = pp_sdk.UserstoryApi(api_client)
-    userstory_id = 'userstory_id_example' # str | 
-    x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
+    api_instance = pp_sdk.UserApi(api_client)
+    search = 'search_example' # str | Search term for filtering users by email, last name, or first name (optional)
+    sort = 'sort_example' # str | Field to sort the results by (optional)
+    limit = 56 # int | Maximum number of results to return (optional)
 
     try:
-        api_response = api_instance.userstory_read(userstory_id, x_user_id=x_user_id)
-        print("The response of UserstoryApi->userstory_read:\n")
+        api_response = api_instance.user_picker_list(search=search, sort=sort, limit=limit)
+        print("The response of UserApi->user_picker_list:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling UserstoryApi->userstory_read: %s\n" % e)
+        print("Exception when calling UserApi->user_picker_list: %s\n" % e)
 ```
 
 
@@ -343,12 +333,83 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userstory_id** | **str**|  | 
+ **search** | **str**| Search term for filtering users by email, last name, or first name | [optional] 
+ **sort** | **str**| Field to sort the results by | [optional] 
+ **limit** | **int**| Maximum number of results to return | [optional] 
+
+### Return type
+
+[**List[User]**](User.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+**404** | User not found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **user_read**
+> List[User] user_read(id, x_user_id=x_user_id)
+
+
+
+Get a list of all PRDs for the authenticated user's organization.
+
+### Example
+
+
+```python
+import pp_sdk
+from pp_sdk.models.user import User
+from pp_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://0.0.0.0:8000/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pp_sdk.Configuration(
+    host = "http://0.0.0.0:8000/api"
+)
+
+
+# Enter a context with an instance of the API client
+with pp_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pp_sdk.UserApi(api_client)
+    id = 'id_example' # str | 
+    x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
+
+    try:
+        api_response = api_instance.user_read(id, x_user_id=x_user_id)
+        print("The response of UserApi->user_read:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling UserApi->user_read: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**|  | 
  **x_user_id** | **str**| User ID (required when using API key) | [optional] 
 
 ### Return type
 
-[**UserStory**](UserStory.md)
+[**List[User]**](User.md)
 
 ### Authorization
 
@@ -367,19 +428,19 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **userstory_update**
-> UserStory userstory_update(userstory_id, data, x_user_id=x_user_id)
+# **user_update**
+> User user_update(id, data, x_user_id=x_user_id)
 
 
 
-Update a specific user story.
+Update a specific user's details
 
 ### Example
 
 
 ```python
 import pp_sdk
-from pp_sdk.models.user_story import UserStory
+from pp_sdk.models.user import User
 from pp_sdk.rest import ApiException
 from pprint import pprint
 
@@ -393,17 +454,17 @@ configuration = pp_sdk.Configuration(
 # Enter a context with an instance of the API client
 with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = pp_sdk.UserstoryApi(api_client)
-    userstory_id = 'userstory_id_example' # str | 
-    data = pp_sdk.UserStory() # UserStory | 
+    api_instance = pp_sdk.UserApi(api_client)
+    id = 'id_example' # str | UUID of the user to update
+    data = pp_sdk.User() # User | 
     x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
     try:
-        api_response = api_instance.userstory_update(userstory_id, data, x_user_id=x_user_id)
-        print("The response of UserstoryApi->userstory_update:\n")
+        api_response = api_instance.user_update(id, data, x_user_id=x_user_id)
+        print("The response of UserApi->user_update:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling UserstoryApi->userstory_update: %s\n" % e)
+        print("Exception when calling UserApi->user_update: %s\n" % e)
 ```
 
 
@@ -413,13 +474,13 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userstory_id** | **str**|  | 
- **data** | [**UserStory**](UserStory.md)|  | 
+ **id** | **str**| UUID of the user to update | 
+ **data** | [**User**](User.md)|  | 
  **x_user_id** | **str**| User ID (required when using API key) | [optional] 
 
 ### Return type
 
-[**UserStory**](UserStory.md)
+[**User**](User.md)
 
 ### Authorization
 
@@ -435,6 +496,7 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** |  |  -  |
+**404** | User not found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

@@ -39,6 +39,7 @@ class Goal(BaseModel):
     goal_language: Optional[StrictStr] = None
     description: Optional[StrictStr] = None
     why_it_matters: Optional[StrictStr] = None
+    prd: Optional[StrictStr] = None
     created_date: Optional[datetime] = None
     modified_date: Optional[datetime] = None
     original_due_date: Optional[datetime] = None
@@ -51,7 +52,7 @@ class Goal(BaseModel):
     version_summary: Optional[StrictStr] = None
     created_by: Optional[CreatedBy] = None
     status: Optional[Status1] = None
-    __properties: ClassVar[List[str]] = ["id", "name", "goal_language", "description", "why_it_matters", "created_date", "modified_date", "original_due_date", "current_due_date", "owner_users", "programs", "stakeholder_users", "tags", "version", "version_summary", "created_by", "status"]
+    __properties: ClassVar[List[str]] = ["id", "name", "goal_language", "description", "why_it_matters", "prd", "created_date", "modified_date", "original_due_date", "current_due_date", "owner_users", "programs", "stakeholder_users", "tags", "version", "version_summary", "created_by", "status"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -195,6 +196,7 @@ class Goal(BaseModel):
             "goal_language": obj.get("goal_language"),
             "description": obj.get("description"),
             "why_it_matters": obj.get("why_it_matters"),
+            "prd": obj.get("prd"),
             "created_date": obj.get("created_date"),
             "modified_date": obj.get("modified_date"),
             "original_due_date": obj.get("original_due_date"),

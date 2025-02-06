@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.api.goals_api import GoalsApi
+from pp_sdk.api.goals_api import GoalsApi
 
 
 class TestGoalsApi(unittest.TestCase):
@@ -27,8 +27,44 @@ class TestGoalsApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
-    def test_goals_list_list(self) -> None:
-        """Test case for goals_list_list
+    def test_goals_create(self) -> None:
+        """Test case for goals_create
+
+        """
+        pass
+
+    def test_goals_delete(self) -> None:
+        """Test case for goals_delete
+
+        """
+        pass
+
+    def test_goals_list(self) -> None:
+        """Test case for goals_list
+
+        """
+        pass
+
+    def test_goals_partial_update(self) -> None:
+        """Test case for goals_partial_update
+
+        """
+        pass
+
+    def test_goals_picker_list(self) -> None:
+        """Test case for goals_picker_list
+
+        """
+        pass
+
+    def test_goals_read(self) -> None:
+        """Test case for goals_read
+
+        """
+        pass
+
+    def test_goals_update(self) -> None:
+        """Test case for goals_update
 
         """
         pass

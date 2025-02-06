@@ -1,31 +1,31 @@
-# pp_sdk.UserstoryApi
+# pp_sdk.StatusApi
 
 All URIs are relative to *http://0.0.0.0:8000/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**userstory_create**](UserstoryApi.md#userstory_create) | **POST** /userstory/ | 
-[**userstory_delete**](UserstoryApi.md#userstory_delete) | **DELETE** /userstory/{userstory_id}/ | 
-[**userstory_list**](UserstoryApi.md#userstory_list) | **GET** /userstory/ | 
-[**userstory_partial_update**](UserstoryApi.md#userstory_partial_update) | **PATCH** /userstory/{userstory_id}/ | 
-[**userstory_read**](UserstoryApi.md#userstory_read) | **GET** /userstory/{userstory_id}/ | 
-[**userstory_update**](UserstoryApi.md#userstory_update) | **PUT** /userstory/{userstory_id}/ | 
+[**status_create**](StatusApi.md#status_create) | **POST** /status/ | 
+[**status_delete**](StatusApi.md#status_delete) | **DELETE** /status/{status_id}/ | 
+[**status_list**](StatusApi.md#status_list) | **GET** /status/ | 
+[**status_partial_update**](StatusApi.md#status_partial_update) | **PATCH** /status/{status_id}/ | 
+[**status_read**](StatusApi.md#status_read) | **GET** /status/{status_id}/ | 
+[**status_update**](StatusApi.md#status_update) | **PUT** /status/{status_id}/ | 
 
 
-# **userstory_create**
-> UserStory userstory_create(data, x_user_id=x_user_id)
+# **status_create**
+> Status status_create(data, x_user_id=x_user_id)
 
 
 
-Create a new user story.
+Create a new status for the authenticated user.
 
 ### Example
 
 
 ```python
 import pp_sdk
-from pp_sdk.models.user_story import UserStory
-from pp_sdk.models.userstories_create_request import UserstoriesCreateRequest
+from pp_sdk.models.status import Status
+from pp_sdk.models.status_create_request import StatusCreateRequest
 from pp_sdk.rest import ApiException
 from pprint import pprint
 
@@ -39,16 +39,16 @@ configuration = pp_sdk.Configuration(
 # Enter a context with an instance of the API client
 with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = pp_sdk.UserstoryApi(api_client)
-    data = pp_sdk.UserstoriesCreateRequest() # UserstoriesCreateRequest | 
+    api_instance = pp_sdk.StatusApi(api_client)
+    data = pp_sdk.StatusCreateRequest() # StatusCreateRequest | 
     x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
     try:
-        api_response = api_instance.userstory_create(data, x_user_id=x_user_id)
-        print("The response of UserstoryApi->userstory_create:\n")
+        api_response = api_instance.status_create(data, x_user_id=x_user_id)
+        print("The response of StatusApi->status_create:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling UserstoryApi->userstory_create: %s\n" % e)
+        print("Exception when calling StatusApi->status_create: %s\n" % e)
 ```
 
 
@@ -58,12 +58,12 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **data** | [**UserstoriesCreateRequest**](UserstoriesCreateRequest.md)|  | 
+ **data** | [**StatusCreateRequest**](StatusCreateRequest.md)|  | 
  **x_user_id** | **str**| User ID (required when using API key) | [optional] 
 
 ### Return type
 
-[**UserStory**](UserStory.md)
+[**Status**](Status.md)
 
 ### Authorization
 
@@ -82,12 +82,12 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **userstory_delete**
-> userstory_delete(userstory_id, x_user_id=x_user_id)
+# **status_delete**
+> status_delete(status_id, x_user_id=x_user_id)
 
 
 
-Delete a specific user story.
+Delete a specific status.
 
 ### Example
 
@@ -107,14 +107,14 @@ configuration = pp_sdk.Configuration(
 # Enter a context with an instance of the API client
 with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = pp_sdk.UserstoryApi(api_client)
-    userstory_id = 'userstory_id_example' # str | 
+    api_instance = pp_sdk.StatusApi(api_client)
+    status_id = 'status_id_example' # str | 
     x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
     try:
-        api_instance.userstory_delete(userstory_id, x_user_id=x_user_id)
+        api_instance.status_delete(status_id, x_user_id=x_user_id)
     except Exception as e:
-        print("Exception when calling UserstoryApi->userstory_delete: %s\n" % e)
+        print("Exception when calling StatusApi->status_delete: %s\n" % e)
 ```
 
 
@@ -124,7 +124,7 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userstory_id** | **str**|  | 
+ **status_id** | **str**|  | 
  **x_user_id** | **str**| User ID (required when using API key) | [optional] 
 
 ### Return type
@@ -148,19 +148,19 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **userstory_list**
-> List[UserStory] userstory_list(search=search, status=status, prd=prd, sort=sort, limit=limit, x_user_id=x_user_id, format=format)
+# **status_list**
+> List[Status] status_list(page=page, x_user_id=x_user_id, status=status, search=search, sort=sort, liimit=liimit, goal_ids=goal_ids)
 
 
 
-List or Search for User Stories
+Get a list of all statuses for the authenticated user.
 
 ### Example
 
 
 ```python
 import pp_sdk
-from pp_sdk.models.user_story import UserStory
+from pp_sdk.models.status import Status
 from pp_sdk.rest import ApiException
 from pprint import pprint
 
@@ -174,21 +174,21 @@ configuration = pp_sdk.Configuration(
 # Enter a context with an instance of the API client
 with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = pp_sdk.UserstoryApi(api_client)
-    search = 'search_example' # str | Search term for as_a, i_want_to, so_that, or freetext_override fields (optional)
-    status = 'status_example' # str | Filter by status (optional)
-    prd = 56 # int | Filter by PRD ID (optional)
-    sort = 'sort_example' # str | Sort field (prefix with '-' for descending order) (optional)
-    limit = 56 # int | Limit the number of results (optional)
+    api_instance = pp_sdk.StatusApi(api_client)
+    page = 56 # int | A page number within the paginated result set. (optional)
     x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
-    format = 'format_example' # str | Response format (json or excel, default is json) (optional)
+    status = 'status_example' # str | Filter by a status value (optional)
+    search = 'search_example' # str | Search by keyword against status note or path to green (optional)
+    sort = 'sort_example' # str | Sort by field (prefix with '-' for descending) (optional)
+    liimit = 'liimit_example' # str | Sort by field (prefix with '-' for descending) (optional)
+    goal_ids = 'goal_ids_example' # str | Filter on goals, using the UUID of the goal. (optional)
 
     try:
-        api_response = api_instance.userstory_list(search=search, status=status, prd=prd, sort=sort, limit=limit, x_user_id=x_user_id, format=format)
-        print("The response of UserstoryApi->userstory_list:\n")
+        api_response = api_instance.status_list(page=page, x_user_id=x_user_id, status=status, search=search, sort=sort, liimit=liimit, goal_ids=goal_ids)
+        print("The response of StatusApi->status_list:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling UserstoryApi->userstory_list: %s\n" % e)
+        print("Exception when calling StatusApi->status_list: %s\n" % e)
 ```
 
 
@@ -198,17 +198,17 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **search** | **str**| Search term for as_a, i_want_to, so_that, or freetext_override fields | [optional] 
- **status** | **str**| Filter by status | [optional] 
- **prd** | **int**| Filter by PRD ID | [optional] 
- **sort** | **str**| Sort field (prefix with &#39;-&#39; for descending order) | [optional] 
- **limit** | **int**| Limit the number of results | [optional] 
+ **page** | **int**| A page number within the paginated result set. | [optional] 
  **x_user_id** | **str**| User ID (required when using API key) | [optional] 
- **format** | **str**| Response format (json or excel, default is json) | [optional] 
+ **status** | **str**| Filter by a status value | [optional] 
+ **search** | **str**| Search by keyword against status note or path to green | [optional] 
+ **sort** | **str**| Sort by field (prefix with &#39;-&#39; for descending) | [optional] 
+ **liimit** | **str**| Sort by field (prefix with &#39;-&#39; for descending) | [optional] 
+ **goal_ids** | **str**| Filter on goals, using the UUID of the goal. | [optional] 
 
 ### Return type
 
-[**List[UserStory]**](UserStory.md)
+[**List[Status]**](Status.md)
 
 ### Authorization
 
@@ -227,19 +227,19 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **userstory_partial_update**
-> UserStory userstory_partial_update(userstory_id, data, x_user_id=x_user_id)
+# **status_partial_update**
+> Status status_partial_update(status_id, data, x_user_id=x_user_id)
 
 
 
-Partially update a specific user story.
+Partially update a specific status.
 
 ### Example
 
 
 ```python
 import pp_sdk
-from pp_sdk.models.user_story import UserStory
+from pp_sdk.models.status import Status
 from pp_sdk.rest import ApiException
 from pprint import pprint
 
@@ -253,17 +253,17 @@ configuration = pp_sdk.Configuration(
 # Enter a context with an instance of the API client
 with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = pp_sdk.UserstoryApi(api_client)
-    userstory_id = 'userstory_id_example' # str | 
-    data = pp_sdk.UserStory() # UserStory | 
+    api_instance = pp_sdk.StatusApi(api_client)
+    status_id = 'status_id_example' # str | 
+    data = pp_sdk.Status() # Status | 
     x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
     try:
-        api_response = api_instance.userstory_partial_update(userstory_id, data, x_user_id=x_user_id)
-        print("The response of UserstoryApi->userstory_partial_update:\n")
+        api_response = api_instance.status_partial_update(status_id, data, x_user_id=x_user_id)
+        print("The response of StatusApi->status_partial_update:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling UserstoryApi->userstory_partial_update: %s\n" % e)
+        print("Exception when calling StatusApi->status_partial_update: %s\n" % e)
 ```
 
 
@@ -273,13 +273,13 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userstory_id** | **str**|  | 
- **data** | [**UserStory**](UserStory.md)|  | 
+ **status_id** | **str**|  | 
+ **data** | [**Status**](Status.md)|  | 
  **x_user_id** | **str**| User ID (required when using API key) | [optional] 
 
 ### Return type
 
-[**UserStory**](UserStory.md)
+[**Status**](Status.md)
 
 ### Authorization
 
@@ -298,19 +298,19 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **userstory_read**
-> UserStory userstory_read(userstory_id, x_user_id=x_user_id)
+# **status_read**
+> Status status_read(status_id, x_user_id=x_user_id)
 
 
 
-Get details of a specific user story.
+Get details of a specific status.
 
 ### Example
 
 
 ```python
 import pp_sdk
-from pp_sdk.models.user_story import UserStory
+from pp_sdk.models.status import Status
 from pp_sdk.rest import ApiException
 from pprint import pprint
 
@@ -324,16 +324,16 @@ configuration = pp_sdk.Configuration(
 # Enter a context with an instance of the API client
 with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = pp_sdk.UserstoryApi(api_client)
-    userstory_id = 'userstory_id_example' # str | 
+    api_instance = pp_sdk.StatusApi(api_client)
+    status_id = 'status_id_example' # str | 
     x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
     try:
-        api_response = api_instance.userstory_read(userstory_id, x_user_id=x_user_id)
-        print("The response of UserstoryApi->userstory_read:\n")
+        api_response = api_instance.status_read(status_id, x_user_id=x_user_id)
+        print("The response of StatusApi->status_read:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling UserstoryApi->userstory_read: %s\n" % e)
+        print("Exception when calling StatusApi->status_read: %s\n" % e)
 ```
 
 
@@ -343,12 +343,12 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userstory_id** | **str**|  | 
+ **status_id** | **str**|  | 
  **x_user_id** | **str**| User ID (required when using API key) | [optional] 
 
 ### Return type
 
-[**UserStory**](UserStory.md)
+[**Status**](Status.md)
 
 ### Authorization
 
@@ -367,19 +367,19 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **userstory_update**
-> UserStory userstory_update(userstory_id, data, x_user_id=x_user_id)
+# **status_update**
+> Status status_update(status_id, data, x_user_id=x_user_id)
 
 
 
-Update a specific user story.
+Update a specific status.
 
 ### Example
 
 
 ```python
 import pp_sdk
-from pp_sdk.models.user_story import UserStory
+from pp_sdk.models.status import Status
 from pp_sdk.rest import ApiException
 from pprint import pprint
 
@@ -393,17 +393,17 @@ configuration = pp_sdk.Configuration(
 # Enter a context with an instance of the API client
 with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = pp_sdk.UserstoryApi(api_client)
-    userstory_id = 'userstory_id_example' # str | 
-    data = pp_sdk.UserStory() # UserStory | 
+    api_instance = pp_sdk.StatusApi(api_client)
+    status_id = 'status_id_example' # str | 
+    data = pp_sdk.Status() # Status | 
     x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
     try:
-        api_response = api_instance.userstory_update(userstory_id, data, x_user_id=x_user_id)
-        print("The response of UserstoryApi->userstory_update:\n")
+        api_response = api_instance.status_update(status_id, data, x_user_id=x_user_id)
+        print("The response of StatusApi->status_update:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling UserstoryApi->userstory_update: %s\n" % e)
+        print("Exception when calling StatusApi->status_update: %s\n" % e)
 ```
 
 
@@ -413,13 +413,13 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userstory_id** | **str**|  | 
- **data** | [**UserStory**](UserStory.md)|  | 
+ **status_id** | **str**|  | 
+ **data** | [**Status**](Status.md)|  | 
  **x_user_id** | **str**| User ID (required when using API key) | [optional] 
 
 ### Return type
 
-[**UserStory**](UserStory.md)
+[**Status**](Status.md)
 
 ### Authorization
 

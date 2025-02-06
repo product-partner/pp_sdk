@@ -23,7 +23,6 @@ from typing_extensions import Annotated
 from pp_sdk.models.api_chat_history200_response import ApiChatHistory200Response
 from pp_sdk.models.api_chat_upload_file200_response import ApiChatUploadFile200Response
 from pp_sdk.models.api_documents_create_request import ApiDocumentsCreateRequest
-from pp_sdk.models.api_documents_image_list200_response import ApiDocumentsImageList200Response
 from pp_sdk.models.api_prds_create_request import ApiPrdsCreateRequest
 from pp_sdk.models.api_prds_partial_update_request import ApiPrdsPartialUpdateRequest
 from pp_sdk.models.api_status_create_request import ApiStatusCreateRequest
@@ -1440,6 +1439,7 @@ class ApiApi:
     def api_documents_delete(
         self,
         id: StrictStr,
+        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1455,9 +1455,12 @@ class ApiApi:
     ) -> None:
         """api_documents_delete
 
+        Delete a specific document.
 
         :param id: (required)
         :type id: str
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1482,6 +1485,7 @@ class ApiApi:
 
         _param = self._api_documents_delete_serialize(
             id=id,
+            x_user_id=x_user_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1506,6 +1510,7 @@ class ApiApi:
     def api_documents_delete_with_http_info(
         self,
         id: StrictStr,
+        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1521,9 +1526,12 @@ class ApiApi:
     ) -> ApiResponse[None]:
         """api_documents_delete
 
+        Delete a specific document.
 
         :param id: (required)
         :type id: str
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1548,6 +1556,7 @@ class ApiApi:
 
         _param = self._api_documents_delete_serialize(
             id=id,
+            x_user_id=x_user_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1572,6 +1581,7 @@ class ApiApi:
     def api_documents_delete_without_preload_content(
         self,
         id: StrictStr,
+        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1587,9 +1597,12 @@ class ApiApi:
     ) -> RESTResponseType:
         """api_documents_delete
 
+        Delete a specific document.
 
         :param id: (required)
         :type id: str
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1614,6 +1627,7 @@ class ApiApi:
 
         _param = self._api_documents_delete_serialize(
             id=id,
+            x_user_id=x_user_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1633,6 +1647,7 @@ class ApiApi:
     def _api_documents_delete_serialize(
         self,
         id,
+        x_user_id,
         _request_auth,
         _content_type,
         _headers,
@@ -1658,6 +1673,8 @@ class ApiApi:
             _path_params['id'] = id
         # process the query parameters
         # process the header parameters
+        if x_user_id is not None:
+            _header_params['X-User-ID'] = x_user_id
         # process the form parameters
         # process the body parameter
 
@@ -1691,6 +1708,7 @@ class ApiApi:
         self,
         id: StrictStr,
         page: Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None,
+        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1703,7 +1721,7 @@ class ApiApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiDocumentsImageList200Response:
+    ) -> None:
         """api_documents_image_list
 
         Retrieve document image
@@ -1712,6 +1730,8 @@ class ApiApi:
         :type id: str
         :param page: A page number within the paginated result set.
         :type page: int
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1737,6 +1757,7 @@ class ApiApi:
         _param = self._api_documents_image_list_serialize(
             id=id,
             page=page,
+            x_user_id=x_user_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1744,7 +1765,10 @@ class ApiApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ApiDocumentsImageList200Response",
+            '200': None,
+            '400': None,
+            '404': None,
+            '500': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1762,6 +1786,7 @@ class ApiApi:
         self,
         id: StrictStr,
         page: Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None,
+        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1774,7 +1799,7 @@ class ApiApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ApiDocumentsImageList200Response]:
+    ) -> ApiResponse[None]:
         """api_documents_image_list
 
         Retrieve document image
@@ -1783,6 +1808,8 @@ class ApiApi:
         :type id: str
         :param page: A page number within the paginated result set.
         :type page: int
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1808,6 +1835,7 @@ class ApiApi:
         _param = self._api_documents_image_list_serialize(
             id=id,
             page=page,
+            x_user_id=x_user_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1815,7 +1843,10 @@ class ApiApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ApiDocumentsImageList200Response",
+            '200': None,
+            '400': None,
+            '404': None,
+            '500': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1833,6 +1864,7 @@ class ApiApi:
         self,
         id: StrictStr,
         page: Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None,
+        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1854,6 +1886,8 @@ class ApiApi:
         :type id: str
         :param page: A page number within the paginated result set.
         :type page: int
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1879,6 +1913,7 @@ class ApiApi:
         _param = self._api_documents_image_list_serialize(
             id=id,
             page=page,
+            x_user_id=x_user_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1886,7 +1921,10 @@ class ApiApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ApiDocumentsImageList200Response",
+            '200': None,
+            '400': None,
+            '404': None,
+            '500': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1899,6 +1937,7 @@ class ApiApi:
         self,
         id,
         page,
+        x_user_id,
         _request_auth,
         _content_type,
         _headers,
@@ -1928,17 +1967,12 @@ class ApiApi:
             _query_params.append(('page', page))
             
         # process the header parameters
+        if x_user_id is not None:
+            _header_params['X-User-ID'] = x_user_id
         # process the form parameters
         # process the body parameter
 
 
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
 
 
         # authentication setting
@@ -2364,6 +2398,7 @@ class ApiApi:
         self,
         id: StrictStr,
         data: Document,
+        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2379,11 +2414,14 @@ class ApiApi:
     ) -> Document:
         """api_documents_partial_update
 
+        Partially update a specific document.
 
         :param id: (required)
         :type id: str
         :param data: (required)
         :type data: Document
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2409,6 +2447,7 @@ class ApiApi:
         _param = self._api_documents_partial_update_serialize(
             id=id,
             data=data,
+            x_user_id=x_user_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2434,6 +2473,7 @@ class ApiApi:
         self,
         id: StrictStr,
         data: Document,
+        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2449,11 +2489,14 @@ class ApiApi:
     ) -> ApiResponse[Document]:
         """api_documents_partial_update
 
+        Partially update a specific document.
 
         :param id: (required)
         :type id: str
         :param data: (required)
         :type data: Document
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2479,6 +2522,7 @@ class ApiApi:
         _param = self._api_documents_partial_update_serialize(
             id=id,
             data=data,
+            x_user_id=x_user_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2504,6 +2548,7 @@ class ApiApi:
         self,
         id: StrictStr,
         data: Document,
+        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2519,11 +2564,14 @@ class ApiApi:
     ) -> RESTResponseType:
         """api_documents_partial_update
 
+        Partially update a specific document.
 
         :param id: (required)
         :type id: str
         :param data: (required)
         :type data: Document
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2549,6 +2597,7 @@ class ApiApi:
         _param = self._api_documents_partial_update_serialize(
             id=id,
             data=data,
+            x_user_id=x_user_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2569,6 +2618,7 @@ class ApiApi:
         self,
         id,
         data,
+        x_user_id,
         _request_auth,
         _content_type,
         _headers,
@@ -2594,6 +2644,8 @@ class ApiApi:
             _path_params['id'] = id
         # process the query parameters
         # process the header parameters
+        if x_user_id is not None:
+            _header_params['X-User-ID'] = x_user_id
         # process the form parameters
         # process the body parameter
         if data is not None:
@@ -2941,6 +2993,7 @@ class ApiApi:
         self,
         id: StrictStr,
         data: Document,
+        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2956,11 +3009,14 @@ class ApiApi:
     ) -> Document:
         """api_documents_update
 
+        Update a specific document.
 
         :param id: (required)
         :type id: str
         :param data: (required)
         :type data: Document
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2986,6 +3042,7 @@ class ApiApi:
         _param = self._api_documents_update_serialize(
             id=id,
             data=data,
+            x_user_id=x_user_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3011,6 +3068,7 @@ class ApiApi:
         self,
         id: StrictStr,
         data: Document,
+        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3026,11 +3084,14 @@ class ApiApi:
     ) -> ApiResponse[Document]:
         """api_documents_update
 
+        Update a specific document.
 
         :param id: (required)
         :type id: str
         :param data: (required)
         :type data: Document
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3056,6 +3117,7 @@ class ApiApi:
         _param = self._api_documents_update_serialize(
             id=id,
             data=data,
+            x_user_id=x_user_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3081,6 +3143,7 @@ class ApiApi:
         self,
         id: StrictStr,
         data: Document,
+        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3096,11 +3159,14 @@ class ApiApi:
     ) -> RESTResponseType:
         """api_documents_update
 
+        Update a specific document.
 
         :param id: (required)
         :type id: str
         :param data: (required)
         :type data: Document
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3126,6 +3192,7 @@ class ApiApi:
         _param = self._api_documents_update_serialize(
             id=id,
             data=data,
+            x_user_id=x_user_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3146,6 +3213,7 @@ class ApiApi:
         self,
         id,
         data,
+        x_user_id,
         _request_auth,
         _content_type,
         _headers,
@@ -3171,6 +3239,8 @@ class ApiApi:
             _path_params['id'] = id
         # process the query parameters
         # process the header parameters
+        if x_user_id is not None:
+            _header_params['X-User-ID'] = x_user_id
         # process the form parameters
         # process the body parameter
         if data is not None:

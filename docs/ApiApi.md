@@ -377,9 +377,11 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **api_documents_delete**
-> api_documents_delete(id)
+> api_documents_delete(id, x_user_id=x_user_id)
 
 
+
+Delete a specific document.
 
 ### Example
 
@@ -401,9 +403,10 @@ with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pp_sdk.ApiApi(api_client)
     id = 'id_example' # str | 
+    x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
     try:
-        api_instance.api_documents_delete(id)
+        api_instance.api_documents_delete(id, x_user_id=x_user_id)
     except Exception as e:
         print("Exception when calling ApiApi->api_documents_delete: %s\n" % e)
 ```
@@ -416,6 +419,7 @@ with pp_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**|  | 
+ **x_user_id** | **str**| User ID (required when using API key) | [optional] 
 
 ### Return type
 
@@ -434,12 +438,12 @@ No authorization required
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** |  |  -  |
+**204** | No content |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **api_documents_image_list**
-> ApiDocumentsImageList200Response api_documents_image_list(id, page=page)
+> api_documents_image_list(id, page=page, x_user_id=x_user_id)
 
 
 
@@ -450,7 +454,6 @@ Retrieve document image
 
 ```python
 import pp_sdk
-from pp_sdk.models.api_documents_image_list200_response import ApiDocumentsImageList200Response
 from pp_sdk.rest import ApiException
 from pprint import pprint
 
@@ -467,11 +470,10 @@ with pp_sdk.ApiClient(configuration) as api_client:
     api_instance = pp_sdk.ApiApi(api_client)
     id = 'id_example' # str | 
     page = 56 # int | A page number within the paginated result set. (optional)
+    x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
     try:
-        api_response = api_instance.api_documents_image_list(id, page=page)
-        print("The response of ApiApi->api_documents_image_list:\n")
-        pprint(api_response)
+        api_instance.api_documents_image_list(id, page=page, x_user_id=x_user_id)
     except Exception as e:
         print("Exception when calling ApiApi->api_documents_image_list: %s\n" % e)
 ```
@@ -485,10 +487,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**|  | 
  **page** | **int**| A page number within the paginated result set. | [optional] 
+ **x_user_id** | **str**| User ID (required when using API key) | [optional] 
 
 ### Return type
 
-[**ApiDocumentsImageList200Response**](ApiDocumentsImageList200Response.md)
+void (empty response body)
 
 ### Authorization
 
@@ -497,13 +500,16 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: Not defined
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** |  |  -  |
+**200** | Returns the image file with appropriate content-type |  -  |
+**400** | Error when document is not an image or has invalid data |  -  |
+**404** | Image not found |  -  |
+**500** | Server error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -591,9 +597,11 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **api_documents_partial_update**
-> Document api_documents_partial_update(id, data)
+> Document api_documents_partial_update(id, data, x_user_id=x_user_id)
 
 
+
+Partially update a specific document.
 
 ### Example
 
@@ -617,9 +625,10 @@ with pp_sdk.ApiClient(configuration) as api_client:
     api_instance = pp_sdk.ApiApi(api_client)
     id = 'id_example' # str | 
     data = pp_sdk.Document() # Document | 
+    x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
     try:
-        api_response = api_instance.api_documents_partial_update(id, data)
+        api_response = api_instance.api_documents_partial_update(id, data, x_user_id=x_user_id)
         print("The response of ApiApi->api_documents_partial_update:\n")
         pprint(api_response)
     except Exception as e:
@@ -635,6 +644,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**|  | 
  **data** | [**Document**](Document.md)|  | 
+ **x_user_id** | **str**| User ID (required when using API key) | [optional] 
 
 ### Return type
 
@@ -729,9 +739,11 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **api_documents_update**
-> Document api_documents_update(id, data)
+> Document api_documents_update(id, data, x_user_id=x_user_id)
 
 
+
+Update a specific document.
 
 ### Example
 
@@ -755,9 +767,10 @@ with pp_sdk.ApiClient(configuration) as api_client:
     api_instance = pp_sdk.ApiApi(api_client)
     id = 'id_example' # str | 
     data = pp_sdk.Document() # Document | 
+    x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
     try:
-        api_response = api_instance.api_documents_update(id, data)
+        api_response = api_instance.api_documents_update(id, data, x_user_id=x_user_id)
         print("The response of ApiApi->api_documents_update:\n")
         pprint(api_response)
     except Exception as e:
@@ -773,6 +786,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**|  | 
  **data** | [**Document**](Document.md)|  | 
+ **x_user_id** | **str**| User ID (required when using API key) | [optional] 
 
 ### Return type
 

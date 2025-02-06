@@ -18,36 +18,20 @@ import pprint
 import re  # noqa: F401
 import json
 
-from datetime import date
-from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
 
-class ApiDocumentsCreateRequest(BaseModel):
+class DocumentPicker(BaseModel):
     """
-    ApiDocumentsCreateRequest
+    DocumentPicker
     """ # noqa: E501
-    title: StrictStr
-    body: Optional[StrictStr] = None
-    type: StrictStr
-    publishing_state: Optional[StrictStr] = None
-    document_covering_period_start: Optional[date] = None
-    document_covering_period_end: Optional[date] = None
-    tags: Optional[List[StrictStr]] = Field(default=None, description="List of tags")
-    stakeholder_users: Optional[List[StrictStr]] = Field(default=None, description="List of stakeholder user emails or UUIDs")
-    program: Optional[StrictStr] = Field(default=None, description="Program UUID")
-    __properties: ClassVar[List[str]] = ["title", "body", "type", "publishing_state", "document_covering_period_start", "document_covering_period_end", "tags", "stakeholder_users", "program"]
-
-    @field_validator('publishing_state')
-    def publishing_state_validate_enum(cls, value):
-        """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in set(['PENDING_REVIEW', 'DRAFT', 'REJECTED', 'APPROVED', 'PUBLISHED']):
-            raise ValueError("must be one of enum values ('PENDING_REVIEW', 'DRAFT', 'REJECTED', 'APPROVED', 'PUBLISHED')")
-        return value
+    id: Optional[StrictStr] = None
+    title: Optional[Annotated[str, Field(min_length=1, strict=True)]] = None
+    summary: Optional[Annotated[str, Field(min_length=1, strict=True)]] = None
+    __properties: ClassVar[List[str]] = ["id", "title", "summary"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -67,7 +51,7 @@ class ApiDocumentsCreateRequest(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of ApiDocumentsCreateRequest from a JSON string"""
+        """Create an instance of DocumentPicker from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -79,8 +63,14 @@ class ApiDocumentsCreateRequest(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
+            "id",
+            "title",
+            "summary",
         ])
 
         _dict = self.model_dump(
@@ -88,11 +78,16 @@ class ApiDocumentsCreateRequest(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if summary (nullable) is None
+        # and model_fields_set contains the field
+        if self.summary is None and "summary" in self.model_fields_set:
+            _dict['summary'] = None
+
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of ApiDocumentsCreateRequest from a dict"""
+        """Create an instance of DocumentPicker from a dict"""
         if obj is None:
             return None
 
@@ -100,15 +95,9 @@ class ApiDocumentsCreateRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "id": obj.get("id"),
             "title": obj.get("title"),
-            "body": obj.get("body"),
-            "type": obj.get("type"),
-            "publishing_state": obj.get("publishing_state"),
-            "document_covering_period_start": obj.get("document_covering_period_start"),
-            "document_covering_period_end": obj.get("document_covering_period_end"),
-            "tags": obj.get("tags"),
-            "stakeholder_users": obj.get("stakeholder_users"),
-            "program": obj.get("program")
+            "summary": obj.get("summary")
         })
         return _obj
 

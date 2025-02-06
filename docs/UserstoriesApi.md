@@ -1,19 +1,19 @@
-# pp_sdk.UserstoryApi
+# pp_sdk.UserstoriesApi
 
 All URIs are relative to *http://0.0.0.0:8000/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**userstory_create**](UserstoryApi.md#userstory_create) | **POST** /userstory/ | 
-[**userstory_delete**](UserstoryApi.md#userstory_delete) | **DELETE** /userstory/{userstory_id}/ | 
-[**userstory_list**](UserstoryApi.md#userstory_list) | **GET** /userstory/ | 
-[**userstory_partial_update**](UserstoryApi.md#userstory_partial_update) | **PATCH** /userstory/{userstory_id}/ | 
-[**userstory_read**](UserstoryApi.md#userstory_read) | **GET** /userstory/{userstory_id}/ | 
-[**userstory_update**](UserstoryApi.md#userstory_update) | **PUT** /userstory/{userstory_id}/ | 
+[**userstories_create**](UserstoriesApi.md#userstories_create) | **POST** /userstories/ | 
+[**userstories_delete**](UserstoriesApi.md#userstories_delete) | **DELETE** /userstories/{userstory_id}/ | 
+[**userstories_list**](UserstoriesApi.md#userstories_list) | **GET** /userstories/ | 
+[**userstories_partial_update**](UserstoriesApi.md#userstories_partial_update) | **PATCH** /userstories/{userstory_id}/ | 
+[**userstories_read**](UserstoriesApi.md#userstories_read) | **GET** /userstories/{userstory_id}/ | 
+[**userstories_update**](UserstoriesApi.md#userstories_update) | **PUT** /userstories/{userstory_id}/ | 
 
 
-# **userstory_create**
-> UserStory userstory_create(data, x_user_id=x_user_id)
+# **userstories_create**
+> UserStory userstories_create(data, x_user_id=x_user_id)
 
 
 
@@ -39,16 +39,16 @@ configuration = pp_sdk.Configuration(
 # Enter a context with an instance of the API client
 with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = pp_sdk.UserstoryApi(api_client)
+    api_instance = pp_sdk.UserstoriesApi(api_client)
     data = pp_sdk.UserstoriesCreateRequest() # UserstoriesCreateRequest | 
     x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
     try:
-        api_response = api_instance.userstory_create(data, x_user_id=x_user_id)
-        print("The response of UserstoryApi->userstory_create:\n")
+        api_response = api_instance.userstories_create(data, x_user_id=x_user_id)
+        print("The response of UserstoriesApi->userstories_create:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling UserstoryApi->userstory_create: %s\n" % e)
+        print("Exception when calling UserstoriesApi->userstories_create: %s\n" % e)
 ```
 
 
@@ -82,8 +82,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **userstory_delete**
-> userstory_delete(userstory_id, x_user_id=x_user_id)
+# **userstories_delete**
+> userstories_delete(userstory_id, x_user_id=x_user_id)
 
 
 
@@ -107,14 +107,14 @@ configuration = pp_sdk.Configuration(
 # Enter a context with an instance of the API client
 with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = pp_sdk.UserstoryApi(api_client)
+    api_instance = pp_sdk.UserstoriesApi(api_client)
     userstory_id = 'userstory_id_example' # str | 
     x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
     try:
-        api_instance.userstory_delete(userstory_id, x_user_id=x_user_id)
+        api_instance.userstories_delete(userstory_id, x_user_id=x_user_id)
     except Exception as e:
-        print("Exception when calling UserstoryApi->userstory_delete: %s\n" % e)
+        print("Exception when calling UserstoriesApi->userstories_delete: %s\n" % e)
 ```
 
 
@@ -148,8 +148,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **userstory_list**
-> List[UserStory] userstory_list(search=search, status=status, prd=prd, sort=sort, limit=limit, x_user_id=x_user_id, format=format)
+# **userstories_list**
+> List[UserStory] userstories_list(search=search, status=status, prd=prd, sort=sort, limit=limit, x_user_id=x_user_id, format=format)
 
 
 
@@ -174,7 +174,7 @@ configuration = pp_sdk.Configuration(
 # Enter a context with an instance of the API client
 with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = pp_sdk.UserstoryApi(api_client)
+    api_instance = pp_sdk.UserstoriesApi(api_client)
     search = 'search_example' # str | Search term for as_a, i_want_to, so_that, or freetext_override fields (optional)
     status = 'status_example' # str | Filter by status (optional)
     prd = 56 # int | Filter by PRD ID (optional)
@@ -184,11 +184,11 @@ with pp_sdk.ApiClient(configuration) as api_client:
     format = 'format_example' # str | Response format (json or excel, default is json) (optional)
 
     try:
-        api_response = api_instance.userstory_list(search=search, status=status, prd=prd, sort=sort, limit=limit, x_user_id=x_user_id, format=format)
-        print("The response of UserstoryApi->userstory_list:\n")
+        api_response = api_instance.userstories_list(search=search, status=status, prd=prd, sort=sort, limit=limit, x_user_id=x_user_id, format=format)
+        print("The response of UserstoriesApi->userstories_list:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling UserstoryApi->userstory_list: %s\n" % e)
+        print("Exception when calling UserstoriesApi->userstories_list: %s\n" % e)
 ```
 
 
@@ -227,8 +227,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **userstory_partial_update**
-> UserStory userstory_partial_update(userstory_id, data, x_user_id=x_user_id)
+# **userstories_partial_update**
+> UserStory userstories_partial_update(userstory_id, data, x_user_id=x_user_id)
 
 
 
@@ -253,17 +253,17 @@ configuration = pp_sdk.Configuration(
 # Enter a context with an instance of the API client
 with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = pp_sdk.UserstoryApi(api_client)
+    api_instance = pp_sdk.UserstoriesApi(api_client)
     userstory_id = 'userstory_id_example' # str | 
     data = pp_sdk.UserStory() # UserStory | 
     x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
     try:
-        api_response = api_instance.userstory_partial_update(userstory_id, data, x_user_id=x_user_id)
-        print("The response of UserstoryApi->userstory_partial_update:\n")
+        api_response = api_instance.userstories_partial_update(userstory_id, data, x_user_id=x_user_id)
+        print("The response of UserstoriesApi->userstories_partial_update:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling UserstoryApi->userstory_partial_update: %s\n" % e)
+        print("Exception when calling UserstoriesApi->userstories_partial_update: %s\n" % e)
 ```
 
 
@@ -298,8 +298,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **userstory_read**
-> UserStory userstory_read(userstory_id, x_user_id=x_user_id)
+# **userstories_read**
+> UserStory userstories_read(userstory_id, x_user_id=x_user_id)
 
 
 
@@ -324,16 +324,16 @@ configuration = pp_sdk.Configuration(
 # Enter a context with an instance of the API client
 with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = pp_sdk.UserstoryApi(api_client)
+    api_instance = pp_sdk.UserstoriesApi(api_client)
     userstory_id = 'userstory_id_example' # str | 
     x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
     try:
-        api_response = api_instance.userstory_read(userstory_id, x_user_id=x_user_id)
-        print("The response of UserstoryApi->userstory_read:\n")
+        api_response = api_instance.userstories_read(userstory_id, x_user_id=x_user_id)
+        print("The response of UserstoriesApi->userstories_read:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling UserstoryApi->userstory_read: %s\n" % e)
+        print("Exception when calling UserstoriesApi->userstories_read: %s\n" % e)
 ```
 
 
@@ -367,8 +367,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **userstory_update**
-> UserStory userstory_update(userstory_id, data, x_user_id=x_user_id)
+# **userstories_update**
+> UserStory userstories_update(userstory_id, data, x_user_id=x_user_id)
 
 
 
@@ -393,17 +393,17 @@ configuration = pp_sdk.Configuration(
 # Enter a context with an instance of the API client
 with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = pp_sdk.UserstoryApi(api_client)
+    api_instance = pp_sdk.UserstoriesApi(api_client)
     userstory_id = 'userstory_id_example' # str | 
     data = pp_sdk.UserStory() # UserStory | 
     x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
     try:
-        api_response = api_instance.userstory_update(userstory_id, data, x_user_id=x_user_id)
-        print("The response of UserstoryApi->userstory_update:\n")
+        api_response = api_instance.userstories_update(userstory_id, data, x_user_id=x_user_id)
+        print("The response of UserstoriesApi->userstories_update:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling UserstoryApi->userstory_update: %s\n" % e)
+        print("Exception when calling UserstoriesApi->userstories_update: %s\n" % e)
 ```
 
 

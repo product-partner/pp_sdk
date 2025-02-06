@@ -15,11 +15,18 @@
 """  # noqa: E501
 
 
-__version__ = "0.2.39"
+__version__ = "0.2.40"
 
 # import apis into sdk package
-from pp_sdk.api.api_api import ApiApi
-from pp_sdk.api.prd_api import PrdApi
+from pp_sdk.api.chat_api import ChatApi
+from pp_sdk.api.documents_api import DocumentsApi
+from pp_sdk.api.goals_api import GoalsApi
+from pp_sdk.api.programs_api import ProgramsApi
+from pp_sdk.api.status_api import StatusApi
+from pp_sdk.api.tags_api import TagsApi
+from pp_sdk.api.user_api import UserApi
+from pp_sdk.api.userstories_api import UserstoriesApi
+from pp_sdk.api.userstory_api import UserstoryApi
 
 # import ApiClient
 from pp_sdk.api_response import ApiResponse
@@ -34,30 +41,25 @@ from pp_sdk.exceptions import ApiException
 
 # import models into sdk package
 from pp_sdk.models.address import Address
-from pp_sdk.models.api_chat_history200_response import ApiChatHistory200Response
-from pp_sdk.models.api_chat_upload_file200_response import ApiChatUploadFile200Response
-from pp_sdk.models.api_documents_create_request import ApiDocumentsCreateRequest
-from pp_sdk.models.api_documents_image_list200_response import ApiDocumentsImageList200Response
-from pp_sdk.models.api_prds_create_request import ApiPrdsCreateRequest
-from pp_sdk.models.api_prds_partial_update_request import ApiPrdsPartialUpdateRequest
-from pp_sdk.models.api_status_create_request import ApiStatusCreateRequest
-from pp_sdk.models.api_userstories_create_request import ApiUserstoriesCreateRequest
+from pp_sdk.models.chat_history200_response import ChatHistory200Response
+from pp_sdk.models.chat_upload_file200_response import ChatUploadFile200Response
 from pp_sdk.models.created_by import CreatedBy
 from pp_sdk.models.document import Document
+from pp_sdk.models.document_picker import DocumentPicker
+from pp_sdk.models.documents_create_request import DocumentsCreateRequest
 from pp_sdk.models.goal import Goal
 from pp_sdk.models.goal_base import GoalBase
 from pp_sdk.models.goal_picker import GoalPicker
 from pp_sdk.models.organization import Organization
-from pp_sdk.models.prd import PRD
-from pp_sdk.models.prd_field import PRDField
-from pp_sdk.models.prd_template import PRDTemplate
 from pp_sdk.models.program import Program
 from pp_sdk.models.program_picker import ProgramPicker
 from pp_sdk.models.programs_inner import ProgramsInner
 from pp_sdk.models.stakeholder_users_inner import StakeholderUsersInner
 from pp_sdk.models.status import Status
 from pp_sdk.models.status1 import Status1
+from pp_sdk.models.status_create_request import StatusCreateRequest
 from pp_sdk.models.tag import Tag
 from pp_sdk.models.tags_inner import TagsInner
 from pp_sdk.models.user import User
 from pp_sdk.models.user_story import UserStory
+from pp_sdk.models.userstories_create_request import UserstoriesCreateRequest

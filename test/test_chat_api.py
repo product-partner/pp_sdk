@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.api.chat_api import ChatApi
+from pp_sdk.api.chat_api import ChatApi
 
 
 class TestChatApi(unittest.TestCase):
@@ -27,8 +27,20 @@ class TestChatApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
-    def test_chat_list(self) -> None:
-        """Test case for chat_list
+    def test_chat(self) -> None:
+        """Test case for chat
+
+        """
+        pass
+
+    def test_chat_history(self) -> None:
+        """Test case for chat_history
+
+        """
+        pass
+
+    def test_chat_upload_file(self) -> None:
+        """Test case for chat_upload_file
 
         """
         pass

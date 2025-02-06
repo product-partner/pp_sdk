@@ -17,6 +17,11 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
+from pydantic import Field, StrictBool, StrictBytes, StrictInt, StrictStr
+from typing import Any, Dict, Optional, Tuple, Union
+from typing_extensions import Annotated
+from pp_sdk.models.chat_history200_response import ChatHistory200Response
+from pp_sdk.models.chat_upload_file200_response import ChatUploadFile200Response
 
 from pp_sdk.api_client import ApiClient, RequestSerialized
 from pp_sdk.api_response import ApiResponse
@@ -37,8 +42,17 @@ class ChatApi:
 
 
     @validate_call
-    def chat_list(
+    def chat(
         self,
+        page: Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None,
+        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
+        x_caller_id: Annotated[Optional[StrictStr], Field(description="Optional ID of the application calling the ID, used in conjunction with the caller_thread_id")] = None,
+        x_caller_thread_id: Annotated[Optional[StrictStr], Field(description="Caller-side thread ID used in conjunction with the caller_id to identify the conversation that this message is a part of. This will be looked up against the internal thread id in Product Partner.")] = None,
+        msg: Annotated[Optional[StrictStr], Field(description="Chat message")] = None,
+        doc_ids: Annotated[Optional[StrictStr], Field(description="Document IDs to reference")] = None,
+        action: Annotated[Optional[StrictStr], Field(description="Action")] = None,
+        stream: Annotated[Optional[StrictBool], Field(description="Stream the response")] = None,
+        response_format: Annotated[Optional[StrictStr], Field(description="Response format (html or text)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -51,10 +65,29 @@ class ChatApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> None:
-        """chat_list
+    ) -> object:
+        """chat
 
+        Process chat message
 
+        :param page: A page number within the paginated result set.
+        :type page: int
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
+        :param x_caller_id: Optional ID of the application calling the ID, used in conjunction with the caller_thread_id
+        :type x_caller_id: str
+        :param x_caller_thread_id: Caller-side thread ID used in conjunction with the caller_id to identify the conversation that this message is a part of. This will be looked up against the internal thread id in Product Partner.
+        :type x_caller_thread_id: str
+        :param msg: Chat message
+        :type msg: str
+        :param doc_ids: Document IDs to reference
+        :type doc_ids: str
+        :param action: Action
+        :type action: str
+        :param stream: Stream the response
+        :type stream: bool
+        :param response_format: Response format (html or text)
+        :type response_format: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -77,7 +110,16 @@ class ChatApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._chat_list_serialize(
+        _param = self._chat_serialize(
+            page=page,
+            x_user_id=x_user_id,
+            x_caller_id=x_caller_id,
+            x_caller_thread_id=x_caller_thread_id,
+            msg=msg,
+            doc_ids=doc_ids,
+            action=action,
+            stream=stream,
+            response_format=response_format,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -85,7 +127,8 @@ class ChatApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
+            '200': "object",
+            '400': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -99,8 +142,17 @@ class ChatApi:
 
 
     @validate_call
-    def chat_list_with_http_info(
+    def chat_with_http_info(
         self,
+        page: Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None,
+        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
+        x_caller_id: Annotated[Optional[StrictStr], Field(description="Optional ID of the application calling the ID, used in conjunction with the caller_thread_id")] = None,
+        x_caller_thread_id: Annotated[Optional[StrictStr], Field(description="Caller-side thread ID used in conjunction with the caller_id to identify the conversation that this message is a part of. This will be looked up against the internal thread id in Product Partner.")] = None,
+        msg: Annotated[Optional[StrictStr], Field(description="Chat message")] = None,
+        doc_ids: Annotated[Optional[StrictStr], Field(description="Document IDs to reference")] = None,
+        action: Annotated[Optional[StrictStr], Field(description="Action")] = None,
+        stream: Annotated[Optional[StrictBool], Field(description="Stream the response")] = None,
+        response_format: Annotated[Optional[StrictStr], Field(description="Response format (html or text)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -113,10 +165,29 @@ class ChatApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[None]:
-        """chat_list
+    ) -> ApiResponse[object]:
+        """chat
 
+        Process chat message
 
+        :param page: A page number within the paginated result set.
+        :type page: int
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
+        :param x_caller_id: Optional ID of the application calling the ID, used in conjunction with the caller_thread_id
+        :type x_caller_id: str
+        :param x_caller_thread_id: Caller-side thread ID used in conjunction with the caller_id to identify the conversation that this message is a part of. This will be looked up against the internal thread id in Product Partner.
+        :type x_caller_thread_id: str
+        :param msg: Chat message
+        :type msg: str
+        :param doc_ids: Document IDs to reference
+        :type doc_ids: str
+        :param action: Action
+        :type action: str
+        :param stream: Stream the response
+        :type stream: bool
+        :param response_format: Response format (html or text)
+        :type response_format: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -139,7 +210,16 @@ class ChatApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._chat_list_serialize(
+        _param = self._chat_serialize(
+            page=page,
+            x_user_id=x_user_id,
+            x_caller_id=x_caller_id,
+            x_caller_thread_id=x_caller_thread_id,
+            msg=msg,
+            doc_ids=doc_ids,
+            action=action,
+            stream=stream,
+            response_format=response_format,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -147,7 +227,8 @@ class ChatApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
+            '200': "object",
+            '400': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -161,8 +242,17 @@ class ChatApi:
 
 
     @validate_call
-    def chat_list_without_preload_content(
+    def chat_without_preload_content(
         self,
+        page: Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None,
+        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
+        x_caller_id: Annotated[Optional[StrictStr], Field(description="Optional ID of the application calling the ID, used in conjunction with the caller_thread_id")] = None,
+        x_caller_thread_id: Annotated[Optional[StrictStr], Field(description="Caller-side thread ID used in conjunction with the caller_id to identify the conversation that this message is a part of. This will be looked up against the internal thread id in Product Partner.")] = None,
+        msg: Annotated[Optional[StrictStr], Field(description="Chat message")] = None,
+        doc_ids: Annotated[Optional[StrictStr], Field(description="Document IDs to reference")] = None,
+        action: Annotated[Optional[StrictStr], Field(description="Action")] = None,
+        stream: Annotated[Optional[StrictBool], Field(description="Stream the response")] = None,
+        response_format: Annotated[Optional[StrictStr], Field(description="Response format (html or text)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -176,9 +266,28 @@ class ChatApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """chat_list
+        """chat
 
+        Process chat message
 
+        :param page: A page number within the paginated result set.
+        :type page: int
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
+        :param x_caller_id: Optional ID of the application calling the ID, used in conjunction with the caller_thread_id
+        :type x_caller_id: str
+        :param x_caller_thread_id: Caller-side thread ID used in conjunction with the caller_id to identify the conversation that this message is a part of. This will be looked up against the internal thread id in Product Partner.
+        :type x_caller_thread_id: str
+        :param msg: Chat message
+        :type msg: str
+        :param doc_ids: Document IDs to reference
+        :type doc_ids: str
+        :param action: Action
+        :type action: str
+        :param stream: Stream the response
+        :type stream: bool
+        :param response_format: Response format (html or text)
+        :type response_format: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -201,7 +310,16 @@ class ChatApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._chat_list_serialize(
+        _param = self._chat_serialize(
+            page=page,
+            x_user_id=x_user_id,
+            x_caller_id=x_caller_id,
+            x_caller_thread_id=x_caller_thread_id,
+            msg=msg,
+            doc_ids=doc_ids,
+            action=action,
+            stream=stream,
+            response_format=response_format,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -209,7 +327,8 @@ class ChatApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
+            '200': "object",
+            '400': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -218,8 +337,17 @@ class ChatApi:
         return response_data.response
 
 
-    def _chat_list_serialize(
+    def _chat_serialize(
         self,
+        page,
+        x_user_id,
+        x_caller_id,
+        x_caller_thread_id,
+        msg,
+        doc_ids,
+        action,
+        stream,
+        response_format,
         _request_auth,
         _content_type,
         _headers,
@@ -235,16 +363,55 @@ class ChatApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
         # process the query parameters
+        if page is not None:
+            
+            _query_params.append(('page', page))
+            
+        if msg is not None:
+            
+            _query_params.append(('msg', msg))
+            
+        if doc_ids is not None:
+            
+            _query_params.append(('doc_ids', doc_ids))
+            
+        if action is not None:
+            
+            _query_params.append(('action', action))
+            
+        if stream is not None:
+            
+            _query_params.append(('stream', stream))
+            
+        if response_format is not None:
+            
+            _query_params.append(('response_format', response_format))
+            
         # process the header parameters
+        if x_user_id is not None:
+            _header_params['X-User-ID'] = x_user_id
+        if x_caller_id is not None:
+            _header_params['X-Caller-ID'] = x_caller_id
+        if x_caller_thread_id is not None:
+            _header_params['X-Caller-Thread-ID'] = x_caller_thread_id
         # process the form parameters
         # process the body parameter
 
 
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
 
 
         # authentication setting
@@ -253,7 +420,7 @@ class ChatApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/chat',
+            resource_path='/chat/',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -270,8 +437,14 @@ class ChatApi:
 
 
     @validate_call
-    def chat_upload_create(
+    def chat_history(
         self,
+        page: Annotated[Optional[StrictInt], Field(description="Page number")] = None,
+        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
+        x_caller_id: Annotated[Optional[StrictStr], Field(description="Optional ID of the application calling the ID, used in conjunction with the caller_thread_id")] = None,
+        x_caller_thread_id: Annotated[Optional[StrictStr], Field(description="Caller-side thread ID used in conjunction with the caller_id to identify the conversation that this message is a part of. This will be looked up against the internal thread id in Product Partner.")] = None,
+        last_created_date: Annotated[Optional[StrictStr], Field(description="Last created date")] = None,
+        sort_order: Annotated[Optional[StrictStr], Field(description="Sort order (asc/desc)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -284,10 +457,23 @@ class ChatApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> None:
-        """chat_upload_create
+    ) -> ChatHistory200Response:
+        """chat_history
 
+        Get chat history
 
+        :param page: Page number
+        :type page: int
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
+        :param x_caller_id: Optional ID of the application calling the ID, used in conjunction with the caller_thread_id
+        :type x_caller_id: str
+        :param x_caller_thread_id: Caller-side thread ID used in conjunction with the caller_id to identify the conversation that this message is a part of. This will be looked up against the internal thread id in Product Partner.
+        :type x_caller_thread_id: str
+        :param last_created_date: Last created date
+        :type last_created_date: str
+        :param sort_order: Sort order (asc/desc)
+        :type sort_order: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -310,7 +496,13 @@ class ChatApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._chat_upload_create_serialize(
+        _param = self._chat_history_serialize(
+            page=page,
+            x_user_id=x_user_id,
+            x_caller_id=x_caller_id,
+            x_caller_thread_id=x_caller_thread_id,
+            last_created_date=last_created_date,
+            sort_order=sort_order,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -318,7 +510,7 @@ class ChatApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': None,
+            '200': "ChatHistory200Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -332,8 +524,14 @@ class ChatApi:
 
 
     @validate_call
-    def chat_upload_create_with_http_info(
+    def chat_history_with_http_info(
         self,
+        page: Annotated[Optional[StrictInt], Field(description="Page number")] = None,
+        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
+        x_caller_id: Annotated[Optional[StrictStr], Field(description="Optional ID of the application calling the ID, used in conjunction with the caller_thread_id")] = None,
+        x_caller_thread_id: Annotated[Optional[StrictStr], Field(description="Caller-side thread ID used in conjunction with the caller_id to identify the conversation that this message is a part of. This will be looked up against the internal thread id in Product Partner.")] = None,
+        last_created_date: Annotated[Optional[StrictStr], Field(description="Last created date")] = None,
+        sort_order: Annotated[Optional[StrictStr], Field(description="Sort order (asc/desc)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -346,10 +544,23 @@ class ChatApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[None]:
-        """chat_upload_create
+    ) -> ApiResponse[ChatHistory200Response]:
+        """chat_history
 
+        Get chat history
 
+        :param page: Page number
+        :type page: int
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
+        :param x_caller_id: Optional ID of the application calling the ID, used in conjunction with the caller_thread_id
+        :type x_caller_id: str
+        :param x_caller_thread_id: Caller-side thread ID used in conjunction with the caller_id to identify the conversation that this message is a part of. This will be looked up against the internal thread id in Product Partner.
+        :type x_caller_thread_id: str
+        :param last_created_date: Last created date
+        :type last_created_date: str
+        :param sort_order: Sort order (asc/desc)
+        :type sort_order: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -372,7 +583,13 @@ class ChatApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._chat_upload_create_serialize(
+        _param = self._chat_history_serialize(
+            page=page,
+            x_user_id=x_user_id,
+            x_caller_id=x_caller_id,
+            x_caller_thread_id=x_caller_thread_id,
+            last_created_date=last_created_date,
+            sort_order=sort_order,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -380,7 +597,7 @@ class ChatApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': None,
+            '200': "ChatHistory200Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -394,8 +611,14 @@ class ChatApi:
 
 
     @validate_call
-    def chat_upload_create_without_preload_content(
+    def chat_history_without_preload_content(
         self,
+        page: Annotated[Optional[StrictInt], Field(description="Page number")] = None,
+        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
+        x_caller_id: Annotated[Optional[StrictStr], Field(description="Optional ID of the application calling the ID, used in conjunction with the caller_thread_id")] = None,
+        x_caller_thread_id: Annotated[Optional[StrictStr], Field(description="Caller-side thread ID used in conjunction with the caller_id to identify the conversation that this message is a part of. This will be looked up against the internal thread id in Product Partner.")] = None,
+        last_created_date: Annotated[Optional[StrictStr], Field(description="Last created date")] = None,
+        sort_order: Annotated[Optional[StrictStr], Field(description="Sort order (asc/desc)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -409,9 +632,22 @@ class ChatApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """chat_upload_create
+        """chat_history
 
+        Get chat history
 
+        :param page: Page number
+        :type page: int
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
+        :param x_caller_id: Optional ID of the application calling the ID, used in conjunction with the caller_thread_id
+        :type x_caller_id: str
+        :param x_caller_thread_id: Caller-side thread ID used in conjunction with the caller_id to identify the conversation that this message is a part of. This will be looked up against the internal thread id in Product Partner.
+        :type x_caller_thread_id: str
+        :param last_created_date: Last created date
+        :type last_created_date: str
+        :param sort_order: Sort order (asc/desc)
+        :type sort_order: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -434,7 +670,13 @@ class ChatApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._chat_upload_create_serialize(
+        _param = self._chat_history_serialize(
+            page=page,
+            x_user_id=x_user_id,
+            x_caller_id=x_caller_id,
+            x_caller_thread_id=x_caller_thread_id,
+            last_created_date=last_created_date,
+            sort_order=sort_order,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -442,7 +684,7 @@ class ChatApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': None,
+            '200': "ChatHistory200Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -451,8 +693,14 @@ class ChatApi:
         return response_data.response
 
 
-    def _chat_upload_create_serialize(
+    def _chat_history_serialize(
         self,
+        page,
+        x_user_id,
+        x_caller_id,
+        x_caller_thread_id,
+        last_created_date,
+        sort_order,
         _request_auth,
         _content_type,
         _headers,
@@ -468,17 +716,399 @@ class ChatApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        if page is not None:
+            
+            _query_params.append(('page', page))
+            
+        if last_created_date is not None:
+            
+            _query_params.append(('last_created_date', last_created_date))
+            
+        if sort_order is not None:
+            
+            _query_params.append(('sort_order', sort_order))
+            
+        # process the header parameters
+        if x_user_id is not None:
+            _header_params['X-User-ID'] = x_user_id
+        if x_caller_id is not None:
+            _header_params['X-Caller-ID'] = x_caller_id
+        if x_caller_thread_id is not None:
+            _header_params['X-Caller-Thread-ID'] = x_caller_thread_id
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/chat/history/',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def chat_upload_file(
+        self,
+        file: Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]],
+        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
+        x_caller_id: Annotated[Optional[StrictStr], Field(description="Optional ID of the application calling the ID, used in conjunction with the caller_thread_id")] = None,
+        x_caller_thread_id: Annotated[Optional[StrictStr], Field(description="Caller-side thread ID used in conjunction with the caller_id to identify the conversation that this message is a part of. This will be looked up against the internal thread id in Product Partner.")] = None,
+        filename: Optional[Annotated[str, Field(min_length=1, strict=True)]] = None,
+        content_type: Optional[Annotated[str, Field(min_length=1, strict=True)]] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ChatUploadFile200Response:
+        """chat_upload_file
+
+        Upload a file
+
+        :param file: (required)
+        :type file: bytearray
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
+        :param x_caller_id: Optional ID of the application calling the ID, used in conjunction with the caller_thread_id
+        :type x_caller_id: str
+        :param x_caller_thread_id: Caller-side thread ID used in conjunction with the caller_id to identify the conversation that this message is a part of. This will be looked up against the internal thread id in Product Partner.
+        :type x_caller_thread_id: str
+        :param filename:
+        :type filename: str
+        :param content_type:
+        :type content_type: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._chat_upload_file_serialize(
+            file=file,
+            x_user_id=x_user_id,
+            x_caller_id=x_caller_id,
+            x_caller_thread_id=x_caller_thread_id,
+            filename=filename,
+            content_type=content_type,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ChatUploadFile200Response",
+            '400': None,
+            '500': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def chat_upload_file_with_http_info(
+        self,
+        file: Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]],
+        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
+        x_caller_id: Annotated[Optional[StrictStr], Field(description="Optional ID of the application calling the ID, used in conjunction with the caller_thread_id")] = None,
+        x_caller_thread_id: Annotated[Optional[StrictStr], Field(description="Caller-side thread ID used in conjunction with the caller_id to identify the conversation that this message is a part of. This will be looked up against the internal thread id in Product Partner.")] = None,
+        filename: Optional[Annotated[str, Field(min_length=1, strict=True)]] = None,
+        content_type: Optional[Annotated[str, Field(min_length=1, strict=True)]] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[ChatUploadFile200Response]:
+        """chat_upload_file
+
+        Upload a file
+
+        :param file: (required)
+        :type file: bytearray
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
+        :param x_caller_id: Optional ID of the application calling the ID, used in conjunction with the caller_thread_id
+        :type x_caller_id: str
+        :param x_caller_thread_id: Caller-side thread ID used in conjunction with the caller_id to identify the conversation that this message is a part of. This will be looked up against the internal thread id in Product Partner.
+        :type x_caller_thread_id: str
+        :param filename:
+        :type filename: str
+        :param content_type:
+        :type content_type: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._chat_upload_file_serialize(
+            file=file,
+            x_user_id=x_user_id,
+            x_caller_id=x_caller_id,
+            x_caller_thread_id=x_caller_thread_id,
+            filename=filename,
+            content_type=content_type,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ChatUploadFile200Response",
+            '400': None,
+            '500': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def chat_upload_file_without_preload_content(
+        self,
+        file: Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]],
+        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
+        x_caller_id: Annotated[Optional[StrictStr], Field(description="Optional ID of the application calling the ID, used in conjunction with the caller_thread_id")] = None,
+        x_caller_thread_id: Annotated[Optional[StrictStr], Field(description="Caller-side thread ID used in conjunction with the caller_id to identify the conversation that this message is a part of. This will be looked up against the internal thread id in Product Partner.")] = None,
+        filename: Optional[Annotated[str, Field(min_length=1, strict=True)]] = None,
+        content_type: Optional[Annotated[str, Field(min_length=1, strict=True)]] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """chat_upload_file
+
+        Upload a file
+
+        :param file: (required)
+        :type file: bytearray
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
+        :param x_caller_id: Optional ID of the application calling the ID, used in conjunction with the caller_thread_id
+        :type x_caller_id: str
+        :param x_caller_thread_id: Caller-side thread ID used in conjunction with the caller_id to identify the conversation that this message is a part of. This will be looked up against the internal thread id in Product Partner.
+        :type x_caller_thread_id: str
+        :param filename:
+        :type filename: str
+        :param content_type:
+        :type content_type: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._chat_upload_file_serialize(
+            file=file,
+            x_user_id=x_user_id,
+            x_caller_id=x_caller_id,
+            x_caller_thread_id=x_caller_thread_id,
+            filename=filename,
+            content_type=content_type,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ChatUploadFile200Response",
+            '400': None,
+            '500': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _chat_upload_file_serialize(
+        self,
+        file,
+        x_user_id,
+        x_caller_id,
+        x_caller_thread_id,
+        filename,
+        content_type,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
         # process the query parameters
         # process the header parameters
+        if x_user_id is not None:
+            _header_params['X-User-ID'] = x_user_id
+        if x_caller_id is not None:
+            _header_params['X-Caller-ID'] = x_caller_id
+        if x_caller_thread_id is not None:
+            _header_params['X-Caller-Thread-ID'] = x_caller_thread_id
         # process the form parameters
+        if file is not None:
+            _files['file'] = file
+        if filename is not None:
+            _form_params.append(('filename', filename))
+        if content_type is not None:
+            _form_params.append(('content_type', content_type))
         # process the body parameter
 
 
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
 
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'multipart/form-data', 
+                        'application/x-www-form-urlencoded'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
 
         # authentication setting
         _auth_settings: List[str] = [
