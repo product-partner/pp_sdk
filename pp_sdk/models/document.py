@@ -22,10 +22,10 @@ from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
-from pp_sdk.models.created_by import CreatedBy
-from pp_sdk.models.programs_inner import ProgramsInner
-from pp_sdk.models.stakeholder_users_inner import StakeholderUsersInner
+from pp_sdk.models.programs_list_inner import ProgramsListInner
 from pp_sdk.models.tags_inner import TagsInner
+from pp_sdk.models.user_field import UserField
+from pp_sdk.models.user_list_of_user_fields_inner import UserListOfUserFieldsInner
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -37,16 +37,16 @@ class Document(BaseModel):
     type: Optional[StrictStr] = None
     title: Annotated[str, Field(min_length=1, strict=True)]
     body: Optional[StrictStr] = None
-    created_by: Optional[CreatedBy] = None
+    created_by: Optional[UserField] = None
     created_date: Optional[datetime] = None
     modified_date: Optional[datetime] = None
     reviewed_date: Optional[datetime] = None
     document_covering_period_start: Optional[datetime] = None
     document_covering_period_end: Optional[datetime] = None
     publishing_state: Optional[StrictStr] = None
-    programs: Optional[List[ProgramsInner]] = None
+    programs: Optional[List[ProgramsListInner]] = Field(default=None, description="Can accept either a list of program IDs (strings) or a list of objects with id field")
     tags: Optional[List[TagsInner]] = None
-    stakeholder_users: Optional[List[StakeholderUsersInner]] = None
+    stakeholder_users: Optional[List[UserListOfUserFieldsInner]] = Field(default=None, description="Can accept either a list of user IDs (strings) or a list of objects with id field")
     version: Optional[StrictInt] = None
     version_summary: Optional[StrictStr] = None
     image_url: Optional[StrictStr] = None
@@ -110,15 +110,11 @@ class Document(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
             "id",
             "created_date",
             "modified_date",
-            "programs",
-            "stakeholder_users",
             "version",
             "image_url",
             "blob_id",
@@ -199,16 +195,16 @@ class Document(BaseModel):
             "type": obj.get("type"),
             "title": obj.get("title"),
             "body": obj.get("body"),
-            "created_by": CreatedBy.from_dict(obj["created_by"]) if obj.get("created_by") is not None else None,
+            "created_by": UserField.from_dict(obj["created_by"]) if obj.get("created_by") is not None else None,
             "created_date": obj.get("created_date"),
             "modified_date": obj.get("modified_date"),
             "reviewed_date": obj.get("reviewed_date"),
             "document_covering_period_start": obj.get("document_covering_period_start"),
             "document_covering_period_end": obj.get("document_covering_period_end"),
             "publishing_state": obj.get("publishing_state"),
-            "programs": [ProgramsInner.from_dict(_item) for _item in obj["programs"]] if obj.get("programs") is not None else None,
+            "programs": [ProgramsListInner.from_dict(_item) for _item in obj["programs"]] if obj.get("programs") is not None else None,
             "tags": [TagsInner.from_dict(_item) for _item in obj["tags"]] if obj.get("tags") is not None else None,
-            "stakeholder_users": [StakeholderUsersInner.from_dict(_item) for _item in obj["stakeholder_users"]] if obj.get("stakeholder_users") is not None else None,
+            "stakeholder_users": [UserListOfUserFieldsInner.from_dict(_item) for _item in obj["stakeholder_users"]] if obj.get("stakeholder_users") is not None else None,
             "version": obj.get("version"),
             "version_summary": obj.get("version_summary"),
             "image_url": obj.get("image_url"),

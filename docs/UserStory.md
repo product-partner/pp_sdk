@@ -6,7 +6,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] [readonly] 
-**prd** | **str** |  | [optional] 
 **as_a** | **str** |  | [optional] 
 **i_want_to** | **str** |  | [optional] 
 **so_that** | **str** |  | [optional] 
@@ -17,7 +16,7 @@ Name | Type | Description | Notes
 **status** | **str** |  | [optional] 
 **priority** | **str** |  | [optional] 
 **tags** | [**List[TagsInner]**](TagsInner.md) |  | [optional] 
-**created_by** | [**CreatedBy**](CreatedBy.md) |  | [optional] 
+**created_by** | [**UserField**](UserField.md) |  | [optional] 
 
 ## Example
 

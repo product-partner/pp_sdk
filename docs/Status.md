@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **status_note** | **str** |  | [optional] 
 **path_to_green** | **str** |  | [optional] 
 **publishing_state** | **str** |  | [optional] 
-**created_by** | [**CreatedBy**](CreatedBy.md) |  | [optional] 
+**created_by** | [**UserField**](UserField.md) |  | [optional] 
 **created_date** | **datetime** |  | [optional] [readonly] 
 
 ## Example

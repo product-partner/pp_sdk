@@ -22,11 +22,12 @@ from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
-from pp_sdk.models.created_by import CreatedBy
-from pp_sdk.models.programs_inner import ProgramsInner
-from pp_sdk.models.stakeholder_users_inner import StakeholderUsersInner
+from pp_sdk.models.document_list_field_inner import DocumentListFieldInner
+from pp_sdk.models.programs_list_inner import ProgramsListInner
 from pp_sdk.models.status1 import Status1
 from pp_sdk.models.tags_inner import TagsInner
+from pp_sdk.models.user_field import UserField
+from pp_sdk.models.user_list_of_user_fields_inner import UserListOfUserFieldsInner
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -39,18 +40,18 @@ class Goal(BaseModel):
     goal_language: Optional[StrictStr] = None
     description: Optional[StrictStr] = None
     why_it_matters: Optional[StrictStr] = None
-    prd: Optional[StrictStr] = None
+    prd: Optional[List[DocumentListFieldInner]] = Field(default=None, description="Can accept either a list of document IDs (strings) or a list of objects with id field")
     created_date: Optional[datetime] = None
     modified_date: Optional[datetime] = None
     original_due_date: Optional[datetime] = None
     current_due_date: Optional[datetime] = None
-    owner_users: Optional[List[StakeholderUsersInner]] = None
-    programs: Optional[List[ProgramsInner]] = None
-    stakeholder_users: Optional[List[StakeholderUsersInner]] = None
+    owner_users: Optional[List[UserListOfUserFieldsInner]] = Field(default=None, description="Can accept either a list of user IDs (strings) or a list of objects with id field")
+    programs: Optional[List[ProgramsListInner]] = Field(default=None, description="Can accept either a list of program IDs (strings) or a list of objects with id field")
+    stakeholder_users: Optional[List[UserListOfUserFieldsInner]] = Field(default=None, description="Can accept either a list of user IDs (strings) or a list of objects with id field")
     tags: Optional[List[TagsInner]] = None
     version: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=-2147483648)]] = None
     version_summary: Optional[StrictStr] = None
-    created_by: Optional[CreatedBy] = None
+    created_by: Optional[UserField] = None
     status: Optional[Status1] = None
     __properties: ClassVar[List[str]] = ["id", "name", "goal_language", "description", "why_it_matters", "prd", "created_date", "modified_date", "original_due_date", "current_due_date", "owner_users", "programs", "stakeholder_users", "tags", "version", "version_summary", "created_by", "status"]
 
@@ -87,17 +88,11 @@ class Goal(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
             "id",
             "created_date",
             "modified_date",
-            "owner_users",
-            "programs",
-            "stakeholder_users",
         ])
 
         _dict = self.model_dump(
@@ -105,6 +100,13 @@ class Goal(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in prd (list)
+        _items = []
+        if self.prd:
+            for _item_prd in self.prd:
+                if _item_prd:
+                    _items.append(_item_prd.to_dict())
+            _dict['prd'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in owner_users (list)
         _items = []
         if self.owner_users:
@@ -196,18 +198,18 @@ class Goal(BaseModel):
             "goal_language": obj.get("goal_language"),
             "description": obj.get("description"),
             "why_it_matters": obj.get("why_it_matters"),
-            "prd": obj.get("prd"),
+            "prd": [DocumentListFieldInner.from_dict(_item) for _item in obj["prd"]] if obj.get("prd") is not None else None,
             "created_date": obj.get("created_date"),
             "modified_date": obj.get("modified_date"),
             "original_due_date": obj.get("original_due_date"),
             "current_due_date": obj.get("current_due_date"),
-            "owner_users": [StakeholderUsersInner.from_dict(_item) for _item in obj["owner_users"]] if obj.get("owner_users") is not None else None,
-            "programs": [ProgramsInner.from_dict(_item) for _item in obj["programs"]] if obj.get("programs") is not None else None,
-            "stakeholder_users": [StakeholderUsersInner.from_dict(_item) for _item in obj["stakeholder_users"]] if obj.get("stakeholder_users") is not None else None,
+            "owner_users": [UserListOfUserFieldsInner.from_dict(_item) for _item in obj["owner_users"]] if obj.get("owner_users") is not None else None,
+            "programs": [ProgramsListInner.from_dict(_item) for _item in obj["programs"]] if obj.get("programs") is not None else None,
+            "stakeholder_users": [UserListOfUserFieldsInner.from_dict(_item) for _item in obj["stakeholder_users"]] if obj.get("stakeholder_users") is not None else None,
             "tags": [TagsInner.from_dict(_item) for _item in obj["tags"]] if obj.get("tags") is not None else None,
             "version": obj.get("version"),
             "version_summary": obj.get("version_summary"),
-            "created_by": CreatedBy.from_dict(obj["created_by"]) if obj.get("created_by") is not None else None,
+            "created_by": UserField.from_dict(obj["created_by"]) if obj.get("created_by") is not None else None,
             "status": Status1.from_dict(obj["status"]) if obj.get("status") is not None else None
         })
         return _obj

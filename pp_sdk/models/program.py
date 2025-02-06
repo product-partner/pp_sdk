@@ -22,9 +22,9 @@ from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
-from pp_sdk.models.created_by import CreatedBy
-from pp_sdk.models.stakeholder_users_inner import StakeholderUsersInner
 from pp_sdk.models.tags_inner import TagsInner
+from pp_sdk.models.user_field import UserField
+from pp_sdk.models.user_list_of_user_fields_inner import UserListOfUserFieldsInner
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -37,11 +37,11 @@ class Program(BaseModel):
     description: Optional[StrictStr] = None
     mission: Optional[StrictStr] = None
     charter: Optional[StrictStr] = None
-    principal_users: Optional[List[StakeholderUsersInner]] = None
-    stakeholder_users: Optional[List[StakeholderUsersInner]] = None
+    principal_users: Optional[List[UserListOfUserFieldsInner]] = Field(default=None, description="Can accept either a list of user IDs (strings) or a list of objects with id field")
+    stakeholder_users: Optional[List[UserListOfUserFieldsInner]] = Field(default=None, description="Can accept either a list of user IDs (strings) or a list of objects with id field")
     parent: Optional[StrictStr] = None
     tags: Optional[List[TagsInner]] = None
-    created_by: Optional[CreatedBy] = None
+    created_by: Optional[UserField] = None
     created_date: Optional[datetime] = None
     modified_date: Optional[datetime] = None
     __properties: ClassVar[List[str]] = ["id", "name", "description", "mission", "charter", "principal_users", "stakeholder_users", "parent", "tags", "created_by", "created_date", "modified_date"]
@@ -79,13 +79,9 @@ class Program(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
             "id",
-            "principal_users",
-            "stakeholder_users",
             "created_date",
             "modified_date",
         ])
@@ -166,11 +162,11 @@ class Program(BaseModel):
             "description": obj.get("description"),
             "mission": obj.get("mission"),
             "charter": obj.get("charter"),
-            "principal_users": [StakeholderUsersInner.from_dict(_item) for _item in obj["principal_users"]] if obj.get("principal_users") is not None else None,
-            "stakeholder_users": [StakeholderUsersInner.from_dict(_item) for _item in obj["stakeholder_users"]] if obj.get("stakeholder_users") is not None else None,
+            "principal_users": [UserListOfUserFieldsInner.from_dict(_item) for _item in obj["principal_users"]] if obj.get("principal_users") is not None else None,
+            "stakeholder_users": [UserListOfUserFieldsInner.from_dict(_item) for _item in obj["stakeholder_users"]] if obj.get("stakeholder_users") is not None else None,
             "parent": obj.get("parent"),
             "tags": [TagsInner.from_dict(_item) for _item in obj["tags"]] if obj.get("tags") is not None else None,
-            "created_by": CreatedBy.from_dict(obj["created_by"]) if obj.get("created_by") is not None else None,
+            "created_by": UserField.from_dict(obj["created_by"]) if obj.get("created_by") is not None else None,
             "created_date": obj.get("created_date"),
             "modified_date": obj.get("modified_date")
         })

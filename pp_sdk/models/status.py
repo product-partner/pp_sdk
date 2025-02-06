@@ -22,8 +22,8 @@ from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
-from pp_sdk.models.created_by import CreatedBy
 from pp_sdk.models.goal_base import GoalBase
+from pp_sdk.models.user_field import UserField
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -40,7 +40,7 @@ class Status(BaseModel):
     status_note: Optional[StrictStr] = None
     path_to_green: Optional[StrictStr] = None
     publishing_state: Optional[StrictStr] = None
-    created_by: Optional[CreatedBy] = None
+    created_by: Optional[UserField] = None
     created_date: Optional[datetime] = None
     __properties: ClassVar[List[str]] = ["id", "goal", "goal_details", "status", "status_display", "date", "status_note", "path_to_green", "publishing_state", "created_by", "created_date"]
 
@@ -151,7 +151,7 @@ class Status(BaseModel):
             "status_note": obj.get("status_note"),
             "path_to_green": obj.get("path_to_green"),
             "publishing_state": obj.get("publishing_state"),
-            "created_by": CreatedBy.from_dict(obj["created_by"]) if obj.get("created_by") is not None else None,
+            "created_by": UserField.from_dict(obj["created_by"]) if obj.get("created_by") is not None else None,
             "created_date": obj.get("created_date")
         })
         return _obj

@@ -22,8 +22,8 @@ from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
-from pp_sdk.models.created_by import CreatedBy
 from pp_sdk.models.tags_inner import TagsInner
+from pp_sdk.models.user_field import UserField
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -32,7 +32,6 @@ class UserStory(BaseModel):
     UserStory
     """ # noqa: E501
     id: Optional[StrictStr] = None
-    prd: Optional[StrictStr] = None
     as_a: Optional[Annotated[str, Field(strict=True, max_length=255)]] = None
     i_want_to: Optional[Annotated[str, Field(strict=True, max_length=255)]] = None
     so_that: Optional[Annotated[str, Field(strict=True, max_length=255)]] = None
@@ -43,8 +42,8 @@ class UserStory(BaseModel):
     status: Optional[StrictStr] = None
     priority: Optional[Annotated[str, Field(strict=True, max_length=50)]] = None
     tags: Optional[List[TagsInner]] = None
-    created_by: Optional[CreatedBy] = None
-    __properties: ClassVar[List[str]] = ["id", "prd", "as_a", "i_want_to", "so_that", "freetext_override", "created_date", "modified_date", "due_date", "status", "priority", "tags", "created_by"]
+    created_by: Optional[UserField] = None
+    __properties: ClassVar[List[str]] = ["id", "as_a", "i_want_to", "so_that", "freetext_override", "created_date", "modified_date", "due_date", "status", "priority", "tags", "created_by"]
 
     @field_validator('status')
     def status_validate_enum(cls, value):
@@ -154,7 +153,6 @@ class UserStory(BaseModel):
 
         _obj = cls.model_validate({
             "id": obj.get("id"),
-            "prd": obj.get("prd"),
             "as_a": obj.get("as_a"),
             "i_want_to": obj.get("i_want_to"),
             "so_that": obj.get("so_that"),
@@ -165,7 +163,7 @@ class UserStory(BaseModel):
             "status": obj.get("status"),
             "priority": obj.get("priority"),
             "tags": [TagsInner.from_dict(_item) for _item in obj["tags"]] if obj.get("tags") is not None else None,
-            "created_by": CreatedBy.from_dict(obj["created_by"]) if obj.get("created_by") is not None else None
+            "created_by": UserField.from_dict(obj["created_by"]) if obj.get("created_by") is not None else None
         })
         return _obj
 
