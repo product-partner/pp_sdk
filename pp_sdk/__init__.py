@@ -15,7 +15,7 @@
 """  # noqa: E501
 
 
-__version__ = "0.3.1"
+__version__ = "0.4.0"
 
 # import apis into sdk package
 from pp_sdk.api.chat_api import ChatApi
@@ -24,9 +24,8 @@ from pp_sdk.api.goals_api import GoalsApi
 from pp_sdk.api.programs_api import ProgramsApi
 from pp_sdk.api.status_api import StatusApi
 from pp_sdk.api.tags_api import TagsApi
-from pp_sdk.api.user_api import UserApi
+from pp_sdk.api.users_api import UsersApi
 from pp_sdk.api.userstories_api import UserstoriesApi
-from pp_sdk.api.userstory_api import UserstoryApi
 
 # import ApiClient
 from pp_sdk.api_response import ApiResponse
