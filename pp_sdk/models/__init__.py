@@ -17,6 +17,7 @@
 # import models into model package
 from pp_sdk.models.address import Address
 from pp_sdk.models.chat_history200_response import ChatHistory200Response
+from pp_sdk.models.chat_read200_response import ChatRead200Response
 from pp_sdk.models.chat_upload_file200_response import ChatUploadFile200Response
 from pp_sdk.models.document import Document
 from pp_sdk.models.document_list_field_inner import DocumentListFieldInner

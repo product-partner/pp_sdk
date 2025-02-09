@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**chat**](ChatApi.md#chat) | **GET** /chat/ | 
 [**chat_history**](ChatApi.md#chat_history) | **GET** /chat/history/ | 
+[**chat_read**](ChatApi.md#chat_read) | **GET** /chat/{thread_id}/ | 
 [**chat_upload_file**](ChatApi.md#chat_upload_file) | **POST** /chat/upload/ | 
 
 
@@ -166,6 +167,79 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Chat history retrieved successfully |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **chat_read**
+> ChatRead200Response chat_read(thread_id, x_user_id=x_user_id, x_caller_id=x_caller_id, x_caller_thread_id=x_caller_thread_id)
+
+
+
+Get a specific chat thread
+
+### Example
+
+
+```python
+import pp_sdk
+from pp_sdk.models.chat_read200_response import ChatRead200Response
+from pp_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://0.0.0.0:8000/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pp_sdk.Configuration(
+    host = "http://0.0.0.0:8000/api"
+)
+
+
+# Enter a context with an instance of the API client
+with pp_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pp_sdk.ChatApi(api_client)
+    thread_id = 'thread_id_example' # str | 
+    x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
+    x_caller_id = 'x_caller_id_example' # str | Optional ID of the application calling the ID, used in conjunction with the caller_thread_id (optional)
+    x_caller_thread_id = 'x_caller_thread_id_example' # str | Caller-side thread ID used in conjunction with the caller_id to identify the conversation that this message is a part of. This will be looked up against the internal thread id in Product Partner. (optional)
+
+    try:
+        api_response = api_instance.chat_read(thread_id, x_user_id=x_user_id, x_caller_id=x_caller_id, x_caller_thread_id=x_caller_thread_id)
+        print("The response of ChatApi->chat_read:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ChatApi->chat_read: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **thread_id** | **str**|  | 
+ **x_user_id** | **str**| User ID (required when using API key) | [optional] 
+ **x_caller_id** | **str**| Optional ID of the application calling the ID, used in conjunction with the caller_thread_id | [optional] 
+ **x_caller_thread_id** | **str**| Caller-side thread ID used in conjunction with the caller_id to identify the conversation that this message is a part of. This will be looked up against the internal thread id in Product Partner. | [optional] 
+
+### Return type
+
+[**ChatRead200Response**](ChatRead200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Chat thread retrieved successfully |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

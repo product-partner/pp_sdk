@@ -15,7 +15,7 @@
 """  # noqa: E501
 
 
-__version__ = "0.4.0"
+__version__ = "0.4.1"
 
 # import apis into sdk package
 from pp_sdk.api.chat_api import ChatApi
@@ -41,6 +41,7 @@ from pp_sdk.exceptions import ApiException
 # import models into sdk package
 from pp_sdk.models.address import Address
 from pp_sdk.models.chat_history200_response import ChatHistory200Response
+from pp_sdk.models.chat_read200_response import ChatRead200Response
 from pp_sdk.models.chat_upload_file200_response import ChatUploadFile200Response
 from pp_sdk.models.document import Document
 from pp_sdk.models.document_list_field_inner import DocumentListFieldInner
