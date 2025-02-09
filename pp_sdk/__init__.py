@@ -15,7 +15,7 @@
 """  # noqa: E501
 
 
-__version__ = "0.4.3"
+__version__ = "0.4.4"
 
 # import apis into sdk package
 from pp_sdk.api.chat_api import ChatApi
