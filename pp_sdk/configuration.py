@@ -208,7 +208,7 @@ conf = pp_sdk.Configuration(
     ) -> None:
         """Constructor
         """
-        self._base_path = "http://localhost:8000/api" if host is None else host
+        self._base_path = "http://0.0.0.0:8000/api" if host is None else host
         """Default Base url
         """
         self.server_index = 0 if server_index is None and host is None else server_index
@@ -545,7 +545,7 @@ conf = pp_sdk.Configuration(
         """
         return [
             {
-                'url': "http://localhost:8000/api",
+                'url': "http://0.0.0.0:8000/api",
                 'description': "No description provided",
             }
         ]

@@ -1,6 +1,6 @@
 # pp_sdk.GoalsApi
 
-All URIs are relative to *http://localhost:8000/api*
+All URIs are relative to *http://0.0.0.0:8000/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -31,10 +31,10 @@ from pp_sdk.models.goal import Goal
 from pp_sdk.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8000/api
+# Defining the host is optional and defaults to http://0.0.0.0:8000/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = pp_sdk.Configuration(
-    host = "http://localhost:8000/api"
+    host = "http://0.0.0.0:8000/api"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -115,10 +115,10 @@ import pp_sdk
 from pp_sdk.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8000/api
+# Defining the host is optional and defaults to http://0.0.0.0:8000/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = pp_sdk.Configuration(
-    host = "http://localhost:8000/api"
+    host = "http://0.0.0.0:8000/api"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -199,10 +199,10 @@ from pp_sdk.models.goal import Goal
 from pp_sdk.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8000/api
+# Defining the host is optional and defaults to http://0.0.0.0:8000/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = pp_sdk.Configuration(
-    host = "http://localhost:8000/api"
+    host = "http://0.0.0.0:8000/api"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -300,10 +300,10 @@ from pp_sdk.models.goal import Goal
 from pp_sdk.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8000/api
+# Defining the host is optional and defaults to http://0.0.0.0:8000/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = pp_sdk.Configuration(
-    host = "http://localhost:8000/api"
+    host = "http://0.0.0.0:8000/api"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -388,10 +388,10 @@ from pp_sdk.models.goal_picker import GoalPicker
 from pp_sdk.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8000/api
+# Defining the host is optional and defaults to http://0.0.0.0:8000/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = pp_sdk.Configuration(
-    host = "http://localhost:8000/api"
+    host = "http://0.0.0.0:8000/api"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -477,10 +477,10 @@ from pp_sdk.models.goal import Goal
 from pp_sdk.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8000/api
+# Defining the host is optional and defaults to http://0.0.0.0:8000/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = pp_sdk.Configuration(
-    host = "http://localhost:8000/api"
+    host = "http://0.0.0.0:8000/api"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -562,10 +562,10 @@ from pp_sdk.models.goal import Goal
 from pp_sdk.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8000/api
+# Defining the host is optional and defaults to http://0.0.0.0:8000/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = pp_sdk.Configuration(
-    host = "http://localhost:8000/api"
+    host = "http://0.0.0.0:8000/api"
 )
 
 # The client must configure the authentication and authorization parameters

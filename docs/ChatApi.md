@@ -1,6 +1,6 @@
 # pp_sdk.ChatApi
 
-All URIs are relative to *http://localhost:8000/api*
+All URIs are relative to *http://0.0.0.0:8000/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -27,10 +27,10 @@ import pp_sdk
 from pp_sdk.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8000/api
+# Defining the host is optional and defaults to http://0.0.0.0:8000/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = pp_sdk.Configuration(
-    host = "http://localhost:8000/api"
+    host = "http://0.0.0.0:8000/api"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -129,10 +129,10 @@ from pp_sdk.models.chat_history200_response import ChatHistory200Response
 from pp_sdk.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8000/api
+# Defining the host is optional and defaults to http://0.0.0.0:8000/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = pp_sdk.Configuration(
-    host = "http://localhost:8000/api"
+    host = "http://0.0.0.0:8000/api"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -224,10 +224,10 @@ from pp_sdk.models.chat_threads_read200_response import ChatThreadsRead200Respon
 from pp_sdk.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8000/api
+# Defining the host is optional and defaults to http://0.0.0.0:8000/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = pp_sdk.Configuration(
-    host = "http://localhost:8000/api"
+    host = "http://0.0.0.0:8000/api"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -315,10 +315,10 @@ from pp_sdk.models.chat_upload_file200_response import ChatUploadFile200Response
 from pp_sdk.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8000/api
+# Defining the host is optional and defaults to http://0.0.0.0:8000/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = pp_sdk.Configuration(
-    host = "http://localhost:8000/api"
+    host = "http://0.0.0.0:8000/api"
 )
 
 # The client must configure the authentication and authorization parameters
