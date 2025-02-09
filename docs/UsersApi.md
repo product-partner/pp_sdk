@@ -1,6 +1,6 @@
 # pp_sdk.UsersApi
 
-All URIs are relative to *http://0.0.0.0:8000/api*
+All URIs are relative to *http://localhost:8000/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -22,6 +22,8 @@ Create a new user for the authenticated user's organization.
 
 ### Example
 
+* Api Key Authentication (UserIdAuth):
+* Api Key Authentication (ApiKeyAuth):
 
 ```python
 import pp_sdk
@@ -29,12 +31,28 @@ from pp_sdk.models.user import User
 from pp_sdk.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://0.0.0.0:8000/api
+# Defining the host is optional and defaults to http://localhost:8000/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = pp_sdk.Configuration(
-    host = "http://0.0.0.0:8000/api"
+    host = "http://localhost:8000/api"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: UserIdAuth
+configuration.api_key['UserIdAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['UserIdAuth'] = 'Bearer'
+
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with pp_sdk.ApiClient(configuration) as api_client:
@@ -67,7 +85,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[UserIdAuth](../README.md#UserIdAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -89,18 +107,36 @@ No authorization required
 
 ### Example
 
+* Api Key Authentication (UserIdAuth):
+* Api Key Authentication (ApiKeyAuth):
 
 ```python
 import pp_sdk
 from pp_sdk.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://0.0.0.0:8000/api
+# Defining the host is optional and defaults to http://localhost:8000/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = pp_sdk.Configuration(
-    host = "http://0.0.0.0:8000/api"
+    host = "http://localhost:8000/api"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: UserIdAuth
+configuration.api_key['UserIdAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['UserIdAuth'] = 'Bearer'
+
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with pp_sdk.ApiClient(configuration) as api_client:
@@ -129,7 +165,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[UserIdAuth](../README.md#UserIdAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -153,6 +189,8 @@ Retrieve one or more users
 
 ### Example
 
+* Api Key Authentication (UserIdAuth):
+* Api Key Authentication (ApiKeyAuth):
 
 ```python
 import pp_sdk
@@ -160,12 +198,28 @@ from pp_sdk.models.user import User
 from pp_sdk.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://0.0.0.0:8000/api
+# Defining the host is optional and defaults to http://localhost:8000/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = pp_sdk.Configuration(
-    host = "http://0.0.0.0:8000/api"
+    host = "http://localhost:8000/api"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: UserIdAuth
+configuration.api_key['UserIdAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['UserIdAuth'] = 'Bearer'
+
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with pp_sdk.ApiClient(configuration) as api_client:
@@ -204,7 +258,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[UserIdAuth](../README.md#UserIdAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -227,6 +281,8 @@ No authorization required
 
 ### Example
 
+* Api Key Authentication (UserIdAuth):
+* Api Key Authentication (ApiKeyAuth):
 
 ```python
 import pp_sdk
@@ -234,12 +290,28 @@ from pp_sdk.models.user import User
 from pp_sdk.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://0.0.0.0:8000/api
+# Defining the host is optional and defaults to http://localhost:8000/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = pp_sdk.Configuration(
-    host = "http://0.0.0.0:8000/api"
+    host = "http://localhost:8000/api"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: UserIdAuth
+configuration.api_key['UserIdAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['UserIdAuth'] = 'Bearer'
+
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with pp_sdk.ApiClient(configuration) as api_client:
@@ -272,7 +344,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[UserIdAuth](../README.md#UserIdAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -296,6 +368,8 @@ Retrieve list of users matching none or all of search parameters.
 
 ### Example
 
+* Api Key Authentication (UserIdAuth):
+* Api Key Authentication (ApiKeyAuth):
 
 ```python
 import pp_sdk
@@ -303,12 +377,28 @@ from pp_sdk.models.user import User
 from pp_sdk.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://0.0.0.0:8000/api
+# Defining the host is optional and defaults to http://localhost:8000/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = pp_sdk.Configuration(
-    host = "http://0.0.0.0:8000/api"
+    host = "http://localhost:8000/api"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: UserIdAuth
+configuration.api_key['UserIdAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['UserIdAuth'] = 'Bearer'
+
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with pp_sdk.ApiClient(configuration) as api_client:
@@ -343,7 +433,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[UserIdAuth](../README.md#UserIdAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -368,6 +458,8 @@ Get a list of all PRDs for the authenticated user's organization.
 
 ### Example
 
+* Api Key Authentication (UserIdAuth):
+* Api Key Authentication (ApiKeyAuth):
 
 ```python
 import pp_sdk
@@ -375,12 +467,28 @@ from pp_sdk.models.user import User
 from pp_sdk.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://0.0.0.0:8000/api
+# Defining the host is optional and defaults to http://localhost:8000/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = pp_sdk.Configuration(
-    host = "http://0.0.0.0:8000/api"
+    host = "http://localhost:8000/api"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: UserIdAuth
+configuration.api_key['UserIdAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['UserIdAuth'] = 'Bearer'
+
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with pp_sdk.ApiClient(configuration) as api_client:
@@ -413,7 +521,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[UserIdAuth](../README.md#UserIdAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -437,6 +545,8 @@ Update a specific user's details
 
 ### Example
 
+* Api Key Authentication (UserIdAuth):
+* Api Key Authentication (ApiKeyAuth):
 
 ```python
 import pp_sdk
@@ -444,12 +554,28 @@ from pp_sdk.models.user import User
 from pp_sdk.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://0.0.0.0:8000/api
+# Defining the host is optional and defaults to http://localhost:8000/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = pp_sdk.Configuration(
-    host = "http://0.0.0.0:8000/api"
+    host = "http://localhost:8000/api"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: UserIdAuth
+configuration.api_key['UserIdAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['UserIdAuth'] = 'Bearer'
+
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with pp_sdk.ApiClient(configuration) as api_client:
@@ -484,7 +610,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[UserIdAuth](../README.md#UserIdAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 

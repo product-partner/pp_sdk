@@ -23,15 +23,12 @@ from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class Status1(BaseModel):
+class ChatThreadsRead200Response(BaseModel):
     """
-    Status1
+    ChatThreadsRead200Response
     """ # noqa: E501
-    id: Optional[StrictStr] = None
-    status: Optional[StrictStr] = None
-    status_display: Optional[StrictStr] = None
-    var_date: Optional[StrictStr] = Field(default=None, alias="date")
-    __properties: ClassVar[List[str]] = ["id", "status", "status_display", "date"]
+    content: Optional[StrictStr] = Field(default=None, description="Chat message content")
+    __properties: ClassVar[List[str]] = ["content"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -51,7 +48,7 @@ class Status1(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of Status1 from a JSON string"""
+        """Create an instance of ChatThreadsRead200Response from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -76,7 +73,7 @@ class Status1(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of Status1 from a dict"""
+        """Create an instance of ChatThreadsRead200Response from a dict"""
         if obj is None:
             return None
 
@@ -84,10 +81,7 @@ class Status1(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id": obj.get("id"),
-            "status": obj.get("status"),
-            "status_display": obj.get("status_display"),
-            "date": obj.get("date")
+            "content": obj.get("content")
         })
         return _obj
 

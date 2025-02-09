@@ -1,12 +1,12 @@
 # pp_sdk.ChatApi
 
-All URIs are relative to *http://0.0.0.0:8000/api*
+All URIs are relative to *http://localhost:8000/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**chat**](ChatApi.md#chat) | **GET** /chat/ | 
 [**chat_history**](ChatApi.md#chat_history) | **GET** /chat/history/ | 
-[**chat_read**](ChatApi.md#chat_read) | **GET** /chat/{thread_id}/ | 
+[**chat_threads_read**](ChatApi.md#chat_threads_read) | **GET** /chat/threads/{thread_id}/ | 
 [**chat_upload_file**](ChatApi.md#chat_upload_file) | **POST** /chat/upload/ | 
 
 
@@ -19,18 +19,36 @@ Process chat message
 
 ### Example
 
+* Api Key Authentication (UserIdAuth):
+* Api Key Authentication (ApiKeyAuth):
 
 ```python
 import pp_sdk
 from pp_sdk.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://0.0.0.0:8000/api
+# Defining the host is optional and defaults to http://localhost:8000/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = pp_sdk.Configuration(
-    host = "http://0.0.0.0:8000/api"
+    host = "http://localhost:8000/api"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: UserIdAuth
+configuration.api_key['UserIdAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['UserIdAuth'] = 'Bearer'
+
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with pp_sdk.ApiClient(configuration) as api_client:
@@ -77,7 +95,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[UserIdAuth](../README.md#UserIdAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -102,6 +120,8 @@ Get chat history
 
 ### Example
 
+* Api Key Authentication (UserIdAuth):
+* Api Key Authentication (ApiKeyAuth):
 
 ```python
 import pp_sdk
@@ -109,12 +129,28 @@ from pp_sdk.models.chat_history200_response import ChatHistory200Response
 from pp_sdk.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://0.0.0.0:8000/api
+# Defining the host is optional and defaults to http://localhost:8000/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = pp_sdk.Configuration(
-    host = "http://0.0.0.0:8000/api"
+    host = "http://localhost:8000/api"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: UserIdAuth
+configuration.api_key['UserIdAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['UserIdAuth'] = 'Bearer'
+
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with pp_sdk.ApiClient(configuration) as api_client:
@@ -155,7 +191,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[UserIdAuth](../README.md#UserIdAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -170,8 +206,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **chat_read**
-> ChatRead200Response chat_read(thread_id, x_user_id=x_user_id, x_caller_id=x_caller_id, x_caller_thread_id=x_caller_thread_id)
+# **chat_threads_read**
+> ChatThreadsRead200Response chat_threads_read(thread_id, x_user_id=x_user_id, x_caller_id=x_caller_id, x_caller_thread_id=x_caller_thread_id)
 
 
 
@@ -179,19 +215,37 @@ Get a specific chat thread
 
 ### Example
 
+* Api Key Authentication (UserIdAuth):
+* Api Key Authentication (ApiKeyAuth):
 
 ```python
 import pp_sdk
-from pp_sdk.models.chat_read200_response import ChatRead200Response
+from pp_sdk.models.chat_threads_read200_response import ChatThreadsRead200Response
 from pp_sdk.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://0.0.0.0:8000/api
+# Defining the host is optional and defaults to http://localhost:8000/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = pp_sdk.Configuration(
-    host = "http://0.0.0.0:8000/api"
+    host = "http://localhost:8000/api"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: UserIdAuth
+configuration.api_key['UserIdAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['UserIdAuth'] = 'Bearer'
+
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with pp_sdk.ApiClient(configuration) as api_client:
@@ -203,11 +257,11 @@ with pp_sdk.ApiClient(configuration) as api_client:
     x_caller_thread_id = 'x_caller_thread_id_example' # str | Caller-side thread ID used in conjunction with the caller_id to identify the conversation that this message is a part of. This will be looked up against the internal thread id in Product Partner. (optional)
 
     try:
-        api_response = api_instance.chat_read(thread_id, x_user_id=x_user_id, x_caller_id=x_caller_id, x_caller_thread_id=x_caller_thread_id)
-        print("The response of ChatApi->chat_read:\n")
+        api_response = api_instance.chat_threads_read(thread_id, x_user_id=x_user_id, x_caller_id=x_caller_id, x_caller_thread_id=x_caller_thread_id)
+        print("The response of ChatApi->chat_threads_read:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling ChatApi->chat_read: %s\n" % e)
+        print("Exception when calling ChatApi->chat_threads_read: %s\n" % e)
 ```
 
 
@@ -224,11 +278,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ChatRead200Response**](ChatRead200Response.md)
+[**ChatThreadsRead200Response**](ChatThreadsRead200Response.md)
 
 ### Authorization
 
-No authorization required
+[UserIdAuth](../README.md#UserIdAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -252,6 +306,8 @@ Upload a file
 
 ### Example
 
+* Api Key Authentication (UserIdAuth):
+* Api Key Authentication (ApiKeyAuth):
 
 ```python
 import pp_sdk
@@ -259,12 +315,28 @@ from pp_sdk.models.chat_upload_file200_response import ChatUploadFile200Response
 from pp_sdk.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://0.0.0.0:8000/api
+# Defining the host is optional and defaults to http://localhost:8000/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = pp_sdk.Configuration(
-    host = "http://0.0.0.0:8000/api"
+    host = "http://localhost:8000/api"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: UserIdAuth
+configuration.api_key['UserIdAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['UserIdAuth'] = 'Bearer'
+
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with pp_sdk.ApiClient(configuration) as api_client:
@@ -305,7 +377,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[UserIdAuth](../README.md#UserIdAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
