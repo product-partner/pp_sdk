@@ -45,6 +45,7 @@ class GoalsApi:
     def goals_create(
         self,
         data: Goal,
+        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -64,6 +65,8 @@ class GoalsApi:
 
         :param data: (required)
         :type data: Goal
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -88,6 +91,7 @@ class GoalsApi:
 
         _param = self._goals_create_serialize(
             data=data,
+            x_user_id=x_user_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -112,6 +116,7 @@ class GoalsApi:
     def goals_create_with_http_info(
         self,
         data: Goal,
+        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -131,6 +136,8 @@ class GoalsApi:
 
         :param data: (required)
         :type data: Goal
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -155,6 +162,7 @@ class GoalsApi:
 
         _param = self._goals_create_serialize(
             data=data,
+            x_user_id=x_user_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -179,6 +187,7 @@ class GoalsApi:
     def goals_create_without_preload_content(
         self,
         data: Goal,
+        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -198,6 +207,8 @@ class GoalsApi:
 
         :param data: (required)
         :type data: Goal
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -222,6 +233,7 @@ class GoalsApi:
 
         _param = self._goals_create_serialize(
             data=data,
+            x_user_id=x_user_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -241,6 +253,7 @@ class GoalsApi:
     def _goals_create_serialize(
         self,
         data,
+        x_user_id,
         _request_auth,
         _content_type,
         _headers,
@@ -264,6 +277,8 @@ class GoalsApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
+        if x_user_id is not None:
+            _header_params['X-User-ID'] = x_user_id
         # process the form parameters
         # process the body parameter
         if data is not None:
@@ -320,6 +335,7 @@ class GoalsApi:
     def goals_delete(
         self,
         goal_id: StrictStr,
+        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -339,6 +355,8 @@ class GoalsApi:
 
         :param goal_id: (required)
         :type goal_id: str
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -363,6 +381,7 @@ class GoalsApi:
 
         _param = self._goals_delete_serialize(
             goal_id=goal_id,
+            x_user_id=x_user_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -388,6 +407,7 @@ class GoalsApi:
     def goals_delete_with_http_info(
         self,
         goal_id: StrictStr,
+        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -407,6 +427,8 @@ class GoalsApi:
 
         :param goal_id: (required)
         :type goal_id: str
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -431,6 +453,7 @@ class GoalsApi:
 
         _param = self._goals_delete_serialize(
             goal_id=goal_id,
+            x_user_id=x_user_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -456,6 +479,7 @@ class GoalsApi:
     def goals_delete_without_preload_content(
         self,
         goal_id: StrictStr,
+        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -475,6 +499,8 @@ class GoalsApi:
 
         :param goal_id: (required)
         :type goal_id: str
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -499,6 +525,7 @@ class GoalsApi:
 
         _param = self._goals_delete_serialize(
             goal_id=goal_id,
+            x_user_id=x_user_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -519,6 +546,7 @@ class GoalsApi:
     def _goals_delete_serialize(
         self,
         goal_id,
+        x_user_id,
         _request_auth,
         _content_type,
         _headers,
@@ -544,6 +572,8 @@ class GoalsApi:
             _path_params['goal_id'] = goal_id
         # process the query parameters
         # process the header parameters
+        if x_user_id is not None:
+            _header_params['X-User-ID'] = x_user_id
         # process the form parameters
         # process the body parameter
 
@@ -977,6 +1007,7 @@ class GoalsApi:
         self,
         goal_id: StrictStr,
         data: Goal,
+        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -998,6 +1029,8 @@ class GoalsApi:
         :type goal_id: str
         :param data: (required)
         :type data: Goal
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1023,6 +1056,7 @@ class GoalsApi:
         _param = self._goals_partial_update_serialize(
             goal_id=goal_id,
             data=data,
+            x_user_id=x_user_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1049,6 +1083,7 @@ class GoalsApi:
         self,
         goal_id: StrictStr,
         data: Goal,
+        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1070,6 +1105,8 @@ class GoalsApi:
         :type goal_id: str
         :param data: (required)
         :type data: Goal
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1095,6 +1132,7 @@ class GoalsApi:
         _param = self._goals_partial_update_serialize(
             goal_id=goal_id,
             data=data,
+            x_user_id=x_user_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1121,6 +1159,7 @@ class GoalsApi:
         self,
         goal_id: StrictStr,
         data: Goal,
+        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1142,6 +1181,8 @@ class GoalsApi:
         :type goal_id: str
         :param data: (required)
         :type data: Goal
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1167,6 +1208,7 @@ class GoalsApi:
         _param = self._goals_partial_update_serialize(
             goal_id=goal_id,
             data=data,
+            x_user_id=x_user_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1188,6 +1230,7 @@ class GoalsApi:
         self,
         goal_id,
         data,
+        x_user_id,
         _request_auth,
         _content_type,
         _headers,
@@ -1213,6 +1256,8 @@ class GoalsApi:
             _path_params['goal_id'] = goal_id
         # process the query parameters
         # process the header parameters
+        if x_user_id is not None:
+            _header_params['X-User-ID'] = x_user_id
         # process the form parameters
         # process the body parameter
         if data is not None:
@@ -1565,6 +1610,7 @@ class GoalsApi:
     def goals_read(
         self,
         goal_id: StrictStr,
+        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1584,6 +1630,8 @@ class GoalsApi:
 
         :param goal_id: (required)
         :type goal_id: str
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1608,6 +1656,7 @@ class GoalsApi:
 
         _param = self._goals_read_serialize(
             goal_id=goal_id,
+            x_user_id=x_user_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1632,6 +1681,7 @@ class GoalsApi:
     def goals_read_with_http_info(
         self,
         goal_id: StrictStr,
+        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1651,6 +1701,8 @@ class GoalsApi:
 
         :param goal_id: (required)
         :type goal_id: str
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1675,6 +1727,7 @@ class GoalsApi:
 
         _param = self._goals_read_serialize(
             goal_id=goal_id,
+            x_user_id=x_user_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1699,6 +1752,7 @@ class GoalsApi:
     def goals_read_without_preload_content(
         self,
         goal_id: StrictStr,
+        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1718,6 +1772,8 @@ class GoalsApi:
 
         :param goal_id: (required)
         :type goal_id: str
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1742,6 +1798,7 @@ class GoalsApi:
 
         _param = self._goals_read_serialize(
             goal_id=goal_id,
+            x_user_id=x_user_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1761,6 +1818,7 @@ class GoalsApi:
     def _goals_read_serialize(
         self,
         goal_id,
+        x_user_id,
         _request_auth,
         _content_type,
         _headers,
@@ -1786,6 +1844,8 @@ class GoalsApi:
             _path_params['goal_id'] = goal_id
         # process the query parameters
         # process the header parameters
+        if x_user_id is not None:
+            _header_params['X-User-ID'] = x_user_id
         # process the form parameters
         # process the body parameter
 
@@ -1828,6 +1888,7 @@ class GoalsApi:
         self,
         goal_id: StrictStr,
         data: Goal,
+        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1849,6 +1910,8 @@ class GoalsApi:
         :type goal_id: str
         :param data: (required)
         :type data: Goal
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1874,6 +1937,7 @@ class GoalsApi:
         _param = self._goals_update_serialize(
             goal_id=goal_id,
             data=data,
+            x_user_id=x_user_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1900,6 +1964,7 @@ class GoalsApi:
         self,
         goal_id: StrictStr,
         data: Goal,
+        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1921,6 +1986,8 @@ class GoalsApi:
         :type goal_id: str
         :param data: (required)
         :type data: Goal
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1946,6 +2013,7 @@ class GoalsApi:
         _param = self._goals_update_serialize(
             goal_id=goal_id,
             data=data,
+            x_user_id=x_user_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1972,6 +2040,7 @@ class GoalsApi:
         self,
         goal_id: StrictStr,
         data: Goal,
+        x_user_id: Annotated[Optional[StrictStr], Field(description="User ID (required when using API key)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1993,6 +2062,8 @@ class GoalsApi:
         :type goal_id: str
         :param data: (required)
         :type data: Goal
+        :param x_user_id: User ID (required when using API key)
+        :type x_user_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2018,6 +2089,7 @@ class GoalsApi:
         _param = self._goals_update_serialize(
             goal_id=goal_id,
             data=data,
+            x_user_id=x_user_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2039,6 +2111,7 @@ class GoalsApi:
         self,
         goal_id,
         data,
+        x_user_id,
         _request_auth,
         _content_type,
         _headers,
@@ -2064,6 +2137,8 @@ class GoalsApi:
             _path_params['goal_id'] = goal_id
         # process the query parameters
         # process the header parameters
+        if x_user_id is not None:
+            _header_params['X-User-ID'] = x_user_id
         # process the form parameters
         # process the body parameter
         if data is not None:

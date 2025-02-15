@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 
 # **goals_create**
-> Goal goals_create(data)
+> Goal goals_create(data, x_user_id=x_user_id)
 
 
 
@@ -59,9 +59,10 @@ with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pp_sdk.GoalsApi(api_client)
     data = pp_sdk.Goal() # Goal | 
+    x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
     try:
-        api_response = api_instance.goals_create(data)
+        api_response = api_instance.goals_create(data, x_user_id=x_user_id)
         print("The response of GoalsApi->goals_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -76,6 +77,7 @@ with pp_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **data** | [**Goal**](Goal.md)|  | 
+ **x_user_id** | **str**| User ID (required when using API key) | [optional] 
 
 ### Return type
 
@@ -99,7 +101,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **goals_delete**
-> goals_delete(goal_id)
+> goals_delete(goal_id, x_user_id=x_user_id)
 
 
 
@@ -143,9 +145,10 @@ with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pp_sdk.GoalsApi(api_client)
     goal_id = 'goal_id_example' # str | 
+    x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
     try:
-        api_instance.goals_delete(goal_id)
+        api_instance.goals_delete(goal_id, x_user_id=x_user_id)
     except Exception as e:
         print("Exception when calling GoalsApi->goals_delete: %s\n" % e)
 ```
@@ -158,6 +161,7 @@ with pp_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **goal_id** | **str**|  | 
+ **x_user_id** | **str**| User ID (required when using API key) | [optional] 
 
 ### Return type
 
@@ -283,7 +287,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **goals_partial_update**
-> Goal goals_partial_update(goal_id, data)
+> Goal goals_partial_update(goal_id, data, x_user_id=x_user_id)
 
 
 
@@ -329,9 +333,10 @@ with pp_sdk.ApiClient(configuration) as api_client:
     api_instance = pp_sdk.GoalsApi(api_client)
     goal_id = 'goal_id_example' # str | 
     data = pp_sdk.Goal() # Goal | 
+    x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
     try:
-        api_response = api_instance.goals_partial_update(goal_id, data)
+        api_response = api_instance.goals_partial_update(goal_id, data, x_user_id=x_user_id)
         print("The response of GoalsApi->goals_partial_update:\n")
         pprint(api_response)
     except Exception as e:
@@ -347,6 +352,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **goal_id** | **str**|  | 
  **data** | [**Goal**](Goal.md)|  | 
+ **x_user_id** | **str**| User ID (required when using API key) | [optional] 
 
 ### Return type
 
@@ -460,7 +466,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **goals_read**
-> Goal goals_read(goal_id)
+> Goal goals_read(goal_id, x_user_id=x_user_id)
 
 
 
@@ -505,9 +511,10 @@ with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pp_sdk.GoalsApi(api_client)
     goal_id = 'goal_id_example' # str | 
+    x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
     try:
-        api_response = api_instance.goals_read(goal_id)
+        api_response = api_instance.goals_read(goal_id, x_user_id=x_user_id)
         print("The response of GoalsApi->goals_read:\n")
         pprint(api_response)
     except Exception as e:
@@ -522,6 +529,7 @@ with pp_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **goal_id** | **str**|  | 
+ **x_user_id** | **str**| User ID (required when using API key) | [optional] 
 
 ### Return type
 
@@ -545,7 +553,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **goals_update**
-> Goal goals_update(goal_id, data)
+> Goal goals_update(goal_id, data, x_user_id=x_user_id)
 
 
 
@@ -591,9 +599,10 @@ with pp_sdk.ApiClient(configuration) as api_client:
     api_instance = pp_sdk.GoalsApi(api_client)
     goal_id = 'goal_id_example' # str | 
     data = pp_sdk.Goal() # Goal | 
+    x_user_id = 'x_user_id_example' # str | User ID (required when using API key) (optional)
 
     try:
-        api_response = api_instance.goals_update(goal_id, data)
+        api_response = api_instance.goals_update(goal_id, data, x_user_id=x_user_id)
         print("The response of GoalsApi->goals_update:\n")
         pprint(api_response)
     except Exception as e:
@@ -609,6 +618,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **goal_id** | **str**|  | 
  **data** | [**Goal**](Goal.md)|  | 
+ **x_user_id** | **str**| User ID (required when using API key) | [optional] 
 
 ### Return type
 

@@ -185,7 +185,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **status_list**
-> List[Status] status_list(page=page, x_user_id=x_user_id, status=status, search=search, sort=sort, liimit=liimit, goal_ids=goal_ids)
+> List[Status] status_list(page=page, x_user_id=x_user_id, status=status, search=search, sort=sort, limit=limit, goal_ids=goal_ids)
 
 
 
@@ -234,11 +234,11 @@ with pp_sdk.ApiClient(configuration) as api_client:
     status = 'status_example' # str | Filter by a status value (optional)
     search = 'search_example' # str | Search by keyword against status note or path to green (optional)
     sort = 'sort_example' # str | Sort by field (prefix with '-' for descending) (optional)
-    liimit = 'liimit_example' # str | Sort by field (prefix with '-' for descending) (optional)
+    limit = 'limit_example' # str | Sort by field (prefix with '-' for descending) (optional)
     goal_ids = 'goal_ids_example' # str | Filter on goals, using the UUID of the goal. (optional)
 
     try:
-        api_response = api_instance.status_list(page=page, x_user_id=x_user_id, status=status, search=search, sort=sort, liimit=liimit, goal_ids=goal_ids)
+        api_response = api_instance.status_list(page=page, x_user_id=x_user_id, status=status, search=search, sort=sort, limit=limit, goal_ids=goal_ids)
         print("The response of StatusApi->status_list:\n")
         pprint(api_response)
     except Exception as e:
@@ -257,7 +257,7 @@ Name | Type | Description  | Notes
  **status** | **str**| Filter by a status value | [optional] 
  **search** | **str**| Search by keyword against status note or path to green | [optional] 
  **sort** | **str**| Sort by field (prefix with &#39;-&#39; for descending) | [optional] 
- **liimit** | **str**| Sort by field (prefix with &#39;-&#39; for descending) | [optional] 
+ **limit** | **str**| Sort by field (prefix with &#39;-&#39; for descending) | [optional] 
  **goal_ids** | **str**| Filter on goals, using the UUID of the goal. | [optional] 
 
 ### Return type

@@ -609,7 +609,7 @@ class StatusApi:
         status: Annotated[Optional[StrictStr], Field(description="Filter by a status value")] = None,
         search: Annotated[Optional[StrictStr], Field(description="Search by keyword against status note or path to green")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Sort by field (prefix with '-' for descending)")] = None,
-        liimit: Annotated[Optional[StrictStr], Field(description="Sort by field (prefix with '-' for descending)")] = None,
+        limit: Annotated[Optional[StrictStr], Field(description="Sort by field (prefix with '-' for descending)")] = None,
         goal_ids: Annotated[Optional[StrictStr], Field(description="Filter on goals, using the UUID of the goal.")] = None,
         _request_timeout: Union[
             None,
@@ -638,8 +638,8 @@ class StatusApi:
         :type search: str
         :param sort: Sort by field (prefix with '-' for descending)
         :type sort: str
-        :param liimit: Sort by field (prefix with '-' for descending)
-        :type liimit: str
+        :param limit: Sort by field (prefix with '-' for descending)
+        :type limit: str
         :param goal_ids: Filter on goals, using the UUID of the goal.
         :type goal_ids: str
         :param _request_timeout: timeout setting for this request. If one
@@ -670,7 +670,7 @@ class StatusApi:
             status=status,
             search=search,
             sort=sort,
-            liimit=liimit,
+            limit=limit,
             goal_ids=goal_ids,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -700,7 +700,7 @@ class StatusApi:
         status: Annotated[Optional[StrictStr], Field(description="Filter by a status value")] = None,
         search: Annotated[Optional[StrictStr], Field(description="Search by keyword against status note or path to green")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Sort by field (prefix with '-' for descending)")] = None,
-        liimit: Annotated[Optional[StrictStr], Field(description="Sort by field (prefix with '-' for descending)")] = None,
+        limit: Annotated[Optional[StrictStr], Field(description="Sort by field (prefix with '-' for descending)")] = None,
         goal_ids: Annotated[Optional[StrictStr], Field(description="Filter on goals, using the UUID of the goal.")] = None,
         _request_timeout: Union[
             None,
@@ -729,8 +729,8 @@ class StatusApi:
         :type search: str
         :param sort: Sort by field (prefix with '-' for descending)
         :type sort: str
-        :param liimit: Sort by field (prefix with '-' for descending)
-        :type liimit: str
+        :param limit: Sort by field (prefix with '-' for descending)
+        :type limit: str
         :param goal_ids: Filter on goals, using the UUID of the goal.
         :type goal_ids: str
         :param _request_timeout: timeout setting for this request. If one
@@ -761,7 +761,7 @@ class StatusApi:
             status=status,
             search=search,
             sort=sort,
-            liimit=liimit,
+            limit=limit,
             goal_ids=goal_ids,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -791,7 +791,7 @@ class StatusApi:
         status: Annotated[Optional[StrictStr], Field(description="Filter by a status value")] = None,
         search: Annotated[Optional[StrictStr], Field(description="Search by keyword against status note or path to green")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Sort by field (prefix with '-' for descending)")] = None,
-        liimit: Annotated[Optional[StrictStr], Field(description="Sort by field (prefix with '-' for descending)")] = None,
+        limit: Annotated[Optional[StrictStr], Field(description="Sort by field (prefix with '-' for descending)")] = None,
         goal_ids: Annotated[Optional[StrictStr], Field(description="Filter on goals, using the UUID of the goal.")] = None,
         _request_timeout: Union[
             None,
@@ -820,8 +820,8 @@ class StatusApi:
         :type search: str
         :param sort: Sort by field (prefix with '-' for descending)
         :type sort: str
-        :param liimit: Sort by field (prefix with '-' for descending)
-        :type liimit: str
+        :param limit: Sort by field (prefix with '-' for descending)
+        :type limit: str
         :param goal_ids: Filter on goals, using the UUID of the goal.
         :type goal_ids: str
         :param _request_timeout: timeout setting for this request. If one
@@ -852,7 +852,7 @@ class StatusApi:
             status=status,
             search=search,
             sort=sort,
-            liimit=liimit,
+            limit=limit,
             goal_ids=goal_ids,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -877,7 +877,7 @@ class StatusApi:
         status,
         search,
         sort,
-        liimit,
+        limit,
         goal_ids,
         _request_auth,
         _content_type,
@@ -917,9 +917,9 @@ class StatusApi:
             
             _query_params.append(('sort', sort))
             
-        if liimit is not None:
+        if limit is not None:
             
-            _query_params.append(('liimit', liimit))
+            _query_params.append(('limit', limit))
             
         if goal_ids is not None:
             
