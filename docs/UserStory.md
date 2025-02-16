@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **i_want_to** | **str** |  | [optional] 
 **so_that** | **str** |  | [optional] 
 **freetext_override** | **str** |  | [optional] 
+**acceptance_criteria** | **str** |  | [optional] 
 **created_date** | **datetime** |  | [optional] [readonly] 
 **modified_date** | **datetime** |  | [optional] [readonly] 
 **due_date** | **datetime** |  | [optional] 

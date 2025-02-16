@@ -41,6 +41,7 @@ class TestUserstoriesCreateRequest(unittest.TestCase):
                 i_want_to = '',
                 so_that = '',
                 freetext_override = '',
+                acceptance_criteria = '',
                 due_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
                 status = 'RED',
                 priority = '',

@@ -41,6 +41,7 @@ class TestUserStory(unittest.TestCase):
                 i_want_to = '',
                 so_that = '',
                 freetext_override = '',
+                acceptance_criteria = '',
                 created_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
                 modified_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
                 due_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),

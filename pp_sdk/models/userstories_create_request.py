@@ -33,11 +33,12 @@ class UserstoriesCreateRequest(BaseModel):
     i_want_to: Optional[StrictStr] = None
     so_that: Optional[StrictStr] = None
     freetext_override: Optional[StrictStr] = None
+    acceptance_criteria: Optional[StrictStr] = None
     due_date: Optional[datetime] = None
     status: Optional[StrictStr] = None
     priority: Optional[StrictStr] = None
     tags: Optional[List[StrictStr]] = Field(default=None, description="List of tag UUIDs")
-    __properties: ClassVar[List[str]] = ["prd", "as_a", "i_want_to", "so_that", "freetext_override", "due_date", "status", "priority", "tags"]
+    __properties: ClassVar[List[str]] = ["prd", "as_a", "i_want_to", "so_that", "freetext_override", "acceptance_criteria", "due_date", "status", "priority", "tags"]
 
     @field_validator('status')
     def status_validate_enum(cls, value):
@@ -105,6 +106,7 @@ class UserstoriesCreateRequest(BaseModel):
             "i_want_to": obj.get("i_want_to"),
             "so_that": obj.get("so_that"),
             "freetext_override": obj.get("freetext_override"),
+            "acceptance_criteria": obj.get("acceptance_criteria"),
             "due_date": obj.get("due_date"),
             "status": obj.get("status"),
             "priority": obj.get("priority"),

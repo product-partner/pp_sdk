@@ -36,6 +36,7 @@ class UserStory(BaseModel):
     i_want_to: Optional[Annotated[str, Field(strict=True, max_length=255)]] = None
     so_that: Optional[Annotated[str, Field(strict=True, max_length=255)]] = None
     freetext_override: Optional[StrictStr] = None
+    acceptance_criteria: Optional[StrictStr] = None
     created_date: Optional[datetime] = None
     modified_date: Optional[datetime] = None
     due_date: Optional[datetime] = None
@@ -43,7 +44,7 @@ class UserStory(BaseModel):
     priority: Optional[Annotated[str, Field(strict=True, max_length=50)]] = None
     tags: Optional[List[TagsInner]] = None
     created_by: Optional[UserField] = None
-    __properties: ClassVar[List[str]] = ["id", "as_a", "i_want_to", "so_that", "freetext_override", "created_date", "modified_date", "due_date", "status", "priority", "tags", "created_by"]
+    __properties: ClassVar[List[str]] = ["id", "as_a", "i_want_to", "so_that", "freetext_override", "acceptance_criteria", "created_date", "modified_date", "due_date", "status", "priority", "tags", "created_by"]
 
     @field_validator('status')
     def status_validate_enum(cls, value):
@@ -130,6 +131,11 @@ class UserStory(BaseModel):
         if self.freetext_override is None and "freetext_override" in self.model_fields_set:
             _dict['freetext_override'] = None
 
+        # set to None if acceptance_criteria (nullable) is None
+        # and model_fields_set contains the field
+        if self.acceptance_criteria is None and "acceptance_criteria" in self.model_fields_set:
+            _dict['acceptance_criteria'] = None
+
         # set to None if due_date (nullable) is None
         # and model_fields_set contains the field
         if self.due_date is None and "due_date" in self.model_fields_set:
@@ -157,6 +163,7 @@ class UserStory(BaseModel):
             "i_want_to": obj.get("i_want_to"),
             "so_that": obj.get("so_that"),
             "freetext_override": obj.get("freetext_override"),
+            "acceptance_criteria": obj.get("acceptance_criteria"),
             "created_date": obj.get("created_date"),
             "modified_date": obj.get("modified_date"),
             "due_date": obj.get("due_date"),
