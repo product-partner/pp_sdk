@@ -41,7 +41,7 @@ class UserStory(BaseModel):
     modified_date: Optional[datetime] = None
     due_date: Optional[datetime] = None
     status: Optional[StrictStr] = None
-    priority: Optional[Annotated[str, Field(strict=True, max_length=50)]] = None
+    priority: Optional[Annotated[str, Field(strict=True, max_length=50)]] = Field(default=None, description="Priority of the user story in Jira")
     tags: Optional[List[TagsInner]] = None
     created_by: Optional[UserField] = None
     __properties: ClassVar[List[str]] = ["id", "as_a", "i_want_to", "so_that", "freetext_override", "acceptance_criteria", "created_date", "modified_date", "due_date", "status", "priority", "tags", "created_by"]
@@ -52,8 +52,8 @@ class UserStory(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['RED', 'YELLOW', 'GREEN', 'NOT_STARTED', 'COMPLETED', 'COMPLETED_LATE', 'CANCELLED', 'DEFERRED', 'DELETED']):
-            raise ValueError("must be one of enum values ('RED', 'YELLOW', 'GREEN', 'NOT_STARTED', 'COMPLETED', 'COMPLETED_LATE', 'CANCELLED', 'DEFERRED', 'DELETED')")
+        if value not in set(['RED', 'YELLOW', 'GREEN', 'NOT_STARTED', 'IN_PROGRESS', 'IN_REVIEW', 'COMPLETED', 'COMPLETED_LATE', 'CANCELLED', 'DEFERRED', 'DELETED']):
+            raise ValueError("must be one of enum values ('RED', 'YELLOW', 'GREEN', 'NOT_STARTED', 'IN_PROGRESS', 'IN_REVIEW', 'COMPLETED', 'COMPLETED_LATE', 'CANCELLED', 'DEFERRED', 'DELETED')")
         return value
 
     model_config = ConfigDict(

@@ -39,8 +39,8 @@ class StatusCreateRequest(BaseModel):
     @field_validator('status')
     def status_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in set(['RED', 'YELLOW', 'GREEN', 'NOT_STARTED', 'COMPLETED', 'COMPLETED_LATE', 'CANCELLED', 'DEFERRED', 'DELETED']):
-            raise ValueError("must be one of enum values ('RED', 'YELLOW', 'GREEN', 'NOT_STARTED', 'COMPLETED', 'COMPLETED_LATE', 'CANCELLED', 'DEFERRED', 'DELETED')")
+        if value not in set(['RED', 'YELLOW', 'GREEN', 'NOT_STARTED', 'IN_PROGRESS', 'IN_REVIEW', 'COMPLETED', 'COMPLETED_LATE', 'CANCELLED', 'DEFERRED', 'DELETED']):
+            raise ValueError("must be one of enum values ('RED', 'YELLOW', 'GREEN', 'NOT_STARTED', 'IN_PROGRESS', 'IN_REVIEW', 'COMPLETED', 'COMPLETED_LATE', 'CANCELLED', 'DEFERRED', 'DELETED')")
         return value
 
     @field_validator('publishing_state')

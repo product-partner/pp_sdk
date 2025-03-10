@@ -26,10 +26,15 @@ from pp_sdk.models.documents_create_request import DocumentsCreateRequest
 from pp_sdk.models.goal import Goal
 from pp_sdk.models.goal_base import GoalBase
 from pp_sdk.models.goal_picker import GoalPicker
+from pp_sdk.models.google_docs_webhook200_response import GoogleDocsWebhook200Response
+from pp_sdk.models.jira_sync_documents_create_request import JiraSyncDocumentsCreateRequest
 from pp_sdk.models.organization import Organization
 from pp_sdk.models.program import Program
 from pp_sdk.models.program_picker import ProgramPicker
 from pp_sdk.models.programs_list_inner import ProgramsListInner
+from pp_sdk.models.publish_doc_as_epic_request import PublishDocAsEpicRequest
+from pp_sdk.models.register_google_doc200_response import RegisterGoogleDoc200Response
+from pp_sdk.models.register_google_doc_request import RegisterGoogleDocRequest
 from pp_sdk.models.status import Status
 from pp_sdk.models.status1 import Status1
 from pp_sdk.models.status_create_request import StatusCreateRequest
@@ -40,3 +45,4 @@ from pp_sdk.models.user_field import UserField
 from pp_sdk.models.user_list_of_user_fields_inner import UserListOfUserFieldsInner
 from pp_sdk.models.user_story import UserStory
 from pp_sdk.models.userstories_create_request import UserstoriesCreateRequest
+from pp_sdk.models.watch_google_doc200_response import WatchGoogleDoc200Response

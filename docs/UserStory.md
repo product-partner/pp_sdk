@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **modified_date** | **datetime** |  | [optional] [readonly] 
 **due_date** | **datetime** |  | [optional] 
 **status** | **str** |  | [optional] 
-**priority** | **str** |  | [optional] 
+**priority** | **str** | Priority of the user story in Jira | [optional] 
 **tags** | [**List[TagsInner]**](TagsInner.md) |  | [optional] 
 **created_by** | [**UserField**](UserField.md) |  | [optional] 
 

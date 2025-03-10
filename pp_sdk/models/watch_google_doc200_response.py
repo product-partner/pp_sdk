@@ -18,37 +18,17 @@ import pprint
 import re  # noqa: F401
 import json
 
-from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class UserstoriesCreateRequest(BaseModel):
+class WatchGoogleDoc200Response(BaseModel):
     """
-    UserstoriesCreateRequest
+    WatchGoogleDoc200Response
     """ # noqa: E501
-    prd: StrictStr = Field(description="PRD UUID")
-    as_a: Optional[StrictStr] = None
-    i_want_to: Optional[StrictStr] = None
-    so_that: Optional[StrictStr] = None
-    freetext_override: Optional[StrictStr] = None
-    acceptance_criteria: Optional[StrictStr] = None
-    due_date: Optional[datetime] = None
-    status: Optional[StrictStr] = None
-    priority: Optional[StrictStr] = None
-    tags: Optional[List[StrictStr]] = Field(default=None, description="List of tag UUIDs")
-    __properties: ClassVar[List[str]] = ["prd", "as_a", "i_want_to", "so_that", "freetext_override", "acceptance_criteria", "due_date", "status", "priority", "tags"]
-
-    @field_validator('status')
-    def status_validate_enum(cls, value):
-        """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in set(['RED', 'YELLOW', 'GREEN', 'NOT_STARTED', 'IN_PROGRESS', 'IN_REVIEW', 'COMPLETED', 'COMPLETED_LATE', 'CANCELLED', 'DEFERRED', 'DELETED']):
-            raise ValueError("must be one of enum values ('RED', 'YELLOW', 'GREEN', 'NOT_STARTED', 'IN_PROGRESS', 'IN_REVIEW', 'COMPLETED', 'COMPLETED_LATE', 'CANCELLED', 'DEFERRED', 'DELETED')")
-        return value
+    watch: Optional[Dict[str, Any]] = Field(default=None, description="Watch response from Google API")
+    __properties: ClassVar[List[str]] = ["watch"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -68,7 +48,7 @@ class UserstoriesCreateRequest(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of UserstoriesCreateRequest from a JSON string"""
+        """Create an instance of WatchGoogleDoc200Response from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -93,7 +73,7 @@ class UserstoriesCreateRequest(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of UserstoriesCreateRequest from a dict"""
+        """Create an instance of WatchGoogleDoc200Response from a dict"""
         if obj is None:
             return None
 
@@ -101,16 +81,7 @@ class UserstoriesCreateRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "prd": obj.get("prd"),
-            "as_a": obj.get("as_a"),
-            "i_want_to": obj.get("i_want_to"),
-            "so_that": obj.get("so_that"),
-            "freetext_override": obj.get("freetext_override"),
-            "acceptance_criteria": obj.get("acceptance_criteria"),
-            "due_date": obj.get("due_date"),
-            "status": obj.get("status"),
-            "priority": obj.get("priority"),
-            "tags": obj.get("tags")
+            "watch": obj.get("watch")
         })
         return _obj
 
