@@ -12,8 +12,6 @@ Method | HTTP request | Description
 # **oauth_google_callback**
 > oauth_google_callback(code=code, state=state, error=error)
 
-
-
 Handle the OAuth callback from Google
 
 ### Example
@@ -101,8 +99,6 @@ void (empty response body)
 # **oauth_google_start**
 > oauth_google_start()
 
-
-
 Start the Google OAuth flow by redirecting to Google
 
 ### Example
@@ -180,8 +176,6 @@ void (empty response body)
 
 # **toggle_google_sync**
 > toggle_google_sync(x_user_id=x_user_id)
-
-
 
 Toggle Google sync enabled status for the organization
 

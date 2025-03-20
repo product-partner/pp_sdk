@@ -570,7 +570,7 @@ class GoogleDocsApi:
     @validate_call
     def google_docs_webhook(
         self,
-        organization_id: StrictStr,
+        user_id: StrictStr,
         x_goog_resource_id: Annotated[StrictStr, Field(description="Google resource ID")],
         x_goog_channel_id: Annotated[StrictStr, Field(description="Google channel ID")],
         x_goog_resource_state: Annotated[StrictStr, Field(description="Resource state (sync, change, update)")],
@@ -592,8 +592,8 @@ class GoogleDocsApi:
 
         Webhook endpoint for Google Docs notifications
 
-        :param organization_id: (required)
-        :type organization_id: str
+        :param user_id: (required)
+        :type user_id: str
         :param x_goog_resource_id: Google resource ID (required)
         :type x_goog_resource_id: str
         :param x_goog_channel_id: Google channel ID (required)
@@ -625,7 +625,7 @@ class GoogleDocsApi:
         """ # noqa: E501
 
         _param = self._google_docs_webhook_serialize(
-            organization_id=organization_id,
+            user_id=user_id,
             x_goog_resource_id=x_goog_resource_id,
             x_goog_channel_id=x_goog_channel_id,
             x_goog_resource_state=x_goog_resource_state,
@@ -655,7 +655,7 @@ class GoogleDocsApi:
     @validate_call
     def google_docs_webhook_with_http_info(
         self,
-        organization_id: StrictStr,
+        user_id: StrictStr,
         x_goog_resource_id: Annotated[StrictStr, Field(description="Google resource ID")],
         x_goog_channel_id: Annotated[StrictStr, Field(description="Google channel ID")],
         x_goog_resource_state: Annotated[StrictStr, Field(description="Resource state (sync, change, update)")],
@@ -677,8 +677,8 @@ class GoogleDocsApi:
 
         Webhook endpoint for Google Docs notifications
 
-        :param organization_id: (required)
-        :type organization_id: str
+        :param user_id: (required)
+        :type user_id: str
         :param x_goog_resource_id: Google resource ID (required)
         :type x_goog_resource_id: str
         :param x_goog_channel_id: Google channel ID (required)
@@ -710,7 +710,7 @@ class GoogleDocsApi:
         """ # noqa: E501
 
         _param = self._google_docs_webhook_serialize(
-            organization_id=organization_id,
+            user_id=user_id,
             x_goog_resource_id=x_goog_resource_id,
             x_goog_channel_id=x_goog_channel_id,
             x_goog_resource_state=x_goog_resource_state,
@@ -740,7 +740,7 @@ class GoogleDocsApi:
     @validate_call
     def google_docs_webhook_without_preload_content(
         self,
-        organization_id: StrictStr,
+        user_id: StrictStr,
         x_goog_resource_id: Annotated[StrictStr, Field(description="Google resource ID")],
         x_goog_channel_id: Annotated[StrictStr, Field(description="Google channel ID")],
         x_goog_resource_state: Annotated[StrictStr, Field(description="Resource state (sync, change, update)")],
@@ -762,8 +762,8 @@ class GoogleDocsApi:
 
         Webhook endpoint for Google Docs notifications
 
-        :param organization_id: (required)
-        :type organization_id: str
+        :param user_id: (required)
+        :type user_id: str
         :param x_goog_resource_id: Google resource ID (required)
         :type x_goog_resource_id: str
         :param x_goog_channel_id: Google channel ID (required)
@@ -795,7 +795,7 @@ class GoogleDocsApi:
         """ # noqa: E501
 
         _param = self._google_docs_webhook_serialize(
-            organization_id=organization_id,
+            user_id=user_id,
             x_goog_resource_id=x_goog_resource_id,
             x_goog_channel_id=x_goog_channel_id,
             x_goog_resource_state=x_goog_resource_state,
@@ -820,7 +820,7 @@ class GoogleDocsApi:
 
     def _google_docs_webhook_serialize(
         self,
-        organization_id,
+        user_id,
         x_goog_resource_id,
         x_goog_channel_id,
         x_goog_resource_state,
@@ -846,8 +846,8 @@ class GoogleDocsApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
-        if organization_id is not None:
-            _path_params['organization_id'] = organization_id
+        if user_id is not None:
+            _path_params['user_id'] = user_id
         # process the query parameters
         # process the header parameters
         if x_goog_resource_id is not None:
@@ -879,7 +879,7 @@ class GoogleDocsApi:
 
         return self.api_client.param_serialize(
             method='POST',
-            resource_path='/google/docs/webhook/{organization_id}/',
+            resource_path='/google/docs/webhook/{user_id}/',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

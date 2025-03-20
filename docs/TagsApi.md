@@ -15,8 +15,6 @@ Method | HTTP request | Description
 # **tags_create**
 > Tag tags_create(data, x_user_id=x_user_id)
 
-
-
 Create a new tag for the authenticated user.
 
 ### Example
@@ -102,8 +100,6 @@ Name | Type | Description  | Notes
 # **tags_delete**
 > tags_delete(tag_id, x_user_id=x_user_id)
 
-
-
 Delete a specific tag.
 
 ### Example
@@ -185,8 +181,6 @@ void (empty response body)
 
 # **tags_list**
 > List[Tag] tags_list(page=page, x_user_id=x_user_id, search=search)
-
-
 
 Get a list of all tags for the authenticated user.
 
@@ -275,8 +269,6 @@ Name | Type | Description  | Notes
 # **tags_partial_update**
 > Tag tags_partial_update(tag_id, data, x_user_id=x_user_id)
 
-
-
 Partially update a specific tag.
 
 ### Example
@@ -364,8 +356,6 @@ Name | Type | Description  | Notes
 # **tags_read**
 > Tag tags_read(tag_id, x_user_id=x_user_id)
 
-
-
 Get details of a specific tag.
 
 ### Example
@@ -450,8 +440,6 @@ Name | Type | Description  | Notes
 
 # **tags_update**
 > Tag tags_update(tag_id, data, x_user_id=x_user_id)
-
-
 
 Update a specific tag.
 

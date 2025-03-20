@@ -13,8 +13,6 @@ Method | HTTP request | Description
 # **chat**
 > object chat(page=page, x_user_id=x_user_id, x_caller_id=x_caller_id, x_caller_thread_id=x_caller_thread_id, msg=msg, doc_ids=doc_ids, action=action, stream=stream, response_format=response_format)
 
-
-
 Process chat message
 
 ### Example
@@ -114,8 +112,6 @@ Name | Type | Description  | Notes
 # **chat_history**
 > ChatHistory200Response chat_history(page=page, x_user_id=x_user_id, x_caller_id=x_caller_id, x_caller_thread_id=x_caller_thread_id, last_created_date=last_created_date, sort_order=sort_order)
 
-
-
 Get chat history
 
 ### Example
@@ -209,8 +205,6 @@ Name | Type | Description  | Notes
 # **chat_threads_read**
 > ChatThreadsRead200Response chat_threads_read(thread_id, x_user_id=x_user_id, x_caller_id=x_caller_id, x_caller_thread_id=x_caller_thread_id)
 
-
-
 Get a specific chat thread
 
 ### Example
@@ -299,8 +293,6 @@ Name | Type | Description  | Notes
 
 # **chat_upload_file**
 > ChatUploadFile200Response chat_upload_file(file, x_user_id=x_user_id, x_caller_id=x_caller_id, x_caller_thread_id=x_caller_thread_id, filename=filename, content_type=content_type)
-
-
 
 Upload a file
 

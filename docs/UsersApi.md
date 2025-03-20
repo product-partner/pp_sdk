@@ -16,8 +16,6 @@ Method | HTTP request | Description
 # **users_create**
 > User users_create(data, x_user_id=x_user_id)
 
-
-
 Create a new user for the authenticated user's organization.
 
 ### Example
@@ -103,8 +101,6 @@ Name | Type | Description  | Notes
 # **users_delete**
 > users_delete(id)
 
-
-
 ### Example
 
 * Api Key Authentication (UserIdAuth):
@@ -182,8 +178,6 @@ void (empty response body)
 
 # **users_list**
 > List[User] users_list(page=page, search=search, domain=domain, limit=limit, sort=sort)
-
-
 
 Retrieve one or more users
 
@@ -277,8 +271,6 @@ Name | Type | Description  | Notes
 # **users_partial_update**
 > User users_partial_update(id, data)
 
-
-
 ### Example
 
 * Api Key Authentication (UserIdAuth):
@@ -361,8 +353,6 @@ Name | Type | Description  | Notes
 
 # **users_picker_list**
 > List[User] users_picker_list(search=search, sort=sort, limit=limit)
-
-
 
 Retrieve list of users matching none or all of search parameters.
 
@@ -452,8 +442,6 @@ Name | Type | Description  | Notes
 # **users_read**
 > List[User] users_read(id, x_user_id=x_user_id)
 
-
-
 Get a list of all PRDs for the authenticated user's organization.
 
 ### Example
@@ -538,8 +526,6 @@ Name | Type | Description  | Notes
 
 # **users_update**
 > User users_update(id, data, x_user_id=x_user_id)
-
-
 
 Update a specific user's details
 

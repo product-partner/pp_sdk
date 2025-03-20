@@ -15,8 +15,6 @@ Method | HTTP request | Description
 # **status_create**
 > Status status_create(data, x_user_id=x_user_id)
 
-
-
 Create a new status for the authenticated user.
 
 ### Example
@@ -103,8 +101,6 @@ Name | Type | Description  | Notes
 # **status_delete**
 > status_delete(status_id, x_user_id=x_user_id)
 
-
-
 Delete a specific status.
 
 ### Example
@@ -186,8 +182,6 @@ void (empty response body)
 
 # **status_list**
 > List[Status] status_list(page=page, x_user_id=x_user_id, status=status, search=search, sort=sort, limit=limit, goal_ids=goal_ids)
-
-
 
 Get a list of all statuses for the authenticated user.
 
@@ -284,8 +278,6 @@ Name | Type | Description  | Notes
 # **status_partial_update**
 > Status status_partial_update(status_id, data, x_user_id=x_user_id)
 
-
-
 Partially update a specific status.
 
 ### Example
@@ -373,8 +365,6 @@ Name | Type | Description  | Notes
 # **status_read**
 > Status status_read(status_id, x_user_id=x_user_id)
 
-
-
 Get details of a specific status.
 
 ### Example
@@ -459,8 +449,6 @@ Name | Type | Description  | Notes
 
 # **status_update**
 > Status status_update(status_id, data, x_user_id=x_user_id)
-
-
 
 Update a specific status.
 

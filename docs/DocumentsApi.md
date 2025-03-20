@@ -17,8 +17,6 @@ Method | HTTP request | Description
 # **documents_create**
 > Document documents_create(data, x_user_id=x_user_id)
 
-
-
 Create a new Document for the authenticated user's organization.
 
 ### Example
@@ -105,8 +103,6 @@ Name | Type | Description  | Notes
 # **documents_delete**
 > documents_delete(id, x_user_id=x_user_id)
 
-
-
 Delete a specific document.
 
 ### Example
@@ -188,8 +184,6 @@ void (empty response body)
 
 # **documents_image_list**
 > documents_image_list(id, page=page, x_user_id=x_user_id)
-
-
 
 Retrieve document image
 
@@ -277,8 +271,6 @@ void (empty response body)
 
 # **documents_list**
 > List[Document] documents_list(x_user_id=x_user_id, stakeholders=stakeholders, publishing_state=publishing_state, search=search, sort=sort, limit=limit, tags=tags, created_by=created_by, type=type)
-
-
 
 Get a list of all Documents for the authenticated user's organization.
 
@@ -379,8 +371,6 @@ Name | Type | Description  | Notes
 # **documents_partial_update**
 > Document documents_partial_update(id, data, x_user_id=x_user_id)
 
-
-
 Partially update a specific document.
 
 ### Example
@@ -468,8 +458,6 @@ Name | Type | Description  | Notes
 # **documents_picker_list**
 > List[DocumentPicker] documents_picker_list()
 
-
-
 ### Example
 
 * Api Key Authentication (UserIdAuth):
@@ -546,8 +534,6 @@ This endpoint does not need any parameter.
 
 # **documents_read**
 > Document documents_read(id, x_user_id=x_user_id, output_format=output_format)
-
-
 
 Get details of a specific document.
 
@@ -635,8 +621,6 @@ Name | Type | Description  | Notes
 
 # **documents_update**
 > Document documents_update(id, data, x_user_id=x_user_id)
-
-
 
 Update a specific document.
 

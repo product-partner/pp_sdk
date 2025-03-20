@@ -6,15 +6,13 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**google_docs_list**](GoogleDocsApi.md#google_docs_list) | **GET** /google/docs/ | 
 [**google_docs_read**](GoogleDocsApi.md#google_docs_read) | **GET** /google/docs/{doc_id}/ | 
-[**google_docs_webhook**](GoogleDocsApi.md#google_docs_webhook) | **POST** /google/docs/webhook/{organization_id}/ | 
+[**google_docs_webhook**](GoogleDocsApi.md#google_docs_webhook) | **POST** /google/docs/webhook/{user_id}/ | 
 [**register_google_doc**](GoogleDocsApi.md#register_google_doc) | **POST** /google/docs/register/ | 
 [**watch_google_doc**](GoogleDocsApi.md#watch_google_doc) | **POST** /google/docs/{doc_id}/watch/ | 
 
 
 # **google_docs_list**
 > google_docs_list(max_results=max_results)
-
-
 
 List Google Docs for the authenticated user's organization
 
@@ -98,8 +96,6 @@ void (empty response body)
 # **google_docs_read**
 > google_docs_read(doc_id)
 
-
-
 Get the content of a specific Google Doc
 
 ### Example
@@ -180,9 +176,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **google_docs_webhook**
-> GoogleDocsWebhook200Response google_docs_webhook(organization_id, x_goog_resource_id, x_goog_channel_id, x_goog_resource_state, x_goog_changed=x_goog_changed)
-
-
+> GoogleDocsWebhook200Response google_docs_webhook(user_id, x_goog_resource_id, x_goog_channel_id, x_goog_resource_state, x_goog_changed=x_goog_changed)
 
 Webhook endpoint for Google Docs notifications
 
@@ -224,14 +218,14 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 with pp_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pp_sdk.GoogleDocsApi(api_client)
-    organization_id = 'organization_id_example' # str | 
+    user_id = 'user_id_example' # str | 
     x_goog_resource_id = 'x_goog_resource_id_example' # str | Google resource ID
     x_goog_channel_id = 'x_goog_channel_id_example' # str | Google channel ID
     x_goog_resource_state = 'x_goog_resource_state_example' # str | Resource state (sync, change, update)
     x_goog_changed = 'x_goog_changed_example' # str | Changed fields (optional)
 
     try:
-        api_response = api_instance.google_docs_webhook(organization_id, x_goog_resource_id, x_goog_channel_id, x_goog_resource_state, x_goog_changed=x_goog_changed)
+        api_response = api_instance.google_docs_webhook(user_id, x_goog_resource_id, x_goog_channel_id, x_goog_resource_state, x_goog_changed=x_goog_changed)
         print("The response of GoogleDocsApi->google_docs_webhook:\n")
         pprint(api_response)
     except Exception as e:
@@ -245,7 +239,7 @@ with pp_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_id** | **str**|  | 
+ **user_id** | **str**|  | 
  **x_goog_resource_id** | **str**| Google resource ID | 
  **x_goog_channel_id** | **str**| Google channel ID | 
  **x_goog_resource_state** | **str**| Resource state (sync, change, update) | 
@@ -276,8 +270,6 @@ Name | Type | Description  | Notes
 
 # **register_google_doc**
 > RegisterGoogleDoc200Response register_google_doc(data, x_user_id=x_user_id)
-
-
 
 Register a Google Doc with the system
 
@@ -367,8 +359,6 @@ Name | Type | Description  | Notes
 
 # **watch_google_doc**
 > WatchGoogleDoc200Response watch_google_doc(doc_id, x_user_id=x_user_id)
-
-
 
 Set up a watch on a Google Doc to receive notifications about changes
 

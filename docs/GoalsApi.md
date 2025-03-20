@@ -16,8 +16,6 @@ Method | HTTP request | Description
 # **goals_create**
 > Goal goals_create(data, x_user_id=x_user_id)
 
-
-
 Create a new goal.
 
 ### Example
@@ -103,8 +101,6 @@ Name | Type | Description  | Notes
 # **goals_delete**
 > goals_delete(goal_id, x_user_id=x_user_id)
 
-
-
 Delete a specific goal.
 
 ### Example
@@ -187,8 +183,6 @@ void (empty response body)
 
 # **goals_list**
 > List[Goal] goals_list(search=search, stakeholder_users=stakeholder_users, status=status, sort=sort, limit=limit, tags=tags, program=program, created_by=created_by, x_user_id=x_user_id)
-
-
 
 List or Search for Goals
 
@@ -289,8 +283,6 @@ Name | Type | Description  | Notes
 # **goals_partial_update**
 > Goal goals_partial_update(goal_id, data, x_user_id=x_user_id)
 
-
-
 Partially update a specific goal.
 
 ### Example
@@ -379,8 +371,6 @@ Name | Type | Description  | Notes
 # **goals_picker_list**
 > List[GoalPicker] goals_picker_list(status=status, search=search, x_user_id=x_user_id)
 
-
-
 List or Search for Goals in picker, a reduced set of functions and returned values but lighter weight and faster.
 
 ### Example
@@ -468,8 +458,6 @@ Name | Type | Description  | Notes
 # **goals_read**
 > Goal goals_read(goal_id, x_user_id=x_user_id)
 
-
-
 Get details of a specific goal.
 
 ### Example
@@ -554,8 +542,6 @@ Name | Type | Description  | Notes
 
 # **goals_update**
 > Goal goals_update(goal_id, data, x_user_id=x_user_id)
-
-
 
 Update a specific goal.
 

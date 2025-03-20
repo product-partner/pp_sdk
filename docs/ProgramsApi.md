@@ -16,8 +16,6 @@ Method | HTTP request | Description
 # **programs_create**
 > Program programs_create(data, x_user_id=x_user_id)
 
-
-
 Create a new program for the authenticated user.
 
 ### Example
@@ -103,8 +101,6 @@ Name | Type | Description  | Notes
 # **programs_delete**
 > programs_delete(program_id, x_user_id=x_user_id)
 
-
-
 Delete a specific program.
 
 ### Example
@@ -186,8 +182,6 @@ void (empty response body)
 
 # **programs_list**
 > List[Program] programs_list(page=page, x_user_id=x_user_id, search=search, tags=tags, sort=sort)
-
-
 
 Get a list of all programs for the authenticated user.
 
@@ -280,8 +274,6 @@ Name | Type | Description  | Notes
 # **programs_partial_update**
 > Program programs_partial_update(program_id, data, x_user_id=x_user_id)
 
-
-
 Partially update a specific program.
 
 ### Example
@@ -369,8 +361,6 @@ Name | Type | Description  | Notes
 # **programs_picker_list**
 > List[ProgramPicker] programs_picker_list()
 
-
-
 ### Example
 
 * Api Key Authentication (UserIdAuth):
@@ -447,8 +437,6 @@ This endpoint does not need any parameter.
 
 # **programs_read**
 > Program programs_read(program_id, x_user_id=x_user_id)
-
-
 
 Get details of a specific program.
 
@@ -534,8 +522,6 @@ Name | Type | Description  | Notes
 
 # **programs_update**
 > Program programs_update(program_id, data, x_user_id=x_user_id)
-
-
 
 Update a specific program.
 

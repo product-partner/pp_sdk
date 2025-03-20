@@ -20,8 +20,6 @@ Method | HTTP request | Description
 # **jira_oauth_callback**
 > jira_oauth_callback(code=code, state=state, error=error)
 
-
-
 Handle the OAuth callback from Atlassian
 
 ### Example
@@ -109,8 +107,6 @@ void (empty response body)
 # **jira_oauth_start**
 > jira_oauth_start()
 
-
-
 Start the Jira OAuth flow by redirecting to Atlassian
 
 ### Example
@@ -188,8 +184,6 @@ void (empty response body)
 
 # **jira_oauth_toggle_sync**
 > jira_oauth_toggle_sync(x_user_id=x_user_id)
-
-
 
 Toggle Jira sync enabled status for the organization
 
@@ -273,8 +267,6 @@ void (empty response body)
 
 # **jira_sync_documents_create**
 > jira_sync_documents_create(object_id, data, x_user_id=x_user_id)
-
-
 
 ### Example
 
@@ -360,8 +352,6 @@ void (empty response body)
 # **jira_sync_documents_read**
 > jira_sync_documents_read(object_id, x_user_id=x_user_id)
 
-
-
 ### Example
 
 * Api Key Authentication (UserIdAuth):
@@ -441,8 +431,6 @@ void (empty response body)
 
 # **jira_sync_programs_create**
 > jira_sync_programs_create(object_id, data, x_user_id=x_user_id)
-
-
 
 ### Example
 
@@ -528,8 +516,6 @@ void (empty response body)
 # **jira_sync_programs_read**
 > jira_sync_programs_read(object_id, x_user_id=x_user_id)
 
-
-
 ### Example
 
 * Api Key Authentication (UserIdAuth):
@@ -610,8 +596,6 @@ void (empty response body)
 # **jira_sync_status_list**
 > jira_sync_status_list(x_user_id=x_user_id)
 
-
-
 ### Example
 
 * Api Key Authentication (UserIdAuth):
@@ -689,8 +673,6 @@ void (empty response body)
 
 # **jira_sync_userstories_create**
 > jira_sync_userstories_create(object_id, data, x_user_id=x_user_id)
-
-
 
 ### Example
 
@@ -776,8 +758,6 @@ void (empty response body)
 # **jira_sync_userstories_read**
 > jira_sync_userstories_read(object_id, x_user_id=x_user_id)
 
-
-
 ### Example
 
 * Api Key Authentication (UserIdAuth):
@@ -857,8 +837,6 @@ void (empty response body)
 
 # **publish_doc_as_epic**
 > publish_doc_as_epic(doc_id, data, x_user_id=x_user_id)
-
-
 
 Publish or update a document as a Jira epic
 

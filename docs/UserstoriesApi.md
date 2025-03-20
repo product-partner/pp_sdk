@@ -15,8 +15,6 @@ Method | HTTP request | Description
 # **userstories_create**
 > UserStory userstories_create(data, x_user_id=x_user_id)
 
-
-
 Create a new user story.
 
 ### Example
@@ -103,8 +101,6 @@ Name | Type | Description  | Notes
 # **userstories_delete**
 > userstories_delete(userstory_id, x_user_id=x_user_id)
 
-
-
 Delete a specific user story.
 
 ### Example
@@ -186,8 +182,6 @@ void (empty response body)
 
 # **userstories_list**
 > List[UserStory] userstories_list(search=search, status=status, prd=prd, sort=sort, limit=limit, x_user_id=x_user_id, format=format)
-
-
 
 List or Search for User Stories
 
@@ -284,8 +278,6 @@ Name | Type | Description  | Notes
 # **userstories_partial_update**
 > UserStory userstories_partial_update(userstory_id, data, x_user_id=x_user_id)
 
-
-
 Partially update a specific user story.
 
 ### Example
@@ -373,8 +365,6 @@ Name | Type | Description  | Notes
 # **userstories_read**
 > UserStory userstories_read(userstory_id, x_user_id=x_user_id)
 
-
-
 Get details of a specific user story.
 
 ### Example
@@ -459,8 +449,6 @@ Name | Type | Description  | Notes
 
 # **userstories_update**
 > UserStory userstories_update(userstory_id, data, x_user_id=x_user_id)
-
-
 
 Update a specific user story.
 

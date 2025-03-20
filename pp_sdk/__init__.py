@@ -15,7 +15,7 @@
 """  # noqa: E501
 
 
-__version__ = "0.5.0"
+__version__ = "0.5.1"
 
 # import apis into sdk package
 from pp_sdk.api.google_docs_api import GoogleDocsApi
