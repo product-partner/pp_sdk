@@ -173,10 +173,12 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [Address](docs/Address.md)
+ - [Chat200Response](docs/Chat200Response.md)
  - [ChatHistory200Response](docs/ChatHistory200Response.md)
  - [ChatThreadsRead200Response](docs/ChatThreadsRead200Response.md)
  - [ChatUploadFile200Response](docs/ChatUploadFile200Response.md)
  - [Document](docs/Document.md)
+ - [DocumentField](docs/DocumentField.md)
  - [DocumentListFieldInner](docs/DocumentListFieldInner.md)
  - [DocumentPicker](docs/DocumentPicker.md)
  - [DocumentsCreateRequest](docs/DocumentsCreateRequest.md)

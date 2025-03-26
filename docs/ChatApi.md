@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 
 # **chat**
-> object chat(page=page, x_user_id=x_user_id, x_caller_id=x_caller_id, x_caller_thread_id=x_caller_thread_id, msg=msg, doc_ids=doc_ids, action=action, stream=stream, response_format=response_format)
+> Chat200Response chat(page=page, x_user_id=x_user_id, x_caller_id=x_caller_id, x_caller_thread_id=x_caller_thread_id, msg=msg, doc_ids=doc_ids, action=action, stream=stream, response_format=response_format, caller_type=caller_type)
 
 Process chat message
 
@@ -22,6 +22,7 @@ Process chat message
 
 ```python
 import pp_sdk
+from pp_sdk.models.chat200_response import Chat200Response
 from pp_sdk.rest import ApiException
 from pprint import pprint
 
@@ -61,9 +62,10 @@ with pp_sdk.ApiClient(configuration) as api_client:
     action = 'action_example' # str | Action (optional)
     stream = True # bool | Stream the response (optional)
     response_format = 'response_format_example' # str | Response format (html or text) (optional)
+    caller_type = 'caller_type_example' # str | Caller type, such as 'FREE_CHAT' or 'CHAT' or 'COMMENT' or 'EMAIL' (optional)
 
     try:
-        api_response = api_instance.chat(page=page, x_user_id=x_user_id, x_caller_id=x_caller_id, x_caller_thread_id=x_caller_thread_id, msg=msg, doc_ids=doc_ids, action=action, stream=stream, response_format=response_format)
+        api_response = api_instance.chat(page=page, x_user_id=x_user_id, x_caller_id=x_caller_id, x_caller_thread_id=x_caller_thread_id, msg=msg, doc_ids=doc_ids, action=action, stream=stream, response_format=response_format, caller_type=caller_type)
         print("The response of ChatApi->chat:\n")
         pprint(api_response)
     except Exception as e:
@@ -86,10 +88,11 @@ Name | Type | Description  | Notes
  **action** | **str**| Action | [optional] 
  **stream** | **bool**| Stream the response | [optional] 
  **response_format** | **str**| Response format (html or text) | [optional] 
+ **caller_type** | **str**| Caller type, such as &#39;FREE_CHAT&#39; or &#39;CHAT&#39; or &#39;COMMENT&#39; or &#39;EMAIL&#39; | [optional] 
 
 ### Return type
 
-**object**
+[**Chat200Response**](Chat200Response.md)
 
 ### Authorization
 

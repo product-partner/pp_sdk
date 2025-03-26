@@ -16,10 +16,12 @@
 
 # import models into model package
 from pp_sdk.models.address import Address
+from pp_sdk.models.chat200_response import Chat200Response
 from pp_sdk.models.chat_history200_response import ChatHistory200Response
 from pp_sdk.models.chat_threads_read200_response import ChatThreadsRead200Response
 from pp_sdk.models.chat_upload_file200_response import ChatUploadFile200Response
 from pp_sdk.models.document import Document
+from pp_sdk.models.document_field import DocumentField
 from pp_sdk.models.document_list_field_inner import DocumentListFieldInner
 from pp_sdk.models.document_picker import DocumentPicker
 from pp_sdk.models.documents_create_request import DocumentsCreateRequest

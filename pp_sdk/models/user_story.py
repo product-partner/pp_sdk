@@ -22,6 +22,7 @@ from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
+from pp_sdk.models.document_field import DocumentField
 from pp_sdk.models.tags_inner import TagsInner
 from pp_sdk.models.user_field import UserField
 from typing import Optional, Set
@@ -32,6 +33,7 @@ class UserStory(BaseModel):
     UserStory
     """ # noqa: E501
     id: Optional[StrictStr] = None
+    prd: Optional[DocumentField] = None
     as_a: Optional[Annotated[str, Field(strict=True, max_length=255)]] = None
     i_want_to: Optional[Annotated[str, Field(strict=True, max_length=255)]] = None
     so_that: Optional[Annotated[str, Field(strict=True, max_length=255)]] = None
@@ -44,7 +46,7 @@ class UserStory(BaseModel):
     priority: Optional[Annotated[str, Field(strict=True, max_length=50)]] = Field(default=None, description="Priority of the user story in Jira")
     tags: Optional[List[TagsInner]] = None
     created_by: Optional[UserField] = None
-    __properties: ClassVar[List[str]] = ["id", "as_a", "i_want_to", "so_that", "freetext_override", "acceptance_criteria", "created_date", "modified_date", "due_date", "status", "priority", "tags", "created_by"]
+    __properties: ClassVar[List[str]] = ["id", "prd", "as_a", "i_want_to", "so_that", "freetext_override", "acceptance_criteria", "created_date", "modified_date", "due_date", "status", "priority", "tags", "created_by"]
 
     @field_validator('status')
     def status_validate_enum(cls, value):
@@ -101,6 +103,9 @@ class UserStory(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of prd
+        if self.prd:
+            _dict['prd'] = self.prd.to_dict()
         # override the default output from pydantic by calling `to_dict()` of each item in tags (list)
         _items = []
         if self.tags:
@@ -111,6 +116,11 @@ class UserStory(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of created_by
         if self.created_by:
             _dict['created_by'] = self.created_by.to_dict()
+        # set to None if prd (nullable) is None
+        # and model_fields_set contains the field
+        if self.prd is None and "prd" in self.model_fields_set:
+            _dict['prd'] = None
+
         # set to None if as_a (nullable) is None
         # and model_fields_set contains the field
         if self.as_a is None and "as_a" in self.model_fields_set:
@@ -159,6 +169,7 @@ class UserStory(BaseModel):
 
         _obj = cls.model_validate({
             "id": obj.get("id"),
+            "prd": DocumentField.from_dict(obj["prd"]) if obj.get("prd") is not None else None,
             "as_a": obj.get("as_a"),
             "i_want_to": obj.get("i_want_to"),
             "so_that": obj.get("so_that"),

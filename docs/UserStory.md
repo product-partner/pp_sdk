@@ -6,6 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] [readonly] 
+**prd** | [**DocumentField**](DocumentField.md) |  | [optional] 
 **as_a** | **str** |  | [optional] 
 **i_want_to** | **str** |  | [optional] 
 **so_that** | **str** |  | [optional] 

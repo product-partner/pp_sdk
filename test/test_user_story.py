@@ -37,6 +37,10 @@ class TestUserStory(unittest.TestCase):
         if include_optional:
             return UserStory(
                 id = '',
+                prd = pp_sdk.models.document_field.Document Field(
+                    id = '', 
+                    title = '', 
+                    type = '', ),
                 as_a = '',
                 i_want_to = '',
                 so_that = '',

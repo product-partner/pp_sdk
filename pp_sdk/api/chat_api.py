@@ -18,8 +18,9 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from pydantic import Field, StrictBool, StrictBytes, StrictInt, StrictStr
-from typing import Any, Dict, Optional, Tuple, Union
+from typing import Optional, Tuple, Union
 from typing_extensions import Annotated
+from pp_sdk.models.chat200_response import Chat200Response
 from pp_sdk.models.chat_history200_response import ChatHistory200Response
 from pp_sdk.models.chat_threads_read200_response import ChatThreadsRead200Response
 from pp_sdk.models.chat_upload_file200_response import ChatUploadFile200Response
@@ -54,6 +55,7 @@ class ChatApi:
         action: Annotated[Optional[StrictStr], Field(description="Action")] = None,
         stream: Annotated[Optional[StrictBool], Field(description="Stream the response")] = None,
         response_format: Annotated[Optional[StrictStr], Field(description="Response format (html or text)")] = None,
+        caller_type: Annotated[Optional[StrictStr], Field(description="Caller type, such as 'FREE_CHAT' or 'CHAT' or 'COMMENT' or 'EMAIL'")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -66,7 +68,7 @@ class ChatApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> object:
+    ) -> Chat200Response:
         """chat
 
         Process chat message
@@ -89,6 +91,8 @@ class ChatApi:
         :type stream: bool
         :param response_format: Response format (html or text)
         :type response_format: str
+        :param caller_type: Caller type, such as 'FREE_CHAT' or 'CHAT' or 'COMMENT' or 'EMAIL'
+        :type caller_type: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -121,6 +125,7 @@ class ChatApi:
             action=action,
             stream=stream,
             response_format=response_format,
+            caller_type=caller_type,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -128,7 +133,7 @@ class ChatApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
+            '200': "Chat200Response",
             '400': None,
         }
         response_data = self.api_client.call_api(
@@ -154,6 +159,7 @@ class ChatApi:
         action: Annotated[Optional[StrictStr], Field(description="Action")] = None,
         stream: Annotated[Optional[StrictBool], Field(description="Stream the response")] = None,
         response_format: Annotated[Optional[StrictStr], Field(description="Response format (html or text)")] = None,
+        caller_type: Annotated[Optional[StrictStr], Field(description="Caller type, such as 'FREE_CHAT' or 'CHAT' or 'COMMENT' or 'EMAIL'")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -166,7 +172,7 @@ class ChatApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[object]:
+    ) -> ApiResponse[Chat200Response]:
         """chat
 
         Process chat message
@@ -189,6 +195,8 @@ class ChatApi:
         :type stream: bool
         :param response_format: Response format (html or text)
         :type response_format: str
+        :param caller_type: Caller type, such as 'FREE_CHAT' or 'CHAT' or 'COMMENT' or 'EMAIL'
+        :type caller_type: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -221,6 +229,7 @@ class ChatApi:
             action=action,
             stream=stream,
             response_format=response_format,
+            caller_type=caller_type,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -228,7 +237,7 @@ class ChatApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
+            '200': "Chat200Response",
             '400': None,
         }
         response_data = self.api_client.call_api(
@@ -254,6 +263,7 @@ class ChatApi:
         action: Annotated[Optional[StrictStr], Field(description="Action")] = None,
         stream: Annotated[Optional[StrictBool], Field(description="Stream the response")] = None,
         response_format: Annotated[Optional[StrictStr], Field(description="Response format (html or text)")] = None,
+        caller_type: Annotated[Optional[StrictStr], Field(description="Caller type, such as 'FREE_CHAT' or 'CHAT' or 'COMMENT' or 'EMAIL'")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -289,6 +299,8 @@ class ChatApi:
         :type stream: bool
         :param response_format: Response format (html or text)
         :type response_format: str
+        :param caller_type: Caller type, such as 'FREE_CHAT' or 'CHAT' or 'COMMENT' or 'EMAIL'
+        :type caller_type: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -321,6 +333,7 @@ class ChatApi:
             action=action,
             stream=stream,
             response_format=response_format,
+            caller_type=caller_type,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -328,7 +341,7 @@ class ChatApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
+            '200': "Chat200Response",
             '400': None,
         }
         response_data = self.api_client.call_api(
@@ -349,6 +362,7 @@ class ChatApi:
         action,
         stream,
         response_format,
+        caller_type,
         _request_auth,
         _content_type,
         _headers,
@@ -394,6 +408,10 @@ class ChatApi:
         if response_format is not None:
             
             _query_params.append(('response_format', response_format))
+            
+        if caller_type is not None:
+            
+            _query_params.append(('caller_type', caller_type))
             
         # process the header parameters
         if x_user_id is not None:
