@@ -23,9 +23,9 @@ from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class ChatThreadsRead200Response(BaseModel):
+class ChatRetrieveCurrent200Response(BaseModel):
     """
-    ChatThreadsRead200Response
+    ChatRetrieveCurrent200Response
     """ # noqa: E501
     content: Optional[StrictStr] = Field(default=None, description="Chat message content")
     __properties: ClassVar[List[str]] = ["content"]
@@ -48,7 +48,7 @@ class ChatThreadsRead200Response(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of ChatThreadsRead200Response from a JSON string"""
+        """Create an instance of ChatRetrieveCurrent200Response from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -73,7 +73,7 @@ class ChatThreadsRead200Response(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of ChatThreadsRead200Response from a dict"""
+        """Create an instance of ChatRetrieveCurrent200Response from a dict"""
         if obj is None:
             return None
 

@@ -52,7 +52,8 @@ class Document(BaseModel):
     image_url: Optional[StrictStr] = None
     original_filename: Optional[Annotated[str, Field(min_length=1, strict=True)]] = None
     blob_id: Optional[Annotated[str, Field(min_length=1, strict=True)]] = None
-    __properties: ClassVar[List[str]] = ["id", "type", "title", "body", "created_by", "created_date", "modified_date", "reviewed_date", "document_covering_period_start", "document_covering_period_end", "publishing_state", "programs", "tags", "stakeholder_users", "version", "version_summary", "image_url", "original_filename", "blob_id"]
+    datasource_type: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["id", "type", "title", "body", "created_by", "created_date", "modified_date", "reviewed_date", "document_covering_period_start", "document_covering_period_end", "publishing_state", "programs", "tags", "stakeholder_users", "version", "version_summary", "image_url", "original_filename", "blob_id", "datasource_type"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
@@ -110,6 +111,7 @@ class Document(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
             "id",
@@ -118,6 +120,7 @@ class Document(BaseModel):
             "version",
             "image_url",
             "blob_id",
+            "datasource_type",
         ])
 
         _dict = self.model_dump(
@@ -209,7 +212,8 @@ class Document(BaseModel):
             "version_summary": obj.get("version_summary"),
             "image_url": obj.get("image_url"),
             "original_filename": obj.get("original_filename"),
-            "blob_id": obj.get("blob_id")
+            "blob_id": obj.get("blob_id"),
+            "datasource_type": obj.get("datasource_type")
         })
         return _obj
 

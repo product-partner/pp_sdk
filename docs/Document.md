@@ -24,6 +24,7 @@ Name | Type | Description | Notes
 **image_url** | **str** |  | [optional] [readonly] 
 **original_filename** | **str** |  | [optional] 
 **blob_id** | **str** |  | [optional] [readonly] 
+**datasource_type** | **str** |  | [optional] [readonly] 
 
 ## Example
 

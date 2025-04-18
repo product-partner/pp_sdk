@@ -15,10 +15,10 @@
 
 import unittest
 
-from pp_sdk.models.chat_threads_read200_response import ChatThreadsRead200Response
+from pp_sdk.models.chat_retrieve_current200_response import ChatRetrieveCurrent200Response
 
-class TestChatThreadsRead200Response(unittest.TestCase):
-    """ChatThreadsRead200Response unit test stubs"""
+class TestChatRetrieveCurrent200Response(unittest.TestCase):
+    """ChatRetrieveCurrent200Response unit test stubs"""
 
     def setUp(self):
         pass
@@ -26,25 +26,25 @@ class TestChatThreadsRead200Response(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> ChatThreadsRead200Response:
-        """Test ChatThreadsRead200Response
+    def make_instance(self, include_optional) -> ChatRetrieveCurrent200Response:
+        """Test ChatRetrieveCurrent200Response
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `ChatThreadsRead200Response`
+        # uncomment below to create an instance of `ChatRetrieveCurrent200Response`
         """
-        model = ChatThreadsRead200Response()
+        model = ChatRetrieveCurrent200Response()
         if include_optional:
-            return ChatThreadsRead200Response(
+            return ChatRetrieveCurrent200Response(
                 content = ''
             )
         else:
-            return ChatThreadsRead200Response(
+            return ChatRetrieveCurrent200Response(
         )
         """
 
-    def testChatThreadsRead200Response(self):
-        """Test ChatThreadsRead200Response"""
+    def testChatRetrieveCurrent200Response(self):
+        """Test ChatRetrieveCurrent200Response"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

@@ -39,8 +39,14 @@ class TestChatApi(unittest.TestCase):
         """
         pass
 
-    def test_chat_threads_read(self) -> None:
-        """Test case for chat_threads_read
+    def test_chat_retrieve_current(self) -> None:
+        """Test case for chat_retrieve_current
+
+        """
+        pass
+
+    def test_chat_thread_read(self) -> None:
+        """Test case for chat_thread_read
 
         """
         pass

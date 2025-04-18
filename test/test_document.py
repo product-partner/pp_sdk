@@ -62,7 +62,8 @@ class TestDocument(unittest.TestCase):
                 version_summary = '',
                 image_url = '',
                 original_filename = '0',
-                blob_id = '0'
+                blob_id = '0',
+                datasource_type = ''
             )
         else:
             return Document(
