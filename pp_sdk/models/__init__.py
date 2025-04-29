@@ -19,6 +19,8 @@ from pp_sdk.models.address import Address
 from pp_sdk.models.chat200_response import Chat200Response
 from pp_sdk.models.chat_history200_response import ChatHistory200Response
 from pp_sdk.models.chat_retrieve_current200_response import ChatRetrieveCurrent200Response
+from pp_sdk.models.chat_thread_delete200_response import ChatThreadDelete200Response
+from pp_sdk.models.chat_thread_delete500_response import ChatThreadDelete500Response
 from pp_sdk.models.chat_upload_file200_response import ChatUploadFile200Response
 from pp_sdk.models.document import Document
 from pp_sdk.models.document_field import DocumentField

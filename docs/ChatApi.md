@@ -1,12 +1,13 @@
 # pp_sdk.ChatApi
 
-All URIs are relative to *http://0.0.0.0:8000/api*
+All URIs are relative to *https://0.0.0.0:8000/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**chat**](ChatApi.md#chat) | **GET** /chat/ | 
 [**chat_history**](ChatApi.md#chat_history) | **GET** /chat/history/ | 
 [**chat_retrieve_current**](ChatApi.md#chat_retrieve_current) | **GET** /chat/thread/ | 
+[**chat_thread_delete**](ChatApi.md#chat_thread_delete) | **DELETE** /chat/thread/{thread_id}/ | 
 [**chat_thread_read**](ChatApi.md#chat_thread_read) | **GET** /chat/thread/{thread_id}/ | 
 [**chat_upload_file**](ChatApi.md#chat_upload_file) | **POST** /chat/upload/ | 
 
@@ -27,10 +28,10 @@ from pp_sdk.models.chat200_response import Chat200Response
 from pp_sdk.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://0.0.0.0:8000/api
+# Defining the host is optional and defaults to https://0.0.0.0:8000/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = pp_sdk.Configuration(
-    host = "http://0.0.0.0:8000/api"
+    host = "https://0.0.0.0:8000/api"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -129,10 +130,10 @@ from pp_sdk.models.chat_history200_response import ChatHistory200Response
 from pp_sdk.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://0.0.0.0:8000/api
+# Defining the host is optional and defaults to https://0.0.0.0:8000/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = pp_sdk.Configuration(
-    host = "http://0.0.0.0:8000/api"
+    host = "https://0.0.0.0:8000/api"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -222,10 +223,10 @@ from pp_sdk.models.chat_retrieve_current200_response import ChatRetrieveCurrent2
 from pp_sdk.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://0.0.0.0:8000/api
+# Defining the host is optional and defaults to https://0.0.0.0:8000/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = pp_sdk.Configuration(
-    host = "http://0.0.0.0:8000/api"
+    host = "https://0.0.0.0:8000/api"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -296,6 +297,90 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **chat_thread_delete**
+> ChatThreadDelete200Response chat_thread_delete(thread_id)
+
+Delete a chat thread and all its messages from Firestore
+
+### Example
+
+* Api Key Authentication (UserIdAuth):
+* Api Key Authentication (ApiKeyAuth):
+
+```python
+import pp_sdk
+from pp_sdk.models.chat_thread_delete200_response import ChatThreadDelete200Response
+from pp_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://0.0.0.0:8000/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pp_sdk.Configuration(
+    host = "https://0.0.0.0:8000/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: UserIdAuth
+configuration.api_key['UserIdAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['UserIdAuth'] = 'Bearer'
+
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with pp_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pp_sdk.ChatApi(api_client)
+    thread_id = 'thread_id_example' # str | 
+
+    try:
+        api_response = api_instance.chat_thread_delete(thread_id)
+        print("The response of ChatApi->chat_thread_delete:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ChatApi->chat_thread_delete: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **thread_id** | **str**|  | 
+
+### Return type
+
+[**ChatThreadDelete200Response**](ChatThreadDelete200Response.md)
+
+### Authorization
+
+[UserIdAuth](../README.md#UserIdAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+**500** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **chat_thread_read**
 > ChatRetrieveCurrent200Response chat_thread_read(thread_id, x_user_id=x_user_id, x_caller_id=x_caller_id, x_caller_thread_id=x_caller_thread_id)
 
@@ -312,10 +397,10 @@ from pp_sdk.models.chat_retrieve_current200_response import ChatRetrieveCurrent2
 from pp_sdk.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://0.0.0.0:8000/api
+# Defining the host is optional and defaults to https://0.0.0.0:8000/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = pp_sdk.Configuration(
-    host = "http://0.0.0.0:8000/api"
+    host = "https://0.0.0.0:8000/api"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -402,10 +487,10 @@ from pp_sdk.models.chat_upload_file200_response import ChatUploadFile200Response
 from pp_sdk.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://0.0.0.0:8000/api
+# Defining the host is optional and defaults to https://0.0.0.0:8000/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = pp_sdk.Configuration(
-    host = "http://0.0.0.0:8000/api"
+    host = "https://0.0.0.0:8000/api"
 )
 
 # The client must configure the authentication and authorization parameters

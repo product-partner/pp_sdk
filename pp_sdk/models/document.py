@@ -111,7 +111,6 @@ class Document(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
             "id",
@@ -119,7 +118,6 @@ class Document(BaseModel):
             "modified_date",
             "version",
             "image_url",
-            "blob_id",
             "datasource_type",
         ])
 
@@ -157,6 +155,11 @@ class Document(BaseModel):
         if self.type is None and "type" in self.model_fields_set:
             _dict['type'] = None
 
+        # set to None if body (nullable) is None
+        # and model_fields_set contains the field
+        if self.body is None and "body" in self.model_fields_set:
+            _dict['body'] = None
+
         # set to None if reviewed_date (nullable) is None
         # and model_fields_set contains the field
         if self.reviewed_date is None and "reviewed_date" in self.model_fields_set:
@@ -181,6 +184,11 @@ class Document(BaseModel):
         # and model_fields_set contains the field
         if self.original_filename is None and "original_filename" in self.model_fields_set:
             _dict['original_filename'] = None
+
+        # set to None if blob_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.blob_id is None and "blob_id" in self.model_fields_set:
+            _dict['blob_id'] = None
 
         return _dict
 
