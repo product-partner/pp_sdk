@@ -119,6 +119,7 @@ Class | Method | HTTP request | Description
 *JiraApi* | [**publish_doc_as_epic**](docs/JiraApi.md#publish_doc_as_epic) | **POST** /jira/documents/{doc_id}/publish | 
 *ChatApi* | [**chat**](docs/ChatApi.md#chat) | **GET** /chat/ | 
 *ChatApi* | [**chat_history**](docs/ChatApi.md#chat_history) | **GET** /chat/history/ | 
+*ChatApi* | [**chat_new_list**](docs/ChatApi.md#chat_new_list) | **GET** /chat/new/ | Create a new chat thread
 *ChatApi* | [**chat_retrieve_current**](docs/ChatApi.md#chat_retrieve_current) | **GET** /chat/thread/ | 
 *ChatApi* | [**chat_thread_delete**](docs/ChatApi.md#chat_thread_delete) | **DELETE** /chat/thread/{thread_id}/ | 
 *ChatApi* | [**chat_thread_read**](docs/ChatApi.md#chat_thread_read) | **GET** /chat/thread/{thread_id}/ | 
@@ -177,6 +178,7 @@ Class | Method | HTTP request | Description
  - [Address](docs/Address.md)
  - [Chat200Response](docs/Chat200Response.md)
  - [ChatHistory200Response](docs/ChatHistory200Response.md)
+ - [ChatNewList200Response](docs/ChatNewList200Response.md)
  - [ChatRetrieveCurrent200Response](docs/ChatRetrieveCurrent200Response.md)
  - [ChatThreadDelete200Response](docs/ChatThreadDelete200Response.md)
  - [ChatThreadDelete500Response](docs/ChatThreadDelete500Response.md)

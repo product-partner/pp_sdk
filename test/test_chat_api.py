@@ -39,6 +39,13 @@ class TestChatApi(unittest.TestCase):
         """
         pass
 
+    def test_chat_new_list(self) -> None:
+        """Test case for chat_new_list
+
+        Create a new chat thread
+        """
+        pass
+
     def test_chat_retrieve_current(self) -> None:
         """Test case for chat_retrieve_current
 
