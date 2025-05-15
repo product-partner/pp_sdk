@@ -8,8 +8,11 @@ from pp_sdk.api.chat_api import ChatApi
 from pp_sdk.api.documents_api import DocumentsApi
 from pp_sdk.api.goals_api import GoalsApi
 from pp_sdk.api.programs_api import ProgramsApi
+from pp_sdk.api.section_api import SectionApi
 from pp_sdk.api.status_api import StatusApi
 from pp_sdk.api.tags_api import TagsApi
+from pp_sdk.api.targetmodel_api import TargetmodelApi
+from pp_sdk.api.template_api import TemplateApi
 from pp_sdk.api.users_api import UsersApi
 from pp_sdk.api.userstories_api import UserstoriesApi
 

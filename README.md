@@ -146,6 +146,18 @@ Class | Method | HTTP request | Description
 *ProgramsApi* | [**programs_picker_list**](docs/ProgramsApi.md#programs_picker_list) | **GET** /programs/picker/ | 
 *ProgramsApi* | [**programs_read**](docs/ProgramsApi.md#programs_read) | **GET** /programs/{program_id}/ | 
 *ProgramsApi* | [**programs_update**](docs/ProgramsApi.md#programs_update) | **PUT** /programs/{program_id}/ | 
+*SectionApi* | [**section_context_create**](docs/SectionApi.md#section_context_create) | **POST** /section/context/ | 
+*SectionApi* | [**section_context_delete**](docs/SectionApi.md#section_context_delete) | **DELETE** /section/context/{context_id}/ | 
+*SectionApi* | [**section_context_list**](docs/SectionApi.md#section_context_list) | **GET** /section/context/ | 
+*SectionApi* | [**section_context_partial_update**](docs/SectionApi.md#section_context_partial_update) | **PATCH** /section/context/{context_id}/ | 
+*SectionApi* | [**section_context_read**](docs/SectionApi.md#section_context_read) | **GET** /section/context/{context_id}/ | 
+*SectionApi* | [**section_context_update**](docs/SectionApi.md#section_context_update) | **PUT** /section/context/{context_id}/ | 
+*SectionApi* | [**section_create**](docs/SectionApi.md#section_create) | **POST** /section/ | 
+*SectionApi* | [**section_delete**](docs/SectionApi.md#section_delete) | **DELETE** /section/{section_id}/ | 
+*SectionApi* | [**section_list**](docs/SectionApi.md#section_list) | **GET** /section/ | 
+*SectionApi* | [**section_partial_update**](docs/SectionApi.md#section_partial_update) | **PATCH** /section/{section_id}/ | 
+*SectionApi* | [**section_read**](docs/SectionApi.md#section_read) | **GET** /section/{section_id}/ | 
+*SectionApi* | [**section_update**](docs/SectionApi.md#section_update) | **PUT** /section/{section_id}/ | 
 *StatusApi* | [**status_create**](docs/StatusApi.md#status_create) | **POST** /status/ | 
 *StatusApi* | [**status_delete**](docs/StatusApi.md#status_delete) | **DELETE** /status/{status_id}/ | 
 *StatusApi* | [**status_list**](docs/StatusApi.md#status_list) | **GET** /status/ | 
@@ -158,6 +170,30 @@ Class | Method | HTTP request | Description
 *TagsApi* | [**tags_partial_update**](docs/TagsApi.md#tags_partial_update) | **PATCH** /tags/{tag_id}/ | 
 *TagsApi* | [**tags_read**](docs/TagsApi.md#tags_read) | **GET** /tags/{tag_id}/ | 
 *TagsApi* | [**tags_update**](docs/TagsApi.md#tags_update) | **PUT** /tags/{tag_id}/ | 
+*TargetmodelApi* | [**targetmodel_create**](docs/TargetmodelApi.md#targetmodel_create) | **POST** /targetmodel/ | 
+*TargetmodelApi* | [**targetmodel_delete**](docs/TargetmodelApi.md#targetmodel_delete) | **DELETE** /targetmodel/{targetmodel_id}/ | 
+*TargetmodelApi* | [**targetmodel_list**](docs/TargetmodelApi.md#targetmodel_list) | **GET** /targetmodel/ | 
+*TargetmodelApi* | [**targetmodel_partial_update**](docs/TargetmodelApi.md#targetmodel_partial_update) | **PATCH** /targetmodel/{targetmodel_id}/ | 
+*TargetmodelApi* | [**targetmodel_read**](docs/TargetmodelApi.md#targetmodel_read) | **GET** /targetmodel/{targetmodel_id}/ | 
+*TargetmodelApi* | [**targetmodel_update**](docs/TargetmodelApi.md#targetmodel_update) | **PUT** /targetmodel/{targetmodel_id}/ | 
+*TemplateApi* | [**template_create**](docs/TemplateApi.md#template_create) | **POST** /template/ | 
+*TemplateApi* | [**template_delete**](docs/TemplateApi.md#template_delete) | **DELETE** /template/{template_id}/ | 
+*TemplateApi* | [**template_example_create**](docs/TemplateApi.md#template_example_create) | **POST** /template/example/ | 
+*TemplateApi* | [**template_example_delete**](docs/TemplateApi.md#template_example_delete) | **DELETE** /template/example/{example_id}/ | 
+*TemplateApi* | [**template_example_list**](docs/TemplateApi.md#template_example_list) | **GET** /template/example/ | 
+*TemplateApi* | [**template_example_partial_update**](docs/TemplateApi.md#template_example_partial_update) | **PATCH** /template/example/{example_id}/ | 
+*TemplateApi* | [**template_example_read**](docs/TemplateApi.md#template_example_read) | **GET** /template/example/{example_id}/ | 
+*TemplateApi* | [**template_example_update**](docs/TemplateApi.md#template_example_update) | **PUT** /template/example/{example_id}/ | 
+*TemplateApi* | [**template_list**](docs/TemplateApi.md#template_list) | **GET** /template/ | 
+*TemplateApi* | [**template_partial_update**](docs/TemplateApi.md#template_partial_update) | **PATCH** /template/{template_id}/ | 
+*TemplateApi* | [**template_read**](docs/TemplateApi.md#template_read) | **GET** /template/{template_id}/ | 
+*TemplateApi* | [**template_section_create**](docs/TemplateApi.md#template_section_create) | **POST** /template/section/ | 
+*TemplateApi* | [**template_section_delete**](docs/TemplateApi.md#template_section_delete) | **DELETE** /template/section/{templatesection_id}/ | 
+*TemplateApi* | [**template_section_list**](docs/TemplateApi.md#template_section_list) | **GET** /template/section/ | 
+*TemplateApi* | [**template_section_partial_update**](docs/TemplateApi.md#template_section_partial_update) | **PATCH** /template/section/{templatesection_id}/ | 
+*TemplateApi* | [**template_section_read**](docs/TemplateApi.md#template_section_read) | **GET** /template/section/{templatesection_id}/ | 
+*TemplateApi* | [**template_section_update**](docs/TemplateApi.md#template_section_update) | **PUT** /template/section/{templatesection_id}/ | 
+*TemplateApi* | [**template_update**](docs/TemplateApi.md#template_update) | **PUT** /template/{template_id}/ | 
 *UsersApi* | [**users_create**](docs/UsersApi.md#users_create) | **POST** /users/ | 
 *UsersApi* | [**users_delete**](docs/UsersApi.md#users_delete) | **DELETE** /users/{id}/ | 
 *UsersApi* | [**users_list**](docs/UsersApi.md#users_list) | **GET** /users/ | 
@@ -188,6 +224,7 @@ Class | Method | HTTP request | Description
  - [DocumentListFieldInner](docs/DocumentListFieldInner.md)
  - [DocumentPicker](docs/DocumentPicker.md)
  - [DocumentsCreateRequest](docs/DocumentsCreateRequest.md)
+ - [Example](docs/Example.md)
  - [Goal](docs/Goal.md)
  - [GoalBase](docs/GoalBase.md)
  - [GoalPicker](docs/GoalPicker.md)
@@ -200,11 +237,19 @@ Class | Method | HTTP request | Description
  - [PublishDocAsEpicRequest](docs/PublishDocAsEpicRequest.md)
  - [RegisterGoogleDoc200Response](docs/RegisterGoogleDoc200Response.md)
  - [RegisterGoogleDocRequest](docs/RegisterGoogleDocRequest.md)
+ - [Section](docs/Section.md)
+ - [SectionContext](docs/SectionContext.md)
+ - [SectionContextList200Response](docs/SectionContextList200Response.md)
  - [Status](docs/Status.md)
  - [Status1](docs/Status1.md)
  - [StatusCreateRequest](docs/StatusCreateRequest.md)
  - [Tag](docs/Tag.md)
  - [TagsInner](docs/TagsInner.md)
+ - [TargetModel](docs/TargetModel.md)
+ - [Template](docs/Template.md)
+ - [TemplateExampleList200Response](docs/TemplateExampleList200Response.md)
+ - [TemplateSection](docs/TemplateSection.md)
+ - [TemplateSectionList200Response](docs/TemplateSectionList200Response.md)
  - [User](docs/User.md)
  - [UserField](docs/UserField.md)
  - [UserListOfUserFieldsInner](docs/UserListOfUserFieldsInner.md)

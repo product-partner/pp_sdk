@@ -28,6 +28,7 @@ from pp_sdk.models.document_field import DocumentField
 from pp_sdk.models.document_list_field_inner import DocumentListFieldInner
 from pp_sdk.models.document_picker import DocumentPicker
 from pp_sdk.models.documents_create_request import DocumentsCreateRequest
+from pp_sdk.models.example import Example
 from pp_sdk.models.goal import Goal
 from pp_sdk.models.goal_base import GoalBase
 from pp_sdk.models.goal_picker import GoalPicker
@@ -40,11 +41,19 @@ from pp_sdk.models.programs_list_inner import ProgramsListInner
 from pp_sdk.models.publish_doc_as_epic_request import PublishDocAsEpicRequest
 from pp_sdk.models.register_google_doc200_response import RegisterGoogleDoc200Response
 from pp_sdk.models.register_google_doc_request import RegisterGoogleDocRequest
+from pp_sdk.models.section import Section
+from pp_sdk.models.section_context import SectionContext
+from pp_sdk.models.section_context_list200_response import SectionContextList200Response
 from pp_sdk.models.status import Status
 from pp_sdk.models.status1 import Status1
 from pp_sdk.models.status_create_request import StatusCreateRequest
 from pp_sdk.models.tag import Tag
 from pp_sdk.models.tags_inner import TagsInner
+from pp_sdk.models.target_model import TargetModel
+from pp_sdk.models.template import Template
+from pp_sdk.models.template_example_list200_response import TemplateExampleList200Response
+from pp_sdk.models.template_section import TemplateSection
+from pp_sdk.models.template_section_list200_response import TemplateSectionList200Response
 from pp_sdk.models.user import User
 from pp_sdk.models.user_field import UserField
 from pp_sdk.models.user_list_of_user_fields_inner import UserListOfUserFieldsInner
