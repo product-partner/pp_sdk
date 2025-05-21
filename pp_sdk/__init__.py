@@ -15,15 +15,17 @@
 """  # noqa: E501
 
 
-__version__ = "0.5.6"
+__version__ = "0.5.7"
 
 # import apis into sdk package
 from pp_sdk.api.google_docs_api import GoogleDocsApi
 from pp_sdk.api.google_o_auth_api import GoogleOAuthApi
 from pp_sdk.api.jira_api import JiraApi
 from pp_sdk.api.chat_api import ChatApi
+from pp_sdk.api.commits_api import CommitsApi
 from pp_sdk.api.documents_api import DocumentsApi
 from pp_sdk.api.goals_api import GoalsApi
+from pp_sdk.api.organization_api import OrganizationApi
 from pp_sdk.api.programs_api import ProgramsApi
 from pp_sdk.api.section_api import SectionApi
 from pp_sdk.api.status_api import StatusApi
@@ -53,6 +55,7 @@ from pp_sdk.models.chat_retrieve_current200_response import ChatRetrieveCurrent2
 from pp_sdk.models.chat_thread_delete200_response import ChatThreadDelete200Response
 from pp_sdk.models.chat_thread_delete500_response import ChatThreadDelete500Response
 from pp_sdk.models.chat_upload_file200_response import ChatUploadFile200Response
+from pp_sdk.models.commit import Commit
 from pp_sdk.models.document import Document
 from pp_sdk.models.document_field import DocumentField
 from pp_sdk.models.document_list_field_inner import DocumentListFieldInner
@@ -65,6 +68,7 @@ from pp_sdk.models.goal_picker import GoalPicker
 from pp_sdk.models.google_docs_webhook200_response import GoogleDocsWebhook200Response
 from pp_sdk.models.jira_sync_documents_create_request import JiraSyncDocumentsCreateRequest
 from pp_sdk.models.organization import Organization
+from pp_sdk.models.organization_setup import OrganizationSetup
 from pp_sdk.models.program import Program
 from pp_sdk.models.program_picker import ProgramPicker
 from pp_sdk.models.programs_list_inner import ProgramsListInner
