@@ -176,6 +176,16 @@ class Goal(BaseModel):
         if self.current_due_date is None and "current_due_date" in self.model_fields_set:
             _dict['current_due_date'] = None
 
+        # set to None if owner_users (nullable) is None
+        # and model_fields_set contains the field
+        if self.owner_users is None and "owner_users" in self.model_fields_set:
+            _dict['owner_users'] = None
+
+        # set to None if programs (nullable) is None
+        # and model_fields_set contains the field
+        if self.programs is None and "programs" in self.model_fields_set:
+            _dict['programs'] = None
+
         # set to None if version (nullable) is None
         # and model_fields_set contains the field
         if self.version is None and "version" in self.model_fields_set:
